@@ -1,0 +1,39 @@
+// Unity 프로젝트 루트의 .zed/settings.json 에 넣으세요 (프로젝트 전용 설정).
+// Rider가 자동으로 해 주는 "Unity 잡폴더 무시"를 수동으로 재현합니다.
+// 이걸 안 하면 Zed가 Library 폴더까지 인덱싱해서 무거워집니다.
+{
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/Library",
+    "**/Temp",
+    "**/Obj",
+    "**/Logs",
+    "**/UserSettings",
+    "**/Build",
+    "**/Builds",
+    "**/.idea",
+    "**/.vs"
+  ],
+  "file_types": {
+    // UIToolkit 작업용 (uxml → XML, uss → CSS 하이라이팅)
+    "XML": ["uxml"],
+    "CSS": ["uss"],
+    "JSON": ["asmdef", "asmref", "inputactions"],
+    // 유니티 에셋을 열어볼 때 YAML로 하이라이팅
+    "YAML": ["unity", "prefab", "asset", "anim", "controller", "mat", "meta"]
+  },
+  "languages": {
+    "CSharp": {
+      "tab_size": 4,
+      "hard_tabs": false,
+      // csharp-ls의 포매팅이 취향과 다를 수 있어 기본은 꺼 둡니다. 원하면 "on"으로.
+      "format_on_save": "off"
+    }
+  },
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  }
+}

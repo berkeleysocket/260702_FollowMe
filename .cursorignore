@@ -1,0 +1,4 @@
+# Cursor AI 인덱싱 제외 (Library/Temp 등은 .gitignore로 이미 제외됨)
+Assets/Plugins/
+Assets/Hierarchy Designer/
+*.pdf

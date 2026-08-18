@@ -1,0 +1,12 @@
+{
+    "sequenceId": "Stage01_Intro",
+    "lines": [
+        {
+            "characterId": "",
+            "expressionId": "",
+            "text": "",
+            "autoAdvance": false,
+            "autoAdvanceSeconds": 0.0
+        }
+    ]
+}

@@ -16,7 +16,7 @@ namespace SeungyungLib.Template.Modules
         {
             _owner = owner;
             _playableDict = GetComponentsInChildren<IPlayableVFX>()
-                .ToDictionary(vfx => vfx.VfxName.AssetHash);
+                .ToDictionary(vfx => vfx.VfxName.Hash);
         }
 
         public void PlayVfx(int hash, Vector3 position, Quaternion rotation)

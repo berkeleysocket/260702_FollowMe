@@ -2,7 +2,8 @@
     "name": "SeungyungLib.Agents.FSM.Editor",
     "rootNamespace": "SeungyungLib.Agents.FSM.Editor",
     "references": [
-        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b",
+        "GUID:f5265791171721f4aad0af1be266e8f2"
     ],
     "includePlatforms": [
         "Editor"

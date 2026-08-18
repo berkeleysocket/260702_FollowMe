@@ -1,6 +1,7 @@
 using System;
 using SeungyungLib.Agents.ModuleSystem.Interface;
 using SeungyungLib.Core;
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.Template.Modules;
 
 using UnityEngine;
@@ -40,7 +41,7 @@ namespace SeungyungLib.Template.Modules
             this._jumpForce = movementData.JumpForce;
             this._jumpDeceleration = movementData.JumpDeceleration;
             
-            DeubgLogger.Assert(body != null, "body is null");
+            DebugLogger.Assert(body != null, "body is null");
         }
         
         public void SetMovementVelocity(float axis)

@@ -1,4 +1,5 @@
-﻿using SeungyungLib.Core.CustomDebug;
+﻿using SeungyungLib.Agents.FSM.Interface;
+using SeungyungLib.Core.CustomDebug;
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace SeungyungLib.Agents.FSM.Editor
 
             List<Type> stateTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
-                .Where(t => t.IsSubclassOf(typeof(IState)) 
+                .Where(t => t.IsSubclassOf(typeof(IStateMachine)) 
                             && !t.IsAbstract                              
                             && !t.IsInterface)                            
                 .OrderBy(t => t.Name)                                     

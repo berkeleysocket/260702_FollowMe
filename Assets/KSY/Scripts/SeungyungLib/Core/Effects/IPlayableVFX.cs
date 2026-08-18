@@ -1,3 +1,5 @@
+using SeungyungLib.Core.ParameterSO;
+
 using UnityEngine;
 
 namespace SeungyungLib.Core.Effects

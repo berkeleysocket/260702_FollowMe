@@ -1,6 +1,8 @@
+using SeungyungLib.Core.CustomDebug;
+
 using UnityEngine;
 
-namespace SeungyungLib.Core
+namespace SeungyungLib.Core.MonoSingleton
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
@@ -16,7 +18,7 @@ namespace SeungyungLib.Core
             {
                 if (_shuttingDown)
                 {
-                    CustomDebug.LogWarning($"[MonoSingleton] {typeof(T)} instance already destroyed on application quit. Returning null.");
+                    DebugLogger.LogWarning($"[MonoSingleton] {typeof(T)} instance already destroyed on application quit. Returning null.");
                     return null;
                 }
 
@@ -55,7 +57,7 @@ namespace SeungyungLib.Core
             }
             else if (_instance != this)
             {
-                CustomDebug.LogWarning($"[MonoSingleton] Duplicate instance of {typeof(T)} detected and destroyed on {gameObject.name}");
+                DebugLogger.LogWarning($"[MonoSingleton] Duplicate instance of {typeof(T)} detected and destroyed on {gameObject.name}");
                 Destroy(gameObject);
             }
         }

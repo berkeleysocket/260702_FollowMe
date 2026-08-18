@@ -40,7 +40,7 @@ namespace SeungyungLib.Template.Modules
             this._jumpForce = movementData.JumpForce;
             this._jumpDeceleration = movementData.JumpDeceleration;
             
-            CustomDebug.Assert(body != null, "body is null");
+            DeubgLogger.Assert(body != null, "body is null");
         }
         
         public void SetMovementVelocity(float axis)

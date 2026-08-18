@@ -1,8 +1,8 @@
 {
-    "name": "SeungyungLib.Core.Effects",
-    "rootNamespace": "SeungyungLib.Core.Effects",
+    "name": "SeungyungLib.Agents.FSM",
+    "rootNamespace": "SeungyungLib.Agents.FSM",
     "references": [
-        "GUID:2ac770a4f9d96cc43b5ffa1e4da84f63"
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

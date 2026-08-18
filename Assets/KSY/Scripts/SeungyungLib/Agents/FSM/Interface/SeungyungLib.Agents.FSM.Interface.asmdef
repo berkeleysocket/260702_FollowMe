@@ -1,9 +1,7 @@
 {
-    "name": "SeungyungLib.Core.Effects",
-    "rootNamespace": "SeungyungLib.Core.Effects",
-    "references": [
-        "GUID:2ac770a4f9d96cc43b5ffa1e4da84f63"
-    ],
+    "name": "SeungyungLib.Agents.FSM.Interface",
+    "rootNamespace": "SeungyungLib.Agents.FSM.Interface",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

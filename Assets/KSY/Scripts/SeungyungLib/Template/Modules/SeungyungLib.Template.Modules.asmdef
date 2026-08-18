@@ -2,12 +2,13 @@
     "name": "SeungyungLib.Template.Modules",
     "rootNamespace": "SeungyungLib.Template.Modules",
     "references": [
-        "GUID:def2a9fedfb476344944a48c3e4b123d",
         "GUID:b6a73278d86f1e7499771d558b777537",
         "GUID:637211411bdbdfd4cb6fe6209376db1c",
         "GUID:6e7558d2cb5062d4dad78586a627d2b5",
         "GUID:f226997af791aa74daa56ff0bae38fdf",
-        "GUID:374514a00b07edf4e9c07b244e970714"
+        "GUID:374514a00b07edf4e9c07b244e970714",
+        "GUID:2ac770a4f9d96cc43b5ffa1e4da84f63",
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

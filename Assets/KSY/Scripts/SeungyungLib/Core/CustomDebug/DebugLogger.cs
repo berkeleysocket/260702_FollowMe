@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using UnityEngine;
 
-namespace SeungyungLib.Core
+namespace SeungyungLib.Core.CustomDebug
 {
-    public static class CustomDebug
+    public static class DebugLogger
     {
         [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
         public static void Log(object message)

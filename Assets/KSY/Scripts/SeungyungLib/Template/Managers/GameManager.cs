@@ -1,4 +1,4 @@
-using SeungyungLib.Core;
+using SeungyungLib.Core.MonoSingleton;
 
 using UnityEngine;
 

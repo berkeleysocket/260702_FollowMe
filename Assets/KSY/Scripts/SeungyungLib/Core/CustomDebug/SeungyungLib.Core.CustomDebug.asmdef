@@ -1,8 +1,10 @@
 {
-    "name": "SeungyungLib.Core",
-    "rootNamespace": "SeungyungLib.Core",
+    "name": "SeungyungLib.Core.CustomDebug",
+    "rootNamespace": "SeungyungLib.Core.CustomDebug",
     "references": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

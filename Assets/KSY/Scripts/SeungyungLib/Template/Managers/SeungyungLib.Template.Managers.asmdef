@@ -2,10 +2,10 @@
     "name": "SeungyungLib.Template.Managers",
     "rootNamespace": "SeungyungLib.Template.Managers",
     "references": [
-        "GUID:def2a9fedfb476344944a48c3e4b123d",
         "GUID:6e7558d2cb5062d4dad78586a627d2b5",
         "GUID:637211411bdbdfd4cb6fe6209376db1c",
-        "GUID:f226997af791aa74daa56ff0bae38fdf"
+        "GUID:f226997af791aa74daa56ff0bae38fdf",
+        "GUID:9e1023e0e44b9954fb3af382d878a17e"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

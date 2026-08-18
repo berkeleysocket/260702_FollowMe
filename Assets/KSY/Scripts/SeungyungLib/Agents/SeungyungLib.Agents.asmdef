@@ -1,0 +1,19 @@
+{
+    "name": "SeungyungLib.Agents",
+    "rootNamespace": "SeungyungLib.Agents",
+    "references": [
+        "GUID:600d6d09309510241bc71a454480d598",
+        "GUID:374514a00b07edf4e9c07b244e970714",
+        "GUID:0d69168664be5ef4bb323a4f2bf9d80b",
+        "GUID:f5265791171721f4aad0af1be266e8f2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

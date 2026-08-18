@@ -1,0 +1,21 @@
+{
+    "name": "SeungyungLib.Template.States",
+    "rootNamespace": "SeungyungLib.Template.States",
+    "references": [
+        "GUID:0d69168664be5ef4bb323a4f2bf9d80b",
+        "GUID:f5265791171721f4aad0af1be266e8f2",
+        "GUID:0d28af11534e47e41a05c046eca6e690",
+        "GUID:374514a00b07edf4e9c07b244e970714",
+        "GUID:637211411bdbdfd4cb6fe6209376db1c",
+        "GUID:f226997af791aa74daa56ff0bae38fdf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

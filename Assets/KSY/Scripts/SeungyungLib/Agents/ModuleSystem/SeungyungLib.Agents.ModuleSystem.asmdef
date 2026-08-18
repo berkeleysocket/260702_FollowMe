@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Agents.ModuleSystem",
+    "rootNamespace": "SeungyungLib.Agents.ModuleSystem",
+    "references": [
+        "GUID:374514a00b07edf4e9c07b244e970714"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

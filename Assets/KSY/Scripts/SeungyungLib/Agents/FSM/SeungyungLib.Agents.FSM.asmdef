@@ -1,0 +1,20 @@
+{
+    "name": "SeungyungLib.Agents.FSM",
+    "rootNamespace": "SeungyungLib.Agents.FSM",
+    "references": [
+        "GUID:600d6d09309510241bc71a454480d598",
+        "GUID:374514a00b07edf4e9c07b244e970714",
+        "GUID:f5265791171721f4aad0af1be266e8f2",
+        "GUID:0ce722c26d088394fb060475750cc772",
+        "GUID:def2a9fedfb476344944a48c3e4b123d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

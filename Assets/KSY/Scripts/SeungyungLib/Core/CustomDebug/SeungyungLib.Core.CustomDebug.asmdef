@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Core.CustomDebug",
+    "rootNamespace": "SeungyungLib.Core.CustomDebug",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,19 @@
+{
+    "name": "SeungyungLib.Template.Managers",
+    "rootNamespace": "SeungyungLib.Template.Managers",
+    "references": [
+        "GUID:6e7558d2cb5062d4dad78586a627d2b5",
+        "GUID:637211411bdbdfd4cb6fe6209376db1c",
+        "GUID:f226997af791aa74daa56ff0bae38fdf",
+        "GUID:9e1023e0e44b9954fb3af382d878a17e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

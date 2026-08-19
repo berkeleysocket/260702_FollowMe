@@ -1,0 +1,20 @@
+{
+    "name": "SeungyungLib.FSM",
+    "rootNamespace": "SeungyungLib.FSM",
+    "references": [
+        "GUID:ebbcbb0d211a30347884829caefbe845",
+        "GUID:8d09deb591f538c4aabbdf78f5765745",
+        "GUID:374514a00b07edf4e9c07b244e970714",
+        "GUID:2ac770a4f9d96cc43b5ffa1e4da84f63",
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

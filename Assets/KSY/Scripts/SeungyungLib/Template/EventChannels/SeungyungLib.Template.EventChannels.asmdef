@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Template.EventChannels",
+    "rootNamespace": "SeungyungLib.Template.EventChannels",
+    "references": [
+        "GUID:637211411bdbdfd4cb6fe6209376db1c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

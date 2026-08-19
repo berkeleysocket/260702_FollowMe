@@ -24,6 +24,9 @@ namespace SeungyungLib.Template.Modules
 
         public void Initialize(IModuleOwner owner)
         {
+            DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null]");
+            DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null]");
+            
             playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
         }
 
@@ -43,7 +46,6 @@ namespace SeungyungLib.Template.Modules
         {
             OnChangeAxis?.Invoke(axis);
             
-            DebugLogger.Log($"axis: {axis}", Color.yellow);
             _axis = axis;
         }
 

@@ -484,6 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3a2e439c5840f458a40551496979ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Core.Modules::SeungyungLib.Template.Modules.AgentRenderModule
+  playerEventChannel: {fileID: 11400000, guid: d03672077339cb944a80bf51d15f659d, type: 2}
 --- !u!1 &1054863475
 GameObject:
   m_ObjectHideFlags: 0

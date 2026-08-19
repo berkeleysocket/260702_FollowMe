@@ -30,8 +30,6 @@ namespace SeungyungLib.FSM
             {
                 _movementModule.OnChangeAxis += (float axis) =>
                 {
-                    Debug.Log(axis);
-                    
                     if (Mathf.Abs(axis) > 0.01f)
                         _isMoving = !isNot;
                     else
@@ -42,10 +40,6 @@ namespace SeungyungLib.FSM
                 DebugLogger.LogError("[IsMovingCondition] Movement Module is null");
         }
 
-        public override bool Check()
-        {
-            DebugLogger.Log($"isNot : {IsNot} / isMoving : {_isMoving}");
-            return _isMoving;
-        }
+        public override bool Check() => _isMoving;
     }
 }

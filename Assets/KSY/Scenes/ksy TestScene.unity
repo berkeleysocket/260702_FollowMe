@@ -5535,7 +5535,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: SeungyungLib.Agents.ModuleSystem::SeungyungLib.Agents.ModuleSystem.AgentMovementModule
   rb: {fileID: 1054863478}
   playerEventChannel: {fileID: 11400000, guid: d03672077339cb944a80bf51d15f659d, type: 2}
-  speed: 5
+  maxSpeed: 10
+  acceleration: 2
+  deceleration: 4
 --- !u!1 &2049418989
 GameObject:
   m_ObjectHideFlags: 0

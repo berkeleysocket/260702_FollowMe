@@ -1,10 +1,9 @@
-using SeungyungLib.ModuleSystem.Interface;
-
-using System;
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.EventChannelSystem;
-using SeungyungLib.Core.InputSystem;
+using SeungyungLib.ModuleSystem.Interface;
 using SeungyungLib.Template.EventChannels;
+
+using System;
 using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
@@ -13,8 +12,6 @@ namespace SeungyungLib.Template.Modules
     {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private EventChannelSO playerEventChannel;
-        
-        
         [SerializeField] private float maxSpeed;
         [SerializeField] private float acceleration;
         [SerializeField] private float deceleration;
@@ -56,17 +53,22 @@ namespace SeungyungLib.Template.Modules
 
         private void CalculateVelocity()
         {
+            float currentX = rb.linearVelocityX;
+            
             if (_axis != 0)
             {
-                bool isReversing = _currentSpeed < _axis;
-                _currentSpeed = Mathf.Clamp(_currentSpeed - deceleration * Time.fixedDeltaTime, 0f, maxSpeed);
+                bool isReversing = (currentX * _axis < 0);
+                float accelRate = isReversing ? (acceleration + deceleration) : acceleration;
+                float targetX = _axis * maxSpeed;
+
+                currentX = Mathf.MoveTowards(currentX, targetX, accelRate * Time.fixedDeltaTime);
             }
-            else if (_currentSpeed < maxSpeed)
+            else
             {
-                _currentSpeed = Mathf.Clamp(_currentSpeed + acceleration * Time.fixedDeltaTime, 0f, maxSpeed);
+                currentX = Mathf.MoveTowards(currentX, 0, deceleration * Time.fixedDeltaTime);
             }
             
-            _velocity = new Vector2(_currentSpeed * _axis, rb.linearVelocity.y);
+            _velocity = new Vector2(currentX, rb.linearVelocity.y);
         }
     }
 }

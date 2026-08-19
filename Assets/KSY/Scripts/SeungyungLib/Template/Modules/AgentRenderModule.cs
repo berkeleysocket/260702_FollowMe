@@ -1,4 +1,4 @@
-using SeungyungLib.Agents.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Interface;
 
 using UnityEngine;
 

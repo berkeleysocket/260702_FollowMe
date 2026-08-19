@@ -1,64 +1,39 @@
-using System;
-using SeungyungLib.Agents.ModuleSystem.Interface;
-using SeungyungLib.Core;
-using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.Core.Template.Modules;
+using SeungyungLib.ModuleSystem.Interface;
 
+using System;
+using SeungyungLib.Core.EventChannelSystem;
+using SeungyungLib.Core.InputSystem;
+using SeungyungLib.Template.EventChannels;
 using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
     public class AgentMovementModule : MonoBehaviour, IAgentMovementModule
     {
-        [SerializeField] private Rigidbody2D body;
-        [SerializeField] private AgentMovementData movementData;
-        
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private EventChannelSO playerEventChannel;
+        [SerializeReference] private float speed;
+
         public event Action<float> OnChangeAxis;
 
-        private Vector2 _currentVelocity;
-        private float _axis;
-        private float _speed;
-        private float _acceleration;
-        private float _deceleration;
-        private float _jumpForce;
-        private float _jumpDeceleration;
-
-        private void Update()
-        {
-            CalculateVelocity();
-        }
-
-        private void FixedUpdate()
-        {
-            Move();
-        }
-        
         public void Initialize(IModuleOwner owner)
         {
-            this._speed = movementData.Speed;
-            this._acceleration = movementData.Acceleration;
-            this._deceleration = movementData.Deceleration;
-            this._jumpForce = movementData.JumpForce;
-            this._jumpDeceleration = movementData.JumpDeceleration;
-            
-            DebugLogger.Assert(body != null, "body is null");
+            playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
         }
-        
-        public void SetMovementVelocity(float axis)
+
+        private void HandleMoveInput(MoveInputEvent moveInputEvent)
         {
-            this._axis = axis;
+            SetMovementVelocity(moveInputEvent.Axis);
+        }
+
+        public void SetMovementVelocity(float axis) 
+        {
             OnChangeAxis?.Invoke(axis);
+            rb.linearVelocity = new Vector2(axis * speed, rb.linearVelocity.y);
         }
-        public void Jump() => body.linearVelocity = new Vector2(body.linearVelocity.x, _jumpForce);
-        
-        private void CalculateVelocity()
+
+        public void Jump()
         {
-            float targetSpeed = _axis * _speed;
-            float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? _acceleration : _deceleration;
-            float newXVelocity = Mathf.MoveTowards(body.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
-            
-            _currentVelocity = new Vector2(newXVelocity, body.linearVelocity.y);
         }
-        private void Move() => body.linearVelocity = _currentVelocity;
     }
 }

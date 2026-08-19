@@ -1,0 +1,17 @@
+{
+    "name": "SeungyungLib.FSM.Interface",
+    "rootNamespace": "SeungyungLib.FSM.Interface",
+    "references": [
+        "GUID:ebbcbb0d211a30347884829caefbe845",
+        "GUID:374514a00b07edf4e9c07b244e970714"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -2,7 +2,7 @@
 
 namespace SeungyungLib.Core.ParameterSO
 {
-    [CreateAssetMenu(fileName = "AssetNameDataSO", menuName = "SeungyungLib/Utility/AssetNameData", order = 0)]
+    [CreateAssetMenu(fileName = "AssetNameSO", menuName = "SeungyungLib/Utility/AssetNameSO", order = 1)]
     public class AssetNameSO : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }

@@ -1,4 +1,4 @@
-namespace SeungyungLib.Agents.ModuleSystem.Interface
+namespace SeungyungLib.ModuleSystem.Interface
 {
     public interface IAfterInitModule
     {

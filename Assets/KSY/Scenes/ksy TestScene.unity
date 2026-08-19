@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &291593187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291593188}
+  - component: {fileID: 291593189}
+  m_Layer: 0
+  m_Name: StateModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291593188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291593187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1054863476}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291593189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291593187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b240be8e34c0b7045a72291948c81158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateModule
+  stateMachineSO: {fileID: 11400000, guid: be5b5512f289d4143a98b1f9134339cf, type: 2}
 --- !u!1 &293758459
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +519,7 @@ Transform:
   - {fileID: 1485695008}
   - {fileID: 431476378}
   - {fileID: 293758460}
+  - {fileID: 291593188}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1054863478
@@ -515,7 +561,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b437d764c3fbc2498164f58cc2ab5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Agents::SeungyungLib.Agents.Player
-  stateOwner: {fileID: 11400000, guid: be5b5512f289d4143a98b1f9134339cf, type: 2}
 --- !u!1 &1089666768
 GameObject:
   m_ObjectHideFlags: 0
@@ -5488,9 +5533,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4e829a448a1734da7db95f9aa197a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Agents.ModuleSystem::SeungyungLib.Agents.ModuleSystem.AgentMovementModule
-  body: {fileID: 1054863478}
-  inputChannel: {fileID: 11400000, guid: d03672077339cb944a80bf51d15f659d, type: 2}
-  movementData: {fileID: 11400000, guid: 6ff52a9c807a13e4089a284f256b59da, type: 2}
+  rb: {fileID: 1054863478}
+  playerEventChannel: {fileID: 11400000, guid: d03672077339cb944a80bf51d15f659d, type: 2}
+  speed: 5
 --- !u!1 &2049418989
 GameObject:
   m_ObjectHideFlags: 0

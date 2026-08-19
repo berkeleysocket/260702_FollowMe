@@ -1,31 +1,33 @@
-using SeungyungLib.Agents.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Interface;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace SeungyungLib.Agents.ModuleSystem
+namespace SeungyungLib.ModuleSystem
 {
     public abstract class AbstractModuleOwner : MonoBehaviour, IModuleOwner
     {
         protected Dictionary<Type, IModule> _moducleDict;
 
-        protected virtual void Awake()
+        private void Awake()
+        {
+            Initialize();
+            OnInitialized();
+        }
+
+        public void Initialize()
         {
             _moducleDict = GetComponentsInChildren<IModule>()
                 .ToDictionary(module => module.GetType());
 
             InitializeComponents();
             AfterInitComponents();
-            OnAwake();
         }
 
-        protected virtual void OnAwake()
-        {
-            
-        }
-        
+        protected virtual void OnInitialized() {}
+
         public T GetModule<T>() where T : IModule
         {
             if(_moducleDict.TryGetValue(typeof(T), out IModule module))

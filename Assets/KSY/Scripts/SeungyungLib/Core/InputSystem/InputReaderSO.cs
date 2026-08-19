@@ -37,10 +37,7 @@ namespace SeungyungLib.Core.InputSystem
         public void OnRun(InputAction.CallbackContext context)
         {
             if (context.performed)
-            {
-                Debug.Log(context.ReadValue<float>());
                 OnRunKeyPressed?.Invoke(context.ReadValue<float>());
-            }
             else if (context.canceled)
                 OnRunKeyPressed?.Invoke(0f);
         }

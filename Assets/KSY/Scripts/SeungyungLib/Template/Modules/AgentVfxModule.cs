@@ -1,5 +1,5 @@
 using SeungyungLib.Core.Effects;
-using SeungyungLib.Agents.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Interface;
 
 using System.Collections.Generic;
 using System.Linq;

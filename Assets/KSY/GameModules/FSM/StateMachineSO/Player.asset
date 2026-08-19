@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11922fbf572dba4cbab447ca8f64d30, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateMachineSO
+  <StateList>k__BackingField:
+  - {fileID: 11400000, guid: 7ecda1247f5a6da43bf2636b278e7736, type: 2}
+  - {fileID: 11400000, guid: 2416ea0fb0d547a42a53cddb2d482639, type: 2}
+  <StartState>k__BackingField: 0

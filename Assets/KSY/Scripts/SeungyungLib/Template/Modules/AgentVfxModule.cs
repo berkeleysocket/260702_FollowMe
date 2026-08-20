@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class VfxModule : MonoBehaviour, IVfxModule
+    public class AgentVfxModule : MonoBehaviour, IAgentVfxModule
     {
         private IModuleOwner _owner;
         private Dictionary<int, IPlayableVfx> _playableDict;
@@ -26,6 +26,14 @@ namespace SeungyungLib.Template.Modules
         {
             if (_playableDict.TryGetValue(hash, out var vfx))
                 vfx.PlayVfx(position, rotation);
+            else
+                DebugLogger.LogError($"[VFXModule]: with hash : {hash} not found");
+        }
+
+        public void PlayVfx(int hash, bool isFlip)
+        {
+            if (_playableDict.TryGetValue(hash, out var vfx))
+                vfx.PlayVfx(isFlip);
             else
                 DebugLogger.LogError($"[VFXModule]: with hash : {hash} not found");
         }

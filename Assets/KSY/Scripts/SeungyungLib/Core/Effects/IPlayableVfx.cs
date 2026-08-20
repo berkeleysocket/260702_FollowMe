@@ -1,5 +1,3 @@
-using SeungyungLib.Core.ParameterSO;
-
 using UnityEngine;
 
 namespace SeungyungLib.Core.Effects
@@ -9,8 +7,9 @@ namespace SeungyungLib.Core.Effects
         public int NameHash { get; }
 
         public void Initialize();
-        void PlayVfx(Vector3 position, Quaternion rotation);
-        void PlayVfx();
-        void StopVfx();
+        public void PlayVfx(Vector3 position, Quaternion rotation);
+        public void PlayVfx(bool isFlip);
+        public void PlayVfx();
+        public void StopVfx();
     }
 }

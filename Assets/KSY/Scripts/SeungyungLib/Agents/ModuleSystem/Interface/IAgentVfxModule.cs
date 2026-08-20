@@ -1,11 +1,11 @@
-﻿using SeungyungLib.ModuleSystem.Interface;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Interface
 {
-    public interface IVfxModule : IModule
+    public interface IAgentVfxModule : IModule
     {
         void PlayVfx(int hash, Vector3 position, Quaternion rotation);
+        void PlayVfx(int hash, bool isFlip);
         void PlayVfx(int hash);
         void StopVfx(int hash);
     }

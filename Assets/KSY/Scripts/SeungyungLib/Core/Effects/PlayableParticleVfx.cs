@@ -22,6 +22,15 @@ namespace SeungyungLib.Core.Effects
         {
             this.transform.position = position;
             this.transform.rotation = rotation;
+            
+            _particle.Play();
+        }
+
+        public override void PlayVfx(bool isFlip)
+        {
+            float flipValue = isFlip ? 180 : 0;
+            transform.rotation = Quaternion.Euler(0, flipValue, 0);
+            
             _particle.Play();
         }
 

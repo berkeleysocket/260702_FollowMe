@@ -2,7 +2,7 @@
 
 namespace SeungyungLib.Core.ParameterSO
 {
-    [CreateAssetMenu(fileName = "AnimParamSO", menuName = "SeungyungLib/Utility/AnimParamSO", order = 0)]
+    [CreateAssetMenu(fileName = "AnimParamSO", menuName = "SeungyungLib/Core/AnimParamSO", order = 0)]
     public class AnimParamSO : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }

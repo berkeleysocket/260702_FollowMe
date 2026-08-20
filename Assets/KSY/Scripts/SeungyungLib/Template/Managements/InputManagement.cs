@@ -1,12 +1,14 @@
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.Core.InputSystem;
+using SeungyungLib.Core.ManagerSystem;
 using SeungyungLib.Template.EventChannels;
 
 using UnityEngine;
 
-namespace SeungyungLib.Template.Managers
+namespace SeungyungLib.Template.Managements
 {
-    public class InputManager : MonoBehaviour
+    public class InputManagement : MonoBehaviour, IManagement
     {
         [SerializeReference] private InputReaderSO inputReader;
         [SerializeField] private EventChannelSO playerEventChannel;
@@ -14,7 +16,9 @@ namespace SeungyungLib.Template.Managers
         public void Initialize()
         {
             this.inputReader.Initialize();
-
+            
+            DebugLogger.LogSuccess("InputManagement.Initialize");
+            
             RegisterEvents();
         }
 

@@ -8,17 +8,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVFXModule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableParticleVfx.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableParticleVfx.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam/State.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam/State/IDLE.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam/State/IDLE.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam/State/RUN.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimParam/State/RUN.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/ksy TestScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/ksy TestScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/IPlayableVFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/IPlayableVFX.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VfxModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VFXModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VfxModule.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VFXModule.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVFXModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVfxModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVFXModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/IPlayableVFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/IPlayableVfx.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/IPlayableVFX.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableVFX.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableVfx.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableVFX.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/SeungyungLib.Core.Effects.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/SeungyungLib.Core.Effects.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/VFXSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/VfxSo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/VFXSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/InputReaderSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/InputReaderSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/InputSetting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/InputSetting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/KeyRebindManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/InputSystem/KeyRebindManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/MonoSingleton/MonoSingleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/MonoSingleton/MonoSingleton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/ParameterSO/AnimParamSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/ParameterSO/AnimParamSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/ParameterSO/AssetNameSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/ParameterSO/AssetNameSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/GameManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/GameManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/InputManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/InputManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/SeungyungLib.Template.Managers.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managers/SeungyungLib.Template.Managers.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/MovementModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/MovementModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VFXModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VFXModule.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="FileColors">
     <fileColor scope="Project Files" color="fff9fc" />
@@ -27,6 +60,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableParticleVfx.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managements/PoolManagement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Modules/VFXModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6fd3bea869f4004b25d18a15df36a7812000/c3/d45c4e9d/VisualEffect.cs" root0="FORCE_HIGHLIGHTING" />
@@ -41,20 +76,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;KSY&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.com.jetbrains.rider.ideaInterop.settings.colors.RiderDefaultLanguageColorSettingsPage&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Unity 에디터에 연결.Unity 에디터에 연결.executor": "Debug",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "KSY",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.com.jetbrains.rider.ideaInterop.settings.colors.RiderDefaultLanguageColorSettingsPage"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
     <configuration name="유닛 테스트(배치 모드)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.11f1\Editor\Unity.exe" />
@@ -76,13 +112,15 @@
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Unity 에디터에 연결" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false" ignored-value-for-modified-check="20432">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20432" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />

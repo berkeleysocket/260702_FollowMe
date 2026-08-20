@@ -8,16 +8,16 @@ using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class VFXModule : MonoBehaviour, IVFXModule
+    public class VfxModule : MonoBehaviour, IVfxModule
     {
         private IModuleOwner _owner;
-        private Dictionary<int, IPlayableVFX> _playableDict;
+        private Dictionary<int, IPlayableVfx> _playableDict;
         
         public void Initialize(IModuleOwner owner)
         {
             this._owner = owner;
-            this._playableDict = GetComponentsInChildren<IPlayableVFX>()
-                .ToDictionary(vfx => vfx.VFXName.Hash);
+            this._playableDict = GetComponentsInChildren<IPlayableVfx>()
+                .ToDictionary(vfx => vfx.NameHash);
             foreach (var vfx in _playableDict.Values)
                 vfx.Initialize();
         }
@@ -25,7 +25,7 @@ namespace SeungyungLib.Template.Modules
         public void PlayVfx(int hash, Vector3 position, Quaternion rotation)
         {
             if (_playableDict.TryGetValue(hash, out var vfx))
-                vfx.PlayVFX(position, rotation);
+                vfx.PlayVfx(position, rotation);
             else
                 DebugLogger.LogError($"[VFXModule]: with hash : {hash} not found");
         }
@@ -33,7 +33,7 @@ namespace SeungyungLib.Template.Modules
         public void PlayVfx(int hash)
         {
             if (_playableDict.TryGetValue(hash, out var vfx))
-                vfx.PlayVFX();
+                vfx.PlayVfx();
             else
                 DebugLogger.LogError($"[VFXModule]: with hash : {hash} not found");
         }
@@ -41,7 +41,7 @@ namespace SeungyungLib.Template.Modules
         public void StopVfx(int hash)
         {
             if (_playableDict.TryGetValue(hash, out var vfx))
-                vfx.StopVFX();
+                vfx.StopVfx();
             else
                 DebugLogger.LogError($"[VFXModule]: with hash : {hash} not found");
         }

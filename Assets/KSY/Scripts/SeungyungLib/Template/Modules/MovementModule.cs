@@ -4,6 +4,7 @@ using SeungyungLib.ModuleSystem.Interface;
 using SeungyungLib.Template.EventChannels;
 
 using System;
+using SeungyungLib.Core.ParameterSO;
 using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
@@ -12,6 +13,7 @@ namespace SeungyungLib.Template.Modules
     {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private EventChannelSO playerEventChannel;
+        [SerializeField] private AssetNameSO dustParticleName;
         [SerializeField] private float maxSpeed = 0f;
         [SerializeField] private float acceleration = 0f;
         [SerializeField] private float deceleration = 0f;
@@ -25,6 +27,7 @@ namespace SeungyungLib.Template.Modules
         public event Action<float> OnChangeAxis;
 
         private IAgentGroundCheckModule _groundChecker;
+        private IVfxModule _vfxModule;
         private Vector2 _velocity;
         private float _axis;
         private float _currentSpeed;
@@ -34,11 +37,14 @@ namespace SeungyungLib.Template.Modules
         public void Initialize(IModuleOwner owner)
         {
             _groundChecker = owner.GetModule<IAgentGroundCheckModule>();
+            _vfxModule = owner.GetModule<IVfxModule>();
             
             DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null]");
             DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null]");
+            DebugLogger.Assert(dustParticleName != null, "[AgentMovementModule]: dustParticleName is null]");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null]");
-            
+            DebugLogger.Assert(_vfxModule != null, "[AgentMovementModule]: _vfxModule is null]");
+
             playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
             playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
         }
@@ -67,6 +73,11 @@ namespace SeungyungLib.Template.Modules
             OnChangeAxis?.Invoke(axis);
             
             this._axis = axis;
+            
+            if (!IsJumping && !IsFall && axis != 0f)
+                _vfxModule.PlayVfx(dustParticleName.Hash);
+            else if (axis == 0f)
+                _vfxModule.StopVfx(dustParticleName.Hash);
         }
 
         private void Run() 

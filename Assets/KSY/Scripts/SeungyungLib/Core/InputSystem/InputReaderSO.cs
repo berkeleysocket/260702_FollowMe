@@ -6,7 +6,7 @@ using System;
 
 namespace SeungyungLib.Core.InputSystem
 {
-    [CreateAssetMenu(fileName = "InputReaderSO", menuName = "SeungyungLib/Utility/InputReader", order = 0)]
+    [CreateAssetMenu(fileName = "InputReaderSO", menuName = "SeungyungLib/Core/InputSystem/InputReaderSO", order = 0)]
     public class InputReaderSO : ScriptableObject, PlayerControls.IPlayerActions
     {
         public event Action<float> OnRunKeyPressed;

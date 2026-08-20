@@ -10,15 +10,21 @@ namespace SeungyungLib.Template.EventChannels
 
     public class MoveInputEvent : ChannelEvent
     {
+        public float Axis { get; private set; }
+        
         public void Initialize(float axis)
         {
             this.Axis = axis;
         }
-
-        public float Axis { get; private set; }
     }
 
     public class JumpInputEvent : ChannelEvent
     {
+        public bool JumpKeyPressed { get; private set; }
+
+        public void Initialize(bool jumpKeyPressed)
+        {
+            this.JumpKeyPressed = jumpKeyPressed;
+        }
     }
 }

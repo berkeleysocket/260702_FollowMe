@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class AgentVfxModule : MonoBehaviour, IModule
+    public class VfxModule : MonoBehaviour, IModule
     {
         private IModuleOwner _owner;
         private Dictionary<int, IPlayableVFX> _playableDict;

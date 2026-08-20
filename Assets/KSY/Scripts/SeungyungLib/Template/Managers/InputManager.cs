@@ -20,14 +20,15 @@ namespace SeungyungLib.Template.Managers
 
         public void RegisterEvents()
         {
-            inputReader.OnRunKeyPressed += (axis)=>
+            inputReader.OnRunKeyPressed += (float axis)=>
             {
                 InputEvents.MoveInputEvent.Initialize(axis);
                 playerEventChannel.RaiseEvent(InputEvents.MoveInputEvent);
             };
 
-            inputReader.OnJumpKeyPressed += () =>
+            inputReader.OnJumpKeyPressed += (bool isJumpKeyPressed) =>
             {
+                InputEvents.JumpInputEvent.Initialize(isJumpKeyPressed);
                 playerEventChannel.RaiseEvent(InputEvents.JumpInputEvent);
             };
         }

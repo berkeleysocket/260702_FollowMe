@@ -10,7 +10,7 @@ namespace SeungyungLib.Core.InputSystem
     public class InputReaderSO : ScriptableObject, PlayerControls.IPlayerActions
     {
         public event Action<float> OnRunKeyPressed;
-        public event Action OnJumpKeyPressed;
+        public event Action<bool> OnJumpKeyPressed;
 
         private PlayerControls _controls;
 
@@ -45,7 +45,9 @@ namespace SeungyungLib.Core.InputSystem
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnJumpKeyPressed?.Invoke();
+                OnJumpKeyPressed?.Invoke(true);
+            else if (context.canceled)
+                OnJumpKeyPressed?.Invoke(false);
         }
     }
 }

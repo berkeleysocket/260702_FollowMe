@@ -5,7 +5,7 @@ namespace SeungyungLib.ModuleSystem.Interface
     public interface IAgentMovementModule : IModule
     {
         public event Action<float> OnChangeAxis;
-        public void SetMovementVelocity(float axis);
+        public void MoveToDirection(float axis);
         public void Jump();
     }
 }

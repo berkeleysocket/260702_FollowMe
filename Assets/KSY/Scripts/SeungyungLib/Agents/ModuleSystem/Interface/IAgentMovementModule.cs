@@ -6,6 +6,5 @@ namespace SeungyungLib.ModuleSystem.Interface
     {
         public event Action<float> OnChangeAxis;
         public void MoveToDirection(float axis);
-        public void Jump();
     }
 }

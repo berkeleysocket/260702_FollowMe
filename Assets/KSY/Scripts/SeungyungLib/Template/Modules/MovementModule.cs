@@ -18,9 +18,12 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private float jumpForce = 0f;
         [SerializeField] private float fallMultiplier = 0f;
         [SerializeField] private float lowFallMultiplier = 0f;
+        [SerializeField] private float airMultiplier = 0f;
 
+        private bool IsJumping => rb.linearVelocityY > 0f;
+        private bool IsFall => rb.linearVelocityY < 0f;
         public event Action<float> OnChangeAxis;
-        
+
         private IAgentGroundCheckModule _groundChecker;
         private Vector2 _velocity;
         private float _axis;
@@ -34,7 +37,7 @@ namespace SeungyungLib.Template.Modules
             
             DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null]");
             DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null]");
-            DebugLogger.Assert(rb != null, "[AgentMovementModule]: _groundChecker is null]");
+            DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null]");
             
             playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
             playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
@@ -46,8 +49,8 @@ namespace SeungyungLib.Template.Modules
         {
             ApplyGravity();
             CalculateVelocity();
-
-            rb.linearVelocity = _velocity;
+            Run();
+            Jump();
         }
         #endregion
        
@@ -56,10 +59,7 @@ namespace SeungyungLib.Template.Modules
             => MoveToDirection(evt.Axis);
 
         private void HandleJumpInput(JumpInputEvent evt)
-        {
-            this._isJumpKeyPressed = evt.JumpKeyPressed;
-            Jump();
-        }
+            => this._isJumpKeyPressed = evt.JumpKeyPressed;
         #endregion
 
         public void MoveToDirection(float axis) 
@@ -68,20 +68,21 @@ namespace SeungyungLib.Template.Modules
             
             this._axis = axis;
         }
-        public void Jump()
+
+        private void Run() 
+            => rb.linearVelocity = _velocity;
+            
+        private void Jump()
         {
-            if (_groundChecker.IsGrounded())
+            if (_isJumpKeyPressed && _groundChecker.IsGrounded())
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
         }
 
         private void ApplyGravity()
         {
-            bool isFall =  rb.linearVelocityY < 0f;
-            bool isJumping = rb.linearVelocityY > 0f;
-            
-            if (isFall)
+            if (IsFall)
                 rb.linearVelocity += Vector2.up * (Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime);
-            else if (isJumping && !_isJumpKeyPressed)
+            else if (IsJumping && !_isJumpKeyPressed)
                 rb.linearVelocity += Vector2.up * (Physics.gravity.y * (lowFallMultiplier - 1) * Time.fixedDeltaTime);
         }
         
@@ -91,9 +92,10 @@ namespace SeungyungLib.Template.Modules
             
             if (_axis != 0)
             {
+                float airMultiplier = IsJumping || IsFall ? this.airMultiplier : 1f;
                 bool isReversing = (currentX * _axis < 0);
                 float accelRate = isReversing ? (acceleration + deceleration) : acceleration;
-                float targetX = _axis * maxSpeed;
+                float targetX = _axis * maxSpeed * airMultiplier;
 
                 currentX = Mathf.MoveTowards(currentX, targetX, accelRate * Time.fixedDeltaTime);
             }

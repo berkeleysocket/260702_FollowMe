@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 431476378}
   - component: {fileID: 431476379}
   m_Layer: 0
-  m_Name: GroundChecker
+  m_Name: GroundCheckModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,11 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc3f8c0824343508281383a9a4661fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Template.Modules::SeungyungLib.Template.Modules.GroundCheckModule
-  checkCenter: {x: 0, y: 0}
-  checkRange: {x: 0, y: 0}
+  checkCenter: {x: 0, y: -0.5}
+  checkRange: {x: 0.6, y: 0.1}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
 --- !u!1 &575513935
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 710313835}
   - component: {fileID: 710313837}
   m_Layer: 0
-  m_Name: Visual
+  m_Name: RenderModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5560,6 +5560,7 @@ MonoBehaviour:
   jumpForce: 8
   fallMultiplier: 2.5
   lowFallMultiplier: 2
+  airDeceleration: 0.825
 --- !u!1 &2049418989
 GameObject:
   m_ObjectHideFlags: 0

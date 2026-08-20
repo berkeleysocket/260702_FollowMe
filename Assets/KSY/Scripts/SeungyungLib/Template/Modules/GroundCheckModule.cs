@@ -1,4 +1,4 @@
-﻿using System;
+﻿using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.ModuleSystem.Interface;
 
 using UnityEngine;
@@ -21,14 +21,20 @@ namespace SeungyungLib.Template.Modules
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawCube(checkCenter, checkRange);
+            Gizmos.DrawWireCube((Vector2)transform.position + checkCenter, checkRange);
         }
         #endregion
 
         public bool IsGrounded()
         {
-            Collider2D collider = Physics2D.OverlapBox(checkCenter, checkRange, whatIsGround);
-            return collider != null;
+            Collider2D groundCollider = Physics2D.OverlapBox(
+                (Vector2)transform.position + checkCenter,
+                checkRange,
+                angle: 0f,
+                whatIsGround
+                );
+            
+            return groundCollider != null;
         }
     }
 }

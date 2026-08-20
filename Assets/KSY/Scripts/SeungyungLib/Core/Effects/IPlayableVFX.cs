@@ -6,7 +6,9 @@ namespace SeungyungLib.Core.Effects
 {
     public interface IPlayableVFX
     {
-        AssetNameSO VfxName { get; }
+        public void Initialize();
+        
+        AssetNameSO VFXName { get; }
         float VfxDuration { get; }
         void PlayVFX(Vector3 position, Quaternion rotation);
         void PlayVFX();

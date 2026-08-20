@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Core.Effects",
+    "rootNamespace": "SeungyungLib.Core.Effects",
+    "references": [
+        "GUID:2ac770a4f9d96cc43b5ffa1e4da84f63"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

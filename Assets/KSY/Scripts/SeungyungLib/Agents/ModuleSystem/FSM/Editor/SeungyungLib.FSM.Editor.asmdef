@@ -1,0 +1,19 @@
+{
+    "name": "SeungyungLib.FSM.Editor",
+    "rootNamespace": "SeungyungLib.FSM.Editor",
+    "references": [
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b",
+        "GUID:8d09deb591f538c4aabbdf78f5765745"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

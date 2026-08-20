@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Core.MonoSingleton",
+    "rootNamespace": "SeungyungLib.Core.MonoSingleton",
+    "references": [
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

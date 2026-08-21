@@ -53,7 +53,7 @@ namespace SeungyungLib.ModuleSystem
         {
             foreach (IAfterInitModule module in _moducleDict.Values.OfType<IAfterInitModule>())
             {
-                module.AfterInit();
+                module.AfterInitialization();
             }
         }
     }

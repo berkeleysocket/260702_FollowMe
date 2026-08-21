@@ -17,8 +17,6 @@ namespace SeungyungLib.Template.Managements
         {
             this.inputReader.Initialize();
             
-            DebugLogger.LogSuccess("InputManagement.Initialize");
-            
             RegisterEvents();
         }
 

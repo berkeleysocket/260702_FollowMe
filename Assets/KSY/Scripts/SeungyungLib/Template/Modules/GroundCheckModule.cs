@@ -1,4 +1,4 @@
-﻿using System;
+﻿using SeungyungLib.Core.NotifyValue;
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.ModuleSystem.Interface;
 
@@ -12,23 +12,27 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private Vector2 checkRange;
         [SerializeField] private LayerMask whatIsGround;
 
+        public NotifyValue<bool> NotifyIsGround { get; private set; }
+
         private IAgentMovementModule _movementModule;
         
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            _movementModule = owner.GetModule<IAgentMovementModule>();
+            this._movementModule = owner.GetModule<IAgentMovementModule>();
+            this.NotifyIsGround = new NotifyValue<bool>(false);
             
             DebugLogger.Assert(_movementModule != null, "[GroundCheckModule]: _movementModule is null.");
         }
         #endregion
         
         #region Unity Events
-
         private void Update()
         {
-            if (_movementModule.IsJumping || _movementModule.IsFall)
-                IsGrounded();
+            if (!NotifyIsGround.Value)
+                CheckGround();
+            else if (_movementModule.IsJumping || _movementModule.IsFall)
+                NotifyIsGround.Value = false;
         }
 
         private void OnDrawGizmos()
@@ -38,7 +42,7 @@ namespace SeungyungLib.Template.Modules
         }
         #endregion
 
-        private bool IsGrounded()
+        private void CheckGround()
         {
             Collider2D groundCollider = Physics2D.OverlapBox(
                 (Vector2)transform.position + checkCenter,
@@ -47,7 +51,8 @@ namespace SeungyungLib.Template.Modules
                 whatIsGround
                 );
             
-            return groundCollider != null;
+            if (groundCollider != null)
+                NotifyIsGround.Value = true;
         }
     }
 }

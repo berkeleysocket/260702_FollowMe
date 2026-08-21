@@ -8,7 +8,6 @@ namespace SeungyungLib.Core.Effects
         [field: SerializeField] private VfxSo vfxSo;
 
         public int NameHash => vfxSo.Name.Hash;
-        protected float Duration => vfxSo.Duration;
 
         #region Initialization
         public virtual void Initialize() => DebugLogger.Assert(vfxSo != null, $"[{this}]: VfxSo is null");

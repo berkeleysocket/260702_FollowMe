@@ -4,12 +4,15 @@ using SeungyungLib.ModuleSystem.Interface;
 using SeungyungLib.Template.EventChannels;
 
 using System;
+using SeungyungLib.Core.ParameterSO;
 using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class MovementModule : MonoBehaviour, IAgentMovementModule
+    public class MovementModule : MonoBehaviour, IAgentMovementModule, IAfterInitModule
     {
+        [SerializeField] private AssetNameSO dustParticleName;
+        [SerializeField] private AssetNameSO smokeParticleName;
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private EventChannelSO playerEventChannel;
         [SerializeField] private float maxSpeed = 0f;
@@ -20,12 +23,14 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private float lowFallMultiplier = 0f;
         [SerializeField] private float airMultiplier = 0f;
 
+        public float Axis => _axis;
+        public bool IsMoving => _axis != 0;
         public bool IsJumping => rb.linearVelocityY > 0f;
         public bool IsFall => rb.linearVelocityY < 0f;
-        public bool IsMoving => _axis != 0f;
         public event Action<float> OnChangeAxis;
 
         private IAgentGroundCheckModule _groundChecker;
+        private IAgentVfxModule _vfxModule; 
         private Vector2 _velocity;
         private float _axis;
         private float _currentSpeed;
@@ -35,13 +40,38 @@ namespace SeungyungLib.Template.Modules
         public void Initialize(IModuleOwner owner)
         {
             _groundChecker = owner.GetModule<IAgentGroundCheckModule>();
+            _vfxModule = owner.GetModule<IAgentVfxModule>();
             
             DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null.");
             DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
-
+            DebugLogger.Assert(_vfxModule != null, "[AgentMovementModule]: _vfxModule is null.");
+            
             playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
             playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
+        }
+        
+        public void AfterInitialization()
+        {
+            _groundChecker.NotifyIsGround.OnChanged += (isGround) =>
+            {
+                if (isGround)
+                {
+                    _vfxModule.PlayVfx(smokeParticleName.Hash, 
+                        new Vector2(transform.position.x, transform.position.y - 0.5f), 
+                        Quaternion.identity);
+                    
+                    if (_axis != 0)
+                    {
+                        bool isFlip = _axis < 0f;
+                        _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
+                    }
+                    else
+                        _vfxModule.StopVfx(dustParticleName.Hash);
+                }
+                else
+                    _vfxModule.StopVfx(dustParticleName.Hash);
+            };
         }
         #endregion
 
@@ -52,7 +82,6 @@ namespace SeungyungLib.Template.Modules
             CalculateVelocity();
             Run();
             Jump();
-            PlayDustParticle();
         }
         #endregion
        
@@ -62,9 +91,17 @@ namespace SeungyungLib.Template.Modules
 
         public void MoveToDirection(float axis) 
         {
+            this._axis = axis;
+            
             OnChangeAxis?.Invoke(axis);
 
-            this._axis = axis;
+            if (_axis != 0 && _groundChecker.NotifyIsGround.Value)
+            {
+                bool isFlip = _axis < 0f;
+                _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
+            }
+            else
+                _vfxModule.StopVfx(dustParticleName.Hash);
         }
 
         private void HandleJumpInput(JumpInputEvent evt)
@@ -79,7 +116,7 @@ namespace SeungyungLib.Template.Modules
             
         private void Jump()
         {
-            if (_isJumpKeyPressed && _groundChecker.IsGrounded())
+            if (_isJumpKeyPressed && _groundChecker.NotifyIsGround.Value)
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
         }
 

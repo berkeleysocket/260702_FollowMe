@@ -1,7 +1,9 @@
 {
     "name": "SeungyungLib.ModuleSystem.Interface",
     "rootNamespace": "SeungyungLib.ModuleSystem.Interface",
-    "references": [],
+    "references": [
+        "GUID:c796d4fd832e3364e8cb74280fb3cd0b"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

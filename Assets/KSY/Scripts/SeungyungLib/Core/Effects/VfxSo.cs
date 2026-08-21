@@ -8,6 +8,5 @@ namespace SeungyungLib.Core.Effects
     public class VfxSo : ScriptableObject
     {
         [field: SerializeField] public AssetNameSO Name { get; private set; }
-        [field: SerializeField] public float Duration { get; private set; }
     }
 }

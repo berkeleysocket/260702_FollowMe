@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd972b8a5c04b8144b5728b8eefd1b9b, type: 3}
-  m_Name: DustParticle vfx
+  m_Name: vfx DustParticle
   m_EditorClassIdentifier: SeungyungLib.Core.Effects::SeungyungLib.Core.Effects.VfxSo
   <Name>k__BackingField: {fileID: 11400000, guid: de97459df5ac8ee40aa0c34bc4e8753c, type: 2}
   <Duration>k__BackingField: 0

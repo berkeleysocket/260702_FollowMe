@@ -1,5 +1,4 @@
 using SeungyungLib.Core.CustomDebug;
-
 using UnityEngine;
 
 namespace SeungyungLib.Core.Effects

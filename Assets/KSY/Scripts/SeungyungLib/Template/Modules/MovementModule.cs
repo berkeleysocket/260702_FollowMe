@@ -1,6 +1,5 @@
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.EventChannelSystem;
-using SeungyungLib.Core.ParameterSO;
 using SeungyungLib.ModuleSystem.Interface;
 using SeungyungLib.Template.EventChannels;
 
@@ -13,7 +12,6 @@ namespace SeungyungLib.Template.Modules
     {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private EventChannelSO playerEventChannel;
-        [SerializeField] private AssetNameSO dustParticleName;
         [SerializeField] private float maxSpeed = 0f;
         [SerializeField] private float acceleration = 0f;
         [SerializeField] private float deceleration = 0f;
@@ -22,29 +20,25 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private float lowFallMultiplier = 0f;
         [SerializeField] private float airMultiplier = 0f;
 
-        private bool IsJumping => rb.linearVelocityY > 0f;
-        private bool IsFall => rb.linearVelocityY < 0f;
+        public bool IsJumping => rb.linearVelocityY > 0f;
+        public bool IsFall => rb.linearVelocityY < 0f;
+        public bool IsMoving => _axis != 0f;
         public event Action<float> OnChangeAxis;
 
         private IAgentGroundCheckModule _groundChecker;
-        private IAgentVfxModule _agentVfxModule;
         private Vector2 _velocity;
         private float _axis;
         private float _currentSpeed;
         private bool _isJumpKeyPressed;
-        private bool _isPlayingDustParticle;
         
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
             _groundChecker = owner.GetModule<IAgentGroundCheckModule>();
-            _agentVfxModule = owner.GetModule<IAgentVfxModule>();
             
-            DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null]");
-            DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null]");
-            DebugLogger.Assert(dustParticleName != null, "[AgentMovementModule]: dustParticleName is null]");
-            DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null]");
-            DebugLogger.Assert(_agentVfxModule != null, "[AgentMovementModule]: _vfxModule is null]");
+            DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null.");
+            DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
+            DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
 
             playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
             playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
@@ -87,21 +81,6 @@ namespace SeungyungLib.Template.Modules
         {
             if (_isJumpKeyPressed && _groundChecker.IsGrounded())
                 rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
-        }
-
-        private void PlayDustParticle()
-        {
-            if (!IsJumping && !IsFall && _axis != 0f && !_isPlayingDustParticle)
-            {
-                bool isFlip = _axis < 0f;
-                _isPlayingDustParticle = true;
-                _agentVfxModule.PlayVfx(dustParticleName.Hash, isFlip);
-            }   
-            else if ((IsJumping || IsFall || _axis == 0f) && _isPlayingDustParticle)
-            {
-                _isPlayingDustParticle = false;
-                _agentVfxModule.StopVfx(dustParticleName.Hash); 
-            }
         }
 
         private void ApplyGravity()

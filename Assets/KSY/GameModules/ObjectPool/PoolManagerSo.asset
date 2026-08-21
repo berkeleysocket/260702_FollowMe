@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bee9b05e027b094c958b8addc9b96b7, type: 3}
   m_Name: PoolManagerSo
   m_EditorClassIdentifier: SeungyungLib.Core.ObjectPool::SeungyungLib.Core.ObjectPool.PoolManagerSo
-  itemList: []
+  itemList:
+  - {fileID: 11400000, guid: b8a2c23788593ea4a9c88b7e9bf065fc, type: 2}

@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Run transition
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.TransitionSO
   <TransitionTarget>k__BackingField: 1
-  <AbstractConditionSo>k__BackingField: {fileID: 11400000, guid: 7d3254e61b5f38b4baaec482ac1ceae8, type: 2}
+  <Conditions>k__BackingField:
+  - {fileID: 11400000, guid: 7d3254e61b5f38b4baaec482ac1ceae8, type: 2}
+  - {fileID: 11400000, guid: 2eac7e01a3baae045af4d2b2b6f156cf, type: 2}

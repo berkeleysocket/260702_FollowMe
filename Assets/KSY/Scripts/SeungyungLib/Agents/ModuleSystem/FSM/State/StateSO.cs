@@ -16,7 +16,7 @@ namespace SeungyungLib.FSM
     {
         [field: SerializeField] public StateType Type { get; private set; }
         [field: SerializeField] public AnimParamSO AnimationHash { get; private set; }
-        [field: SerializeField] public TransitionSO[] StateTransitions { get; private set; }
+        [field: SerializeField] public TransitionSo[] StateTransitions { get; private set; }
 
         private void OnValidate()
         {

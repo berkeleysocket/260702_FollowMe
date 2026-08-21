@@ -13,7 +13,7 @@ namespace SeungyungLib.FSM.Editor
 {
     public static class StateEnumGenerator
     {
-        private static readonly string FolderPath = "Assets/KSY/Scripts/SeungyungLib/Agents/FSM/Enum";
+        private static readonly string FolderPath = "Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum";
         private static readonly string ClassName = "StateType"; 
         private static readonly string FilePath = $"{FolderPath}/{ClassName}.cs";
         private static readonly string Namespace = "SeungyungLib.FSM.Enum";

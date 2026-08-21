@@ -5,8 +5,8 @@ using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "IsMovingConditionSO", menuName = "SeungyungLib/FSM/Condition/IsMoving", order = 0)]
-    public class IsMovingConditionSO : AbstractConditionSO
+    [CreateAssetMenu(fileName = "IsMovingConditionSo", menuName = "SeungyungLib/FSM/ConditionSo/IsMoving", order = 0)]
+    public class IsMovingConditionSo : AbstractConditionSo
     {
         public override ICondition Create(IModuleOwner owner)=> new IsMovingCondition(owner, IsNot);
     }

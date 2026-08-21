@@ -4,6 +4,8 @@ namespace SeungyungLib.FSM.Enum
     {
         None = -1,
         Idle,
-        Run
+        Run,
+        Jump,
+        Fall,
     }
 }

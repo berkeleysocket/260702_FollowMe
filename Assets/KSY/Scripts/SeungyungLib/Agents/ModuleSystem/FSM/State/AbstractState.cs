@@ -31,7 +31,7 @@ namespace  SeungyungLib.FSM
         {
             foreach (Transition transition in _transitions)
             {
-                if (transition.Condition.Check())
+                if (transition.Check())
                 {
                     _stateModule.ChangeState(transition.TransitionTarget);
                     break;

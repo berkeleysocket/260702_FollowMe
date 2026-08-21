@@ -5,13 +5,24 @@ namespace SeungyungLib.FSM
 {
     public class Transition
     {
-        public Transition(StateType transitionTarget, ICondition condition)
+        public readonly StateType TransitionTarget;
+        
+        private readonly ICondition[] _conditions;
+        
+        public Transition(StateType transitionTarget, ICondition[] conditions)
         {
             this.TransitionTarget = transitionTarget;
-            this.Condition = condition;
+            this._conditions = conditions;
         }
+        
+        public bool Check()
+        {
+            bool isSuccess = true;
+            
+            foreach (ICondition condition in _conditions)
+                isSuccess &= condition.Check();
 
-        public readonly StateType TransitionTarget;
-        public readonly ICondition Condition;
+            return isSuccess;
+        }
     }
 }

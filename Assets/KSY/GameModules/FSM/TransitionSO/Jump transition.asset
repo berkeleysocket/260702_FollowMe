@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ece7f8bec7799143bac6e457a785ba5, type: 3}
-  m_Name: Idle transition
+  m_Name: Jump transition
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.TransitionSO
-  <TransitionTarget>k__BackingField: 0
+  <TransitionTarget>k__BackingField: 2
   <Conditions>k__BackingField:
-  - {fileID: 11400000, guid: 5b092f1dd772142499477e63a28e0d35, type: 2}
-  - {fileID: 11400000, guid: 2eac7e01a3baae045af4d2b2b6f156cf, type: 2}
+  - {fileID: 11400000, guid: e8412238b88711d4892e854d35c9f042, type: 2}

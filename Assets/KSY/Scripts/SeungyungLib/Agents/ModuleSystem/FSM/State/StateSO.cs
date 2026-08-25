@@ -61,7 +61,7 @@ namespace SeungyungLib.FSM
             
             if (t == null) DebugLogger.LogError($"[StateSO]: {Type.ToString() + "State"} is not found.");
 
-            IAgentRenderModule renderModule = owner.GetModule<IAgentRenderModule>();
+            IRenderModule renderModule = owner.GetModule<IRenderModule>();
             Transition[] transitions = StateTransitions.Select(x=> x.Create(owner)).ToArray();
 
             if (renderModule == null)

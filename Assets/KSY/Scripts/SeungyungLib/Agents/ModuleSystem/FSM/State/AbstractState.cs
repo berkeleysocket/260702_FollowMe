@@ -9,10 +9,10 @@ namespace  SeungyungLib.FSM
     {
         private readonly IStateModule _stateModule;
         private readonly Transition[] _transitions;
-        private readonly IAgentRenderModule _renderModule;
+        private readonly IRenderModule _renderModule;
         private readonly int _animationNameHash;
 
-        public AbstractState(IStateModule stateModule, IAgentRenderModule renderModule, 
+        public AbstractState(IStateModule stateModule, IRenderModule renderModule, 
             int animationNameHash, Transition[] transitions)
         {
             this._stateModule = stateModule;

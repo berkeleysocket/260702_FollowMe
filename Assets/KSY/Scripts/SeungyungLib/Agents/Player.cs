@@ -14,18 +14,18 @@ namespace SeungyungLib.Agents
         [SerializeField] private AssetNameSO smokeParticleName;
         [SerializeField] private EventChannelSO playerEventChannel;
         
-        private IAgentGroundCheckModule _groundChecker;
-        private IAgentVfxModule _vfxModule;
-        private IAgentMovementModule _movementModule;
+        private IGroundCheckModule _groundChecker;
+        private IVfxModule _vfxModule;
+        private IControllableMovementModule _movementModule;
 
         #region Initialization
         protected override void OnInitialized()
         {
             base.OnInitialized();
 
-            this._groundChecker = GetModule<IAgentGroundCheckModule>();
-            this._vfxModule = GetModule<IAgentVfxModule>();
-            this._movementModule = GetModule<IAgentMovementModule>();
+            this._groundChecker = GetModule<IGroundCheckModule>();
+            this._vfxModule = GetModule<IVfxModule>();
+            this._movementModule = GetModule<IControllableMovementModule>();
 
             DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");

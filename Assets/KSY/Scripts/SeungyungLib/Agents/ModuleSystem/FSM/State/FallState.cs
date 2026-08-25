@@ -5,7 +5,7 @@ namespace SeungyungLib.FSM
 {
     public class FallState : AbstractState
     {
-        public FallState(IStateModule stateModule, IAgentRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateModule, renderModule, animationNameHash, transitions)
+        public FallState(IStateModule stateModule, IRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateModule, renderModule, animationNameHash, transitions)
         {
         }
     }

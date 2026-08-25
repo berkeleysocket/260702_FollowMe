@@ -20,12 +20,12 @@ namespace SeungyungLib.FSM
 
     public class IsMovingCondition : AbstractCondition
     {
-        private readonly IAgentMovementModule _movementModule;
+        private readonly IMovementModule _movementModule;
         // private bool _isMoving;
         
         public IsMovingCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
-            _movementModule = owner.GetModule<IAgentMovementModule>();
+            _movementModule = owner.GetModule<IMovementModule>();
 
             // if (_movementModule != null)
             // {
@@ -53,11 +53,11 @@ namespace SeungyungLib.FSM
 
     public class IsJumpingCondition : AbstractCondition
     {
-        private readonly IAgentMovementModule _movementModule;
+        private readonly IMovementModule _movementModule;
         
         public IsJumpingCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
-            _movementModule = owner.GetModule<IAgentMovementModule>();
+            _movementModule = owner.GetModule<IMovementModule>();
             
             DebugLogger.Assert(_movementModule != null, "[IsJumpingCondition] _movementModule is null.");
         }
@@ -72,11 +72,11 @@ namespace SeungyungLib.FSM
 
     public class IsGroundCondition : AbstractCondition
     {
-        private readonly IAgentGroundCheckModule _groundChecker;
+        private readonly IGroundCheckModule _groundChecker;
 
         public IsGroundCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
-            _groundChecker = owner.GetModule<IAgentGroundCheckModule>();
+            _groundChecker = owner.GetModule<IGroundCheckModule>();
             
             DebugLogger.Assert(_groundChecker != null, "[IsGroundCondition] _groundChecker is null.");
         }
@@ -91,11 +91,11 @@ namespace SeungyungLib.FSM
 
     public class IsFallCondition : AbstractCondition
     {
-        private readonly IAgentMovementModule _movementModule;
+        private readonly IMovementModule _movementModule;
 
         public IsFallCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
-            _movementModule = owner.GetModule<IAgentMovementModule>();
+            _movementModule = owner.GetModule<IMovementModule>();
             
             DebugLogger.Assert(_movementModule != null, "[IsFallCondition] _movementModule is null.");
         }

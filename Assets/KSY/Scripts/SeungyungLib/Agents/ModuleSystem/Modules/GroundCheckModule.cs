@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class GroundCheckModule : MonoBehaviour, IAgentGroundCheckModule
+    public class GroundCheckModule : MonoBehaviour, IGroundCheckModule
     {
         [SerializeField] private Vector2 checkCenter;
         [SerializeField] private Vector2 checkRange;
@@ -14,12 +14,12 @@ namespace SeungyungLib.Template.Modules
 
         public NotifyValue<bool> NotifyIsGround { get; private set; }
 
-        private IAgentMovementModule _movementModule;
+        private IMovementModule _movementModule;
         
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            this._movementModule = owner.GetModule<IAgentMovementModule>();
+            this._movementModule = owner.GetModule<IMovementModule>();
             this.NotifyIsGround = new NotifyValue<bool>(false);
             
             DebugLogger.Assert(_movementModule != null, "[GroundCheckModule]: _movementModule is null.");

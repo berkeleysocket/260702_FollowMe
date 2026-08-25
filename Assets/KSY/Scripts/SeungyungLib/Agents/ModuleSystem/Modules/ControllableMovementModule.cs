@@ -1,15 +1,12 @@
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.ModuleSystem.Interface;
-using SeungyungLib.Template.EventChannels;
 
 using System;
-using SeungyungLib.Core.ParameterSO;
 using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class MovementModule : MonoBehaviour, IAgentMovementModule
+    public class ControllableMovementModule : MonoBehaviour, IControllableMovementModule
     {
         [SerializeField] private Rigidbody2D rb;
         [SerializeField] private float maxSpeed = 0f;
@@ -29,7 +26,7 @@ namespace SeungyungLib.Template.Modules
         public bool IsJumping => rb.linearVelocityY > 0f;
         public bool IsFall => rb.linearVelocityY < 0f;
 
-        private IAgentGroundCheckModule _groundChecker;
+        private IGroundCheckModule _groundChecker;
         private Vector2 _velocity;
         private float _axis;
         private float _currentSpeed;
@@ -37,7 +34,7 @@ namespace SeungyungLib.Template.Modules
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            _groundChecker = owner.GetModule<IAgentGroundCheckModule>();
+            _groundChecker = owner.GetModule<IGroundCheckModule>();
             
             DebugLogger.Assert(rb != null, "[AgentMovementModule]: rb is null.");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");

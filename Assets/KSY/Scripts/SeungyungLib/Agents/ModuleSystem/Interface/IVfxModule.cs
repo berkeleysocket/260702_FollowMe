@@ -2,7 +2,7 @@
 
 namespace SeungyungLib.ModuleSystem.Interface
 {
-    public interface IAgentVfxModule : IModule
+    public interface IVfxModule : IModule
     {
         void PlayVfx(int hash, Vector3 position, Quaternion rotation);
         void PlayVfx(int hash, bool isFlip);

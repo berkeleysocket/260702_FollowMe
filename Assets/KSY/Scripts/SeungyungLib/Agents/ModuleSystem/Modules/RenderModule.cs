@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace SeungyungLib.Template.Modules
 {
-    public class RenderModule : MonoBehaviour, IAgentRenderModule
+    public class RenderModule : MonoBehaviour, IRenderModule
     {
         [SerializeField] private EventChannelSO playerEventChannel;
         

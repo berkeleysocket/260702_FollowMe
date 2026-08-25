@@ -2,7 +2,7 @@
 
 namespace SeungyungLib.ModuleSystem.Interface
 {
-    public interface IAgentGroundCheckModule : IModule
+    public interface IGroundCheckModule : IModule
     {
         NotifyValue<bool> NotifyIsGround { get; }
     }

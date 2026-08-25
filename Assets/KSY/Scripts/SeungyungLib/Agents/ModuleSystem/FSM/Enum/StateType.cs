@@ -7,5 +7,6 @@ namespace SeungyungLib.FSM.Enum
         Run,
         Jump,
         Fall,
+        Chase
     }
 }

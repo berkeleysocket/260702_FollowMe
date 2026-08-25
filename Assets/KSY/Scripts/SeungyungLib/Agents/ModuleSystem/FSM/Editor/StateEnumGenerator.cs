@@ -42,10 +42,20 @@ namespace SeungyungLib.FSM.Editor
             sb.AppendLine($"    public enum {ClassName}");
             sb.AppendLine("    {");
             sb.AppendLine("        None = -1,"); 
-        
-            for (int i = 0; i < stateTypes.Count; i++)
+            
+            List<string >existingEnumNames = GetExistingEnumNames();
+
+            foreach (Type type in stateTypes)
             {
-                string typeName = stateTypes[i].Name.Replace("State", "");
+                string typeName = type.Name.Replace("State", "");
+                if (existingEnumNames.Contains(typeName))
+                    continue;
+                else existingEnumNames.Add(typeName);
+            }
+        
+            for (int i = 0; i < existingEnumNames.Count; i++)
+            {
+                string typeName = existingEnumNames[i];
                 string comma = (i == stateTypes.Count - 1) ? "" : ",";
                 sb.AppendLine($"        {typeName}{comma}");
             }
@@ -58,6 +68,30 @@ namespace SeungyungLib.FSM.Editor
             AssetDatabase.Refresh();
             
             DebugLogger.Log("[StateEnumGenerator]: Generated State Enum", Color.green);
+        }
+
+        private static List<string> GetExistingEnumNames()
+        {
+            List<string> existingList = new List<string>();
+            
+            Type enumType = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => type.FullName == Namespace + "." + ClassName
+                               && type.IsEnum)
+                .FirstOrDefault();
+
+            if (enumType != null)
+            {
+                string[] names = Enum.GetNames(enumType);
+
+                foreach (string name in names)
+                {
+                    if (name != "None")
+                        existingList.Add(name);
+                }
+            }
+            
+            return existingList;
         }
     }
 }

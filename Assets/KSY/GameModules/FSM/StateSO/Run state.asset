@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ff7b87ac9b8924e8af0e7268b5698e, type: 3}
+  m_Name: Run state
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateSO
+  <Type>k__BackingField: 1
+  <AnimationHash>k__BackingField: {fileID: 11400000, guid: bea905f72bfa1534d8ad3bcf3422f891, type: 2}
+  <StateTransitions>k__BackingField:
+  - {fileID: 11400000, guid: 589efea082a2aca44a795f08c164f6bf, type: 2}
+  - {fileID: 11400000, guid: c7770e7070cf5a645b4a922b94350450, type: 2}
+  - {fileID: 11400000, guid: e2f34f677d07ef347a6def074e1b791b, type: 2}

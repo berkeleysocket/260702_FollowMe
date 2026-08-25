@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ece7f8bec7799143bac6e457a785ba5, type: 3}
+  m_Name: Run transition
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.TransitionSO
+  <TransitionTarget>k__BackingField: 1
+  <Conditions>k__BackingField:
+  - {fileID: 11400000, guid: 7d3254e61b5f38b4baaec482ac1ceae8, type: 2}
+  - {fileID: 11400000, guid: 2eac7e01a3baae045af4d2b2b6f156cf, type: 2}

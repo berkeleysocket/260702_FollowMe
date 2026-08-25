@@ -1,0 +1,18 @@
+{
+    "name": "SeungyungLib.Core.InputSystem",
+    "rootNamespace": "SeungyungLib.Core.InputSystem",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:def2a9fedfb476344944a48c3e4b123d",
+        "GUID:62e29939d98c83a4091d67026324379b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

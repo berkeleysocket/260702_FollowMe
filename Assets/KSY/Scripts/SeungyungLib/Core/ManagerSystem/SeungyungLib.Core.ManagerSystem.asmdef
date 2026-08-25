@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Core.ManagerSystem",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9e1023e0e44b9954fb3af382d878a17e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

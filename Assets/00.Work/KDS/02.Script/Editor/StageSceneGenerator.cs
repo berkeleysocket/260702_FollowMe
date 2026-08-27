@@ -56,7 +56,11 @@ namespace FollowMe.KDS.Editor
                     }
 
                     ApplySpecToOpenScene(spec);
-                    EditorSceneManager.SaveOpenScenes();
+                    var scene = SceneManager.GetActiveScene();
+                    EditorSceneManager.MarkSceneDirty(scene);
+                    if (!EditorSceneManager.SaveScene(scene, scenePath))
+                        Debug.LogError($"[StageSceneGenerator] S{stage} 저장 실패: {scenePath}");
+
                     results.AppendLine($"  ✓ Stage {stage:D2} ({spec.ActTitle}, {spec.Template}, X={spec.LengthX}) → {scenePath}");
                     Debug.Log($"[StageSceneGenerator] Stage {stage} 완료");
                 }

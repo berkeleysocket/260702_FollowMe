@@ -28,5 +28,7 @@ alwaysApply: true
 2. Input System 사용, legacy Input 금지
 3. `[SerializeField]` 우선, `FindObjectOfType` 남용 금지
 4. 코드 수정 후 Unity MCP로 컴파일 검증 (에러 0 확인)
-5. 팀원 폴더(`KSY/`, `YHW/`) 수정 금지
-6. 다른 역할이 보드에 "~기능 필요"라고 쓰면 구현 우선순위에 반영
+5. **`Assets/00.Work/KDS/`만 수정.** `KSY/`·`YHW/` 수정 금지
+6. **본 플레이어는 KSY, 본 UI·아이템은 YHW.** KDS에 대체 구현을 키우지 말고 연동 훅·보드 요청만
+7. `PhotoProbePlayer`·임시 Social UI는 프로토타입으로만 유지
+8. 다른 역할이 보드에 "~기능 필요"라고 쓰면 구현 우선순위에 반영 (단, 소유권이 KSY/YHW면 보드에 요청만)

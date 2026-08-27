@@ -6,7 +6,6 @@ namespace YHW.Items
     public class ItemPickup : MonoBehaviour
     {
         [SerializeField] private ItemData item;
-        [SerializeField] private string playerTag = "Player";
         [SerializeField] private GameObject pickupEffectPrefab;
 
         private void Reset()
@@ -17,9 +16,7 @@ namespace YHW.Items
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag(playerTag)) return;
-
-            var collector = other.GetComponent<PlayerItemCollector>();
+            var collector = other.GetComponentInParent<PlayerItemCollector>();
             if (collector == null) return;
 
             collector.Collect(item);

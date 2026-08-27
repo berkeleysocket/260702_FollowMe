@@ -1,6 +1,6 @@
 namespace SeungyungLib.ModuleSystem.Interface
 {
-    public interface IRangeCheckModule
+    public interface IRangeCheckModule : IModule
     {
     }
 }

@@ -1,20 +1,23 @@
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.ModuleSystem.Interface;
 using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Modules
 {
+    [RequireComponent(typeof(Collider2D))]
     public class RangeCheckModule : MonoBehaviour, IRangeCheckModule
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        [SerializeField] private LayerMask whatIsCheck;
+
+        public void Initialize(IModuleOwner owner)
         {
-        
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnCollisionEnter2D(Collision2D other)
         {
-        
+            if (((1 << other.gameObject.layer) & whatIsCheck) >= 1)
+                DebugLogger.Log("Is Check !");
         }
     }
 }

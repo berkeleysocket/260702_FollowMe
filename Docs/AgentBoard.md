@@ -107,6 +107,27 @@
 
 ## 📋 레벨 디자이너 (Level Designer)
 
+[2026-08-28 00:05] S4~S8 처음부터 재생성 실행 완료
+- 메뉴 Rebuild Cafe Stages 성공. S4: 가게7·골목20·플래폼3·포토3·괴물0 / S5: 포토2·괴물1 / S8: 가게8·괴물2
+- 카메라 `#FFE2B0` 카페톤. 에셋 zip 들어오면 City_Cafe 보강 가능 (`Cafe_S4S8_AssetRequest.md`)
+
+[2026-08-27 17:20] S4~S8 처음부터 재생성 준비 + **에셋 일괄 요청**
+- 요청서: `KDS/Cafe_S4S8_AssetRequest.md` (PixelPossum Cafe·Wish Drinks·B0z·실루엣 등 **한 번에**)
+- 메뉴 `FollowMe/KDS/Rebuild Cafe Stages (S4-S8) From Scratch` — 템플릿 삭제·재생성 + 구간별 카페거리(가게/골목벽/플랫폼/포토장식)
+- Unity MCP 끊김 — 에디터 재연결 후 메뉴 실행 필요. zip은 `_Downloads/`에
+
+[2026-08-27 10:10] S4~S8 City_Cafe 거리 테마 적용
+- `coffeeshopstuff` 파사드(CAFE)·티바(TEA)·가로등·테이블·벽돌·펜스 배치. Near City 건물 제거 → 카페가 전면
+- 메뉴 `FollowMe/KDS/Apply Cafe Street Themes (S4-S8)`. PPU32 Point 임포트 맞춤
+
+[2026-08-27 10:00] Act 비주얼 테마 일괄 적용됨 — 배경이 더 이상 S1 복제 아님
+- S1~3 봄번화가 / S4~8 여름카페틴트 / S9~11 밤네온시티 / S12~14 지하철암화 / S15~16 채도↓
+- 다음: 대표맵(S1·S4·S12) 타일·장애물 폴리시. ThemeProps는 그레이박스 소품
+
+[2026-08-27 09:48] 기획서 기준 스테이지 정리 전달 (채팅)
+- 풀스펙 S1~S16 = `Stage_All_LevelDesign.md` / 2주 실제작 = MapPlan(S1~3·S4·S12·S15·16, Act3·중간맵 압축)
+- 골격 씬 16개는 개발 생성 완료. 폴리시 우선순위는 MapPlan 순서 유지
+
 [2026-08-27 09:19] S1~S16 통합 레벨 스펙 — `KDS/Stage_All_LevelDesign.md`
 - Stage1과 동일 형식: 6모듈·X길이·♡/일상/포토/갈림/CP/괴물·템플릿(T1~T4) per stage
 - S1은 `Stage1_LevelDesign.md` 참조. 압축 제작 우선순위는 MapPlan과 동일
@@ -139,6 +160,11 @@
 ---
 
 ## 📋 아트 디렉터 (Art Director)
+
+[2026-08-27 10:00] Act별 배경 테마 S1~S16 적용 완료 (보유 에셋)
+- 메뉴 `FollowMe/KDS/Apply Act Visual Themes` — T1봄하늘 / T2따뜻한틴트+Cafe소품 / T3 WarpedCity 밤스카이라인+불꽃 / T4 암화터널 / Act5 채도↓
+- WarpedCity BG PPU 32·Point 재임포트, 높이 Fit으로 패럴랙스 맞춤
+- 레벨: Scene 기즈모(MapMode 색박스)는 에디터만 — Game 뷰에서 Act 차이 확인
 
 [2026-08-27 09:14] 레벨 `Art_Asset_Request` **P0→P1→P2 회신** (일정·대체안·납품 가능 여부)
 

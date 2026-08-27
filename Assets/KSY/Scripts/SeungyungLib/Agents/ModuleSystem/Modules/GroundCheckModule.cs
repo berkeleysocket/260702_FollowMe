@@ -12,16 +12,17 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private Vector2 checkRange;
         [SerializeField] private LayerMask whatIsGround;
 
-        public NotifyValue<bool> NotifyIsGround { get; private set; }
+        public NotifyValue<bool> NotifyIsGround { get; private set; } = new NotifyValue<bool>(false);
 
         private IMovementModule _movementModule;
         
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
+            this.NotifyIsGround =  new NotifyValue<bool>(false);
             this._movementModule = owner.GetModule<IMovementModule>();
-            this.NotifyIsGround = new NotifyValue<bool>(false);
-            
+
+            DebugLogger.Assert(NotifyIsGround != null, "[GroundCheckModule]: NotifyIsGround is null.");
             DebugLogger.Assert(_movementModule != null, "[GroundCheckModule]: _movementModule is null.");
         }
         #endregion
@@ -29,6 +30,8 @@ namespace SeungyungLib.Template.Modules
         #region Unity Events
         private void Update()
         {
+            if (_movementModule == null || NotifyIsGround == null) return;
+            
             if (!NotifyIsGround.Value)
                 CheckGround();
             else if (_movementModule.IsJumping || _movementModule.IsFall)

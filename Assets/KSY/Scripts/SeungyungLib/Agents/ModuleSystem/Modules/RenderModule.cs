@@ -9,8 +9,6 @@ namespace SeungyungLib.Template.Modules
 {
     public class RenderModule : MonoBehaviour, IRenderModule
     {
-        [SerializeField] private EventChannelSO playerEventChannel;
-        
         private IModuleOwner _owner;
         private Animator _animator;
         private SpriteRenderer _spriteRenderer;
@@ -21,12 +19,10 @@ namespace SeungyungLib.Template.Modules
             this._animator = GetComponent<Animator>();
             this._spriteRenderer = GetComponent<SpriteRenderer>();
 
-            DebugLogger.Assert(playerEventChannel != null, "[AgentRenderModule]: playerEventChannel is null]");
             DebugLogger.Assert(_owner != null, "[AgentRenderModule]: _owner is null]");
             DebugLogger.Assert(_animator != null, "[AgentRenderModule]: _animator is null]");
             DebugLogger.Assert(_spriteRenderer != null, "[AgentRenderModule]: _spriteRenderer is null]");
             
-            playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
         }
 
         private void HandleMoveInput(MoveInputEvent evt)

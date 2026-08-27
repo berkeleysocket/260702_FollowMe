@@ -33,36 +33,7 @@ namespace FollowMe.KDS.Editor
             {
                 try
                 {
-                    string scenePath = GetScenePath(stage);
-                    StageMapSpec spec = StageMapDatabase.Get(stage);
-
-                    if (stage == 1)
-                    {
-                        EditorSceneManager.OpenScene(TemplateScenePath);
-                    }
-                    else
-                    {
-                        if (File.Exists(scenePath))
-                            AssetDatabase.DeleteAsset(scenePath);
-
-                        if (!AssetDatabase.CopyAsset(TemplateScenePath, scenePath))
-                        {
-                            Debug.LogError($"[StageSceneGenerator] S{stage} 복제 실패");
-                            continue;
-                        }
-
-                        AssetDatabase.SaveAssets();
-                        EditorSceneManager.OpenScene(scenePath);
-                    }
-
-                    ApplySpecToOpenScene(spec);
-                    var scene = SceneManager.GetActiveScene();
-                    EditorSceneManager.MarkSceneDirty(scene);
-                    if (!EditorSceneManager.SaveScene(scene, scenePath))
-                        Debug.LogError($"[StageSceneGenerator] S{stage} 저장 실패: {scenePath}");
-
-                    results.AppendLine($"  ✓ Stage {stage:D2} ({spec.ActTitle}, {spec.Template}, X={spec.LengthX}) → {scenePath}");
-                    Debug.Log($"[StageSceneGenerator] Stage {stage} 완료");
+                    RebuildStage(stage, results);
                 }
                 catch (Exception ex)
                 {
@@ -74,10 +45,93 @@ namespace FollowMe.KDS.Editor
             Debug.Log(results.ToString());
         }
 
+        /// <summary>
+        /// Act2 카페거리 S4~S8을 Stage1 템플릿부터 삭제·재생성.
+        /// </summary>
+        [MenuItem("FollowMe/KDS/Rebuild Cafe Stages (S4-S8) From Scratch")]
+        public static void RebuildCafeStagesFromScratch()
+        {
+            if (!File.Exists(TemplateScenePath))
+            {
+                Debug.LogError($"[StageSceneGenerator] 템플릿 없음: {TemplateScenePath}");
+                return;
+            }
+
+            var results = new System.Text.StringBuilder();
+            results.AppendLine("[StageSceneGenerator] S4~S8 카페거리 처음부터 재생성");
+
+            for (int stage = 4; stage <= 8; stage++)
+            {
+                try
+                {
+                    RebuildStage(stage, results);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[StageSceneGenerator] Stage {stage} 실패: {ex.Message}\n{ex.StackTrace}");
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log(results.ToString());
+        }
+
+        private static void RebuildStage(int stage, System.Text.StringBuilder results)
+        {
+            string scenePath = GetScenePath(stage);
+            StageMapSpec spec = StageMapDatabase.Get(stage);
+
+            if (stage == 1)
+            {
+                EditorSceneManager.OpenScene(TemplateScenePath);
+            }
+            else
+            {
+                if (File.Exists(scenePath))
+                    AssetDatabase.DeleteAsset(scenePath);
+
+                if (!AssetDatabase.CopyAsset(TemplateScenePath, scenePath))
+                {
+                    Debug.LogError($"[StageSceneGenerator] S{stage} 복제 실패");
+                    return;
+                }
+
+                AssetDatabase.SaveAssets();
+                EditorSceneManager.OpenScene(scenePath);
+            }
+
+            ApplySpecToOpenScene(spec);
+            StripTemplateLeftovers(spec);
+            var scene = SceneManager.GetActiveScene();
+            EditorSceneManager.MarkSceneDirty(scene);
+            if (!EditorSceneManager.SaveScene(scene, scenePath))
+                Debug.LogError($"[StageSceneGenerator] S{stage} 저장 실패: {scenePath}");
+
+            results.AppendLine($"  ✓ Stage {stage:D2} ({spec.ActTitle}, {spec.Template}, X={spec.LengthX}) → {scenePath}");
+            Debug.Log($"[StageSceneGenerator] Stage {stage} 완료");
+        }
+
+        /// <summary>
+        /// Stage1에서 복사된 Act1 전용 잔여물 정리 (카페 스테이지용).
+        /// </summary>
+        private static void StripTemplateLeftovers(StageMapSpec spec)
+        {
+            if (spec.Template != StageTemplate.CafeAlley)
+                return;
+
+            // Stage1 DialogueTrigger는 Act1 대사 — 카페 씬에서는 비활성 후 레벨이 재연결
+            var dialogues = UnityEngine.Object.FindObjectsByType<DialogueTrigger>(FindObjectsSortMode.None);
+            foreach (var d in dialogues)
+            {
+                if (d != null && d.name.Contains("Intro"))
+                    d.gameObject.SetActive(false);
+            }
+        }
+
         private static string GetScenePath(int stage) =>
             $"{OutputFolder}/Stage{stage} Scene.unity";
 
-        private static void ApplySpecToOpenScene(StageMapSpec spec)
+        public static void ApplySpecToOpenScene(StageMapSpec spec)
         {
             RenameLevelRoot(spec);
             ConfigureGround(spec);
@@ -90,6 +144,7 @@ namespace FollowMe.KDS.Editor
             RebuildMonsterPlaceholders(spec);
             RebuildForkMarkers(spec);
             EnsureSystems();
+            StageVisualThemeApplier.ApplyToOpenScene(spec);
         }
 
         private static void RenameLevelRoot(StageMapSpec spec)

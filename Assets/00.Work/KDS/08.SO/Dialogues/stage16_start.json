@@ -1,0 +1,26 @@
+{
+    "sequenceId": "Stage16_Start",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Empty",
+            "text": "1,000만.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.0
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Empty",
+            "text": "…그래,",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 1.8
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Empty",
+            "text": "1,000만만 되면.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

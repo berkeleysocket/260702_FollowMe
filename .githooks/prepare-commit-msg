@@ -1,0 +1,8 @@
+#!/bin/sh
+# Strip Cursor attribution trailers that the agent may inject.
+MSG_FILE="$1"
+[ -f "$MSG_FILE" ] || exit 0
+TMP_FILE="${MSG_FILE}.tmp"
+grep -v -E '^(Co-authored-by: Cursor|Made-with: Cursor)' "$MSG_FILE" > "$TMP_FILE" || true
+mv "$TMP_FILE" "$MSG_FILE"
+exit 0

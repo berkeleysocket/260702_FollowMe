@@ -1,0 +1,19 @@
+{
+    "sequenceId": "Stage01_Intro",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Happy",
+            "text": "계정, 금방 되네.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Happy",
+            "text": "올릴까, 뭐라도.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

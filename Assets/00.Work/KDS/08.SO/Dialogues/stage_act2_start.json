@@ -1,0 +1,19 @@
+{
+    "sequenceId": "Act2_Start",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Excited",
+            "text": "오늘은 뭘 올리지?",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Happy",
+            "text": "아니, 뭘 찍지?",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

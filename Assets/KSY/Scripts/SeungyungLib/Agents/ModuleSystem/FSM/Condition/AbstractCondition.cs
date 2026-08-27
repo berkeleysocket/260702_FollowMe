@@ -107,4 +107,16 @@ namespace SeungyungLib.FSM
             return _movementModule.IsFall;
         }
     }
+
+    public class isTargetInRangeCondition : AbstractCondition
+    {
+        public isTargetInRangeCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        {
+        }
+
+        public override bool Check()
+        {
+            return true;
+        }
+    }
 }

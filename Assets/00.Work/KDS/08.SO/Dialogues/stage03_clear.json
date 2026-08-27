@@ -1,0 +1,26 @@
+{
+    "sequenceId": "Stage03_Clear",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Excited",
+            "text": "팔로워 100명!",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Happy",
+            "text": "나를 아는 사람,",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.0
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Happy",
+            "text": "백 명이나 있네.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

@@ -1,17 +1,17 @@
 {
-    "sequenceId": "Stage01_Intro",
+    "sequenceId": "Stage02_Start",
     "lines": [
         {
             "characterId": "Haru",
             "expressionId": "Happy",
-            "text": "계정, 금방 되네.",
+            "text": "또 찍고 싶어지네.",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         },
         {
             "characterId": "Haru",
-            "expressionId": "Happy",
-            "text": "올릴까, 뭐라도.",
+            "expressionId": "Excited",
+            "text": "여기도… 올려볼까.",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         }

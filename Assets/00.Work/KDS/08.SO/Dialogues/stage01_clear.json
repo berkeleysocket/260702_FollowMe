@@ -1,17 +1,17 @@
 {
-    "sequenceId": "Stage01_Intro",
+    "sequenceId": "Stage01_Clear",
     "lines": [
         {
             "characterId": "Haru",
-            "expressionId": "Happy",
-            "text": "계정, 금방 되네.",
+            "expressionId": "Excited",
+            "text": "어? 좋아요…",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         },
         {
             "characterId": "Haru",
             "expressionId": "Happy",
-            "text": "올릴까, 뭐라도.",
+            "text": "누가 눌러 줬네.",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         }

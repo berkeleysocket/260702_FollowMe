@@ -18,7 +18,8 @@ namespace FollowMe.KDS
         [SerializeField] private SpeechBubbleView _bubble;
 
         [Header("Input")]
-        [SerializeField] private bool _autoStartOnEnable = true;
+        [Tooltip("트리거로 시작할 땐 끄세요. DialogueTrigger가 StartDialogue를 호출합니다.")]
+        [SerializeField] private bool _autoStartOnEnable;
         [SerializeField] private string _advanceActionPath = "Player/Interact";
 
         private DialogueSequenceJson _sequence;
@@ -63,14 +64,57 @@ namespace FollowMe.KDS
             _advanceAction.Disable();
         }
 
+        public bool IsPlaying => _isPlaying;
+
         public void StartDialogue()
         {
-            if (!TryLoadSequence(_jsonFileName, out _sequence))
+            StartDialogue(_jsonFileName);
+        }
+
+        public void StartDialogue(DialogueSequenceSO sequence)
+        {
+            if (sequence == null)
             {
-                Debug.LogWarning($"[DialoguePlayer] JSON 로드 실패: {_jsonFileName}");
+                Debug.LogWarning("[DialoguePlayer] DialogueSequenceSO가 비어 있습니다.", this);
                 return;
             }
 
+            // SO에 라인이 있으면 바로 재생, 없으면 Export된 JSON(JsonFileName)으로 폴백
+            if (sequence.Lines != null && sequence.Lines.Count > 0)
+            {
+                PlaySequence(sequence.ToRuntime());
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(sequence.JsonFileName))
+            {
+                Debug.LogWarning($"[DialoguePlayer] SO 라인/JsonFileName이 모두 비어 있습니다: {sequence.name}", this);
+                return;
+            }
+
+            StartDialogue(sequence.JsonFileName);
+        }
+
+        public void StartDialogue(string jsonFileName)
+        {
+            if (!TryLoadSequence(jsonFileName, out DialogueSequenceJson sequence))
+            {
+                Debug.LogWarning($"[DialoguePlayer] JSON 로드 실패: {jsonFileName}", this);
+                return;
+            }
+
+            PlaySequence(sequence);
+        }
+
+        private void PlaySequence(DialogueSequenceJson sequence)
+        {
+            if (_autoAdvanceRoutine != null)
+            {
+                StopCoroutine(_autoAdvanceRoutine);
+                _autoAdvanceRoutine = null;
+            }
+
+            _sequence = sequence;
             _isPlaying = true;
             _lineIndex = -1;
             ShowNextLine();

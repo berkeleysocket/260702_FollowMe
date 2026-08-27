@@ -47,24 +47,7 @@ namespace FollowMe.KDS.Editor
 
         private static void ExportToJson(DialogueSequenceSO source)
         {
-            var sequenceJson = new DialogueSequenceJson
-            {
-                sequenceId = source.SequenceId,
-                lines = new DialogueLineJson[source.Lines.Count]
-            };
-
-            for (int i = 0; i < source.Lines.Count; i++)
-            {
-                var l = source.Lines[i];
-                sequenceJson.lines[i] = new DialogueLineJson
-                {
-                    characterId = l.CharacterId,
-                    expressionId = l.ExpressionId,
-                    text = l.Text,
-                    autoAdvance = l.AutoAdvance,
-                    autoAdvanceSeconds = l.AutoAdvanceSeconds
-                };
-            }
+            DialogueSequenceJson sequenceJson = source.ToRuntime();
 
             string json = JsonUtility.ToJson(sequenceJson, true);
             Directory.CreateDirectory(DialogueJsonPaths.GetFolderFullPath());

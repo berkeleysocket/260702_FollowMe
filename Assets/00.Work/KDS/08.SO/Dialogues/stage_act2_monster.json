@@ -1,17 +1,17 @@
 {
-    "sequenceId": "Stage01_Intro",
+    "sequenceId": "Act2_MonsterFirst",
     "lines": [
         {
             "characterId": "Haru",
-            "expressionId": "Happy",
-            "text": "계정, 금방 되네.",
+            "expressionId": "Anxious",
+            "text": "…방금 뭐였지?",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         },
         {
             "characterId": "Haru",
-            "expressionId": "Happy",
-            "text": "올릴까, 뭐라도.",
+            "expressionId": "Anxious",
+            "text": "기분 탓인가.",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         }

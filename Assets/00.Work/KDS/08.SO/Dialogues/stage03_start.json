@@ -1,0 +1,12 @@
+{
+    "sequenceId": "Stage03_Start",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Excited",
+            "text": "오늘은 몇 개 뜰까.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

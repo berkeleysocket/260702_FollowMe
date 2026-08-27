@@ -44,6 +44,16 @@ namespace FollowMe.KDS
 
         private void OnEnable() => _moveAction?.Enable();
 
+        public void RespawnAt(Vector3 worldPosition)
+        {
+            if (_rb == null)
+                _rb = GetComponent<Rigidbody2D>();
+
+            transform.position = worldPosition;
+            _rb.linearVelocity = Vector2.zero;
+            _rb.angularVelocity = 0f;
+        }
+
         private void FixedUpdate()
         {
             if (_moveAction == null) return;

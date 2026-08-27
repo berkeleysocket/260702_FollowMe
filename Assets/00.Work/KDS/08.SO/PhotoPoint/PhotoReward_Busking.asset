@@ -15,4 +15,5 @@ MonoBehaviour:
   _displayName: "\uBC84\uC2A4\uD0B9 \uD3EC\uD1A0\uC874"
   _likeBonus: 8000
   _followBonus: 300
+  _holdSeconds: 0.9
   _oneShot: 1

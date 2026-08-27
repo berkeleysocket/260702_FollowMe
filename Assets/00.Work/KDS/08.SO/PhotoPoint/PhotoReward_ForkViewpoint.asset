@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_ForkViewpoint
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uAC08\uB9BC\uAE38 \uBDF0\uD3EC\uC778\uD2B8"
+  _likeBonus: 6000
+  _followBonus: 250
+  _holdSeconds: 0.85
+  _oneShot: 1

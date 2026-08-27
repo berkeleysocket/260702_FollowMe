@@ -17,6 +17,12 @@
 
 ## 📋 개발자 (Developer)
 
+[2026-08-27 09:45] S1~S16 스테이지 맵 씬 일괄 생성 완료
+- `StageSceneGenerator` 메뉴 `FollowMe/KDS/Generate All Stage Maps (S1-S16)` — Stage1 템플릿 복제 + `StageMapDatabase` 스펙 적용
+- 각 씬: `Level_S{N}` / `Zones`(Intro~Goal) / `MapModeZones` / `PhotoPoints` / `Triggers`(CP) / `Monsters`(슬롯) / `Forks` / `TempGround` 길이·카메라 `_maxX` 조정
+- S1=Stable 전구간 / S5+=경고→추격→회복 / S16=Torment 굴레. **레이아웃·타일·장애물은 KDS 손작업**
+- 버그 수정: `SaveOpenScenes`→`SaveScene` 명시 저장, `using System` Object 모호성 해결
+
 [2026-08-27 09:35] Stage1 MCP 배치·Play 검증 완료
 - `LevelSystems`: MapModeService + CheckpointService(→PhotoProbePlayer) + Stage1SystemsVerifier
 - `Level_S1/Triggers/`: `Checkpoint_Intro`(X=8, CP_Intro, registerOnStart) + `DialogueTrigger_Intro` 이동

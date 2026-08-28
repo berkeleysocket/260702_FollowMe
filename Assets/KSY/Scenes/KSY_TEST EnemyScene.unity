@@ -211,37 +211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &557716869
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 557716870}
-  m_Layer: 0
-  m_Name: MovementModule
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &557716870
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 557716869}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1715466582}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &559253944
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,8 +269,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 824822044}
-  - component: {fileID: 824822046}
   - component: {fileID: 824822045}
+  - component: {fileID: 824822046}
   m_Layer: 0
   m_Name: RangeCheckModule
   m_TagString: Untagged
@@ -369,7 +338,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -761,7 +730,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1803358034}
-  - {fileID: 557716870}
   - {fileID: 1490990258}
   - {fileID: 1593976091}
   - {fileID: 1588748215}
@@ -780,8 +748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f47ffec2598ac499d2637d314d999c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Agents::SeungyungLib.Agents.Enemy
-  dustParticleName: {fileID: 11400000, guid: de97459df5ac8ee40aa0c34bc4e8753c, type: 2}
-  smokeParticleName: {fileID: 11400000, guid: 4580a082e026c6845ab76ad245feffdf, type: 2}
 --- !u!50 &1715466584
 Rigidbody2D:
   serializedVersion: 5
@@ -937,8 +903,8 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!58 &1803358038
-CircleCollider2D:
+--- !u!61 &1803358038
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -971,8 +937,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.24, y: -0.02}
-  m_Radius: 0.52
+  m_Offset: {x: 0.21932197, y: -0.12401298}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.25, y: 1.3125}
+    newSize: {x: 0.2, y: 0.21}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.7165141, y: 0.9462151}
+  m_EdgeRadius: 0
 --- !u!1001 &7362693105487553811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -981,29 +957,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1178189721137013910, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 2265731540030654357, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2265731540030654357, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718376901048320368, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4188320415103499278, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4744479326895783749, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5014788200168086481, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1044,22 +1000,6 @@ PrefabInstance:
     - target: {fileID: 5014788200168086481, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6004297840554448299, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219373214172027552, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8243284729763489278, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8696000633236759490, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e78aa11623f9ce449db2ae57c6ec4b3, type: 3}
-  m_Name: InputEventChannel
-  m_EditorClassIdentifier: SeungyungLib.Core.Utility::SeungyungLib.Core.Utility.GameEventChannelSO
+  m_Name: PlayerEvtChannel
+  m_EditorClassIdentifier: SeungyungLib.Core.EventChannelSystem::SeungyungLib.Core.EventChannelSystem.EventChannelSO

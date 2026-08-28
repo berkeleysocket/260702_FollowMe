@@ -1,6 +1,8 @@
 using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.Template.EventChannels;
 
 using UnityEngine;
 
@@ -21,28 +23,14 @@ namespace SeungyungLib.FSM
     public class IsMovingCondition : AbstractCondition
     {
         private readonly IMovementModule _movementModule;
-        // private bool _isMoving;
         
         public IsMovingCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
-
-            // if (_movementModule != null)
-            // {
-            //     _movementModule.OnChangeAxis += (float axis) =>
-            //     {
-            //         if (Mathf.Abs(axis) > 0.01f)
-            //             _isMoving = !isNot;
-            //         else
-            //             _isMoving = isNot;
-            //     };
-            // }
-            // else
-            //     DebugLogger.LogError("[IsMovingCondition] _movementModule is null");
+            
             DebugLogger.Assert(_movementModule != null, "[IsMovingCondition] _movementModule is null.");
         }
 
-        // public override bool Check() => _isMoving;
         public override bool Check()
         {
             if (IsNot)
@@ -107,16 +95,52 @@ namespace SeungyungLib.FSM
             return _movementModule.IsFall;
         }
     }
-
-    public class isTargetInRangeCondition : AbstractCondition
+    
+    public class IsHitCondition : AbstractCondition
     {
-        public isTargetInRangeCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        private bool _isHit = false;
+        
+        public IsHitCondition(IModuleOwner owner, bool isNot, EventChannelSO playerEvtChannel) : base(owner, isNot)
         {
+            playerEvtChannel.AddListener<PlayerHitEvent>(HandlePlayerHitEvent);
         }
 
         public override bool Check()
         {
-            return true;
+            if (_isHit)
+            {
+                _isHit = false;
+                return true;
+            }
+            
+            return false;
         }
+
+        private void HandlePlayerHitEvent(PlayerHitEvent playerHitEvent) => _isHit = true;
+    }
+
+    public class TimerCondition : AbstractCondition
+    {
+        private readonly float _duration;
+        private float _startTime = -1f;
+        
+        public TimerCondition(IModuleOwner owner, bool isNot, float duration) : base(owner, isNot)
+        {
+            this._duration = duration;
+        }
+
+        public override bool Check()
+        {
+            TryStartTimer();
+            return CheckTimer();
+        }
+
+        private void TryStartTimer()
+        {
+            if (_startTime <= -1f)
+                _startTime = Time.time;
+        }
+
+        private bool CheckTimer() => Time.time - _startTime >= _duration;
     }
 }

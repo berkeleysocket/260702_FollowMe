@@ -12,7 +12,7 @@ namespace SeungyungLib.Agents
     {
         [SerializeField] private AssetNameSO dustParticleName;
         [SerializeField] private AssetNameSO smokeParticleName;
-        [SerializeField] private EventChannelSO playerEventChannel;
+        [SerializeField] private EventChannelSO controlEventChannel;
         
         private IGroundCheckModule _groundChecker;
         private IVfxModule _vfxModule;
@@ -29,7 +29,7 @@ namespace SeungyungLib.Agents
             this._movementModule = GetModule<IControllableMovementModule>();
             this._renderModule = GetModule<IRenderModule>();
 
-            DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
+            DebugLogger.Assert(controlEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
             DebugLogger.Assert(_vfxModule != null, "[AgentMovementModule]: _vfxModule is null.");
             DebugLogger.Assert(_renderModule != null, "[AgentMovementModule]: _renderModule is null.");
@@ -40,8 +40,8 @@ namespace SeungyungLib.Agents
         private void RegisterEventHandlers()
         {
             _groundChecker.NotifyIsGround.OnChanged += HandleGroundCheck;
-            playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
-            playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
+            controlEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
+            controlEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
         }
         #endregion
 

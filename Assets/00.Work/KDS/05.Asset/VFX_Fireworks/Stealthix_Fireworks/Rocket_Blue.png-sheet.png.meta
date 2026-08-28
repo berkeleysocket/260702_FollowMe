@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: 3b86305b5864245469bca370160772b8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5772299774883853108
+    second: Rocket_Blue.png-sheet_0
+  - first:
+      213: -4131547134491597331
+    second: Rocket_Blue.png-sheet_1
+  - first:
+      213: 6531060214331727811
+    second: Rocket_Blue.png-sheet_2
+  - first:
+      213: -2537210272954794223
+    second: Rocket_Blue.png-sheet_3
+  - first:
+      213: -6123900231779355567
+    second: Rocket_Blue.png-sheet_4
+  - first:
+      213: 4637402359964452613
+    second: Rocket_Blue.png-sheet_5
+  - first:
+      213: 6907840053621773376
+    second: Rocket_Blue.png-sheet_6
+  - first:
+      213: 4520533149349329683
+    second: Rocket_Blue.png-sheet_7
+  - first:
+      213: -105699496733064899
+    second: Rocket_Blue.png-sheet_8
+  - first:
+      213: 1710223025373128350
+    second: Rocket_Blue.png-sheet_9
+  - first:
+      213: 4772749115453059799
+    second: Rocket_Blue.png-sheet_10
+  - first:
+      213: -1218601020644164661
+    second: Rocket_Blue.png-sheet_11
+  - first:
+      213: 2564010175849435652
+    second: Rocket_Blue.png-sheet_12
+  - first:
+      213: 1389867671241028891
+    second: Rocket_Blue.png-sheet_13
+  - first:
+      213: 4628338390080063082
+    second: Rocket_Blue.png-sheet_14
+  - first:
+      213: 3993133544105602431
+    second: Rocket_Blue.png-sheet_15
+  - first:
+      213: -5339765380251284660
+    second: Rocket_Blue.png-sheet_16
+  - first:
+      213: -5474807106856842983
+    second: Rocket_Blue.png-sheet_17
+  - first:
+      213: 4408775986033874510
+    second: Rocket_Blue.png-sheet_18
+  - first:
+      213: -901687400542894920
+    second: Rocket_Blue.png-sheet_19
+  - first:
+      213: -396152767814758575
+    second: Rocket_Blue.png-sheet_20
+  - first:
+      213: -586355775153518897
+    second: Rocket_Blue.png-sheet_21
+  - first:
+      213: -7721949587485197748
+    second: Rocket_Blue.png-sheet_22
+  - first:
+      213: -5887389838587107408
+    second: Rocket_Blue.png-sheet_23
+  - first:
+      213: -5323229588555334457
+    second: Rocket_Blue.png-sheet_24
+  - first:
+      213: -3620216865483786676
+    second: Rocket_Blue.png-sheet_25
+  - first:
+      213: -8174694197964321390
+    second: Rocket_Blue.png-sheet_26
+  - first:
+      213: -6656331022117200918
+    second: Rocket_Blue.png-sheet_27
+  - first:
+      213: 5505904911941407193
+    second: Rocket_Blue.png-sheet_28
+  - first:
+      213: -4416548290283752366
+    second: Rocket_Blue.png-sheet_29
+  - first:
+      213: 4240415705359355956
+    second: Rocket_Blue.png-sheet_30
+  - first:
+      213: 1743853579243958441
+    second: Rocket_Blue.png-sheet_31
+  - first:
+      213: -3854359792890875238
+    second: Rocket_Blue.png-sheet_32
+  - first:
+      213: -5553862947594509451
+    second: Rocket_Blue.png-sheet_33
+  - first:
+      213: 3683559963332425677
+    second: Rocket_Blue.png-sheet_34
+  - first:
+      213: -5858784523993388609
+    second: Rocket_Blue.png-sheet_35
+  - first:
+      213: 5576008036667422700
+    second: Rocket_Blue.png-sheet_36
+  - first:
+      213: -605097965494411162
+    second: Rocket_Blue.png-sheet_37
+  - first:
+      213: -4390074483137700827
+    second: Rocket_Blue.png-sheet_38
+  - first:
+      213: -6463689241762676786
+    second: Rocket_Blue.png-sheet_39
+  - first:
+      213: 3787138809683058888
+    second: Rocket_Blue.png-sheet_40
+  - first:
+      213: -7383379493569971249
+    second: Rocket_Blue.png-sheet_41
+  - first:
+      213: 6070079914572918541
+    second: Rocket_Blue.png-sheet_42
+  - first:
+      213: 7198266836055299755
+    second: Rocket_Blue.png-sheet_43
+  - first:
+      213: 1671917543584961742
+    second: Rocket_Blue.png-sheet_44
+  - first:
+      213: -6447734583953017490
+    second: Rocket_Blue.png-sheet_45
+  - first:
+      213: 7379132571395703780
+    second: Rocket_Blue.png-sheet_46
+  - first:
+      213: 3436644241208399201
+    second: Rocket_Blue.png-sheet_47
+  - first:
+      213: 8988067412344818629
+    second: Rocket_Blue.png-sheet_48
+  - first:
+      213: 5650290139020799290
+    second: Rocket_Blue.png-sheet_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 19
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccc0bfc00fba4efa0800000000000000
+      internalID: -5772299774883853108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 11
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de568d365cbc9a6c0800000000000000
+      internalID: -4131547134491597331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 14
+        width: 7
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfdde179acf2aa50800000000000000
+      internalID: 6531060214331727811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11fbe0013b40accd0800000000000000
+      internalID: -2537210272954794223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 154fbdc5f29830ba0800000000000000
+      internalID: -6123900231779355567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5074d3a50ec5b5040800000000000000
+      internalID: 4637402359964452613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0445751fde39ddf50800000000000000
+      internalID: 6907840053621773376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b3852d2f82cbe30800000000000000
+      internalID: 4520533149349329683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 16
+        width: 7
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31c9442eda788ef0800000000000000
+      internalID: -105699496733064899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 18
+        width: 7
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e962f0ac7ceebb710800000000000000
+      internalID: 1710223025373128350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 10
+        width: 17
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2b3ac88063c3240800000000000000
+      internalID: 4772749115453059799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 20
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb739104d8a61fe0800000000000000
+      internalID: -1218601020644164661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 9
+        width: 12
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4021ef39ba1359320800000000000000
+      internalID: 2564010175849435652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 15
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b15fe1d784dc94310800000000000000
+      internalID: 1389867671241028891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6686096e392b3040800000000000000
+      internalID: 4628338390080063082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 17
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7d6c154dc57a6730800000000000000
+      internalID: 3993133544105602431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 7
+        width: 7
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4b813e8da755e5b0800000000000000
+      internalID: -5339765380251284660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 16
+        width: 7
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 919830e61f39504b0800000000000000
+      internalID: -5474807106856842983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 5
+        width: 12
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4652dd866e1f2d30800000000000000
+      internalID: 4408775986033874510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 11
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4023826109c73f0800000000000000
+      internalID: -901687400542894920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 15
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15f0d951825908af0800000000000000
+      internalID: -396152767814758575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc6c9f57788dcd7f0800000000000000
+      internalID: -586355775153518897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 7
+        width: 12
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a787843cf16d490800000000000000
+      internalID: -7721949587485197748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 18
+        width: 7
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b765c0722acb4ea0800000000000000
+      internalID: -5887389838587107408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 7
+        width: 12
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cc7f4494e61026b0800000000000000
+      internalID: -5323229588555334457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 10
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c46f5fa01f762cdc0800000000000000
+      internalID: -3620216865483786676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 16
+        width: 7
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29dc3e630f6ad8e80800000000000000
+      internalID: -8174694197964321390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 7
+        width: 7
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aeb9a4fb336ff93a0800000000000000
+      internalID: -6656331022117200918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1985b8857e86c40800000000000000
+      internalID: 5505904911941407193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 15
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2543748dab445b2c0800000000000000
+      internalID: -4416548290283752366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 9
+        width: 12
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4309ee90e9bf8da30800000000000000
+      internalID: 4240415705359355956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 7
+        width: 7
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a0312b4799633810800000000000000
+      internalID: 1743853579243958441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 8
+        width: 7
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a92f03c8030928ac0800000000000000
+      internalID: -3854359792890875238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 5
+        width: 7
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 573ec652317bce2b0800000000000000
+      internalID: -5553862947594509451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 7
+        width: 7
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc7b7433542ae1330800000000000000
+      internalID: 3683559963332425677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 9
+        width: 7
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb961df348a61bea0800000000000000
+      internalID: -5858784523993388609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 0
+        width: 19
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce7f84234c5f16d40800000000000000
+      internalID: 5576008036667422700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 15
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660e4683b924a97f0800000000000000
+      internalID: -605097965494411162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 11
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52c121764825313c0800000000000000
+      internalID: -4390074483137700827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecfb83671ec5c46a0800000000000000
+      internalID: -6463689241762676786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 12
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0214aaeae9e8430800000000000000
+      internalID: 3787138809683058888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcbbbdb2877f88990800000000000000
+      internalID: -7383379493569971249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 13
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f2a5a85814d3450800000000000000
+      internalID: 6070079914572918541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba61d81ac8165e360800000000000000
+      internalID: 7198266836055299755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec4102fc528d33710800000000000000
+      internalID: 1671917543584961742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 17
+        width: 7
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e65ba75be8b0586a0800000000000000
+      internalID: -6447734583953017490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 11
+        width: 12
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e34e843af1f76660800000000000000
+      internalID: 7379132571395703780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 15
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1655e90bab961bf20800000000000000
+      internalID: 3436644241208399201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 12
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cbc312d0b70cbc70800000000000000
+      internalID: 8988067412344818629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Blue.png-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 10
+        width: 7
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3d2a36e1fcd96e40800000000000000
+      internalID: 5650290139020799290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Rocket_Blue.png-sheet_0: -5772299774883853108
+      Rocket_Blue.png-sheet_1: -4131547134491597331
+      Rocket_Blue.png-sheet_10: 4772749115453059799
+      Rocket_Blue.png-sheet_11: -1218601020644164661
+      Rocket_Blue.png-sheet_12: 2564010175849435652
+      Rocket_Blue.png-sheet_13: 1389867671241028891
+      Rocket_Blue.png-sheet_14: 4628338390080063082
+      Rocket_Blue.png-sheet_15: 3993133544105602431
+      Rocket_Blue.png-sheet_16: -5339765380251284660
+      Rocket_Blue.png-sheet_17: -5474807106856842983
+      Rocket_Blue.png-sheet_18: 4408775986033874510
+      Rocket_Blue.png-sheet_19: -901687400542894920
+      Rocket_Blue.png-sheet_2: 6531060214331727811
+      Rocket_Blue.png-sheet_20: -396152767814758575
+      Rocket_Blue.png-sheet_21: -586355775153518897
+      Rocket_Blue.png-sheet_22: -7721949587485197748
+      Rocket_Blue.png-sheet_23: -5887389838587107408
+      Rocket_Blue.png-sheet_24: -5323229588555334457
+      Rocket_Blue.png-sheet_25: -3620216865483786676
+      Rocket_Blue.png-sheet_26: -8174694197964321390
+      Rocket_Blue.png-sheet_27: -6656331022117200918
+      Rocket_Blue.png-sheet_28: 5505904911941407193
+      Rocket_Blue.png-sheet_29: -4416548290283752366
+      Rocket_Blue.png-sheet_3: -2537210272954794223
+      Rocket_Blue.png-sheet_30: 4240415705359355956
+      Rocket_Blue.png-sheet_31: 1743853579243958441
+      Rocket_Blue.png-sheet_32: -3854359792890875238
+      Rocket_Blue.png-sheet_33: -5553862947594509451
+      Rocket_Blue.png-sheet_34: 3683559963332425677
+      Rocket_Blue.png-sheet_35: -5858784523993388609
+      Rocket_Blue.png-sheet_36: 5576008036667422700
+      Rocket_Blue.png-sheet_37: -605097965494411162
+      Rocket_Blue.png-sheet_38: -4390074483137700827
+      Rocket_Blue.png-sheet_39: -6463689241762676786
+      Rocket_Blue.png-sheet_4: -6123900231779355567
+      Rocket_Blue.png-sheet_40: 3787138809683058888
+      Rocket_Blue.png-sheet_41: -7383379493569971249
+      Rocket_Blue.png-sheet_42: 6070079914572918541
+      Rocket_Blue.png-sheet_43: 7198266836055299755
+      Rocket_Blue.png-sheet_44: 1671917543584961742
+      Rocket_Blue.png-sheet_45: -6447734583953017490
+      Rocket_Blue.png-sheet_46: 7379132571395703780
+      Rocket_Blue.png-sheet_47: 3436644241208399201
+      Rocket_Blue.png-sheet_48: 8988067412344818629
+      Rocket_Blue.png-sheet_49: 5650290139020799290
+      Rocket_Blue.png-sheet_5: 4637402359964452613
+      Rocket_Blue.png-sheet_6: 6907840053621773376
+      Rocket_Blue.png-sheet_7: 4520533149349329683
+      Rocket_Blue.png-sheet_8: -105699496733064899
+      Rocket_Blue.png-sheet_9: 1710223025373128350
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

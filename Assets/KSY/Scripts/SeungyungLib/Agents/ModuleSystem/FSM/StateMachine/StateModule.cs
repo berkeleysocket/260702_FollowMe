@@ -4,6 +4,7 @@ using SeungyungLib.ModuleSystem.Interface;
 
 using System.Collections.Generic;
 using System.Linq;
+using SeungyungLib.Core.CustomDebug;
 using UnityEngine;
 
 namespace SeungyungLib.FSM
@@ -17,14 +18,19 @@ namespace SeungyungLib.FSM
 
         public void Initialize(IModuleOwner owner)
         {
-            this._stateList = stateMachineSO.StateList.ToDictionary(
-                key => (StateType)key.Type,
-                value => (IState)value.Create(
-                    (StateModule)this,
-                    (IModuleOwner)owner)
+            if (stateMachineSO != null)
+            {
+                this._stateList = stateMachineSO.StateList.ToDictionary(
+                    key => (StateType)key.Type,
+                    value => (IState)value.Create(
+                        (StateModule)this,
+                        (IModuleOwner)owner)
                 );
-
-            ChangeState(stateMachineSO.StartState);
+                
+                ChangeState(stateMachineSO.StartState);
+            }
+            
+            DebugLogger.Assert(stateMachineSO != null, "[StateModule]: stateMachineSO is null");
         }
 
         public void Update()

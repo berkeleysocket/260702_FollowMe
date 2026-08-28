@@ -13,7 +13,18 @@
 | `VFX_Fireworks/Kenney_ParticlePack/` | Kenney via [OGA](https://opengameart.org/content/particle-pack-80-sprites) | CC0 | T3 불꽃/스파크·연기 파티클 |
 | `_Downloads/` | zip 원본 보관 | — | 재압축용 |
 
-Filter Mode = Point 로 임포트할 것.
+Filter Mode = Point · PPU 32 — Unity에서 `FollowMe/KDS/Apply Map Asset Import (Cafe S4-S8 + Park S9-S11)` 실행.
+
+### T2 카페 (S4-S8) — **반입 완료 (2026-08-28)**
+
+| 팩 | 풀 위치 | 상태 |
+|---|---|---|
+| OGA coffeeshopstuff | `City_Cafe/coffeeshopstuff.png` | ✅ PPU32 Point |
+| Wish Drinks **free** | `City_Cafe/Wish_Drinks/` | ✅ 28+ PNG (디저트·음료 포토) |
+| PixelPossum itch | `City_Cafe/PixelPossum_Cafe/CoffeeShopStuff.png` | ✅ itch는 PNG만 (OGA 동일 팩) |
+| zip 원본 | `_Downloads/Wish_Drinks.zip` · `PixelPossum_Cafe.zip` | ✅ |
+
+SIL01·B0z·UI/HUD·플레이어 에셋은 **본 작업 범위外**.
 
 ---
 
@@ -34,12 +45,16 @@ Filter Mode = Point 로 임포트할 것.
 | Coloritmic Neon City **Free** | https://coloritmic.itch.io/neoncityasset | `City_Neon/Coloritmic_Free/` |
 | Stealthix **Animated Fireworks** | https://stealthix.itch.io/animated-fireworks | `VFX_Fireworks/Stealthix_Fireworks/` |
 
-### T3 공원
+### T3 공원 — **반입 완료 (2026-08-28)**
 
-| 팩 | 링크 | 풀 위치 |
+| 팩 | 풀 위치 | 상태 |
 |---|---|---|
-| Free Park Zone | https://free-game-assets.itch.io/free-green-zone-tileset-pixel-art | `City_Park/ParkZone_CraftPix/` |
-| Akuarii33 Simple Park | https://akuarii33.itch.io/simple-park-and-modular-building-assests | `City_Park/Akuarii33_Park/` |
+| Free Park Zone | `City_Park/ParkZone_CraftPix/` | ✅ 193 PNG |
+| Akuarii33 Simple Park | `City_Park/Akuarii33_Park/` | ✅ `park assets.png` + aseprite |
+| Stealthix Fireworks (itch) | `VFX_Fireworks/Stealthix_Fireworks/` | ✅ 11 explosion sheets |
+| zip 원본 | `_Downloads/Fireworks.zip` 등 | ✅ |
+
+Filter Mode = Point · PPU 32 — Unity 재임포트 후 `Apply Fireworks Park Themes (S9-S11)` 필요.
 
 ### T4 지하철 (무료 데모 → 유료)
 

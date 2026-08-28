@@ -1,0 +1,1599 @@
+fileFormatVersion: 2
+guid: 483beaf577aacf84993cf2d145b6dcd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6368280734428465535
+    second: Explosion_Long_Orange-sheet_0
+  - first:
+      213: -8492533799199602095
+    second: Explosion_Long_Orange-sheet_1
+  - first:
+      213: 8839669829723432839
+    second: Explosion_Long_Orange-sheet_2
+  - first:
+      213: -6747842292781582668
+    second: Explosion_Long_Orange-sheet_3
+  - first:
+      213: 6265582711303316588
+    second: Explosion_Long_Orange-sheet_4
+  - first:
+      213: 292263517844320663
+    second: Explosion_Long_Orange-sheet_5
+  - first:
+      213: -1632815517634789710
+    second: Explosion_Long_Orange-sheet_6
+  - first:
+      213: 2448679459398250341
+    second: Explosion_Long_Orange-sheet_7
+  - first:
+      213: 3649213016559031135
+    second: Explosion_Long_Orange-sheet_8
+  - first:
+      213: 7531883084381290549
+    second: Explosion_Long_Orange-sheet_9
+  - first:
+      213: 6727959503547997059
+    second: Explosion_Long_Orange-sheet_10
+  - first:
+      213: -8896793417866548274
+    second: Explosion_Long_Orange-sheet_11
+  - first:
+      213: 7110409957806646287
+    second: Explosion_Long_Orange-sheet_12
+  - first:
+      213: -5765016863780254491
+    second: Explosion_Long_Orange-sheet_13
+  - first:
+      213: 2098438262007933516
+    second: Explosion_Long_Orange-sheet_14
+  - first:
+      213: -5549993267875254038
+    second: Explosion_Long_Orange-sheet_15
+  - first:
+      213: -5085280834571977774
+    second: Explosion_Long_Orange-sheet_16
+  - first:
+      213: 8022249334820447594
+    second: Explosion_Long_Orange-sheet_17
+  - first:
+      213: 2327726382634916860
+    second: Explosion_Long_Orange-sheet_18
+  - first:
+      213: 4545591756698553719
+    second: Explosion_Long_Orange-sheet_19
+  - first:
+      213: 4466432207843575116
+    second: Explosion_Long_Orange-sheet_20
+  - first:
+      213: 6441945558869199678
+    second: Explosion_Long_Orange-sheet_21
+  - first:
+      213: 8537467909724006572
+    second: Explosion_Long_Orange-sheet_22
+  - first:
+      213: 4838711975137661493
+    second: Explosion_Long_Orange-sheet_23
+  - first:
+      213: -1820008956092309358
+    second: Explosion_Long_Orange-sheet_24
+  - first:
+      213: -3151624126312411617
+    second: Explosion_Long_Orange-sheet_25
+  - first:
+      213: 7484257113041219556
+    second: Explosion_Long_Orange-sheet_26
+  - first:
+      213: -5588550921701540355
+    second: Explosion_Long_Orange-sheet_27
+  - first:
+      213: -1748942758715527134
+    second: Explosion_Long_Orange-sheet_28
+  - first:
+      213: -2997779017585718092
+    second: Explosion_Long_Orange-sheet_29
+  - first:
+      213: -2745643552299971298
+    second: Explosion_Long_Orange-sheet_30
+  - first:
+      213: 8827218886710466192
+    second: Explosion_Long_Orange-sheet_31
+  - first:
+      213: 4458853539503716153
+    second: Explosion_Long_Orange-sheet_32
+  - first:
+      213: 4965567488867934463
+    second: Explosion_Long_Orange-sheet_33
+  - first:
+      213: -7179948345819513337
+    second: Explosion_Long_Orange-sheet_34
+  - first:
+      213: 8874898969081520132
+    second: Explosion_Long_Orange-sheet_35
+  - first:
+      213: 69957777448151503
+    second: Explosion_Long_Orange-sheet_36
+  - first:
+      213: 2864474970419252267
+    second: Explosion_Long_Orange-sheet_37
+  - first:
+      213: 4022911340806135623
+    second: Explosion_Long_Orange-sheet_38
+  - first:
+      213: 7624046185240309685
+    second: Explosion_Long_Orange-sheet_39
+  - first:
+      213: 2536387230546622603
+    second: Explosion_Long_Orange-sheet_40
+  - first:
+      213: -7262836338342567955
+    second: Explosion_Long_Orange-sheet_41
+  - first:
+      213: -4221149838848121737
+    second: Explosion_Long_Orange-sheet_42
+  - first:
+      213: 2486031704554943928
+    second: Explosion_Long_Orange-sheet_43
+  - first:
+      213: -5401840134472077858
+    second: Explosion_Long_Orange-sheet_44
+  - first:
+      213: -3873653607427984804
+    second: Explosion_Long_Orange-sheet_45
+  - first:
+      213: -7315004015932091515
+    second: Explosion_Long_Orange-sheet_46
+  - first:
+      213: 5203880726779973603
+    second: Explosion_Long_Orange-sheet_47
+  - first:
+      213: 5318614054120217720
+    second: Explosion_Long_Orange-sheet_48
+  - first:
+      213: 697613074410277254
+    second: Explosion_Long_Orange-sheet_49
+  - first:
+      213: 1167892382589512796
+    second: Explosion_Long_Orange-sheet_50
+  - first:
+      213: -5864786420829147990
+    second: Explosion_Long_Orange-sheet_51
+  - first:
+      213: -5510039460952651254
+    second: Explosion_Long_Orange-sheet_52
+  - first:
+      213: -2647598060984700957
+    second: Explosion_Long_Orange-sheet_53
+  - first:
+      213: -3720614464806790895
+    second: Explosion_Long_Orange-sheet_54
+  - first:
+      213: -9093731484029638011
+    second: Explosion_Long_Orange-sheet_55
+  - first:
+      213: -1593944142269413864
+    second: Explosion_Long_Orange-sheet_56
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 59
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1867d62a9625f97a0800000000000000
+      internalID: -6368280734428465535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 58
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a85b74185742a80800000000000000
+      internalID: -8492533799199602095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 57
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 787276420e0dcaa70800000000000000
+      internalID: 8839669829723432839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 56
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b67562bf29da52a0800000000000000
+      internalID: -6747842292781582668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 56
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c64201a8742d3f650800000000000000
+      internalID: 6265582711303316588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 55
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 791bae9fe145e0400800000000000000
+      internalID: 292263517844320663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 54
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bef1af00f21759e0800000000000000
+      internalID: -1632815517634789710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 680
+        y: 53
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f6a32aef47bf120800000000000000
+      internalID: 2448679459398250341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 52
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f539bb977eb94a230800000000000000
+      internalID: 3649213016559031135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 51
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 530025672cf968860800000000000000
+      internalID: 7531883084381290549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 954
+        y: 50
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38b1130b5838e5d50800000000000000
+      internalID: 6727959503547997059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 49
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecbe700168d388480800000000000000
+      internalID: -8896793417866548274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 48
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f04277e1f204da260800000000000000
+      internalID: 7110409957806646287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 47
+        width: 28
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eccd3ee4bb8effa0800000000000000
+      internalID: -5765016863780254491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 46
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a22163b762f1d10800000000000000
+      internalID: 2098438262007933516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 45
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae07c7a27867af2b0800000000000000
+      internalID: -5549993267875254038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1502
+        y: 44
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2db3c3026047d69b0800000000000000
+      internalID: -5085280834571977774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1593
+        y: 43
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a65269d2441c45f60800000000000000
+      internalID: 8022249334820447594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1684
+        y: 42
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfb524befcebd4020800000000000000
+      internalID: 2327726382634916860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 41
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77d06ff7e9f251f30800000000000000
+      internalID: 4545591756698553719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 39
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4541e9cd64fbfd30800000000000000
+      internalID: 4466432207843575116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 38
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3bcdcada53666950800000000000000
+      internalID: 6441945558869199678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 2049
+        y: 37
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8656894dd2b7670800000000000000
+      internalID: 8537467909724006572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2140
+        y: 36
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5325280a7ee862340800000000000000
+      internalID: 4838711975137661493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 35
+        width: 47
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290a61c4f770eb6e0800000000000000
+      internalID: -1820008956092309358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 34
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e099d1e8e2344d0800000000000000
+      internalID: -3151624126312411617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 2413
+        y: 33
+        width: 51
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef2386e03c6dd760800000000000000
+      internalID: 7484257113041219556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 31
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfd3ccecb8a7172b0800000000000000
+      internalID: -5588550921701540355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 2596
+        y: 30
+        width: 53
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 220f446c3d18ab7e0800000000000000
+      internalID: -1748942758715527134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2687
+        y: 29
+        width: 55
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bc0fadcddfb566d0800000000000000
+      internalID: -2997779017585718092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 2778
+        y: 28
+        width: 57
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1d81597cb385e9d0800000000000000
+      internalID: -2745643552299971298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 2869
+        y: 26
+        width: 59
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0961ff01fc4908a70800000000000000
+      internalID: 8827218886710466192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 25
+        width: 61
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 937bc9f8ba701ed30800000000000000
+      internalID: 4458853539503716153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 24
+        width: 62
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff0a33a825d39e440800000000000000
+      internalID: 4965567488867934463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 3143
+        y: 23
+        width: 63
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70e36cd3503bb5c90800000000000000
+      internalID: -7179948345819513337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 3234
+        y: 21
+        width: 65
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 400a5955799f92b70800000000000000
+      internalID: 8874898969081520132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 3325
+        y: 20
+        width: 67
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc9a21a5a3a88f000800000000000000
+      internalID: 69957777448151503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 20
+        width: 69
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2c46d71fc8a0c720800000000000000
+      internalID: 2864474970419252267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 3507
+        y: 19
+        width: 71
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fd3a7dc8044d730800000000000000
+      internalID: 4022911340806135623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 3599
+        y: 17
+        width: 72
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bfab6e8c9d0ec960800000000000000
+      internalID: 7624046185240309685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 16
+        width: 74
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8871917fbe033320800000000000000
+      internalID: 2536387230546622603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 3781
+        y: 13
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: defda4794d8353b90800000000000000
+      internalID: -7262836338342567955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 13
+        width: 78
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 774a2cf06967b65c0800000000000000
+      internalID: -4221149838848121737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 3963
+        y: 12
+        width: 79
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b53b5ae9a8208220800000000000000
+      internalID: 2486031704554943928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 4055
+        y: 11
+        width: 80
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edde753940fc805b0800000000000000
+      internalID: -5401840134472077858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 4146
+        y: 9
+        width: 82
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52385a41940e3ac0800000000000000
+      internalID: -3873653607427984804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 4237
+        y: 8
+        width: 84
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 583dfc3aa92eb7a90800000000000000
+      internalID: -7315004015932091515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 4328
+        y: 8
+        width: 86
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3efc83d13f5e73840800000000000000
+      internalID: 5203880726779973603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 4419
+        y: 8
+        width: 88
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87c5c319d438fc940800000000000000
+      internalID: 5318614054120217720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 4510
+        y: 8
+        width: 90
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68984e2256b6ea900800000000000000
+      internalID: 697613074410277254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_50
+      rect:
+        serializedVersion: 2
+        x: 4602
+        y: 2
+        width: 91
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5ce1282fef253010800000000000000
+      internalID: 1167892382589512796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_51
+      rect:
+        serializedVersion: 2
+        x: 4694
+        y: 2
+        width: 93
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaca1feb2d71c9ea0800000000000000
+      internalID: -5864786420829147990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 4786
+        y: 0
+        width: 93
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0a488fbd486883b0800000000000000
+      internalID: -5510039460952651254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 4878
+        y: 0
+        width: 93
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef6ef25797d14bd0800000000000000
+      internalID: -2647598060984700957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_54
+      rect:
+        serializedVersion: 2
+        x: 4970
+        y: 0
+        width: 93
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 119d20f5bd8bd5cc0800000000000000
+      internalID: -3720614464806790895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_55
+      rect:
+        serializedVersion: 2
+        x: 5062
+        y: 0
+        width: 93
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58aa0ab55639cc180800000000000000
+      internalID: -9093731484029638011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Explosion_Long_Orange-sheet_56
+      rect:
+        serializedVersion: 2
+        x: 5154
+        y: 0
+        width: 90
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81687386f3c21e9e0800000000000000
+      internalID: -1593944142269413864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Explosion_Long_Orange-sheet_0: -6368280734428465535
+      Explosion_Long_Orange-sheet_1: -8492533799199602095
+      Explosion_Long_Orange-sheet_10: 6727959503547997059
+      Explosion_Long_Orange-sheet_11: -8896793417866548274
+      Explosion_Long_Orange-sheet_12: 7110409957806646287
+      Explosion_Long_Orange-sheet_13: -5765016863780254491
+      Explosion_Long_Orange-sheet_14: 2098438262007933516
+      Explosion_Long_Orange-sheet_15: -5549993267875254038
+      Explosion_Long_Orange-sheet_16: -5085280834571977774
+      Explosion_Long_Orange-sheet_17: 8022249334820447594
+      Explosion_Long_Orange-sheet_18: 2327726382634916860
+      Explosion_Long_Orange-sheet_19: 4545591756698553719
+      Explosion_Long_Orange-sheet_2: 8839669829723432839
+      Explosion_Long_Orange-sheet_20: 4466432207843575116
+      Explosion_Long_Orange-sheet_21: 6441945558869199678
+      Explosion_Long_Orange-sheet_22: 8537467909724006572
+      Explosion_Long_Orange-sheet_23: 4838711975137661493
+      Explosion_Long_Orange-sheet_24: -1820008956092309358
+      Explosion_Long_Orange-sheet_25: -3151624126312411617
+      Explosion_Long_Orange-sheet_26: 7484257113041219556
+      Explosion_Long_Orange-sheet_27: -5588550921701540355
+      Explosion_Long_Orange-sheet_28: -1748942758715527134
+      Explosion_Long_Orange-sheet_29: -2997779017585718092
+      Explosion_Long_Orange-sheet_3: -6747842292781582668
+      Explosion_Long_Orange-sheet_30: -2745643552299971298
+      Explosion_Long_Orange-sheet_31: 8827218886710466192
+      Explosion_Long_Orange-sheet_32: 4458853539503716153
+      Explosion_Long_Orange-sheet_33: 4965567488867934463
+      Explosion_Long_Orange-sheet_34: -7179948345819513337
+      Explosion_Long_Orange-sheet_35: 8874898969081520132
+      Explosion_Long_Orange-sheet_36: 69957777448151503
+      Explosion_Long_Orange-sheet_37: 2864474970419252267
+      Explosion_Long_Orange-sheet_38: 4022911340806135623
+      Explosion_Long_Orange-sheet_39: 7624046185240309685
+      Explosion_Long_Orange-sheet_4: 6265582711303316588
+      Explosion_Long_Orange-sheet_40: 2536387230546622603
+      Explosion_Long_Orange-sheet_41: -7262836338342567955
+      Explosion_Long_Orange-sheet_42: -4221149838848121737
+      Explosion_Long_Orange-sheet_43: 2486031704554943928
+      Explosion_Long_Orange-sheet_44: -5401840134472077858
+      Explosion_Long_Orange-sheet_45: -3873653607427984804
+      Explosion_Long_Orange-sheet_46: -7315004015932091515
+      Explosion_Long_Orange-sheet_47: 5203880726779973603
+      Explosion_Long_Orange-sheet_48: 5318614054120217720
+      Explosion_Long_Orange-sheet_49: 697613074410277254
+      Explosion_Long_Orange-sheet_5: 292263517844320663
+      Explosion_Long_Orange-sheet_50: 1167892382589512796
+      Explosion_Long_Orange-sheet_51: -5864786420829147990
+      Explosion_Long_Orange-sheet_52: -5510039460952651254
+      Explosion_Long_Orange-sheet_53: -2647598060984700957
+      Explosion_Long_Orange-sheet_54: -3720614464806790895
+      Explosion_Long_Orange-sheet_55: -9093731484029638011
+      Explosion_Long_Orange-sheet_56: -1593944142269413864
+      Explosion_Long_Orange-sheet_6: -1632815517634789710
+      Explosion_Long_Orange-sheet_7: 2448679459398250341
+      Explosion_Long_Orange-sheet_8: 3649213016559031135
+      Explosion_Long_Orange-sheet_9: 7531883084381290549
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

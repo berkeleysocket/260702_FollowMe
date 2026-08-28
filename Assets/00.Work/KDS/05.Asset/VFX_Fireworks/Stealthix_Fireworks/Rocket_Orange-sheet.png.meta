@@ -1,0 +1,1157 @@
+fileFormatVersion: 2
+guid: 4c3a0505ddf48e941984535f5669378b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -179084033299493315
+    second: Rocket_Orange-sheet_0
+  - first:
+      213: 8924519717828121784
+    second: Rocket_Orange-sheet_1
+  - first:
+      213: -1062329955935418646
+    second: Rocket_Orange-sheet_2
+  - first:
+      213: -8370177085482378540
+    second: Rocket_Orange-sheet_3
+  - first:
+      213: -2939997975801565700
+    second: Rocket_Orange-sheet_4
+  - first:
+      213: 8959430940166571409
+    second: Rocket_Orange-sheet_5
+  - first:
+      213: -7324995256316804873
+    second: Rocket_Orange-sheet_6
+  - first:
+      213: -1109866405089695843
+    second: Rocket_Orange-sheet_7
+  - first:
+      213: 2899447648345575383
+    second: Rocket_Orange-sheet_8
+  - first:
+      213: -5795599441111988834
+    second: Rocket_Orange-sheet_9
+  - first:
+      213: 8763614285160977878
+    second: Rocket_Orange-sheet_10
+  - first:
+      213: -5352125344861672267
+    second: Rocket_Orange-sheet_11
+  - first:
+      213: -5460651087830750408
+    second: Rocket_Orange-sheet_12
+  - first:
+      213: -5455763779597264207
+    second: Rocket_Orange-sheet_13
+  - first:
+      213: 8457843344435812058
+    second: Rocket_Orange-sheet_14
+  - first:
+      213: -8085377678841603914
+    second: Rocket_Orange-sheet_15
+  - first:
+      213: 6944601514500062050
+    second: Rocket_Orange-sheet_16
+  - first:
+      213: -243594380727833636
+    second: Rocket_Orange-sheet_17
+  - first:
+      213: -964088026550351785
+    second: Rocket_Orange-sheet_18
+  - first:
+      213: 414889990244169680
+    second: Rocket_Orange-sheet_19
+  - first:
+      213: -8286151051518262807
+    second: Rocket_Orange-sheet_20
+  - first:
+      213: -2674632447969766345
+    second: Rocket_Orange-sheet_21
+  - first:
+      213: 4751256159942209459
+    second: Rocket_Orange-sheet_22
+  - first:
+      213: 6570101142791243624
+    second: Rocket_Orange-sheet_23
+  - first:
+      213: 6103757007281665868
+    second: Rocket_Orange-sheet_24
+  - first:
+      213: 5976402863527192277
+    second: Rocket_Orange-sheet_25
+  - first:
+      213: 5378425010432835984
+    second: Rocket_Orange-sheet_26
+  - first:
+      213: 1251016104899083229
+    second: Rocket_Orange-sheet_27
+  - first:
+      213: -4542862652425688226
+    second: Rocket_Orange-sheet_28
+  - first:
+      213: -1640198115902191234
+    second: Rocket_Orange-sheet_29
+  - first:
+      213: -2913275705039252584
+    second: Rocket_Orange-sheet_30
+  - first:
+      213: -3006541073893592696
+    second: Rocket_Orange-sheet_31
+  - first:
+      213: 4996237208679175605
+    second: Rocket_Orange-sheet_32
+  - first:
+      213: -2847056636456762164
+    second: Rocket_Orange-sheet_33
+  - first:
+      213: 267210405514407972
+    second: Rocket_Orange-sheet_34
+  - first:
+      213: 3776622807290052355
+    second: Rocket_Orange-sheet_35
+  - first:
+      213: 1240838493027996983
+    second: Rocket_Orange-sheet_36
+  - first:
+      213: 6299496259745438108
+    second: Rocket_Orange-sheet_37
+  - first:
+      213: 5089739344262730632
+    second: Rocket_Orange-sheet_38
+  - first:
+      213: 4700831889991329761
+    second: Rocket_Orange-sheet_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 11
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3e4d324504c38df0800000000000000
+      internalID: -179084033299493315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 12
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b45d1436634adb70800000000000000
+      internalID: 8924519717828121784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 8
+        width: 7
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae686369888d141f0800000000000000
+      internalID: -1062329955935418646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 5
+        width: 7
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4da55b0b94827db80800000000000000
+      internalID: -8370177085482378540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 10
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfdeaf3fa670337d0800000000000000
+      internalID: -2939997975801565700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 7
+        width: 12
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 195c54298fa465c70800000000000000
+      internalID: 8959430940166571409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 17
+        width: 7
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f0c0d5bf93685a90800000000000000
+      internalID: -7324995256316804873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 7
+        width: 12
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d972d788266f890f0800000000000000
+      internalID: -1109866405089695843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 20
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dfca743648ec3820800000000000000
+      internalID: 2899447648345575383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 5
+        width: 19
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e954114c305e19fa0800000000000000
+      internalID: -5795599441111988834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 19
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d51f8fb2cc9e9970800000000000000
+      internalID: 8763614285160977878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 13
+        width: 7
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bca72a0b5e69b5b0800000000000000
+      internalID: -5352125344861672267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 14
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b6f7374ced734b0800000000000000
+      internalID: -5460651087830750408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 11
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ba99a29fbb3944b0800000000000000
+      internalID: -5455763779597264207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 6
+        width: 12
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad69ffec5bb406570800000000000000
+      internalID: 8457843344435812058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 13
+        width: 7
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b816c9d6d7facf80800000000000000
+      internalID: -8085377678841603914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 10
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26b7a6a884e206060800000000000000
+      internalID: 6944601514500062050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 12
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdbaf6b83349e9cf0800000000000000
+      internalID: -243594380727833636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 2
+        width: 12
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 758424d3c0fde92f0800000000000000
+      internalID: -964088026550351785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 20
+        width: 7
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d77e597f3cf1c500800000000000000
+      internalID: 414889990244169680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 11
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e14603458da10d80800000000000000
+      internalID: -8286151051518262807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 10
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734570a95fbc1ead0800000000000000
+      internalID: -2674632447969766345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 13
+        width: 7
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bfed32ed4adfe140800000000000000
+      internalID: 4751256159942209459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 10
+        width: 7
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867c572fd20bd2b50800000000000000
+      internalID: 6570101142791243624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 7
+        width: 7
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c473356b8a6e4b450800000000000000
+      internalID: 6103757007281665868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 2
+        width: 12
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d66a237db270f250800000000000000
+      internalID: 5976402863527192277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 13
+        width: 7
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0910de50d0104aa40800000000000000
+      internalID: 5378425010432835984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 2
+        width: 12
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddb7dcce4808c5110800000000000000
+      internalID: 1251016104899083229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 11
+        width: 7
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b27ca9c7284f0c0800000000000000
+      internalID: -4542862652425688226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 18
+        width: 7
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e798264f088dc39e0800000000000000
+      internalID: -1640198115902191234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 9
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8931c547e27f197d0800000000000000
+      internalID: -2913275705039252584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 6
+        width: 7
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88173f792de9646d0800000000000000
+      internalID: -3006541073893592696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2
+        width: 12
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b559e42543365540800000000000000
+      internalID: 4996237208679175605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 9
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc48390d2193d78d0800000000000000
+      internalID: -2847056636456762164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 19
+        width: 7
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42079f4b27255b300800000000000000
+      internalID: 267210405514407972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 19
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f792f0f62496430800000000000000
+      internalID: 3776622807290052355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 14
+        width: 7
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73590900908583110800000000000000
+      internalID: 1240838493027996983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 12
+        width: 7
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c99570ad87e4c6750800000000000000
+      internalID: 6299496259745438108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 16
+        width: 7
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8831c1e87f262a640800000000000000
+      internalID: 5089739344262730632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rocket_Orange-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 9
+        width: 12
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e7e2c7a2b5bc3140800000000000000
+      internalID: 4700831889991329761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Rocket_Orange-sheet_0: -179084033299493315
+      Rocket_Orange-sheet_1: 8924519717828121784
+      Rocket_Orange-sheet_10: 8763614285160977878
+      Rocket_Orange-sheet_11: -5352125344861672267
+      Rocket_Orange-sheet_12: -5460651087830750408
+      Rocket_Orange-sheet_13: -5455763779597264207
+      Rocket_Orange-sheet_14: 8457843344435812058
+      Rocket_Orange-sheet_15: -8085377678841603914
+      Rocket_Orange-sheet_16: 6944601514500062050
+      Rocket_Orange-sheet_17: -243594380727833636
+      Rocket_Orange-sheet_18: -964088026550351785
+      Rocket_Orange-sheet_19: 414889990244169680
+      Rocket_Orange-sheet_2: -1062329955935418646
+      Rocket_Orange-sheet_20: -8286151051518262807
+      Rocket_Orange-sheet_21: -2674632447969766345
+      Rocket_Orange-sheet_22: 4751256159942209459
+      Rocket_Orange-sheet_23: 6570101142791243624
+      Rocket_Orange-sheet_24: 6103757007281665868
+      Rocket_Orange-sheet_25: 5976402863527192277
+      Rocket_Orange-sheet_26: 5378425010432835984
+      Rocket_Orange-sheet_27: 1251016104899083229
+      Rocket_Orange-sheet_28: -4542862652425688226
+      Rocket_Orange-sheet_29: -1640198115902191234
+      Rocket_Orange-sheet_3: -8370177085482378540
+      Rocket_Orange-sheet_30: -2913275705039252584
+      Rocket_Orange-sheet_31: -3006541073893592696
+      Rocket_Orange-sheet_32: 4996237208679175605
+      Rocket_Orange-sheet_33: -2847056636456762164
+      Rocket_Orange-sheet_34: 267210405514407972
+      Rocket_Orange-sheet_35: 3776622807290052355
+      Rocket_Orange-sheet_36: 1240838493027996983
+      Rocket_Orange-sheet_37: 6299496259745438108
+      Rocket_Orange-sheet_38: 5089739344262730632
+      Rocket_Orange-sheet_39: 4700831889991329761
+      Rocket_Orange-sheet_4: -2939997975801565700
+      Rocket_Orange-sheet_5: 8959430940166571409
+      Rocket_Orange-sheet_6: -7324995256316804873
+      Rocket_Orange-sheet_7: -1109866405089695843
+      Rocket_Orange-sheet_8: 2899447648345575383
+      Rocket_Orange-sheet_9: -5795599441111988834
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -120,6 +120,26 @@ namespace FollowMe.KDS
             };
         }
 
+        public static int GetLikeCount(int stage) => stage switch
+        {
+            1 => 21, 2 => 26, 3 => 28,
+            4 => 24, 5 => 26, 6 => 28, 7 => 30, 8 => 32,
+            9 => 38, 10 => 42, 11 => 40,
+            12 => 14, 13 => 12, 14 => 10,
+            15 => 12, 16 => 8,
+            _ => 20
+        };
+
+        public static int GetDailyCount(int stage) => stage switch
+        {
+            1 => 5, 2 => 6, 3 => 7,
+            4 => 5, 5 => 5, 6 => 6, 7 => 6, 8 => 7,
+            9 => 6, 10 => 6, 11 => 7,
+            12 => 4, 13 => 4, 14 => 5,
+            15 => 8, 16 => 4,
+            _ => 5
+        };
+
         private static float[] BuildDefaultPhotoPositions(StageMapSpec spec)
         {
             if (spec.PhotoPoints <= 0)

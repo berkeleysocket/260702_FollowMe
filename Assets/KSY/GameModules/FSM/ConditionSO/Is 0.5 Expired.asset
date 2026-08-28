@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a41384f6453ae4392bb62c823b7594, type: 3}
-  m_Name: IsNotGround
-  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsGroundConditionSo
-  <IsNot>k__BackingField: 1
+  m_Script: {fileID: 11500000, guid: 2cd9a4ea0a99f1642a93758aff4d67b7, type: 3}
+  m_Name: Is 0.5 Expired
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsExpiredConditionSo
+  <IsNot>k__BackingField: 0
+  seconds: 0.5

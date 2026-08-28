@@ -58,11 +58,11 @@ namespace SeungyungLib.FSM
         }
     }
 
-    public class IsGroundCondition : AbstractCondition
+    public class IsGroundedCondition : AbstractCondition
     {
         private readonly IGroundCheckModule _groundChecker;
 
-        public IsGroundCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        public IsGroundedCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
         {
             _groundChecker = owner.GetModule<IGroundCheckModule>();
             
@@ -119,12 +119,12 @@ namespace SeungyungLib.FSM
         private void HandlePlayerHitEvent(PlayerHitEvent playerHitEvent) => _isHit = true;
     }
 
-    public class TimerCondition : AbstractCondition
+    public class IsExpiredCondition : AbstractCondition
     {
         private readonly float _duration;
         private float _startTime = -1f;
         
-        public TimerCondition(IModuleOwner owner, bool isNot, float duration) : base(owner, isNot)
+        public IsExpiredCondition(IModuleOwner owner, bool isNot, float duration) : base(owner, isNot)
         {
             this._duration = duration;
         }

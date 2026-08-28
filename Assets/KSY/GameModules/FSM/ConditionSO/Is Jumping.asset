@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62a41384f6453ae4392bb62c823b7594, type: 3}
-  m_Name: IsGround
-  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsGroundConditionSo
+  m_Script: {fileID: 11500000, guid: 1416ef3f419ae2a4b8d4ecc31d11b591, type: 3}
+  m_Name: Is Jumping
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsJumpingConditionSo
   <IsNot>k__BackingField: 0

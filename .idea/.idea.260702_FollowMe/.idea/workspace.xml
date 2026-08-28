@@ -9,25 +9,23 @@
   <component name="ChangeListManager">
     <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Player/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Player/Player.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/EventChannels/InputEventChannel.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/EventChannels/InputEventChannel.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsFall.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsFall.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsGround.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsGround.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsJumping.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsJumping.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsMoving.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsMoving.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsNotGround.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsNotGround.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsNotMoving.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/IsNotMoving.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/AbstractCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/AbstractCondition.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsFallConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsFallConditionSo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundConditionSo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsJumpingConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsJumpingConditionSo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsMovingConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsMovingConditionSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/isTargetInRange.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/isTargetInRange.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/StateType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/StateType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/SeungyungLib.FSM.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/SeungyungLib.FSM.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RangeCheckModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RangeCheckModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/EvenetChannelSystem/EventChannelSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/EvenetChannelSystem/EventChannelSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Attack_1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Attack_1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Attack_4.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Attack_4.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundedConditionSo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundConditionSo.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundedConditionSo.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/TimerConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsExpiredConditionSo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/TimerConditionSo.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

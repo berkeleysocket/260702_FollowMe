@@ -104,3 +104,17 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# --- Follow Me: local-only (do not commit) ---
+# WIP / reference screenshots (Unity MCP, Game view captures)
+/[Aa]ssets/Screenshots/
+
+# Agent async memo board (per-machine; agents read local copy)
+/Docs/AgentBoard.md
+
+# JetBrains Rider local IDE state
+/.idea/
+
+# itch download scratch (cookies, failed HTML pages)
+/[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/itch_cookies.txt
+/[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/temp_dl.html

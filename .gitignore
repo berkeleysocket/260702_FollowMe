@@ -117,4 +117,6 @@ InitTestScene*.unity*
 
 # itch download scratch (cookies, failed HTML pages)
 /[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/itch_cookies.txt
+/[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/itch_cookies.txt.meta
 /[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/temp_dl.html
+/[Aa]ssets/00.Work/KDS/05.Asset/_Downloads/temp_dl.html.meta

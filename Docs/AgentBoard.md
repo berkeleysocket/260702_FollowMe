@@ -17,6 +17,11 @@
 
 ## 📋 개발자 (Developer)
 
+[2026-08-28 08:42] T3 불꽃축제 S9~S11 재생성·공원 테마 적용 완료
+- `StageVisualThemeApplier`: T3=밤하늘+원경 스카이라인+잔디보도+가로등·나무·벤치+Teach/Setpiece 불꽃(Kenney star/magic)+S11 FestivalHollow
+- 메뉴 `Rebuild Fireworks Stages (S9-S11) From Scratch` / `Apply Fireworks Park Themes (S9-S11)`
+- MapPlan: S8 이후 T3 우선(T4 전) 반영. Unity MCP로 S9~S11 재생성·저장 확인
+
 [2026-08-27 09:45] S1~S16 스테이지 맵 씬 일괄 생성 완료
 - `StageSceneGenerator` 메뉴 `FollowMe/KDS/Generate All Stage Maps (S1-S16)` — Stage1 템플릿 복제 + `StageMapDatabase` 스펙 적용
 - 각 씬: `Level_S{N}` / `Zones`(Intro~Goal) / `MapModeZones` / `PhotoPoints` / `Triggers`(CP) / `Monsters`(슬롯) / `Forks` / `TempGround` 길이·카메라 `_maxX` 조정
@@ -107,6 +112,32 @@
 
 ## 📋 레벨 디자이너 (Level Designer)
 
+[2026-08-28 09:20] MapPlan 우선 맵 폴리시 Unity 적용 — S1·S2·S3·S4·S12·S15·S16
+- `StageMapLayoutBuilder` + Like/Daily/Goal/ForkPlatform/지면 배치 파이프라인 추가
+- S1: ♡21·일상5·포토3·ForkPlatform×2·StageGoal·CP×1·괴물0 확인
+- 메뉴 `FollowMe/KDS/Polish MapPlan Priority Stages` (Play 모드 OFF 필수)
+- PhotoProbePlayer 로컬 테스트 OK. 대사·SO 연동은 후순위
+
+[2026-08-28 08:48] T3 에셋 일괄 요청서 작성 — `KDS/Park_S9S11_AssetRequest.md` (아트 디렉터 핸드오프)
+- 필수 zip 3종: Park Zone + Akuarii33 fall + Stealthix Fireworks. 현재 Decoration→나무 대체는 그레이박스
+- 완료 정의: S4 vs S9 3초 구분 · S11 공허(불꽃OFF·조명↓)
+
+[2026-08-28 08:42] T3 불꽃축제 S9~S11 S8 이후 연결 완료
+- 도시공원 야간: 잔디+산책로+가로등·나무·벤치 / Teach·Setpiece 불꽃 VFX / S11 Pressure 공허(FestivalHollow)
+- 메뉴 Rebuild Fireworks Stages 실행됨. Game 뷰 Stage9~11 확인 → 타일·장애물 손작업
+- 다음: T4 지하철 S12 (막차 세트피스)
+
+[2026-08-28 00:25] S4~S8 건물 들뜸 수정 완료
+- 원인: (1) City Far 거리선 착시 (2) 스프라이트 하단 덩굴 여백 (3) 반투명 바닥이 하늘 비침
+- 조치: Far 제거 · 본체 기준 sink · 벽돌 불투명 보도. S4~S8 재적용. Game/Scene에서 Stage5 확인
+
+[2026-08-28 00:15] S4~S8 건물 들뜸 수정
+- 원인: City Far 원경 거리선과 TempGround(콜라이더만) 불일치. Far 제거 + 보도 비주얼 추가 + 스프라이트 지면 스냅
+- S4~S8 테마 재적용 완료
+
+[2026-08-28 00:10] S4~S8 카페 건물 지면 스냅 수정
+- 스프라이트 하단 여백 보정(sink) + bounds.min.Y를 TempGround 상단(0)에 스냅. S4~S8 테마 재적용 완료
+
 [2026-08-28 00:05] S4~S8 처음부터 재생성 실행 완료
 - 메뉴 Rebuild Cafe Stages 성공. S4: 가게7·골목20·플래폼3·포토3·괴물0 / S5: 포토2·괴물1 / S8: 가게8·괴물2
 - 카메라 `#FFE2B0` 카페톤. 에셋 zip 들어오면 City_Cafe 보강 가능 (`Cafe_S4S8_AssetRequest.md`)
@@ -160,6 +191,28 @@
 ---
 
 ## 📋 아트 디렉터 (Art Director)
+
+[2026-08-28 09:20] **KDS 맵 에셋만** — Cafe S4-S8 + Park S9-S11 반입·PPU32/Point (HUD/플레이어 X)
+- Cafe: `Wish_Drinks/` ✅ · `PixelPossum_Cafe/CoffeeShopStuff.png` · 기존 `coffeeshopstuff.png`
+- Park: `City_Park/` + `Stealthix_Fireworks/` ✅ (전 zip 반입 완료)
+- **204+32 meta** Point/PPU32 일괄 · 메뉴 `Apply Map Asset Import (Cafe S4-S8 + Park S9-S11)`
+- Applier/HUD/플레이어 연동 **안 함** — 레벨은 폴더 경로만 사용
+
+[2026-08-28 09:05] **T3 zip 3종 다운로드·풀기 완료** (itch NYOP $0)
+- `City_Park/ParkZone_CraftPix/` 193파일 · `Akuarii33_Park/` 시트 · `Stealthix_Fireworks/` 11시트
+- 원본 zip `_Downloads/` · SIL01은 itch **구매 필요**(trial도 로그인+결제) — NPC는 D+1 검정실루엣 or 수동
+- 다음: KDS Applier 연결 + Unity Point/PPU32 임포트 + 메뉴 S9~S11 재적용
+
+[2026-08-28 08:50] **T3 S9~S11 처리 완료** (`Park_S9S11_AssetRequest` §7)
+- 반입: Park Zone→`City_Park/ParkZone_CraftPix` · Akuarii33 fall→`Akuarii33_Park` · Fireworks→`Stealthix_Fireworks/` PPU32 Point
+- T3-01 hex **확정** → `Art_Palette_TileGuide.md` §2 T3-01
+- SIL01 trial **D+0 채택** · RagnaPixel **보류**(Kenney smoke D+0) · MasTho **컷**
+- zip 3종 `_Downloads/` **미수령** — 김동선 반입 후 Applier 경로·메뉴 재적용 (`Park_S9S11` §7-4)
+
+[2026-08-28 08:48] **레벨 요청 — T3 공원축제 S9~S11 에셋 (P1 승격)**
+- 요청서: `KDS/Park_S9S11_AssetRequest.md` — zip 3종 한 번에 (Park Zone + Akuarii33 + Stealthix Fireworks)
+- 현재 S9=City Decoration 임시 나무 → **공원 미인식**. T3-01 팔레트는 즉시 hex 확정 가능
+- D+0 반입 후 KDS가 `City_Park/` 임포트·Applier 연결. 다음 우선: T4 SakPix **이후**
 
 [2026-08-27 10:00] Act별 배경 테마 S1~S16 적용 완료 (보유 에셋)
 - 메뉴 `FollowMe/KDS/Apply Act Visual Themes` — T1봄하늘 / T2따뜻한틴트+Cafe소품 / T3 WarpedCity 밤스카이라인+불꽃 / T4 암화터널 / Act5 채도↓
@@ -301,6 +354,9 @@
 
 ## 📋 프로듀서 (Producer)
 
+[2026-08-28 08:42] 제작 순서 확정 — S8 이후 **T3(S9~S11)** → T4(S12)
+- MapPlan 갱신: Act3 컷 해제, S9~S11 필수 구간. Park zip 없이 City_Modern+Fireworks VFX로 그레이박스 통과
+
 [2026-08-25 16:38] Cursor 공동작성자 제거 + 재발 방지
 - KDS 팁 커밋에서 `Co-authored-by: Cursor` 삭제 후 force-push (`2958e06` → 훅 커밋 `6f36538`)
 - 방지: `.githooks/prepare-commit-msg` + `core.hooksPath=.githooks` / `~/.cursor/cli-config.json` attribution off
@@ -375,6 +431,11 @@
 ---
 
 ## 📋 테스터 (Tester)
+
+[2026-08-28 09:22] S1·S9 1차 플레이 점검 — **S1 루프 시작 전 병목 2건**
+- S1 Play: CP_Intro·MapMode HUD OK / **플레이어 스프라이트 없음(안 보임)** / DialogueSpeaker 없음 → 말풍선·캐릭터 감각 테스트 불가
+- S9 Game뷰: 밤·공원 톤은 S4와 구분됨 ✓ / **화면 3분할 밝기(버그?)** — 플레이어 입장 혼란. S11 공허는 미확인
+- 우선순위: KSY 본 플레이어+Speaker → S1 intro 독백·포토 E홀드·갈림길 체감 재테스트
 
 [2026-08-18 16:57] 아직 플레이 가능한 빌드 없음
 - Stage1 씬은 존재하지만 대사 트리거 미연결, 본격 플레이 테스트 불가

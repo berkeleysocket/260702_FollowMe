@@ -36,8 +36,38 @@ namespace FollowMe.KDS.Editor
 
         private const string CafeSheet =
             "Assets/00.Work/KDS/05.Asset/City_Cafe/coffeeshopstuff.png";
-        private const string FireworkSprite =
-            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Stealthix_Fires/Small_Fireball_10x26.png";
+        private const string DecorationSheet =
+            "Assets/00.Work/KDS/05.Asset/City_Modern/GandalfHardcore City Tiles/Decoration 32x32.png";
+        private const string FloorSheet =
+            "Assets/00.Work/KDS/05.Asset/City_Modern/GandalfHardcore City Tiles/GandalfHardcore city tiles 32x32.png";
+
+        private const string ParkGrassTile =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/1 Tiles/Tile_01.png";
+        private const string ParkPathTile =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/1 Tiles/Tile_40.png";
+        private const string ParkTree1 =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/3 Objects/Other/Tree2.png";
+        private const string ParkTree2 =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/3 Objects/Other/Tree3.png";
+        private const string ParkBench =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/3 Objects/Benches/1.png";
+        private const string ParkFountain =
+            "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/3 Objects/Fountain/1.png";
+        private const string AkuariiParkSheet =
+            "Assets/00.Work/KDS/05.Asset/City_Park/Akuarii33_Park/park assets.png";
+
+        private const string StealthixFireworksFolder =
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Stealthix_Fireworks";
+        private const string CityParkFolder = "Assets/00.Work/KDS/05.Asset/City_Park";
+
+        private static readonly string[] FireworkBurstSpritesFallback =
+        {
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Stealthix_Fires/Small_Fireball_10x26.png",
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Kenney_ParticlePack/PNG/star_05.png",
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Kenney_ParticlePack/PNG/star_07.png",
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Kenney_ParticlePack/PNG/magic_03.png",
+            "Assets/00.Work/KDS/05.Asset/VFX_Fireworks/Kenney_ParticlePack/PNG/magic_05.png"
+        };
 
         private const float ParallaxStep = 32f;
 
@@ -51,6 +81,12 @@ namespace FollowMe.KDS.Editor
         public static void ApplyCafeStreetThemes()
         {
             ApplyStages(4, 8, "[StageVisualTheme] S4~S8 City_Cafe 거리 테마 적용");
+        }
+
+        [MenuItem("FollowMe/KDS/Apply Fireworks Park Themes (S9-S11)")]
+        public static void ApplyFireworksParkThemes()
+        {
+            ApplyStages(9, 11, "[StageVisualTheme] S9~S11 도시공원 야간축제 테마 적용");
         }
 
         private static void ApplyStages(int from, int to, string header)
@@ -105,24 +141,23 @@ namespace FollowMe.KDS.Editor
             {
                 case StageTemplate.CafeAlley:
                 {
-                    // Near는 City 건물 끄고 City_Cafe 파사드로 거리 구성
+                    // 원경 City 거리선과 충돌 방지 — 하늘만 두고 카페 소품+지면 비주얼로 구성
                     var sky = LoadFirstSprite(CitySky);
-                    var far = LoadFirstSprite(CityFar);
                     return new Theme
                     {
                         CamBg = Hex("FFE2B0"),
                         SkyTint = new Color(1f, 0.94f, 0.8f, 1f),
-                        FarTint = new Color(1f, 0.9f, 0.78f, 0.85f),
+                        FarTint = Color.white,
                         NearTint = Color.white,
                         TileTint = new Color(1f, 0.93f, 0.84f, 1f),
                         SkySprite = sky,
-                        FarSprite = far,
+                        FarSprite = null,
                         NearSprite = null,
                         SkyScale = 1.15f,
-                        FarScale = 1.05f,
+                        FarScale = 1f,
                         NearScale = 1f,
                         SkyY = 4.5f,
-                        FarY = 1.4f,
+                        FarY = 1.2f,
                         NearY = 0.2f,
                         PropMode = PropMode.Cafe,
                         HideSky = false
@@ -131,25 +166,28 @@ namespace FollowMe.KDS.Editor
 
                 case StageTemplate.Fireworks:
                 {
-                    var sky = LoadFirstSprite(NeonSkyline) ?? LoadFirstSprite(CitySky);
-                    var far = LoadFirstSprite(NeonBuildings) ?? LoadFirstSprite(CityFar);
-                    var near = LoadFirstSprite(NeonNear) ?? LoadFirstSprite(CityNear);
+                    // 밤하늘 + 원경 도시 스카이라인. 근경 건물은 제거 → 공원 소품으로 대체
+                    var sky = LoadFirstSprite(CitySky);
+                    var far = LoadFirstSprite(NeonSkyline) ?? LoadFirstSprite(CityFar);
+                    bool hollow = spec.Stage >= 11;
                     return new Theme
                     {
-                        CamBg = Hex("0C1024"),
-                        SkyTint = new Color(0.55f, 0.45f, 0.85f, 1f),
-                        FarTint = new Color(0.75f, 0.6f, 0.95f, 1f),
+                        CamBg = Hex("141828"),
+                        SkyTint = new Color(0.22f, 0.26f, 0.42f, 1f),
+                        FarTint = new Color(0.38f, 0.34f, 0.52f, 0.9f),
                         NearTint = Color.white,
-                        TileTint = new Color(0.75f, 0.7f, 0.85f, 1f),
+                        TileTint = hollow
+                            ? new Color(0.42f, 0.48f, 0.38f, 1f)
+                            : new Color(0.52f, 0.58f, 0.42f, 1f),
                         SkySprite = sky,
                         FarSprite = far,
-                        NearSprite = near,
-                        SkyScale = FitScale(sky, 34f, 8f),
-                        FarScale = FitScale(far, 34f, 8f),
-                        NearScale = FitScale(near, 32f, 8f),
-                        SkyY = 3.5f,
-                        FarY = 1.5f,
-                        NearY = 0.4f,
+                        NearSprite = null,
+                        SkyScale = 1.2f,
+                        FarScale = FitScale(far, 36f, 7f),
+                        NearScale = 1f,
+                        SkyY = 4.8f,
+                        FarY = 2.2f,
+                        NearY = 0.2f,
                         PropMode = PropMode.Fireworks,
                         HideSky = false
                     };
@@ -236,31 +274,70 @@ namespace FollowMe.KDS.Editor
         {
             string[] paths =
             {
-                NeonSkyline, NeonBuildings, NeonNear, NeonBanner, CafeSheet
+                NeonSkyline, NeonBuildings, NeonNear, NeonBanner, CafeSheet,
+                DecorationSheet, FloorSheet, AkuariiParkSheet,
+                ParkGrassTile, ParkPathTile, ParkTree1, ParkTree2, ParkBench, ParkFountain
             };
 
+            EnsurePointImportFolder(StealthixFireworksFolder);
+            EnsurePointImportFolder(CityParkFolder);
+
+            foreach (var burst in GetFireworkBurstSpritePaths())
+                EnsurePointImport(burst);
+
             foreach (var path in paths)
+                EnsurePointImport(path);
+        }
+
+        private static void EnsurePointImportFolder(string assetFolder)
+        {
+            if (!AssetDatabase.IsValidFolder(assetFolder))
+                return;
+
+            foreach (string guid in AssetDatabase.FindAssets("t:Texture2D", new[] { assetFolder }))
+                EnsurePointImport(AssetDatabase.GUIDToAssetPath(guid));
+        }
+
+        private static void EnsurePointImport(string path)
+        {
+            if (string.IsNullOrEmpty(path) || !File.Exists(path))
+                return;
+
+            var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (importer == null)
+                return;
+
+            bool dirty = false;
+            if (Mathf.Abs(importer.spritePixelsPerUnit - 32f) > 0.01f)
             {
-                if (!File.Exists(path)) continue;
-                var importer = AssetImporter.GetAtPath(path) as TextureImporter;
-                if (importer == null) continue;
-
-                bool dirty = false;
-                if (Mathf.Abs(importer.spritePixelsPerUnit - 32f) > 0.01f)
-                {
-                    importer.spritePixelsPerUnit = 32f;
-                    dirty = true;
-                }
-
-                if (importer.filterMode != FilterMode.Point)
-                {
-                    importer.filterMode = FilterMode.Point;
-                    dirty = true;
-                }
-
-                if (dirty)
-                    importer.SaveAndReimport();
+                importer.spritePixelsPerUnit = 32f;
+                dirty = true;
             }
+
+            if (importer.filterMode != FilterMode.Point)
+            {
+                importer.filterMode = FilterMode.Point;
+                dirty = true;
+            }
+
+            if (dirty)
+                importer.SaveAndReimport();
+        }
+
+        private static string[] GetFireworkBurstSpritePaths()
+        {
+            var paths = new List<string>();
+            if (AssetDatabase.IsValidFolder(StealthixFireworksFolder))
+            {
+                foreach (string guid in AssetDatabase.FindAssets("t:Texture2D", new[] { StealthixFireworksFolder }))
+                    paths.Add(AssetDatabase.GUIDToAssetPath(guid));
+                paths.Sort(StringComparer.Ordinal);
+            }
+
+            if (paths.Count == 0)
+                paths.AddRange(FireworkBurstSpritesFallback);
+
+            return paths.ToArray();
         }
 
         private static void RebuildParallax(Transform bg, StageMapSpec spec, Theme theme)
@@ -346,8 +423,7 @@ namespace FollowMe.KDS.Editor
                     PlaceAlleyShade(props, spec);
                     break;
                 case PropMode.Fireworks:
-                    PlaceNeonBanners(props, spec);
-                    PlaceFireworks(props, spec);
+                    PlaceParkFestival(props, spec);
                     break;
                 case PropMode.Subway:
                     PlaceSubwayDarkness(props, spec);
@@ -387,6 +463,8 @@ namespace FollowMe.KDS.Editor
             // 스테이지별 밀도 오프셋 (S4 여유 → S8 빽빽)
             float gapExtra = Mathf.Lerp(4.2f, 2.6f, (spec.Stage - 4) / 4f);
 
+            PlaceCafeGroundVisual(parent, spec);
+
             PlaceCafeShopsInRange(parent, spec, facade, teaBar, lampA, lampB, brick, table, stool, trash,
                 8f, spec.TeachEnd, gapExtra, bright: true, startIndex: 0);
             PlaceCafeShopsInRange(parent, spec, facade, teaBar, lampA, lampB, brick, table, stool, trash,
@@ -410,12 +488,69 @@ namespace FollowMe.KDS.Editor
                 while (fx < spec.TeachEnd)
                 {
                     CreateProp(parent, $"CafeFence_{fi}", fence,
-                        new Vector3(fx, GroundedY(fence, fScale) * 0.85f, 0f),
-                        new Color(1f, 0.96f, 0.92f, 0.95f), -4, fScale);
+                        new Vector3(fx, GroundedY(fence, fScale), 0f),
+                        new Color(1f, 0.96f, 0.92f, 0.95f), -4, fScale, snapGround: true, sink: 0.2f);
                     fx += Mathf.Max(1.2f, fStep);
                     fi++;
                 }
             }
+        }
+
+        private static void PlaceCafeGroundVisual(Transform parent, StageMapSpec spec)
+        {
+            // 불투명 벽돌 타일로 보도 구성 (Sprite.Create 반투명이 하늘 비침 유발)
+            Sprite[] cafe = LoadAllSprites(CafeSheet);
+            Sprite brick = cafe != null && cafe.Length > 36 ? cafe[36] : null;
+            if (brick == null)
+            {
+                // fallback: 단색
+                var tex = Texture2D.whiteTexture;
+                var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 1f), 4f);
+                var go = new GameObject("CafeGroundVisual");
+                go.transform.SetParent(parent, false);
+                go.transform.position = new Vector3(spec.LengthX * 0.5f, GroundTopY, 0f);
+                go.transform.localScale = new Vector3(spec.LengthX + 40f, 1.2f, 1f);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = spr;
+                sr.color = new Color(0.42f, 0.36f, 0.32f, 1f);
+                sr.sortingOrder = -12;
+                return;
+            }
+
+            float scale = 2.8f;
+            float half = SpriteHalfWidth(brick, scale);
+            float step = half * 2f * 0.98f;
+            float x = -10f;
+            int i = 0;
+            while (x < spec.LengthX + 10f)
+            {
+                // 상단이 Y=0(플레이 지면)에 오도록
+                var top = CreateProp(parent, $"CafeGroundTile_{i}", brick,
+                    new Vector3(x, 0f, 0f),
+                    new Color(0.55f, 0.48f, 0.42f, 1f), -12, scale);
+                SnapMaxY(top, GroundTopY);
+
+                var below = CreateProp(parent, $"CafeGroundTileDeep_{i}", brick,
+                    new Vector3(x, 0f, 0f),
+                    new Color(0.35f, 0.3f, 0.28f, 1f), -13, scale);
+                if (below != null)
+                {
+                    var bsr = below.GetComponent<SpriteRenderer>();
+                    SnapMaxY(below, GroundTopY - bsr.bounds.size.y * 0.9f);
+                }
+
+                x += step;
+                i++;
+            }
+        }
+
+        private static void SnapMaxY(GameObject go, float maxY)
+        {
+            if (go == null) return;
+            var sr = go.GetComponent<SpriteRenderer>();
+            if (sr == null) return;
+            float dy = maxY - sr.bounds.max.y;
+            go.transform.position += new Vector3(0f, dy, 0f);
         }
 
         private static void PlaceCafeShopsInRange(
@@ -439,7 +574,7 @@ namespace FollowMe.KDS.Editor
                 Color tint = bright ? Color.white : new Color(0.75f, 0.78f, 0.82f, 1f);
 
                 CreateProp(parent, $"CafeShop_{shopIndex}", shop,
-                    new Vector3(x, GroundedY(shop, scale), 0f), tint, -8, scale);
+                    new Vector3(x, 0f, 0f), tint, -8, scale, snapGround: true, sink: CafeContentSink(shop, scale));
 
                 if (brick != null && shopIndex % 2 == 0)
                 {
@@ -447,35 +582,35 @@ namespace FollowMe.KDS.Editor
                     if (wallX < xEnd)
                     {
                         CreateProp(parent, $"CafeBrick_{shopIndex}", brick,
-                            new Vector3(wallX, GroundedY(brick, 2.6f), 0f),
-                            new Color(1f, 0.95f, 0.9f, 1f), -9, 2.6f);
+                            new Vector3(wallX, 0f, 0f),
+                            new Color(1f, 0.95f, 0.9f, 1f), -9, 2.6f, snapGround: true, sink: 0.1f);
                     }
                 }
 
                 float lampX = x + SpriteHalfWidth(shop, scale) + 0.35f;
                 Sprite lamp = shopIndex % 2 == 0 ? lampA : lampB;
                 CreateProp(parent, $"CafeLamp_{shopIndex}", lamp,
-                    new Vector3(lampX, GroundedY(lamp, lampScale), 0f), tint, -3, lampScale);
+                    new Vector3(lampX, 0f, 0f), tint, -3, lampScale, snapGround: true, sink: CafeContentSink(lamp, lampScale));
 
                 if (table != null)
                 {
                     CreateProp(parent, $"CafeTable_{shopIndex}", table,
-                        new Vector3(x - SpriteHalfWidth(shop, scale) * 0.3f, GroundedY(table, propScale), 0f),
-                        tint, -2, propScale);
+                        new Vector3(x - SpriteHalfWidth(shop, scale) * 0.3f, 0f, 0f),
+                        tint, -2, propScale, snapGround: true, sink: 0.05f);
                 }
 
                 if (stool != null)
                 {
                     CreateProp(parent, $"CafeStool_{shopIndex}", stool,
-                        new Vector3(x + 0.7f, GroundedY(stool, propScale), 0f),
-                        tint, -1, propScale);
+                        new Vector3(x + 0.7f, 0f, 0f),
+                        tint, -1, propScale, snapGround: true, sink: 0.05f);
                 }
 
                 if (trash != null && shopIndex % 2 == 1)
                 {
                     CreateProp(parent, $"CafeTrash_{shopIndex}", trash,
-                        new Vector3(lampX + 0.65f, GroundedY(trash, propScale), 0f),
-                        tint, -2, propScale);
+                        new Vector3(lampX + 0.65f, 0f, 0f),
+                        tint, -2, propScale, snapGround: true, sink: 0.05f);
                 }
 
                 x += SpriteHalfWidth(shop, scale) * 2f + gapExtra;
@@ -489,7 +624,7 @@ namespace FollowMe.KDS.Editor
             float end = Mathf.Max(spec.PressureEnd, spec.SetpieceEnd);
             if (end <= start + 2f) return;
 
-            // 골목 벽 반복
+            // 골목 벽 반복 — 하단은 지면, 상단은 그 위
             if (brick != null)
             {
                 float bx = start + 1f;
@@ -499,12 +634,21 @@ namespace FollowMe.KDS.Editor
                 while (bx < end - 1f)
                 {
                     Color wallTint = new Color(0.55f, 0.58f, 0.62f, 1f);
-                    CreateProp(parent, $"AlleyWall_L_{i}", brick,
-                        new Vector3(bx, GroundedY(brick, scale) + 0.8f, 0f), wallTint, -9, scale);
-                    // 위쪽 한 단 더 (좁은 골목 높이감)
-                    CreateProp(parent, $"AlleyWall_H_{i}", brick,
-                        new Vector3(bx, GroundedY(brick, scale) + 2.6f, 0f),
-                        new Color(0.45f, 0.48f, 0.52f, 1f), -10, scale);
+                    var low = CreateProp(parent, $"AlleyWall_L_{i}", brick,
+                        new Vector3(bx, GroundedY(brick, scale), 0f), wallTint, -9, scale,
+                        snapGround: true, sink: 0.25f);
+
+                    if (low != null)
+                    {
+                        var lowSr = low.GetComponent<SpriteRenderer>();
+                        float pivotNormY = brick.pivot.y / brick.rect.height;
+                        float height = brick.rect.height / brick.pixelsPerUnit * scale;
+                        float highY = lowSr.bounds.max.y - 0.1f + height * pivotNormY;
+                        CreateProp(parent, $"AlleyWall_H_{i}", brick,
+                            new Vector3(bx, highY, 0f),
+                            new Color(0.45f, 0.48f, 0.52f, 1f), -10, scale);
+                    }
+
                     bx += Mathf.Max(1.5f, step);
                     i++;
                 }
@@ -517,8 +661,9 @@ namespace FollowMe.KDS.Editor
                 {
                     float lx = Mathf.Lerp(start + 3f, end - 3f, (i + 1f) / 4f);
                     CreateProp(parent, $"AlleyLamp_{i}", lamp,
-                        new Vector3(lx, GroundedY(lamp, 2.2f), 0f),
-                        new Color(0.7f, 0.75f, 0.85f, 1f), -3, 2.2f);
+                        new Vector3(lx, 0f, 0f),
+                        new Color(0.7f, 0.75f, 0.85f, 1f), -3, 2.2f, snapGround: true,
+                        sink: CafeContentSink(lamp, 2.2f));
                 }
             }
 
@@ -527,7 +672,7 @@ namespace FollowMe.KDS.Editor
             {
                 CreateProp(parent, "AlleyProp_End", fridge,
                     new Vector3(spec.SetpieceEnd - 4f, GroundedY(fridge, 2f), 0f),
-                    new Color(0.8f, 0.82f, 0.85f, 1f), -2, 2f);
+                    new Color(0.8f, 0.82f, 0.85f, 1f), -2, 2f, snapGround: true, sink: 0.2f);
             }
         }
 
@@ -577,14 +722,14 @@ namespace FollowMe.KDS.Editor
                 Sprite dress = i == 0 ? facade : (i == 1 ? teaBar : (fridge ?? facade));
                 float scale = i == 0 ? 2.5f : 2.2f;
                 CreateProp(parent, $"PhotoDress_{i + 1}", dress,
-                    new Vector3(px, GroundedY(dress, scale), 0f),
-                    Color.white, -7, scale);
+                    new Vector3(px, 0f, 0f),
+                    Color.white, -7, scale, snapGround: true, sink: CafeContentSink(dress, scale));
 
                 if (table != null)
                 {
                     CreateProp(parent, $"PhotoDressTable_{i + 1}", table,
-                        new Vector3(px - 1.2f, GroundedY(table, 2.3f), 0f),
-                        Color.white, -2, 2.3f);
+                        new Vector3(px - 1.2f, 0f, 0f),
+                        Color.white, -2, 2.3f, snapGround: true, sink: 0.05f);
                 }
             }
         }
@@ -595,11 +740,70 @@ namespace FollowMe.KDS.Editor
             return sprite.rect.width / sprite.pixelsPerUnit * scale * 0.5f;
         }
 
-        private static float GroundedY(Sprite sprite, float scale)
+        /// <summary>TempGround 콜라이더 상단(Y=0).</summary>
+        private const float GroundTopY = 0f;
+        private const float DefaultGroundSink = 0.08f;
+
+        /// <summary>
+        /// 스프라이트 하단 성긴 픽셀(덩굴 등)을 지나 본체(밀집 픽셀)가 지면에 닿도록 sink 계산.
+        /// </summary>
+        private static float CafeContentSink(Sprite sprite, float scale)
         {
-            if (sprite == null) return 1f;
-            // 피벗 중앙 가정 — 바닥(Y≈0)에 맞춤
-            return sprite.rect.height / sprite.pixelsPerUnit * scale * 0.5f;
+            if (sprite == null) return DefaultGroundSink;
+
+            // 이름 기반 기본값 (텍스처 읽기 실패 시)
+            float fallback = DefaultGroundSink;
+            if (sprite.name.EndsWith("_0") || sprite.name.EndsWith("_1"))
+                fallback = 1.25f;
+            else if (sprite.name.EndsWith("_2") || sprite.name.EndsWith("_3"))
+                fallback = 0.4f;
+
+            try
+            {
+                var path = UnityEditor.AssetDatabase.GetAssetPath(sprite.texture);
+                var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+                if (importer == null || !importer.isReadable)
+                    return fallback;
+
+                var r = sprite.rect;
+                var tex = sprite.texture;
+                int firstDense = -1;
+                float threshold = r.width * 0.7f;
+                for (int y = 0; y < (int)r.height; y++)
+                {
+                    int solid = 0;
+                    for (int x = 0; x < (int)r.width; x++)
+                    {
+                        if (tex.GetPixel((int)r.x + x, (int)r.y + y).a > 0.5f)
+                            solid++;
+                    }
+
+                    if (solid > threshold)
+                    {
+                        firstDense = y;
+                        break;
+                    }
+                }
+
+                if (firstDense <= 0)
+                    return fallback;
+
+                return firstDense / sprite.pixelsPerUnit * scale + 0.12f;
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        private static float GroundedY(Sprite sprite, float scale, float sink = DefaultGroundSink)
+        {
+            if (sprite == null) return GroundTopY + 1f;
+            float pivotNormY = sprite.rect.height > 0.01f
+                ? sprite.pivot.y / sprite.rect.height
+                : 0.5f;
+            float height = sprite.rect.height / sprite.pixelsPerUnit * scale;
+            return (GroundTopY - sink) + height * pivotNormY;
         }
 
         private static void PlaceAlleyShade(Transform parent, StageMapSpec spec)
@@ -622,6 +826,265 @@ namespace FollowMe.KDS.Editor
             sr.sortingOrder = -6;
         }
 
+        /// <summary>
+        /// T3 도시공원 야간축제 — 잔디 보도 + 가로등·나무 + Teach/Setpiece 불꽃 + S11 공허 구간.
+        /// </summary>
+        private static void PlaceParkFestival(Transform parent, StageMapSpec spec)
+        {
+            Sprite grassTile = LoadFirstSprite(ParkGrassTile);
+            Sprite pathTile = LoadFirstSprite(ParkPathTile) ?? grassTile;
+            Sprite tree = LoadFirstSprite(ParkTree1);
+            Sprite treeAlt = LoadFirstSprite(ParkTree2) ?? tree;
+            Sprite bench = LoadFirstSprite(ParkBench);
+            Sprite lamp = LoadFirstSprite(ParkFountain);
+            Sprite lampAlt = LoadFirstSprite(
+                "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/3 Objects/Fountain/2.png") ?? lamp;
+
+            Sprite[] deco = LoadAllSprites(DecorationSheet);
+            if (tree == null && deco != null && deco.Length > 14)
+                tree = deco[14];
+            if (treeAlt == null)
+                treeAlt = tree;
+            if (bench == null && deco != null && deco.Length > 9)
+                bench = deco[9];
+            if (lamp == null && deco != null && deco.Length > 3)
+            {
+                lamp = deco[3];
+                lampAlt = deco.Length > 4 ? deco[4] : lamp;
+            }
+
+            if (grassTile == null)
+            {
+                Debug.LogWarning("[StageVisualTheme] Park Zone 타일 없음 — City Floor 폴백");
+                Sprite[] floor = LoadAllSprites(FloorSheet);
+                grassTile = floor != null && floor.Length > 2 ? floor[2] : null;
+                pathTile = grassTile;
+            }
+
+            if (tree == null && bench == null)
+            {
+                Debug.LogWarning("[StageVisualTheme] 공원 소품 부족 — 불꽃만 배치");
+                PlaceFireworks(parent, spec);
+                return;
+            }
+
+            float gapExtra = Mathf.Lerp(5f, 3.2f, (spec.Stage - 9) / 2f);
+
+            PlaceParkGroundVisual(parent, spec, grassTile, pathTile);
+            PlaceParkSceneryInRange(parent, spec, lamp, lampAlt, tree, treeAlt, bench,
+                6f, spec.IntroEnd, gapExtra + 0.6f, bright: true, startIndex: 0);
+            PlaceParkSceneryInRange(parent, spec, lamp, lampAlt, tree, treeAlt, bench,
+                spec.BreathEnd, spec.GoalEnd, gapExtra + 0.8f, bright: spec.Stage < 11, startIndex: 200);
+
+            // Teach·Setpiece: 불꽃 밀집 (♡ 윈도우 연출)
+            PlaceFireworksInRange(parent, spec, spec.IntroEnd, spec.TeachEnd, count: 5 + spec.Stage - 8);
+            PlaceFireworksInRange(parent, spec, spec.BreathEnd, spec.SetpieceEnd, count: 4 + spec.Stage - 9);
+
+            // Pressure: S11은 축제 끝 공허 — 조명↓·소품 희소
+            if (spec.HasPressure)
+            {
+                float hollowAlpha = spec.Stage >= 11 ? 0.48f : 0.28f;
+                PlaceFestivalHollow(parent, spec, spec.TeachEnd, spec.PressureEnd, hollowAlpha);
+                if (spec.Stage < 11)
+                {
+                    PlaceParkSceneryInRange(parent, spec, lamp, lampAlt, tree, treeAlt, bench,
+                        spec.TeachEnd + 2f, spec.PressureEnd - 2f, gapExtra + 1.4f, bright: false, startIndex: 300);
+                }
+            }
+
+            PlaceParkPhotoDressing(parent, spec, lamp, bench, tree);
+            PlacePhoneNpcSilhouettes(parent, spec);
+        }
+
+        private static void PlaceParkGroundVisual(Transform parent, StageMapSpec spec, Sprite grassTile, Sprite pathTile)
+        {
+            if (grassTile == null)
+            {
+                var tex = Texture2D.whiteTexture;
+                var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 1f), 4f);
+                var go = new GameObject("ParkGroundVisual");
+                go.transform.SetParent(parent, false);
+                go.transform.position = new Vector3(spec.LengthX * 0.5f, GroundTopY, 0f);
+                go.transform.localScale = new Vector3(spec.LengthX + 40f, 1.4f, 1f);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = spr;
+                sr.color = new Color(0.28f, 0.38f, 0.24f, 1f);
+                sr.sortingOrder = -12;
+                return;
+            }
+
+            float scale = grassTile.pixelsPerUnit >= 30f ? 1f : 2.8f;
+            Sprite pathSprite = pathTile ?? grassTile;
+            float step = SpriteHalfWidth(grassTile, scale) * 2f * 0.98f;
+            float x = -10f;
+            int i = 0;
+            Color grass = spec.Stage >= 11
+                ? new Color(0.32f, 0.38f, 0.28f, 1f)
+                : new Color(0.38f, 0.48f, 0.3f, 1f);
+            Color pathTint = new Color(0.48f, 0.42f, 0.34f, 1f);
+
+            while (x < spec.LengthX + 10f)
+            {
+                bool isPath = i % 3 == 1;
+                Sprite groundSprite = isPath ? pathSprite : grassTile;
+                var top = CreateProp(parent, $"ParkGround_{i}", groundSprite,
+                    new Vector3(x, 0f, 0f), isPath ? pathTint : grass, -12, scale);
+                SnapMaxY(top, GroundTopY);
+
+                var deep = CreateProp(parent, $"ParkGroundDeep_{i}", grassTile,
+                    new Vector3(x, 0f, 0f),
+                    new Color(grass.r * 0.7f, grass.g * 0.7f, grass.b * 0.7f, 1f), -13, scale);
+                if (deep != null)
+                {
+                    var dsr = deep.GetComponent<SpriteRenderer>();
+                    SnapMaxY(deep, GroundTopY - dsr.bounds.size.y * 0.9f);
+                }
+
+                x += step;
+                i++;
+            }
+        }
+
+        private static void PlaceParkSceneryInRange(
+            Transform parent, StageMapSpec spec,
+            Sprite lamp, Sprite lampAlt, Sprite tree, Sprite treeAlt, Sprite bench,
+            float xStart, float xEnd, float gapExtra, bool bright, int startIndex)
+        {
+            const float lampScale = 2.6f;
+            const float treeScale = 3.2f;
+            const float benchScale = 2.4f;
+
+            float x = xStart;
+            int index = startIndex;
+            Color tint = bright ? Color.white : new Color(0.55f, 0.58f, 0.62f, 0.9f);
+            Color warmLamp = bright
+                ? new Color(1f, 0.92f, 0.65f, 1f)
+                : new Color(0.65f, 0.68f, 0.75f, 0.85f);
+
+            while (x < xEnd - 4f && x < spec.LengthX - 4f)
+            {
+                bool useTree = index % 2 == 0;
+                if (useTree)
+                {
+                    Sprite t = index % 4 == 0 ? tree : treeAlt;
+                    CreateProp(parent, $"ParkTree_{index}", t,
+                        new Vector3(x, 0f, 0f), tint, -8, treeScale, snapGround: true, sink: 0.15f);
+                }
+                else
+                {
+                    Sprite l = index % 3 == 0 ? lampAlt : lamp;
+                    CreateProp(parent, $"ParkLamp_{index}", l,
+                        new Vector3(x, 0f, 0f), warmLamp, -3, lampScale, snapGround: true, sink: 0.2f);
+                }
+
+                if (index % 3 == 1)
+                {
+                    CreateProp(parent, $"ParkBench_{index}", bench,
+                        new Vector3(x + 1.1f, 0f, 0f), tint, -2, benchScale, snapGround: true, sink: 0.08f);
+                }
+
+                float step = useTree
+                    ? SpriteHalfWidth(tree, treeScale) * 2f + gapExtra
+                    : SpriteHalfWidth(lamp, lampScale) * 2f + gapExtra * 0.8f;
+                x += Mathf.Max(2.5f, step);
+                index++;
+            }
+        }
+
+        private static void PlaceFireworksInRange(Transform parent, StageMapSpec spec, float xStart, float xEnd, int count)
+        {
+            if (count <= 0 || xEnd <= xStart + 2f) return;
+
+            var bursts = new List<Sprite>();
+            foreach (var path in GetFireworkBurstSpritePaths())
+            {
+                var s = LoadFirstSprite(path);
+                if (s != null) bursts.Add(s);
+            }
+
+            if (bursts.Count == 0) return;
+
+            Color[] tints =
+            {
+                new Color(1f, 0.85f, 0.45f, 0.95f),
+                new Color(1f, 0.55f, 0.35f, 0.92f),
+                new Color(0.95f, 0.7f, 1f, 0.9f),
+                new Color(0.6f, 0.85f, 1f, 0.88f)
+            };
+
+            for (int i = 0; i < count; i++)
+            {
+                float t = count == 1 ? 0.5f : i / (float)(count - 1);
+                float x = Mathf.Lerp(xStart + 2f, xEnd - 2f, t);
+                float y = 3.2f + (i % 3) * 1.4f + (i % 2) * 0.6f;
+                Sprite burst = bursts[i % bursts.Count];
+                float scale = burst.name.Contains("star") || burst.name.Contains("magic") ? 3.5f
+                    : burst.name.Contains("Explosion") || burst.name.Contains("Rocket") ? 2.2f : 2.8f;
+                CreateProp(parent, $"Firework_{xStart:F0}_{i}", burst,
+                    new Vector3(x, y, 0f), tints[i % tints.Length], 6, scale);
+            }
+        }
+
+        private static void PlaceFestivalHollow(Transform parent, StageMapSpec spec, float start, float end, float alpha)
+        {
+            if (end <= start + 2f) return;
+
+            var tex = Texture2D.whiteTexture;
+            var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 1f);
+            float center = (start + end) * 0.5f;
+            float width = end - start;
+            var go = new GameObject("FestivalHollow");
+            go.transform.SetParent(parent, false);
+            go.transform.position = new Vector3(center, 3f, 0f);
+            go.transform.localScale = new Vector3(width, 8f, 1f);
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = spr;
+            sr.color = new Color(0.04f, 0.06f, 0.12f, alpha);
+            sr.sortingOrder = -6;
+        }
+
+        private static void PlaceParkPhotoDressing(Transform parent, StageMapSpec spec, Sprite lamp, Sprite bench, Sprite tree)
+        {
+            float[] photos = StageMapDatabase.GetPhotoPositions(spec);
+            for (int i = 0; i < photos.Length; i++)
+            {
+                float px = photos[i];
+                Sprite dress = i == 0 ? tree : (i == 1 ? lamp : bench);
+                float scale = i == 0 ? 3f : 2.5f;
+                CreateProp(parent, $"PhotoParkDress_{i + 1}", dress,
+                    new Vector3(px, 0f, 0f), Color.white, -7, scale, snapGround: true, sink: 0.12f);
+
+                // 불꽃 피크 포토(X~48)는 하늘 불꽃 추가
+                if (i == 0)
+                    PlaceFireworksInRange(parent, spec, px - 4f, px + 6f, count: 3);
+            }
+        }
+
+        private static void PlacePhoneNpcSilhouettes(Transform parent, StageMapSpec spec)
+        {
+            var tex = Texture2D.whiteTexture;
+            var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0f), 1f);
+            float[] xs =
+            {
+                Mathf.Lerp(spec.IntroEnd, spec.TeachEnd, 0.35f),
+                Mathf.Lerp(spec.BreathEnd, spec.SetpieceEnd, 0.4f),
+                Mathf.Lerp(spec.SetpieceEnd, spec.GoalEnd, 0.55f)
+            };
+
+            for (int i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] > spec.LengthX - 8f) continue;
+                var go = new GameObject($"NpcPhone_{i + 1}");
+                go.transform.SetParent(parent, false);
+                go.transform.position = new Vector3(xs[i], GroundTopY + 0.9f, 0f);
+                go.transform.localScale = new Vector3(0.55f, 1.6f, 1f);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = spr;
+                sr.color = new Color(0.08f, 0.08f, 0.1f, 0.88f);
+                sr.sortingOrder = -1;
+            }
+        }
+
         private static void PlaceNeonBanners(Transform parent, StageMapSpec spec)
         {
             var banner = LoadFirstSprite(NeonBanner);
@@ -637,16 +1100,8 @@ namespace FollowMe.KDS.Editor
 
         private static void PlaceFireworks(Transform parent, StageMapSpec spec)
         {
-            var fire = LoadFirstSprite(FireworkSprite);
-            if (fire == null) return;
-            float teach = spec.TeachEnd;
-            for (int i = 0; i < 6; i++)
-            {
-                float x = Mathf.Lerp(teach * 0.4f, spec.SetpieceEnd, i / 5f);
-                float y = 3.5f + (i % 3) * 1.2f;
-                CreateProp(parent, $"Firework_{i + 1}", fire, new Vector3(x, y, 0f),
-                    new Color(1f, 0.85f, 0.5f, 0.95f), 5, 2.5f);
-            }
+            PlaceFireworksInRange(parent, spec, spec.IntroEnd, spec.TeachEnd, count: 4);
+            PlaceFireworksInRange(parent, spec, spec.BreathEnd, spec.SetpieceEnd, count: 3);
         }
 
         private static void PlaceSubwayDarkness(Transform parent, StageMapSpec spec)
@@ -686,8 +1141,25 @@ namespace FollowMe.KDS.Editor
                 CreateProp(parent, "NeonAccent_2", banner, new Vector3(110f, 3.2f, 0f), Color.white, -4, 1.1f);
         }
 
-        private static void CreateProp(
-            Transform parent, string name, Sprite sprite, Vector3 pos, Color tint, int order, float scale)
+        private static float ContentBottomSink(Sprite sprite, float scale)
+        {
+            if (sprite == null) return DefaultGroundSink;
+
+            // 시트 하단의 성긴 픽셀(덩굴 등)만큼 추가 가라앉힘
+            string n = sprite.name;
+            if (n.EndsWith("_0") || n.EndsWith("_1"))
+                return 0.62f; // 카페/티바 파사드
+            if (n.EndsWith("_2") || n.EndsWith("_3"))
+                return 0.22f; // 가로등
+            if (n.EndsWith("_40") || n.EndsWith("_39"))
+                return 0.5f;
+
+            return DefaultGroundSink;
+        }
+
+        private static GameObject CreateProp(
+            Transform parent, string name, Sprite sprite, Vector3 pos, Color tint, int order, float scale,
+            bool snapGround = false, float sink = -1f)
         {
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
@@ -697,6 +1169,15 @@ namespace FollowMe.KDS.Editor
             sr.sprite = sprite;
             sr.color = tint;
             sr.sortingOrder = order;
+
+            if (snapGround && sprite != null)
+            {
+                float useSink = sink >= 0f ? sink : ContentBottomSink(sprite, scale);
+                float dy = (GroundTopY - useSink) - sr.bounds.min.y;
+                go.transform.position += new Vector3(0f, dy, 0f);
+            }
+
+            return go;
         }
 
         private static Sprite LoadFirstSprite(string assetPath)

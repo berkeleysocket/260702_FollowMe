@@ -76,7 +76,87 @@ namespace FollowMe.KDS.Editor
             Debug.Log(results.ToString());
         }
 
-        private static void RebuildStage(int stage, System.Text.StringBuilder results)
+        /// <summary>
+        /// Act3 불꽃축제 S9~S11을 Stage1 템플릿부터 삭제·재생성 (S8 이후 연결).
+        /// </summary>
+        [MenuItem("FollowMe/KDS/Rebuild Fireworks Stages (S9-S11) From Scratch")]
+        public static void RebuildFireworksStagesFromScratch()
+        {
+            if (!File.Exists(TemplateScenePath))
+            {
+                Debug.LogError($"[StageSceneGenerator] 템플릿 없음: {TemplateScenePath}");
+                return;
+            }
+
+            var results = new System.Text.StringBuilder();
+            results.AppendLine("[StageSceneGenerator] S9~S11 불꽃축제 처음부터 재생성");
+
+            for (int stage = 9; stage <= 11; stage++)
+            {
+                try
+                {
+                    RebuildStage(stage, results);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[StageSceneGenerator] Stage {stage} 실패: {ex.Message}\n{ex.StackTrace}");
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log(results.ToString());
+        }
+
+        /// <summary>
+        /// MapPlan 우선순위: S1 폴리시 → S2·S3 → S4 → S12 → S15·S16
+        /// </summary>
+        [MenuItem("FollowMe/KDS/Polish MapPlan Priority Stages")]
+        public static void PolishMapPlanPriorityStages()
+        {
+            int[] stages = { 1, 2, 3, 4, 12, 15, 16 };
+            PolishStages(stages, "[StageSceneGenerator] MapPlan 우선 스테이지 폴리시");
+        }
+
+        [MenuItem("FollowMe/KDS/Polish Stage 1 (S1)")]
+        public static void PolishStage1()
+        {
+            PolishStages(new[] { 1 }, "[StageSceneGenerator] S1 폴리시");
+        }
+
+        private static void PolishStages(int[] stages, string header)
+        {
+            if (EditorApplication.isPlaying)
+            {
+                Debug.LogError("[StageSceneGenerator] Play 모드 중에는 맵 폴리시 불가. Stop 후 다시 실행.");
+                return;
+            }
+
+            if (!File.Exists(TemplateScenePath))
+            {
+                Debug.LogError($"[StageSceneGenerator] 템플릿 없음: {TemplateScenePath}");
+                return;
+            }
+
+            var results = new System.Text.StringBuilder();
+            results.AppendLine(header);
+
+            foreach (int stage in stages)
+            {
+                try
+                {
+                    RebuildStage(stage, results, applyVisualTheme: true);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[StageSceneGenerator] Stage {stage} 실패: {ex.Message}\n{ex.StackTrace}");
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log(results.ToString());
+        }
+
+        private static void RebuildStage(int stage, System.Text.StringBuilder results, bool applyVisualTheme = false)
         {
             string scenePath = GetScenePath(stage);
             StageMapSpec spec = StageMapDatabase.Get(stage);
@@ -101,13 +181,18 @@ namespace FollowMe.KDS.Editor
             }
 
             ApplySpecToOpenScene(spec);
+            if (applyVisualTheme)
+                StageVisualThemeApplier.ApplyToOpenScene(spec);
             StripTemplateLeftovers(spec);
             var scene = SceneManager.GetActiveScene();
             EditorSceneManager.MarkSceneDirty(scene);
             if (!EditorSceneManager.SaveScene(scene, scenePath))
                 Debug.LogError($"[StageSceneGenerator] S{stage} 저장 실패: {scenePath}");
 
-            results.AppendLine($"  ✓ Stage {stage:D2} ({spec.ActTitle}, {spec.Template}, X={spec.LengthX}) → {scenePath}");
+            int likes = StageMapDatabase.GetLikeCount(stage);
+            int daily = StageMapDatabase.GetDailyCount(stage);
+            results.AppendLine(
+                $"  ✓ Stage {stage:D2} ({spec.ActTitle}, {spec.Template}, X={spec.LengthX}, ♡{likes}/일상{daily}/포토{spec.PhotoPoints}/괴{spec.Monsters}) → {scenePath}");
             Debug.Log($"[StageSceneGenerator] Stage {stage} 완료");
         }
 
@@ -116,10 +201,10 @@ namespace FollowMe.KDS.Editor
         /// </summary>
         private static void StripTemplateLeftovers(StageMapSpec spec)
         {
-            if (spec.Template != StageTemplate.CafeAlley)
+            if (spec.Template != StageTemplate.CafeAlley && spec.Template != StageTemplate.Fireworks)
                 return;
 
-            // Stage1 DialogueTrigger는 Act1 대사 — 카페 씬에서는 비활성 후 레벨이 재연결
+            // Stage1 DialogueTrigger는 Act1 대사 — 다른 Act 씬에서는 비활성 후 레벨이 재연결
             var dialogues = UnityEngine.Object.FindObjectsByType<DialogueTrigger>(FindObjectsSortMode.None);
             foreach (var d in dialogues)
             {
@@ -143,6 +228,7 @@ namespace FollowMe.KDS.Editor
             RebuildMapModeZones(spec);
             RebuildMonsterPlaceholders(spec);
             RebuildForkMarkers(spec);
+            StageMapLayoutBuilder.ApplyLayout(spec);
             EnsureSystems();
             StageVisualThemeApplier.ApplyToOpenScene(spec);
         }
@@ -432,6 +518,12 @@ namespace FollowMe.KDS.Editor
                 var go = new GameObject("LevelSystems");
                 go.AddComponent<MapModeService>();
                 go.AddComponent<CheckpointService>();
+                go.AddComponent<StageRunStats>();
+            }
+            else if (UnityEngine.Object.FindFirstObjectByType<StageRunStats>() == null)
+            {
+                var systems = UnityEngine.Object.FindFirstObjectByType<MapModeService>().gameObject;
+                systems.AddComponent<StageRunStats>();
             }
 
             if (UnityEngine.Object.FindFirstObjectByType<SocialScoreService>() == null)

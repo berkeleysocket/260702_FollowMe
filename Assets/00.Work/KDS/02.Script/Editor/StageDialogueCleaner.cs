@@ -52,7 +52,8 @@ namespace FollowMe.KDS.Editor
         {
             int removed = 0;
 
-            var triggers = Object.FindObjectsByType<DialogueTrigger>(FindObjectsSortMode.None);
+            var triggers = Object.FindObjectsByType<DialogueTrigger>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var trigger in triggers)
             {
                 if (trigger == null) continue;
@@ -60,7 +61,8 @@ namespace FollowMe.KDS.Editor
                 removed++;
             }
 
-            var players = Object.FindObjectsByType<DialoguePlayer>(FindObjectsSortMode.None);
+            var players = Object.FindObjectsByType<DialoguePlayer>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var player in players)
             {
                 if (player == null) continue;
@@ -68,7 +70,8 @@ namespace FollowMe.KDS.Editor
                 removed++;
             }
 
-            var speakers = Object.FindObjectsByType<DialogueSpeaker>(FindObjectsSortMode.None);
+            var speakers = Object.FindObjectsByType<DialogueSpeaker>(
+                FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (var speaker in speakers)
             {
                 if (speaker == null) continue;
@@ -76,7 +79,35 @@ namespace FollowMe.KDS.Editor
                 removed++;
             }
 
+            // 이름 기반 잔여물 (비활성 포함)
+            foreach (var root in SceneManager.GetActiveScene().GetRootGameObjects())
+            {
+                removed += DestroyDialogueByName(root.transform, "DialogueSystem");
+            }
+
+            foreach (var root in SceneManager.GetActiveScene().GetRootGameObjects())
+            {
+                if (!root.name.StartsWith("Level_S")) continue;
+                var triggersRoot = root.transform.Find("Triggers");
+                if (triggersRoot != null)
+                    removed += DestroyDialogueByName(triggersRoot, "DialogueTrigger");
+            }
+
             return removed;
+        }
+
+        private static int DestroyDialogueByName(Transform parent, string namePrefix)
+        {
+            int count = 0;
+            for (int i = parent.childCount - 1; i >= 0; i--)
+            {
+                var child = parent.GetChild(i);
+                if (!child.name.StartsWith(namePrefix)) continue;
+                Object.DestroyImmediate(child.gameObject);
+                count++;
+            }
+
+            return count;
         }
 
         private static string GetScenePath(int stage) =>

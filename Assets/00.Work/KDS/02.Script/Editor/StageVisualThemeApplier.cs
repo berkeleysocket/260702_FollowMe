@@ -40,6 +40,8 @@ namespace FollowMe.KDS.Editor
             "Assets/00.Work/KDS/05.Asset/City_Modern/GandalfHardcore City Tiles/Decoration 32x32.png";
         private const string FloorSheet =
             "Assets/00.Work/KDS/05.Asset/City_Modern/GandalfHardcore City Tiles/GandalfHardcore city tiles 32x32.png";
+        private const string BuildingSheet =
+            "Assets/00.Work/KDS/05.Asset/City_Modern/GandalfHardcore City Tiles/Building Tiles 32x32.png";
 
         private const string ParkGrassTile =
             "Assets/00.Work/KDS/05.Asset/City_Park/ParkZone_CraftPix/1 Tiles/Tile_01.png";
@@ -81,6 +83,12 @@ namespace FollowMe.KDS.Editor
         public static void ApplyCafeStreetThemes()
         {
             ApplyStages(4, 8, "[StageVisualTheme] S4~S8 City_Cafe 거리 테마 적용");
+        }
+
+        [MenuItem("FollowMe/KDS/Apply City Street Themes (S1-S3)")]
+        public static void ApplyCityStreetThemesAct1()
+        {
+            ApplyStages(1, 3, "[StageVisualTheme] S1~S3 City_Modern 번화가 테마 적용");
         }
 
         [MenuItem("FollowMe/KDS/Apply Fireworks Park Themes (S9-S11)")]
@@ -222,16 +230,19 @@ namespace FollowMe.KDS.Editor
                 default:
                 {
                     bool desat = spec.Stage >= 15;
+                    bool springAct1 = !desat && spec.Stage <= 3;
                     var sky = LoadFirstSprite(CitySky);
                     var far = LoadFirstSprite(CityFar);
                     var near = LoadFirstSprite(CityNear);
                     return new Theme
                     {
                         CamBg = desat ? Hex("9BB0C0") : Hex("7EC8E3"),
-                        SkyTint = desat ? new Color(0.78f, 0.82f, 0.86f, 1f) : Color.white,
+                        SkyTint = desat ? new Color(0.78f, 0.82f, 0.86f, 1f) : new Color(0.95f, 0.98f, 1f, 1f),
                         FarTint = desat ? new Color(0.72f, 0.76f, 0.8f, 1f) : Color.white,
-                        NearTint = desat ? new Color(0.7f, 0.74f, 0.78f, 1f) : Color.white,
-                        TileTint = desat ? new Color(0.78f, 0.8f, 0.82f, 1f) : Color.white,
+                        NearTint = desat ? new Color(0.7f, 0.74f, 0.78f, 1f) : new Color(0.98f, 0.98f, 1f, 1f),
+                        TileTint = desat
+                            ? new Color(0.78f, 0.8f, 0.82f, 1f)
+                            : (springAct1 ? new Color(1f, 0.97f, 0.94f, 1f) : Color.white),
                         SkySprite = sky,
                         FarSprite = far,
                         NearSprite = near,
@@ -275,7 +286,7 @@ namespace FollowMe.KDS.Editor
             string[] paths =
             {
                 NeonSkyline, NeonBuildings, NeonNear, NeonBanner, CafeSheet,
-                DecorationSheet, FloorSheet, AkuariiParkSheet,
+                DecorationSheet, FloorSheet, BuildingSheet, AkuariiParkSheet,
                 ParkGrassTile, ParkPathTile, ParkTree1, ParkTree2, ParkBench, ParkFountain
             };
 
@@ -431,8 +442,255 @@ namespace FollowMe.KDS.Editor
                 case PropMode.Sparse:
                     break;
                 default:
-                    PlaceCityNeonAccent(props, spec);
+                    PlaceCityStreet(props, spec);
                     break;
+            }
+        }
+
+        /// <summary>
+        /// T1 City_Modern 번화가 — 보도·건물 파사드·가로등·Setpiece 네온.
+        /// </summary>
+        private static void PlaceCityStreet(Transform parent, StageMapSpec spec)
+        {
+            Sprite[] buildings = LoadAllSprites(BuildingSheet);
+            Sprite[] deco = LoadAllSprites(DecorationSheet);
+            if (buildings == null || buildings.Length < 4)
+            {
+                Debug.LogWarning("[StageVisualTheme] Building 시트 부족 — City 스킵");
+                PlaceCityNeonAccent(parent, spec);
+                return;
+            }
+
+            Sprite lamp = deco != null && deco.Length > 3 ? deco[3] : null;
+            Sprite lampAlt = deco != null && deco.Length > 4 ? deco[4] : lamp;
+            Sprite sign = deco != null && deco.Length > 10 ? deco[10] : null;
+            Sprite signal = deco != null && deco.Length > 6 ? deco[6] : null;
+            Sprite[] floor = LoadAllSprites(FloorSheet);
+
+            float gapExtra = Mathf.Lerp(5.2f, 3.8f, (spec.Stage - 1) / 2f);
+            float facadeScale = 2.9f + (spec.Stage - 1) * 0.08f;
+
+            PlaceCityGroundVisual(parent, spec, floor);
+
+            PlaceCityFacadesInRange(parent, spec, buildings, lamp, lampAlt, sign, signal,
+                6f, spec.TeachEnd, gapExtra, facadeScale, bright: true, startIndex: 0);
+            PlaceCityFacadesInRange(parent, spec, buildings, lamp, lampAlt, sign, signal,
+                spec.BreathEnd, spec.SetpieceEnd - 2f, gapExtra + 0.3f, facadeScale, bright: true, startIndex: 100);
+            PlaceCitySetpieceNeon(parent, spec, buildings, deco, facadeScale);
+            PlaceCityFacadesInRange(parent, spec, buildings, lamp, lampAlt, sign, signal,
+                spec.SetpieceEnd, spec.GoalEnd, gapExtra + 0.5f, facadeScale, bright: true, startIndex: 200);
+            PlaceCityPhotoDressing(parent, spec, buildings, lamp, sign, signal);
+        }
+
+        private static void PlaceCityGroundVisual(Transform parent, StageMapSpec spec, Sprite[] floor)
+        {
+            Sprite tile = floor != null && floor.Length > 4 ? floor[4] : null;
+            if (tile == null)
+                tile = floor != null && floor.Length > 0 ? floor[0] : null;
+
+            if (tile == null)
+            {
+                var tex = Texture2D.whiteTexture;
+                var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 1f), 4f);
+                var go = new GameObject("CityGroundVisual");
+                go.transform.SetParent(parent, false);
+                go.transform.position = new Vector3(spec.LengthX * 0.5f, GroundTopY, 0f);
+                go.transform.localScale = new Vector3(spec.LengthX + 40f, 1.2f, 1f);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = spr;
+                sr.color = new Color(0.45f, 0.46f, 0.5f, 1f);
+                sr.sortingOrder = -12;
+                return;
+            }
+
+            float scale = 2.8f;
+            float step = SpriteHalfWidth(tile, scale) * 2f * 0.98f;
+            float x = -10f;
+            int i = 0;
+            Color sidewalk = new Color(0.72f, 0.72f, 0.76f, 1f);
+            Color road = new Color(0.52f, 0.54f, 0.58f, 1f);
+
+            while (x < spec.LengthX + 10f)
+            {
+                bool isRoad = i % 4 == 0;
+                var top = CreateProp(parent, $"CityGround_{i}", tile,
+                    new Vector3(x, 0f, 0f), isRoad ? road : sidewalk, -12, scale);
+                SnapMaxY(top, GroundTopY);
+
+                var deep = CreateProp(parent, $"CityGroundDeep_{i}", tile,
+                    new Vector3(x, 0f, 0f),
+                    new Color(road.r * 0.75f, road.g * 0.75f, road.b * 0.75f, 1f), -13, scale);
+                if (deep != null)
+                {
+                    var dsr = deep.GetComponent<SpriteRenderer>();
+                    SnapMaxY(deep, GroundTopY - dsr.bounds.size.y * 0.9f);
+                }
+
+                x += step;
+                i++;
+            }
+        }
+
+        private static void PlaceCityFacadesInRange(
+            Transform parent, StageMapSpec spec,
+            Sprite[] buildings, Sprite lamp, Sprite lampAlt, Sprite sign, Sprite signal,
+            float xStart, float xEnd, float gapExtra, float facadeScale, bool bright, int startIndex)
+        {
+            float x = xStart;
+            int index = startIndex;
+            Color facadeTint = bright ? Color.white : new Color(0.82f, 0.84f, 0.88f, 1f);
+            Color neonAccent = new Color(1f, 0.75f, 0.95f, 1f);
+
+            while (x < xEnd - 5f && x < spec.LengthX - 4f)
+            {
+                int bi = (index * 7 + spec.Stage * 3) % Mathf.Max(1, buildings.Length - 1);
+                Sprite facade = buildings[bi];
+                float scale = facadeScale + (index % 3) * 0.15f;
+                Color tint = index % 4 == 0 ? Color.Lerp(facadeTint, neonAccent, 0.25f) : facadeTint;
+
+                PlaceCityBuildingStack(parent, spec, $"CityFacade_{index}", facade, x, scale, tint);
+
+                if (lamp != null)
+                {
+                    Sprite l = index % 2 == 0 ? lamp : lampAlt;
+                    float lx = x + SpriteHalfWidth(facade, scale) * 0.55f;
+                    CreateProp(parent, $"CityLamp_{index}", l,
+                        new Vector3(lx, 0f, 0f), facadeTint, -3, 2.5f, snapGround: true, sink: 0.18f);
+                }
+
+                if (sign != null && index % 2 == 1)
+                {
+                    float sx = x - SpriteHalfWidth(facade, scale) * 0.35f;
+                    CreateProp(parent, $"CitySign_{index}", sign,
+                        new Vector3(sx, 0f, 0f), tint, -2, 2.4f, snapGround: true, sink: 0.1f);
+                }
+
+                if (signal != null && index % 3 == 0)
+                {
+                    CreateProp(parent, $"CitySignal_{index}", signal,
+                        new Vector3(x + 0.8f, 0f, 0f), facadeTint, -1, 2.2f, snapGround: true, sink: 0.08f);
+                }
+
+                x += SpriteHalfWidth(facade, scale) * 2f + gapExtra;
+                index++;
+            }
+        }
+
+        private static void PlaceCityBuildingStack(
+            Transform parent, StageMapSpec spec, string name, Sprite facade, float x, float scale, Color tint)
+        {
+            var baseGo = CreateProp(parent, name, facade,
+                new Vector3(x, 0f, 0f), tint, -8, scale, snapGround: true, sink: 0.12f);
+            if (baseGo == null) return;
+
+            var bsr = baseGo.GetComponent<SpriteRenderer>();
+            int extraFloors = spec.Stage >= 3 && x > spec.SetpieceEnd * 0.5f ? 2 : 1;
+            for (int f = 1; f <= extraFloors; f++)
+            {
+                float y = bsr.bounds.max.y - 0.05f + (facade.rect.height / facade.pixelsPerUnit * scale) * 0.15f * f;
+                CreateProp(parent, $"{name}_F{f}", facade,
+                    new Vector3(x, y, 0f),
+                    Color.Lerp(tint, new Color(0.85f, 0.88f, 0.92f, 1f), f * 0.12f), -9, scale * 0.98f);
+            }
+        }
+
+        private static void PlaceCitySetpieceNeon(
+            Transform parent, StageMapSpec spec, Sprite[] buildings, Sprite[] deco, float facadeScale)
+        {
+            float start = spec.BreathEnd;
+            float end = spec.SetpieceEnd;
+            var banner = LoadFirstSprite(NeonBanner);
+
+            if (banner != null)
+            {
+                int bannerCount = Mathf.Clamp(Mathf.RoundToInt((end - start) / 22f), 2, 4);
+                for (int i = 0; i < bannerCount; i++)
+                {
+                    float t = bannerCount == 1 ? 0.5f : i / (float)(bannerCount - 1);
+                    float x = Mathf.Lerp(start + 4f, end - 4f, t);
+                    CreateProp(parent, $"NeonBanner_{i + 1}", banner,
+                        new Vector3(x, 3.6f + (i % 2) * 0.4f, 0f),
+                        new Color(1f, 0.65f, 0.95f, 1f), 4, 1.6f);
+                }
+            }
+
+            // Setpiece 직선: 건물 밀집 + 네온 틴트
+            if (buildings != null && buildings.Length > 0)
+            {
+                float bx = start + 2f;
+                int i = 0;
+                while (bx < end - 2f)
+                {
+                    Sprite b = buildings[(i * 5 + spec.Stage) % buildings.Length];
+                    PlaceCityBuildingStack(parent, spec, $"SetpieceTower_{i}", b, bx, facadeScale + 0.35f,
+                        new Color(1f, 0.92f, 0.98f, 1f));
+                    bx += SpriteHalfWidth(b, facadeScale) * 1.8f + 2.2f;
+                    i++;
+                }
+            }
+
+            // 버스킹·인파 느낌 (데코 + 실루엣)
+            float buskX = Mathf.Lerp(start, end, 0.65f);
+            if (deco != null && deco.Length > 12)
+            {
+                CreateProp(parent, "BuskingStage", deco[12],
+                    new Vector3(buskX, 0f, 0f), Color.white, -2, 2.6f, snapGround: true, sink: 0.1f);
+            }
+
+            PlacePhoneNpcSilhouettes(parent, spec, buskX - 1f, buskX + 1.5f);
+        }
+
+        private static void PlaceCityPhotoDressing(
+            Transform parent, StageMapSpec spec,
+            Sprite[] buildings, Sprite lamp, Sprite sign, Sprite signal)
+        {
+            float[] photos = StageMapDatabase.GetPhotoPositions(spec);
+            for (int i = 0; i < photos.Length; i++)
+            {
+                float px = photos[i];
+                Sprite dress = i == 0 ? (sign ?? buildings[0]) :
+                    (i == 1 ? (buildings.Length > 2 ? buildings[2] : buildings[0]) : (lamp ?? buildings[0]));
+                float scale = i == 1 ? 3.1f : 2.6f;
+                Color tint = i == 1 ? new Color(1f, 0.7f, 0.95f, 1f) : Color.white;
+
+                if (i == 1)
+                {
+                    var banner = LoadFirstSprite(NeonBanner);
+                    if (banner != null)
+                    {
+                        CreateProp(parent, $"PhotoNeon_{i + 1}", banner,
+                            new Vector3(px, 3.8f, 0f), tint, 5, 1.7f);
+                    }
+                }
+
+                CreateProp(parent, $"PhotoCityDress_{i + 1}", dress,
+                    new Vector3(px, 0f, 0f), tint, -7, scale, snapGround: true, sink: 0.1f);
+
+                if (signal != null && i == 2)
+                {
+                    CreateProp(parent, $"PhotoSignal_{i + 1}", signal,
+                        new Vector3(px - 1.2f, 0f, 0f), Color.white, -2, 2.3f, snapGround: true, sink: 0.08f);
+                }
+            }
+        }
+
+        private static void PlacePhoneNpcSilhouettes(Transform parent, StageMapSpec spec, float xStart, float xEnd)
+        {
+            var tex = Texture2D.whiteTexture;
+            var spr = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0f), 1f);
+            int count = 3;
+            for (int i = 0; i < count; i++)
+            {
+                float t = count == 1 ? 0.5f : i / (float)(count - 1);
+                float x = Mathf.Lerp(xStart, xEnd, t);
+                var go = new GameObject($"CityNpc_{i + 1}");
+                go.transform.SetParent(parent, false);
+                go.transform.position = new Vector3(x, GroundTopY + 0.85f, 0f);
+                go.transform.localScale = new Vector3(0.5f, 1.5f, 1f);
+                var sr = go.AddComponent<SpriteRenderer>();
+                sr.sprite = spr;
+                sr.color = new Color(0.12f, 0.12f, 0.16f, 0.9f);
+                sr.sortingOrder = -1;
             }
         }
 

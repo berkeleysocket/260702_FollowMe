@@ -45,6 +45,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/61/3eec0e0b/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6fd3bea869f4004b25d18a15df36a7812000/c3/d45c4e9d/VisualEffect.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,

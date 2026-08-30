@@ -123,6 +123,56 @@ namespace FollowMe.KDS.Editor
             PolishStages(new[] { 1 }, "[StageSceneGenerator] S1 폴리시");
         }
 
+        [MenuItem("FollowMe/KDS/Polish Act1 Stages (S1-S3)")]
+        public static void PolishAct1Stages()
+        {
+            ApplyAct1CityPolish();
+        }
+
+        /// <summary>
+        /// S1~S3: 레이아웃(타일·수집물) + City_Modern 비주얼 재적용 (씬 삭제 없음).
+        /// </summary>
+        [MenuItem("FollowMe/KDS/Apply Act1 City_Modern Polish (S1-S3)")]
+        public static void ApplyAct1CityPolish()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                Debug.LogError("[StageSceneGenerator] Play 모드 중에는 실행 불가.");
+                return;
+            }
+
+            var results = new System.Text.StringBuilder();
+            results.AppendLine("[StageSceneGenerator] Act1 S1~S3 City_Modern 폴리시");
+
+            for (int stage = 1; stage <= 3; stage++)
+            {
+                string scenePath = GetScenePath(stage);
+                if (!File.Exists(scenePath))
+                {
+                    results.AppendLine($"  - S{stage:D2} 씬 없음");
+                    continue;
+                }
+
+                try
+                {
+                    EditorSceneManager.OpenScene(scenePath);
+                    StageMapSpec spec = StageMapDatabase.Get(stage);
+                    ApplySpecToOpenScene(spec);
+                    var scene = SceneManager.GetActiveScene();
+                    EditorSceneManager.MarkSceneDirty(scene);
+                    EditorSceneManager.SaveScene(scene, scenePath);
+                    results.AppendLine($"  ✓ S{stage:D2} layout+theme X={spec.LengthX}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[StageSceneGenerator] S{stage} 실패: {ex.Message}");
+                }
+            }
+
+            AssetDatabase.Refresh();
+            Debug.Log(results.ToString());
+        }
+
         private static void PolishStages(int[] stages, string header)
         {
             if (EditorApplication.isPlaying)

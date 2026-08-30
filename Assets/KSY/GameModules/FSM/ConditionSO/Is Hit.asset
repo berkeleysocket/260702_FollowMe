@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Is Hit
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsHitConditionSo
   <IsNot>k__BackingField: 0
-  playerEvtChannel: {fileID: 0}
+  playerEvtChannel: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}

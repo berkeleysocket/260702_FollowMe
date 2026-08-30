@@ -7,15 +7,15 @@ namespace  SeungyungLib.FSM
 {
     public abstract class AbstractState : IState
     {
-        private readonly IStateModule _stateModule;
+        private readonly IStateMachineModule _stateMachineModule;
         private readonly Transition[] _transitions;
         private readonly IRenderModule _renderModule;
         private readonly int _animationNameHash;
 
-        public AbstractState(IStateModule stateModule, IRenderModule renderModule, 
+        protected AbstractState(IStateMachineModule stateMachineModule, IRenderModule renderModule, 
             int animationNameHash, Transition[] transitions)
         {
-            this._stateModule = stateModule;
+            this._stateMachineModule = stateMachineModule;
             this._animationNameHash = animationNameHash;
             this._renderModule = renderModule;
             this._transitions = transitions;
@@ -25,7 +25,7 @@ namespace  SeungyungLib.FSM
         {
             _renderModule.PlayClip(_animationNameHash, 0, 0);
         }
-        public virtual void OnEnter() {}
+        protected virtual void OnEnter() {}
 
         public void Update()
         {
@@ -33,17 +33,26 @@ namespace  SeungyungLib.FSM
             {
                 if (transition.Check())
                 {
-                    _stateModule.ChangeState(transition.TransitionTarget);
+                    _stateMachineModule.ChangeState(transition.TransitionTarget);
                     break;
                 }
             }
         }
-        public virtual void OnUpdate() {}
+        protected virtual void OnUpdate() {}
 
         public void Exit()
         {
             OnExit();
         }
-        public virtual void OnExit() {}
+        protected virtual void OnExit() {}
+
+        #region IDisposable
+        public void Dispose()
+        {
+            foreach (Transition transition in _transitions)
+                transition?.Dispose();
+        }
+        #endregion
+
     }
 }

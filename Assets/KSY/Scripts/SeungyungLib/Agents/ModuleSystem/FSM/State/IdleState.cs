@@ -5,7 +5,7 @@ namespace SeungyungLib.FSM
 {
     public class IdleState : AbstractState
     {
-        public IdleState(IStateModule stateModule, IRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateModule, renderModule, animationNameHash, transitions)
+        public IdleState(IStateMachineModule stateMachineModule, IRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateMachineModule, renderModule, animationNameHash, transitions)
         {
         }
     }

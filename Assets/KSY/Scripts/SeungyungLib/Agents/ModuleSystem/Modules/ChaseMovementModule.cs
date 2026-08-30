@@ -48,7 +48,6 @@ namespace SeungyungLib.Template.Modules
             ApplyGravity();
             CalculateVelocity();
             Run();
-            // Jump();
         }
         #endregion
         

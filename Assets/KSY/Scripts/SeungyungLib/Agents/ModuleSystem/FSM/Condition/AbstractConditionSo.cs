@@ -1,3 +1,4 @@
+using System;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
 
@@ -10,6 +11,4 @@ namespace SeungyungLib.FSM
         [field: SerializeField] protected bool IsNot { get; private set; }
         public abstract ICondition Create(IModuleOwner owner);
     }
-
-
 }

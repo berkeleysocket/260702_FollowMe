@@ -1,36 +1,36 @@
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.Core.CustomDebug;
 
 using System.Collections.Generic;
 using System.Linq;
-using SeungyungLib.Core.CustomDebug;
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    public class StateModule : MonoBehaviour, IStateModule
+    public class StateMachineModule : MonoBehaviour, IStateMachineModule
     {
-        [SerializeField] private StateMachineSO stateMachineSO;
+        [SerializeField] private StateMachineSO stateMachineSo;
         
         private Dictionary<StateType, IState> _stateList = new Dictionary<StateType, IState>();
         private IState _currentState;
 
         public void Initialize(IModuleOwner owner)
         {
-            if (stateMachineSO != null)
+            if (stateMachineSo != null)
             {
-                this._stateList = stateMachineSO.StateList.ToDictionary(
+                this._stateList = stateMachineSo.StateList.ToDictionary(
                     key => (StateType)key.Type,
                     value => (IState)value.Create(
-                        (StateModule)this,
+                        (StateMachineModule)this,
                         (IModuleOwner)owner)
                 );
                 
-                ChangeState(stateMachineSO.StartState);
+                ChangeState(stateMachineSo.StartState);
             }
             
-            DebugLogger.Assert(stateMachineSO != null, "[StateModule]: stateMachineSO is null");
+            DebugLogger.Assert(stateMachineSo != null, "[StateModule]: stateMachineSO is null");
         }
 
         public void Update()
@@ -40,12 +40,15 @@ namespace SeungyungLib.FSM
 
         public void ChangeState(StateType stateType)
         {
+            DebugLogger.Log("[StateMachineModule]: Changing state: " + stateType.ToString(), Color.yellow);
             if (_stateList.TryGetValue(stateType, out IState state))
             {
                 _currentState?.Exit();
                 _currentState = state;
                 _currentState.Enter();
             }
+            else
+                DebugLogger.LogError("[StateMachineModule]: State not found: " + stateType.ToString());
         }
     }
 }

@@ -28,9 +28,9 @@ namespace SeungyungLib.FSM
                 DebugLogger.LogError($"[StateSO]: {this.name}'s StateTransitions is null or empty.");
         }
 
-        public IState Create(IStateModule stateModule, IModuleOwner owner)
+        public IState Create(IStateMachineModule stateMachineModule, IModuleOwner owner)
         {
-            if (stateModule == null)
+            if (stateMachineModule == null)
             {
                 DebugLogger.LogError($"[StateSO]: {this.name}'s StateMachine is null.");
                 return null;
@@ -77,7 +77,7 @@ namespace SeungyungLib.FSM
             
             IState state = Activator.CreateInstance(
                 t, 
-                stateModule, 
+                stateMachineModule, 
                 renderModule, 
                 AnimationHash.Hash, 
                 transitions) 

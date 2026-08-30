@@ -2,6 +2,6 @@ namespace SeungyungLib.ModuleSystem.Interface
 {
     public interface IAfterInitModule
     {
-        void AfterInitialization();
+        void AfterInitialization(IModuleOwner owner);
     }
 }

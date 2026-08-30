@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b240be8e34c0b7045a72291948c81158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateModule
-  stateMachineSO: {fileID: 0}
+  stateMachineSo: {fileID: 0}
 --- !u!1001 &1620773061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1001,6 +1001,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8786389966442381843, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
+      propertyPath: stateMachineSo
+      value: 
+      objectReference: {fileID: 11400000, guid: be5b5512f289d4143a98b1f9134339cf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

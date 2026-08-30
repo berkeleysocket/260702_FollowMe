@@ -1,9 +1,11 @@
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 
+using System;
+
 namespace SeungyungLib.FSM
 {
-    public class Transition
+    public class Transition : IDisposable
     {
         public readonly StateType TransitionTarget;
         
@@ -20,9 +22,16 @@ namespace SeungyungLib.FSM
             bool isSuccess = true;
             
             foreach (ICondition condition in _conditions)
-                isSuccess &= condition.Check();
+                isSuccess &= condition?.Check() ?? false;
 
             return isSuccess;
+        }
+
+        
+        public void Dispose()
+        {
+            foreach(ICondition condition in _conditions)
+                condition?.Dispose();
         }
     }
 }

@@ -18,8 +18,9 @@ namespace SeungyungLib.ModuleSystem.Modules
         public void Initialize(IModuleOwner owner)
         {
             _collider = GetComponent<Collider2D>();
-            
             _collider.isTrigger = true;
+            
+            Debug.Assert(_collider != null, "[RangeCheckModule]: _collider is null");
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -28,6 +29,9 @@ namespace SeungyungLib.ModuleSystem.Modules
             {
                 OnEntered?.Invoke();
                 DebugLogger.Log("Is Check !");
+
+                if (other.gameObject.TryGetComponent(out IBodyModule module))
+                    module.TakeDamage(1);
             }
         }
     }

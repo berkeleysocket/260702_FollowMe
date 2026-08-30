@@ -10,12 +10,10 @@ namespace SeungyungLib.Template.Modules
 {
     public class VfxModule : MonoBehaviour, IVfxModule
     {
-        private IModuleOwner _owner;
         private Dictionary<int, IPlayableVfx> _playableDict;
         
         public void Initialize(IModuleOwner owner)
         {
-            this._owner = owner;
             this._playableDict = GetComponentsInChildren<IPlayableVfx>()
                 .ToDictionary(vfx => vfx.NameHash);
             foreach (var vfx in _playableDict.Values)

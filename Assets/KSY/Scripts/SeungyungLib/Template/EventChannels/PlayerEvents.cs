@@ -10,10 +10,12 @@ namespace SeungyungLib.Template.EventChannels
     public class PlayerHitEvent : ChannelEvent
     {
         public int Damage { get; private set; }
+        public int CurrentHealth { get; private set; }
 
-        public void Initialize(int damage)
+        public void Initialize(int damage, int currentHealth)
         {
             this.Damage = damage;
+            this.CurrentHealth = currentHealth;
         }
     }
 }

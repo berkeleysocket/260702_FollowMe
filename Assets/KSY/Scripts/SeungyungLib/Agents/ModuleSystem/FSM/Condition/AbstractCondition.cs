@@ -12,12 +12,23 @@ namespace SeungyungLib.FSM
     {
         protected bool IsNot { get; private set; }
 
-        public AbstractCondition(IModuleOwner owner, bool isNot)
+        #region Initialization
+        protected AbstractCondition(IModuleOwner owner, bool isNot)
         {
             this.IsNot = isNot;
         }
+        protected virtual void OnDispose() {}
+        #endregion
 
         public abstract bool Check();
+
+        #region IDisposable
+        public void Dispose()
+        {
+            OnDispose();
+        }
+        #endregion
+
     }
 
     public class IsMovingCondition : AbstractCondition
@@ -98,11 +109,19 @@ namespace SeungyungLib.FSM
     
     public class IsHitCondition : AbstractCondition
     {
+        private readonly EventChannelSO _playerEvtChannel;
+        
         private bool _isHit = false;
         
         public IsHitCondition(IModuleOwner owner, bool isNot, EventChannelSO playerEvtChannel) : base(owner, isNot)
         {
-            playerEvtChannel.AddListener<PlayerHitEvent>(HandlePlayerHitEvent);
+            this._playerEvtChannel = playerEvtChannel;
+            
+            _playerEvtChannel.AddListener<PlayerHitEvent>(HandlePlayerHitEvent);
+        }
+        protected override void OnDispose()
+        {
+            _playerEvtChannel.RemoveListener<PlayerHitEvent>(HandlePlayerHitEvent);
         }
 
         public override bool Check()
@@ -122,6 +141,7 @@ namespace SeungyungLib.FSM
     public class IsExpiredCondition : AbstractCondition
     {
         private readonly float _duration;
+        
         private float _startTime = -1f;
         
         public IsExpiredCondition(IModuleOwner owner, bool isNot, float duration) : base(owner, isNot)

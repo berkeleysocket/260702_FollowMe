@@ -1,31 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-8802422772301963769
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: player JUMP_01
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0f2a0954ecd285b43b103b7ea3b6e5c3, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-7896925748842498514
 AnimatorState:
   serializedVersion: 6
@@ -33,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player KNOCKDOWN_01
+  m_Name: KNOCKDOWN
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -47,32 +21,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a471fb6775e581248b498d4c99291d0c, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-6005152680617128792
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: player FALL_01
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 46b585db28627db49b7ffbdcd328e226, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -100,20 +48,14 @@ AnimatorStateMachine:
     m_State: {fileID: 7577855042564264865}
     m_Position: {x: 410, y: 520, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -8802422772301963769}
-    m_Position: {x: 445, y: 585, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: -6005152680617128792}
-    m_Position: {x: 480, y: 650, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 3598236068991912180}
-    m_Position: {x: 515, y: 715, z: 0}
+    m_Position: {x: 460, y: 580, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7896925748842498514}
-    m_Position: {x: 550, y: 780, z: 0}
+    m_Position: {x: 500, y: 650, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 903624787466679729}
-    m_Position: {x: 585, y: 845, z: 0}
+    m_Position: {x: 550, y: 710, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -153,7 +95,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player DASH_01
+  m_Name: DASH
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -231,7 +173,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: player HIT_01
+  m_Name: HIT
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

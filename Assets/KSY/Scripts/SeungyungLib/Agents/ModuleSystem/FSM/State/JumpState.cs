@@ -5,7 +5,7 @@ namespace SeungyungLib.FSM
 {
     public class JumpState : AbstractState
     {
-        public JumpState(IStateModule stateModule, IRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateModule, renderModule, animationNameHash, transitions)
+        public JumpState(IStateMachineModule stateMachineModule, IRenderModule renderModule, int animationNameHash, Transition[] transitions) : base(stateMachineModule, renderModule, animationNameHash, transitions)
         {
         }
     }

@@ -9,7 +9,7 @@ namespace SeungyungLib.ModuleSystem
 {
     public abstract class AbstractModuleOwner : MonoBehaviour, IModuleOwner
     {
-        protected Dictionary<Type, IModule> _moducleDict;
+        private Dictionary<Type, IModule> _moduleDict;
 
         private void Awake()
         {
@@ -17,23 +17,28 @@ namespace SeungyungLib.ModuleSystem
             OnInitialized();
         }
 
-        public void Initialize()
+        private void Initialize()
         {
-            _moducleDict = GetComponentsInChildren<IModule>()
+            _moduleDict = GetComponentsInChildren<IModule>()
                 .ToDictionary(module => module.GetType());
 
             InitializeComponents();
             AfterInitComponents();
         }
-
         protected virtual void OnInitialized() {}
+
+        private void OnDestroy()
+        {
+            OnDestroyed();
+        }
+        protected virtual void OnDestroyed() {}
 
         public T GetModule<T>() where T : IModule
         {
-            if(_moducleDict.TryGetValue(typeof(T), out IModule module))
+            if(_moduleDict.TryGetValue(typeof(T), out IModule module))
                 return (T) module;
             
-            IModule findModule = _moducleDict.Values.FirstOrDefault(moduleType => moduleType is T);
+            IModule findModule = _moduleDict.Values.FirstOrDefault(moduleType => moduleType is T);
 
             if (findModule is T castedModule)
                 return castedModule;
@@ -41,20 +46,16 @@ namespace SeungyungLib.ModuleSystem
             return default;
         }
 
-        protected virtual void InitializeComponents()
+        private void InitializeComponents()
         {
-            foreach (IModule module in _moducleDict.Values)
-            {
-                module.Initialize(this); //오너를 자기로 셋팅하여 넣어준다.
-            }
+            foreach (IModule module in _moduleDict.Values)
+                module.Initialize(this); 
         }
         
-        protected virtual void AfterInitComponents()
+        private void AfterInitComponents()
         {
-            foreach (IAfterInitModule module in _moducleDict.Values.OfType<IAfterInitModule>())
-            {
-                module.AfterInitialization();
-            }
+            foreach (IAfterInitModule module in _moduleDict.Values.OfType<IAfterInitModule>())
+                module.AfterInitialization(this);
         }
     }
 }

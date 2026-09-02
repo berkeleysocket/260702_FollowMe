@@ -8,6 +8,6 @@ namespace SeungyungLib.FSM
     [CreateAssetMenu(fileName = "IsFallConditionSo", menuName = "SeungyungLib/FSM/ConditionSo/Is Fall", order = 0)]
     public class IsFallConditionSo : AbstractConditionSo
     {
-        public override ICondition Create(IModuleOwner owner) => new IsFallCondition(owner, IsNot);
+        public override ICondition Create(IModuleOwner owner) => new IsFallCondition(owner, Type, IsNot);
     }
 }

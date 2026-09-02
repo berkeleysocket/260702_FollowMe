@@ -1,6 +1,6 @@
 {
-    "name": "SeungyungLib.ModuleSystem",
-    "rootNamespace": "SeungyungLib.ModuleSystem",
+    "name": "SeungyungLib.ModuleSystem.Core",
+    "rootNamespace": "SeungyungLib.ModuleSystem.Core",
     "references": [
         "GUID:374514a00b07edf4e9c07b244e970714"
     ],

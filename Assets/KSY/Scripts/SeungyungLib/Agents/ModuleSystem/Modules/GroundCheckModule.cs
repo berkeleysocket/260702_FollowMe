@@ -4,7 +4,7 @@ using SeungyungLib.ModuleSystem.Interface;
 
 using UnityEngine;
 
-namespace SeungyungLib.Template.Modules
+namespace SeungyungLib.ModuleSystem.Modules
 {
     public class GroundCheckModule : MonoBehaviour, IGroundCheckModule, IAfterInitModule
     {
@@ -12,6 +12,8 @@ namespace SeungyungLib.Template.Modules
         [SerializeField] private Vector2 checkRange;
         [SerializeField] private LayerMask whatIsGround;
 
+        public bool IsActive { get; private set; }
+        
         public NotifyValue<bool> NotifyIsGround { get; private set; } = new NotifyValue<bool>(false);
 
         private IMovementModule _movementModule;
@@ -22,19 +24,20 @@ namespace SeungyungLib.Template.Modules
             this.NotifyIsGround =  new NotifyValue<bool>(false);
 
             DebugLogger.Assert(NotifyIsGround != null, "[GroundCheckModule]: NotifyIsGround is null.");
-            DebugLogger.Assert(_movementModule != null, "[GroundCheckModule]: _movementModule is null.");
         }
         
         public void AfterInitialization(IModuleOwner owner)
         {
             this._movementModule = owner.GetModule<IMovementModule>();
+            
+            DebugLogger.Assert(_movementModule != null, "[GroundCheckModule]: _movementModule is null.");
         }
         #endregion
         
         #region Unity Events
         private void Update()
         {
-            if (_movementModule == null || NotifyIsGround == null) return;
+            if (_movementModule == null) return;
             
             if (!NotifyIsGround.Value)
                 CheckGround();
@@ -48,6 +51,9 @@ namespace SeungyungLib.Template.Modules
             Gizmos.DrawWireCube((Vector2)transform.position + checkCenter, checkRange);
         }
         #endregion
+        
+        public void Activate() => IsActive = true;
+        public void Deactivate() => IsActive = false;
 
         private void CheckGround()
         {

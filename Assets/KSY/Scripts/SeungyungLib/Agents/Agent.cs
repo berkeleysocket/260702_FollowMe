@@ -1,6 +1,6 @@
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.ModuleSystem;
 using SeungyungLib.FSM.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 namespace SeungyungLib.Agents
 {
@@ -13,7 +13,7 @@ namespace SeungyungLib.Agents
             base.OnInitialized();
             _stateMachineModule = GetModule<IStateMachineModule>();
             
-            DebugLogger.Assert(_stateMachineModule != null, $"[{this.GetType().Name}]: State Machine Module is null]");
+            DebugLogger.Assert(_stateMachineModule != null, $"[{this.GetType().Name}]: StateMachineModule is null");
         }
 
         private void Update()

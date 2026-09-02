@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ece7f8bec7799143bac6e457a785ba5, type: 3}
-  m_Name: Fall transition
+  m_Name: Idle transition_from Kockdown
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.TransitionSo
-  <TransitionTarget>k__BackingField: 3
+  <TransitionTarget>k__BackingField: 0
   <Conditions>k__BackingField:
-  - {fileID: 11400000, guid: 4b770461e75a949408458e8d9651d103, type: 2}
-  - {fileID: 11400000, guid: e9db98e89f6dbab4cb638369baa51645, type: 2}
+  - {fileID: 11400000, guid: c17ad254455ef96478eb359d34a1cc89, type: 2}

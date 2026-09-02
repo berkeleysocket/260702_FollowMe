@@ -2,6 +2,10 @@ namespace SeungyungLib.ModuleSystem.Interface
 {
     public interface IModule
     {
-        void Initialize(IModuleOwner owner);   
+        bool IsActive { get; }
+        public void Activate();
+        public void Deactivate();
+        
+        void Initialize(IModuleOwner owner);
     }
 }

@@ -10,9 +10,9 @@ namespace SeungyungLib.Template.EventChannels
 
     public class MoveInputEvent : ChannelEvent
     {
-        public float Axis { get; private set; }
+        public int Axis { get; private set; }
         
-        public void Initialize(float axis)
+        public void Initialize(int axis)
         {
             this.Axis = axis;
         }

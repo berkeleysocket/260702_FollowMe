@@ -1,18 +1,17 @@
-using SeungyungLib.Core.ParameterSO;
 using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.ParameterSO;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
 
 using System;
 using System.Linq;
-
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "StateSO",menuName = "SeungyungLib/FSM/StateSO", order = 1)]
-    public class StateSO : ScriptableObject
+    [CreateAssetMenu(fileName = "StateSo",menuName = "SeungyungLib/FSM/StateSo", order = 1)]
+    public class StateSo : ScriptableObject
     {
         [field: SerializeField] public StateType Type { get; private set; }
         [field: SerializeField] public AnimParamSO AnimationHash { get; private set; }
@@ -51,7 +50,7 @@ namespace SeungyungLib.FSM
                 return null;
             }
             
-            Type t = AppDomain.CurrentDomain.GetAssemblies()
+            Type type = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(t => t.GetTypes())
                 .FirstOrDefault(t =>
                 typeof(IState).IsAssignableFrom(t)
@@ -59,16 +58,10 @@ namespace SeungyungLib.FSM
                   && !t.IsInterface
                   && t.Name.Replace("State", "") == Type.ToString());
             
-            if (t == null) DebugLogger.LogError($"[StateSO]: {Type.ToString() + "State"} is not found.");
+            if (type == null) DebugLogger.LogError($"[StateSO]: {Type.ToString() + "State"} is not found.");
 
-            IRenderModule renderModule = owner.GetModule<IRenderModule>();
             Transition[] transitions = StateTransitions.Select(x=> x.Create(owner)).ToArray();
 
-            if (renderModule == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s This Owner has not RendererModule.");
-                return null;
-            }
             if (transitions.Length == 0)
             {
                 DebugLogger.LogError($"[StateSO]: {this.name}'s Transitions is null.");
@@ -76,9 +69,9 @@ namespace SeungyungLib.FSM
             }
             
             IState state = Activator.CreateInstance(
-                t, 
+                type, 
                 stateMachineModule, 
-                renderModule, 
+                owner, 
                 AnimationHash.Hash, 
                 transitions) 
                 as IState;

@@ -15,7 +15,7 @@ namespace SeungyungLib.FSM
 
         public Transition Create(IModuleOwner owner)
         {
-            ICondition[] conditions = Conditions.Select(condition=>condition.Create(owner)).ToArray();
+            ICondition[] conditions = Conditions.Select(condition => condition.Create(owner)).ToArray();
             return new Transition(TransitionTarget, conditions);
         }
     }

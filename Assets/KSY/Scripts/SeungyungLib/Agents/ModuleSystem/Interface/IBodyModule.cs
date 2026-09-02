@@ -1,4 +1,5 @@
 ﻿using SeungyungLib.ModuleSystem.Interface;
+using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Modules
 {
@@ -9,6 +10,8 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         event OnTakeDamageHandler OnTakeDamage;
         event OnDeathHandler OnDeath;
+        
+        public Rigidbody2D Body { get; }
         
         void TakeDamage(int damage);
     }

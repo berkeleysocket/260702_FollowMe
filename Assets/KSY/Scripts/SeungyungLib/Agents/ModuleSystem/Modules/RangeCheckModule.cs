@@ -11,10 +11,13 @@ namespace SeungyungLib.ModuleSystem.Modules
     {
         [SerializeField] private LayerMask whatIsCheck;
         
+        public bool IsActive { get; set; }
+        
         public event Action OnEntered;
         
         private Collider2D _collider;
-        
+
+
         public void Initialize(IModuleOwner owner)
         {
             _collider = GetComponent<Collider2D>();
@@ -34,5 +37,8 @@ namespace SeungyungLib.ModuleSystem.Modules
                     module.TakeDamage(1);
             }
         }
+        
+        public void Activate() => IsActive = true;
+        public void Deactivate() => IsActive = false;
     }
 }

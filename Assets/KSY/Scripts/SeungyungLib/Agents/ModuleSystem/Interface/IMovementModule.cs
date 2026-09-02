@@ -4,13 +4,13 @@ namespace SeungyungLib.ModuleSystem.Interface
 {
     public interface IMovementModule : IModule
     {
-        event Action<float> OnChangeAxis;
+        event Action<int> OnMoved;
         
-        float Axis { get; }
+        int Axis { get; }
         bool IsMoving { get; }
         bool IsJumping { get; }
         bool IsFall { get; }
         
-        void MoveToDirection(float axis);
+        void MoveToDirection(int axis);
     }
 }

@@ -22,7 +22,7 @@ namespace SeungyungLib.Template.Managements
 
         public void RegisterEvents()
         {
-            inputReader.OnRunKeyPressed += (float axis)=>
+            inputReader.OnRunKeyPressed += (int axis)=>
             {
                 InputEvents.MoveInputEvent.Initialize(axis);
                 playerEventChannel.RaiseEvent(InputEvents.MoveInputEvent);

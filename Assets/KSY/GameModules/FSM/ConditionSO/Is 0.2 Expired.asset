@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d81fd5b35d6cff449f582774ba6bb33, type: 3}
-  m_Name: Is Fall
-  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsFallConditionSo
+  m_Script: {fileID: 11500000, guid: 2cd9a4ea0a99f1642a93758aff4d67b7, type: 3}
+  m_Name: Is 0.2 Expired
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IsExpiredConditionSo
   <IsNot>k__BackingField: 0
-  <Type>k__BackingField: 1
+  seconds: 0.2

@@ -2,7 +2,8 @@
 {
     public interface IRenderModule : IModule
     {
-        void PlayClip(int clipHash, float normalizedTime, float crossFadeDuration, int layerIndex = 0);
+        void PlayClip(int stateHashName, float fixedTransitionDuration, float fixedTimeOffset,
+            float normalizedTransitionTime, int layer = -1); 
         void FlipX(bool flip);
     }
 }

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11922fbf572dba4cbab447ca8f64d30, type: 3}
   m_Name: Enemy_01
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateMachineSO
-  <StateList>k__BackingField: []
+  <StateList>k__BackingField:
+  - {fileID: 11400000, guid: 7ecda1247f5a6da43bf2636b278e7736, type: 2}
   <StartState>k__BackingField: 0

@@ -7,5 +7,6 @@ namespace SeungyungLib.FSM.Interface
     {
         public void Update();
         public void ChangeState(StateType stateType);
+        public ICondition[] GetConditionInstances(ConditionType needConditions);
     }
 }

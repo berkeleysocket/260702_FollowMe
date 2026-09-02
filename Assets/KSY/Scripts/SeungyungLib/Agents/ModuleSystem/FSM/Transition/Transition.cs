@@ -5,18 +5,18 @@ using System;
 
 namespace SeungyungLib.FSM
 {
-    public class Transition : IDisposable
+    public class Transition : ITransition, IDisposable
     {
-        public readonly StateType TransitionTarget;
-        
+        public StateType TransitionTarget { get; private set; }
+
         private readonly ICondition[] _conditions;
         
-        public Transition(StateType transitionTarget, ICondition[] conditions)
+        public Transition(IStateMachineModule stateMachineModule, StateType transitionTarget, ConditionType conditionFlags)
         {
             this.TransitionTarget = transitionTarget;
-            this._conditions = conditions;
+            _conditions = stateMachineModule.GetConditionInstances(conditionFlags);
         }
-        
+
         public bool Check()
         {
             bool isSuccess = true;
@@ -27,11 +27,10 @@ namespace SeungyungLib.FSM
             return isSuccess;
         }
 
-        
         public void Dispose()
         {
-            foreach(ICondition condition in _conditions)
-                condition?.Dispose();
+            foreach (ICondition condition in _conditions)
+                condition.Dispose();
         }
     }
 }

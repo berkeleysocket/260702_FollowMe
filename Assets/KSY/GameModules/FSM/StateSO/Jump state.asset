@@ -15,6 +15,7 @@ MonoBehaviour:
   <Type>k__BackingField: 2
   <AnimationHash>k__BackingField: {fileID: 11400000, guid: b2a64cc9f6b3b474d9f50814e230ef89, type: 2}
   <StateTransitions>k__BackingField:
+  - {fileID: 11400000, guid: 6680ed7dc0e78b54d801107ff2f862ce, type: 2}
   - {fileID: 11400000, guid: e2f34f677d07ef347a6def074e1b791b, type: 2}
   - {fileID: 11400000, guid: 589efea082a2aca44a795f08c164f6bf, type: 2}
   - {fileID: 11400000, guid: e36f1e71ee6b5f54ca0a0b58a6f0f61b, type: 2}

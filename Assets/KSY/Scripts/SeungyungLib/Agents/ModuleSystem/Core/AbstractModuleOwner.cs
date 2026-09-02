@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace SeungyungLib.ModuleSystem
+namespace SeungyungLib.ModuleSystem.Core
 {
     public abstract class AbstractModuleOwner : MonoBehaviour, IModuleOwner
     {

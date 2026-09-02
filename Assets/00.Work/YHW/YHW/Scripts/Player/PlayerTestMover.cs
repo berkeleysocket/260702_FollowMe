@@ -24,7 +24,7 @@ namespace YHW.Player
             if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed) axis -= 1f;
             if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed) axis += 1f;
 
-            movementModule.MoveToDirection(axis);
+            // movementModule.MoveToDirection(axis);
             movementModule.IsJumpKeyPressed = keyboard.spaceKey.isPressed;
         }
     }

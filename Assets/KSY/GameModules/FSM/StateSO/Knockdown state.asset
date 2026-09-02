@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateSO
   <Type>k__BackingField: 6
   <AnimationHash>k__BackingField: {fileID: 11400000, guid: e43e16a75176d8241882c1bbef325d28, type: 2}
-  <StateTransitions>k__BackingField: []
+  <StateTransitions>k__BackingField:
+  - {fileID: 11400000, guid: f006e7b0526f7a34ca5209fb9f3f0aec, type: 2}

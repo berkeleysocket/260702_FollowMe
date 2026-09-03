@@ -109,8 +109,12 @@ InitTestScene*.unity*
 # WIP / reference screenshots (Unity MCP, Game view captures)
 /[Aa]ssets/Screenshots/
 
-# Agent async memo board (per-machine; agents read local copy)
-/Docs/AgentBoard.md
+# Design docs (local; not shared via git)
+/Docs/
+/Assets/00.Work/KDS/*.md
+
+# Cursor rules (local KDS workflow)
+/.cursor/rules/followme.mdc
 
 # JetBrains Rider local IDE state
 /.idea/

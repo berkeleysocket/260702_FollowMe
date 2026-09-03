@@ -56,15 +56,24 @@ namespace FollowMe.KDS
                 sb.AppendLine("  ✓ SocialScoreService");
             }
 
-            var player = Object.FindFirstObjectByType<PhotoProbePlayer>();
+            var player = PlayerRespawn.FindInScene();
             if (player == null)
             {
-                sb.AppendLine("  ✗ PhotoProbePlayer 없음");
-                errors++;
+                var legacy = Object.FindFirstObjectByType<PhotoProbePlayer>();
+                if (legacy == null)
+                {
+                    sb.AppendLine("  ✗ Player 없음 (KSY Player + PlayerRespawn)");
+                    errors++;
+                }
+                else
+                {
+                    sb.AppendLine("  ⚠ PhotoProbePlayer (KSY Player로 교체 권장)");
+                    warnings++;
+                }
             }
             else
             {
-                sb.AppendLine("  ✓ PhotoProbePlayer");
+                sb.AppendLine("  ✓ KSY Player (PlayerRespawn)");
             }
 
             var dialoguePlayer = Object.FindFirstObjectByType<DialoguePlayer>();

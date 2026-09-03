@@ -1,0 +1,26 @@
+{
+    "sequenceId": "Act2_Denial",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Tired",
+            "text": "괜찮아.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.0
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Excited",
+            "text": "더 올리면 돼.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.0
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Excited",
+            "text": "더 예쁜 걸, 더 자주.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

@@ -11,16 +11,16 @@
         {
             "characterId": "Haru",
             "expressionId": "Empty",
-            "text": "…그래,",
+            "text": "이번에만… 되면.",
             "autoAdvance": true,
-            "autoAdvanceSeconds": 1.8
+            "autoAdvanceSeconds": 2.0
         },
         {
             "characterId": "Haru",
             "expressionId": "Empty",
-            "text": "1,000만만 되면.",
+            "text": "되면 괜찮아지겠지.",
             "autoAdvance": true,
-            "autoAdvanceSeconds": 2.5
+            "autoAdvanceSeconds": 2.8
         }
     ]
 }

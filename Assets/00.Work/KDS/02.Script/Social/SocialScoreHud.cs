@@ -3,10 +3,18 @@ using UnityEngine;
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// 좋아요/팔로우 HUD + 포토존 E홀드 진행 + 촬영 토스트.
+    /// KDS 프로토타입 HUD (임시 IMGUI). 릴리즈 UI는 YHW 담당.
+    /// 맵 모드·CP 등 개발 정보는 에디터/Development 빌드에서만 표시.
     /// </summary>
     public class SocialScoreHud : MonoBehaviour
     {
+        private static bool ShowDebugHud =>
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            true;
+#else
+            false;
+#endif
+
         [SerializeField] private SocialScoreService _score;
 
         private string _toast;
@@ -57,23 +65,35 @@ namespace FollowMe.KDS
 
         private void OnGUI()
         {
+            if (CutscenePlayer.Instance != null && CutscenePlayer.Instance.IsPlaying)
+                return;
+
             long likes = _score != null ? _score.Likes : 0;
             long follows = _score != null ? _score.Follows : 0;
+            long goal = _score != null ? _score.GoalLikes : SocialGoal.FirstTargetLikes;
+            float progress = _score != null ? _score.GoalProgress : 0f;
+            string cycleLabel = _score != null && _score.IsSecondCycle ? "2차 목표" : "목표";
 
-            GUI.Box(new Rect(12, 12, 260, 88), "");
-            GUI.Label(new Rect(24, 20, 240, 20), $"좋아요  {likes:N0}");
-            GUI.Label(new Rect(24, 40, 240, 20), $"팔로우  {follows:N0}");
+            const float panelW = 280f;
+            float panelH = ShowDebugHud ? 118f : 74f;
+            GUI.Box(new Rect(12, 12, panelW, panelH), "");
+            GUI.Label(new Rect(24, 18, panelW - 24, 18), $"{cycleLabel}  ♡ {likes:N0} / {goal:N0}");
+            DrawProgressBar(new Rect(24, 38, panelW - 36, 12), progress);
+            GUI.Label(new Rect(24, 54, panelW - 24, 18), $"팔로우  {follows:N0}");
 
-            if (MapModeService.Instance != null)
+            if (ShowDebugHud)
             {
-                GUI.Label(new Rect(12, 70, 260, 20),
-                    $"맵 모드  {MapModeService.GetDisplayName(MapModeService.Instance.CurrentMode)}");
-            }
+                if (MapModeService.Instance != null)
+                {
+                    GUI.Label(new Rect(12, 76, panelW, 20),
+                        $"맵 모드  {MapModeService.GetDisplayName(MapModeService.Instance.CurrentMode)}");
+                }
 
-            if (CheckpointService.Instance != null)
-            {
-                GUI.Label(new Rect(12, 88, 320, 20),
-                    $"CP  {CheckpointService.Instance.LastCheckpointId}");
+                if (CheckpointService.Instance != null)
+                {
+                    GUI.Label(new Rect(12, 96, panelW + 40, 20),
+                        $"CP  {CheckpointService.Instance.LastCheckpointId}");
+                }
             }
 
             PhotoPoint active = PhotoPoint.Active;
@@ -100,7 +120,10 @@ namespace FollowMe.KDS
                 GUI.Box(new Rect((Screen.width - w) * 0.5f, Screen.height * 0.2f, w, 40), _toast);
             }
 
-            GUI.Label(new Rect(12, Screen.height - 28, 480, 24), "포토존에서 E(홀드)로 사진 촬영");
+            if (ShowDebugHud)
+            {
+                GUI.Label(new Rect(12, Screen.height - 28, 480, 24), "포토존에서 E(홀드)로 사진 촬영");
+            }
         }
 
         private static void DrawProgressBar(Rect rect, float progress)

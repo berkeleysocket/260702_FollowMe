@@ -4,16 +4,16 @@
         {
             "characterId": "Haru",
             "expressionId": "Anxious",
-            "text": "…방금 뭐였지?",
+            "text": "알림이… 안 와.",
             "autoAdvance": true,
             "autoAdvanceSeconds": 2.5
         },
         {
             "characterId": "Haru",
             "expressionId": "Anxious",
-            "text": "기분 탓인가.",
+            "text": "가슴이… 텅 빈 것 같아.",
             "autoAdvance": true,
-            "autoAdvanceSeconds": 2.5
+            "autoAdvanceSeconds": 2.8
         }
     ]
 }

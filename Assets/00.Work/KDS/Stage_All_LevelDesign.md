@@ -552,13 +552,13 @@ Level_S{N}
 
 타일 경로:
 - **T1**: `05.Asset/City_Modern/Tiles/`
-- **T2**: `05.Asset/City_Cafe/` (요청: `Art_Asset_Request.md`)
+- **T2**: `05.Asset/City_Cafe/` (에셋: `Art.md`)
 - **T3**: `05.Asset/City_Fireworks/` (여유 시)
 - **T4**: `05.Asset/City_Subway/`
 
 ---
 
-## 압축 제작 참고 (`LevelDesign_MapPlan.md`)
+## 압축 제작 참고 (`Docs/Production.md`)
 
-2주 스코프 시 **실씬 우선**: S1 → S2·S3 → **S4** → **S12** → S15·S16.  
-S5~S11·S13~S14는 본 문서 스펙 유지하되 **동일 템플릿 변형**으로 제작하거나 대표맵 1개로 서사 곡선만 메울 수 있음.
+**실씬 우선**: S1 → S4~S8 → S9~S11 → S12 → S15·S16.  
+S2·S3·S13~S14는 T1/T4 **변형**으로 서사 곡선만 메울 수 있음.

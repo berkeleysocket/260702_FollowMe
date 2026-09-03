@@ -1,0 +1,533 @@
+fileFormatVersion: 2
+guid: f837e628ba5dbef4599a0158b4c8cab5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6752915175349534319
+    second: Act1_Decoration_Tiles_32x32_0
+  - first:
+      213: 4486003961928564048
+    second: Act1_Decoration_Tiles_32x32_1
+  - first:
+      213: -2845993426577773457
+    second: Act1_Decoration_Tiles_32x32_2
+  - first:
+      213: -1601789884217910933
+    second: Act1_Decoration_Tiles_32x32_3
+  - first:
+      213: 1097129388642654512
+    second: Act1_Decoration_Tiles_32x32_4
+  - first:
+      213: 6591333691499726650
+    second: Act1_Decoration_Tiles_32x32_5
+  - first:
+      213: -5340226861663090921
+    second: Act1_Decoration_Tiles_32x32_6
+  - first:
+      213: -1053950854929705340
+    second: Act1_Decoration_Tiles_32x32_7
+  - first:
+      213: 45186436452099811
+    second: Act1_Decoration_Tiles_32x32_8
+  - first:
+      213: -1197846820906470430
+    second: Act1_Decoration_Tiles_32x32_9
+  - first:
+      213: -3155031746808777109
+    second: Act1_Decoration_Tiles_32x32_10
+  - first:
+      213: 3945063068359893300
+    second: Act1_Decoration_Tiles_32x32_11
+  - first:
+      213: -9058045583708648857
+    second: Act1_Decoration_Tiles_32x32_12
+  - first:
+      213: -8096518064826830742
+    second: Act1_Decoration_Tiles_32x32_13
+  - first:
+      213: -3201673840388129090
+    second: Act1_Decoration_Tiles_32x32_14
+  - first:
+      213: 2907140593231009928
+    second: Act1_Decoration_Tiles_32x32_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_0
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 785
+        width: 70
+        height: 224
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19142fe2d63d842a0800000000000000
+      internalID: -6752915175349534319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 821
+        width: 203
+        height: 136
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05d3fb3e5dc714e30800000000000000
+      internalID: 4486003961928564048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_2
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 788
+        width: 164
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c2cb7ae000188d0800000000000000
+      internalID: -2845993426577773457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_3
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 791
+        width: 132
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b699062469c45c9e0800000000000000
+      internalID: -1601789884217910933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_4
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 562
+        width: 221
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 039dfaabd59c93f00800000000000000
+      internalID: 1097129388642654512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_5
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 545
+        width: 133
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a37c7ede11f197b50800000000000000
+      internalID: 6591333691499726650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_6
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 544
+        width: 170
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717829a86f3b3e5b0800000000000000
+      internalID: -5340226861663090921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_7
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 552
+        width: 173
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4861231184d9f51f0800000000000000
+      internalID: -1053950854929705340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_8
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 281
+        width: 101
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e6a46513d880a000800000000000000
+      internalID: 45186436452099811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 301
+        width: 207
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3f980b9a4606fe0800000000000000
+      internalID: -1197846820906470430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_10
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 304
+        width: 136
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66f164a7531734d0800000000000000
+      internalID: -3155031746808777109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_11
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 287
+        width: 138
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 431aa1675fdafb630800000000000000
+      internalID: 3945063068359893300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 44
+        width: 237
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a00cf788b5b4280800000000000000
+      internalID: -9058045583708648857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_13
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 36
+        width: 176
+        height: 220
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a60b67c97b363af80800000000000000
+      internalID: -8096518064826830742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_14
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 30
+        width: 124
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe3109fa9e5193d0800000000000000
+      internalID: -3201673840388129090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Act1_Decoration_Tiles_32x32_15
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 42
+        width: 97
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88817a387fc385820800000000000000
+      internalID: 2907140593231009928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Act1_Decoration_Tiles_32x32_0: -6752915175349534319
+      Act1_Decoration_Tiles_32x32_1: 4486003961928564048
+      Act1_Decoration_Tiles_32x32_10: -3155031746808777109
+      Act1_Decoration_Tiles_32x32_11: 3945063068359893300
+      Act1_Decoration_Tiles_32x32_12: -9058045583708648857
+      Act1_Decoration_Tiles_32x32_13: -8096518064826830742
+      Act1_Decoration_Tiles_32x32_14: -3201673840388129090
+      Act1_Decoration_Tiles_32x32_15: 2907140593231009928
+      Act1_Decoration_Tiles_32x32_2: -2845993426577773457
+      Act1_Decoration_Tiles_32x32_3: -1601789884217910933
+      Act1_Decoration_Tiles_32x32_4: 1097129388642654512
+      Act1_Decoration_Tiles_32x32_5: 6591333691499726650
+      Act1_Decoration_Tiles_32x32_6: -5340226861663090921
+      Act1_Decoration_Tiles_32x32_7: -1053950854929705340
+      Act1_Decoration_Tiles_32x32_8: 45186436452099811
+      Act1_Decoration_Tiles_32x32_9: -1197846820906470430
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

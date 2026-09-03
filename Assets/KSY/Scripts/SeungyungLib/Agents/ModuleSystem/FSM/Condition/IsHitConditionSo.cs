@@ -5,9 +5,12 @@ using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "IsHitConditionSo", menuName = "SeungyungLib/FSM/ConditionSo/Is Hit", order = 0)]
+    [CreateAssetMenu(fileName = "IsHit" + nameof(ConditionSO), menuName = "SeungyungLib/FSM/" + nameof(ConditionSO) + "/Is Hit", order = 0)]
     public class IsHitConditionSo : ConditionSO
     {
-        public override ICondition Create(IModuleOwner owner)=> new IsHitCondition(owner, Type, IsNot);
+        protected override ICondition OnCreate(IModuleOwner owner)
+        {
+            return new IsHitCondition(owner, Type, IsNot);
+        }
     }
 }

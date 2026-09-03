@@ -1,40 +1,40 @@
-using System;
 using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
 
 using System.Collections.Generic;
 using System.Linq;
-using SeungyungLib.Core.FlyweightService;
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
     public class StateMachineModule : MonoBehaviour, IStateMachineModule
     {
-        [SerializeField] private StateMachineSo stateMachineSo;
+        [SerializeField] private StateMachineSO stateMachineSO;
         
         public bool IsActive { get; private set; }
 
         private Dictionary<StateType, IState> _stateList = new Dictionary<StateType, IState>();
-        private FlyweightFactory<ConditionType, ICondition> _conditionFactory = new FlyweightFactory<ConditionType, ICondition>();
         private IState _currentState;
+        
+        private readonly FlyweightFactory<ConditionType, ICondition> _conditionFactory = new FlyweightFactory<ConditionType, ICondition>();
 
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            if (stateMachineSo != null)
+            if (stateMachineSO != null)
             {
-                this._stateList = stateMachineSo.StateList.ToDictionary(
+                this._stateList = stateMachineSO.StateList.ToDictionary(
                     key => (StateType)key.Type,
-                    value => (IState)value.Create(owner)
+                    value => (IState)value.Create(owner, _conditionFactory)
                 );
                 
-                ChangeState(stateMachineSo.StartState);
+                ChangeState(stateMachineSO.StartState);
             }
             
-            DebugLogger.Assert(stateMachineSo != null, "[StateModule]: stateMachineSO is null");
+            DebugLogger.Assert(stateMachineSO != null, "[StateModule]: stateMachineSO is null");
         }
         #endregion
 

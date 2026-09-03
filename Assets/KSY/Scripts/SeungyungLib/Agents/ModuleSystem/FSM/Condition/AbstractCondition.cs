@@ -13,7 +13,7 @@ namespace SeungyungLib.FSM
     {
         public ConditionType Type { get; private set; }
         
-        private readonly bool _isNot = false;   
+        private readonly bool _isNot;   
 
         #region Initialization
         protected AbstractCondition(IModuleOwner owner, ConditionType type, bool isNot)
@@ -96,7 +96,7 @@ namespace SeungyungLib.FSM
         private readonly EventChannelSO _playerEvtChannel;
         private readonly IBodyModule _bodyModule;
         
-        private bool _isHit = false;
+        private bool _isHit;
         
         public IsHitCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
@@ -120,7 +120,7 @@ namespace SeungyungLib.FSM
         private void HandlePlayerHitEvent(int damage, int currentHp) => _isHit = true;
     }
 
-    public class IsExpiredCondition : AbstractCondition, IOptionalCondition
+    public class IsExpiredCondition : AbstractCondition
     {
         private readonly float _duration;
         

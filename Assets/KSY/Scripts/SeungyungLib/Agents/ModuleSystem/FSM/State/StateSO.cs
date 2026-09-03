@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    public abstract class AbstractStateSo : ScriptableObject
+    public abstract class StateSO : ScriptableObject
     {
         [field: SerializeField, ReadOnly] public StateType Type { get; private set; }
         [field: SerializeField] public AnimParamSO EnterAnimParam { get; private set; }
@@ -19,7 +19,7 @@ namespace SeungyungLib.FSM
         #region Unity Events
         private void OnValidate()
         {
-            string typeName = this.GetType().Name.Replace("StateSo", "");
+            string typeName = this.GetType().Name.Replace(nameof(StateSO), "");
             if (System.Enum.TryParse<StateType>(typeName, true, out StateType conditionType))
                 Type = conditionType;
         }
@@ -30,7 +30,6 @@ namespace SeungyungLib.FSM
             ITransition[] transitions = Transitions.Select(transition => transition.Create(owner, conditionFactory)).ToArray();
             return OnCreate(owner, EnterAnimParam.Hash, transitions);
         }
-        
         protected abstract IState OnCreate(IModuleOwner owner, int enterAnimHash, ITransition[] transitions);
     }
 }

@@ -1,8 +1,7 @@
+using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
-
-using SeungyungLib.Core.FlyweightService;
 
 using System.Linq;
 using UnityEngine;
@@ -15,9 +14,9 @@ namespace SeungyungLib.FSM
         [field: SerializeField] public StateType TransitionTarget { get; private set; }
         [field: SerializeField] public ConditionSO[] Conditions { get; private set; }
 
-        public Transition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> conditionFactory)
+        public ITransition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> conditionFactory)
         {
-            ICondition[] conditions = Conditions.Select(condition => condition.Create(owner)).ToArray();
+            ICondition[] conditions = Conditions.Select(condition => condition.Create(owner, conditionFactory)).ToArray();
             return new Transition(TransitionTarget, conditions);
         }
     }

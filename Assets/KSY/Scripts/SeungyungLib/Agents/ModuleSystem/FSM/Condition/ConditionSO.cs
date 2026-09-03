@@ -16,12 +16,19 @@ namespace SeungyungLib.FSM
         #region Unity Events
         private void OnValidate()
         {
-            string typeName = this.GetType().Name.Replace("ConditionSo", "");
+            string typeName = this.GetType().Name.Replace(nameof(ConditionSO), "");
             if (System.Enum.TryParse<ConditionType>(typeName, true, out ConditionType conditionType))
                 Type = conditionType;
         }
         #endregion
-        
-        public abstract ICondition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> factory);
+
+        public ICondition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> factory)
+        {
+            if (this is IOptionalConditionSO)
+                return OnCreate(owner);
+
+            return factory.GetOrAdd(Type, owner, OnCreate);
+        }
+        protected abstract ICondition OnCreate(IModuleOwner owner);
     }
 }

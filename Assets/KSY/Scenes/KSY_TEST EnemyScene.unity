@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3a2e439c5840f458a40551496979ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Template.Modules::SeungyungLib.Template.Modules.RenderModule
-  _playerEvtChannel: {fileID: 0}
+  playerEvtChannel: {fileID: 0}
 --- !u!95 &1803358036
 Animator:
   serializedVersion: 7
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b240be8e34c0b7045a72291948c81158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateMachineModule
-  stateMachineSo: {fileID: 11400000, guid: aa0b724436b3ecf47886264208a25b8f, type: 2}
+  stateMachineSO: {fileID: 0}
 --- !u!1001 &7362693105487553811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,9 +901,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7282397714089793723, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
+      propertyPath: playerEvtChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
+    - target: {fileID: 7282397714089793723, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: _playerEvtChannel
       value: 
       objectReference: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
+    - target: {fileID: 8786389966442381843, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
+      propertyPath: stateMachineSO
+      value: 
+      objectReference: {fileID: 11400000, guid: f7a2b8cfd4a1d104191a17473d110967, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

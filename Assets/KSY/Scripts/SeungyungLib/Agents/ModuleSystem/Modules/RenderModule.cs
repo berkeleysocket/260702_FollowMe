@@ -10,7 +10,7 @@ namespace SeungyungLib.ModuleSystem.Modules
 {
     public class RenderModule : MonoBehaviour, IRenderModule
     {
-        [SerializeField] private EventChannelSO _playerEvtChannel;
+        [SerializeField] private EventChannelSO playerEvtChannel;
         public bool IsActive { get; private set; }
         
         private Animator _animator;
@@ -24,7 +24,7 @@ namespace SeungyungLib.ModuleSystem.Modules
             DebugLogger.Assert(_animator != null, "[RenderModule]: _animator is null]");
             DebugLogger.Assert(_spriteRenderer != null, "[RenderModule]: _spriteRenderer is null]");
             
-            this._playerEvtChannel.AddListener<PlayerHitEvent>(PlayHitShake);
+            this.playerEvtChannel.AddListener<PlayerHitEvent>(PlayHitShake);
         }
         
         public void Activate() => IsActive = true;

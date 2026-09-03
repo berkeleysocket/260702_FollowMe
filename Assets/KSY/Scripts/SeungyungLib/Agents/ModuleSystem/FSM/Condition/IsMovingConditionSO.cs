@@ -1,18 +1,16 @@
-﻿using SeungyungLib.Core.FlyweightService;
-using SeungyungLib.FSM.Enum;
-using SeungyungLib.FSM.Interface;
+﻿using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
 
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "IsMovingConditionSO", menuName = "SeungyungLib/FSM/ConditionSO/Is Moving", order = 0)]
+    [CreateAssetMenu(fileName = "IsMoving" + nameof(ConditionSO), menuName = "SeungyungLib/FSM/" + nameof(ConditionSO) + "/Is Moving", order = 0)]
     public class IsMovingConditionSO : ConditionSO
     {
-        public override ICondition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> factory)
+        protected override ICondition OnCreate(IModuleOwner owner)
         {
-            throw new System.NotImplementedException();
+            return new IsMovingCondition(owner, Type, IsNot);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace SeungyungLib.ModuleSystem.Modules
         [SerializeField] private float airMultiplier = 0f;
 
         public bool IsJumpKeyPressed { get; set; }
-        public bool IsActive { get; private set; } = true;
+        public bool IsActive { get; private set; }
 
         public event Action<int> OnMoved;
         
@@ -36,7 +36,6 @@ namespace SeungyungLib.ModuleSystem.Modules
         public void Initialize(IModuleOwner owner)
         {
             _groundChecker = owner.GetModule<IGroundCheckModule>();
-            _rb = owner.GetModule<IBodyModule>().Body;
             
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
             DebugLogger.Assert(_rb != null, "[AgentMovementModule]: _rb is null.");
@@ -44,6 +43,8 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public void AfterInitialization(IModuleOwner owner)
         {
+            _rb = owner.GetModule<IBodyModule>().Body;
+            
             if (_groundChecker != null)
             {
                 _groundChecker.NotifyIsGround.OnChanged += (bool isGround) =>
@@ -52,6 +53,8 @@ namespace SeungyungLib.ModuleSystem.Modules
                         _rb.linearVelocity = new Vector2(_rb.linearVelocityX, 0f);
                 };
             }
+
+            IsActive = true;
         }
         #endregion
 

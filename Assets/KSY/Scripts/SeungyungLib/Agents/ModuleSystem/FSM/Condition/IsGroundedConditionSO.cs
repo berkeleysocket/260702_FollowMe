@@ -1,5 +1,3 @@
-using SeungyungLib.Core.FlyweightService;
-using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.ModuleSystem.Interface;
 
@@ -10,9 +8,9 @@ namespace SeungyungLib.FSM
     [CreateAssetMenu(fileName = "IsGrounded" + nameof(ConditionSO), menuName = "SeungyungLib/FSM/" + nameof(ConditionSO) + "/Is Grounded", order = 0)]
     public class IsGroundedConditionSO : ConditionSO
     {
-        public override ICondition Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> factory)
+        protected override ICondition OnCreate(IModuleOwner owner)
         {
-            throw new System.NotImplementedException();
+            return new IsGroundedCondition(owner, Type, IsNot);
         }
     }
 }

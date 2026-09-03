@@ -6,6 +6,7 @@ using SeungyungLib.ModuleSystem.Interface;
 
 using System.Collections.Generic;
 using System.Linq;
+using SeungyungLib.Core.FlyweightService;
 using UnityEngine;
 
 namespace SeungyungLib.FSM
@@ -17,7 +18,7 @@ namespace SeungyungLib.FSM
         public bool IsActive { get; private set; }
 
         private Dictionary<StateType, IState> _stateList = new Dictionary<StateType, IState>();
-        private Dictionary<ConditionType, ICondition> _conditionInstances = new Dictionary<ConditionType, ICondition>();
+        private FlyweightFactory<ConditionType, ICondition> _conditionFactory = new FlyweightFactory<ConditionType, ICondition>();
         private IState _currentState;
 
         #region Initialization
@@ -27,9 +28,7 @@ namespace SeungyungLib.FSM
             {
                 this._stateList = stateMachineSo.StateList.ToDictionary(
                     key => (StateType)key.Type,
-                    value => (IState)value.Create(
-                        (StateMachineModule)this,
-                        (IModuleOwner)owner)
+                    value => (IState)value.Create(owner)
                 );
                 
                 ChangeState(stateMachineSo.StartState);
@@ -44,13 +43,11 @@ namespace SeungyungLib.FSM
         {
             _currentState?.Update();            
         }
-        
-        private void OnDestroy()
-        {
-            foreach (IState state in _stateList.Values)
-                state?.Dispose();
-        }
         #endregion
+
+        private void CheckCondition()
+        {
+        }
         
         public void Activate() => IsActive = true;
         public void Deactivate() => IsActive = false;
@@ -66,17 +63,6 @@ namespace SeungyungLib.FSM
             }
             else
                 DebugLogger.LogError("[StateMachineModule]: State not found: " + stateType.ToString());
-        }
-
-        public ICondition[] GetConditionInstances(ConditionType needConditions)
-        {
-            foreach (ConditionType key in _conditionInstances.Keys)
-            {
-                if ((key & needConditions) == 1)
-                {
-                    
-                }
-            }
         }
     }
 }

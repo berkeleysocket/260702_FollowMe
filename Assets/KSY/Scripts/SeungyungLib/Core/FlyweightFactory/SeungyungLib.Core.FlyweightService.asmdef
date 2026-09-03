@@ -1,10 +1,8 @@
 {
-    "name": "SeungyungLib.FSM.Interface",
-    "rootNamespace": "SeungyungLib.FSM.Interface",
+    "name": "SeungyungLib.Core.FlyweightService",
+    "rootNamespace": "SeungyungLib.Core.FlyweightService",
     "references": [
-        "GUID:e9ae4824c01b01a43862c84844a9ca55",
-        "GUID:ebbcbb0d211a30347884829caefbe845",
-        "GUID:374514a00b07edf4e9c07b244e970714"
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

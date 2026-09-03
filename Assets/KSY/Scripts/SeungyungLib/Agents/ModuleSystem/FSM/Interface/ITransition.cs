@@ -4,7 +4,7 @@ namespace SeungyungLib.FSM.Interface
 {
     public interface ITransition
     {
-        public StateType TransitionTarget { get; }
-        public bool Check();
+        StateType TransitionTarget { get; }
+        bool ConditionCheck();
     }
 }

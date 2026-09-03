@@ -120,7 +120,7 @@ namespace SeungyungLib.FSM
         private void HandlePlayerHitEvent(int damage, int currentHp) => _isHit = true;
     }
 
-    public class IsExpiredCondition : AbstractCondition
+    public class IsExpiredCondition : AbstractCondition, IOptionalCondition
     {
         private readonly float _duration;
         

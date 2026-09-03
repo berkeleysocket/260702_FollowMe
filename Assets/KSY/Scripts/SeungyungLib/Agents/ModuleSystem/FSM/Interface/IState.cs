@@ -1,10 +1,8 @@
-using System;
-
 namespace SeungyungLib.FSM.Interface
 {
-    public interface IState : IDisposable
+    public interface IState
     {
-        ITransition[] Transitions { get; }
+        public ITransition[] Transitions { get; }
         
         public void Enter();
         public void Update();

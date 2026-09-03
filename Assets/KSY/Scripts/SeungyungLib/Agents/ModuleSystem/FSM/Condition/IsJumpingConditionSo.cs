@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SeungyungLib.FSM
 {
     [CreateAssetMenu(fileName = "IsJumpingConditionSo", menuName = "SeungyungLib/FSM/ConditionSo/Is Jumping", order = 0)]
-    public class IsJumpingConditionSo : AbstractConditionSo
+    public class IsJumpingConditionSo : ConditionSO
     {
         public override ICondition Create(IModuleOwner owner) => new IsJumpingCondition(owner, Type, IsNot);
     }

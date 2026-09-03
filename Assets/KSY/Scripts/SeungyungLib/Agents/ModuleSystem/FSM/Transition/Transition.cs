@@ -1,36 +1,26 @@
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 
-using System;
-
 namespace SeungyungLib.FSM
 {
-    public class Transition : ITransition, IDisposable
+    public class Transition : ITransition
     {
         public StateType TransitionTarget { get; private set; }
-
+        
         private readonly ICondition[] _conditions;
         
-        public Transition(IStateMachineModule stateMachineModule, StateType transitionTarget, ConditionType conditionFlags)
+        public Transition(StateType transitionTarget, ICondition[] conditions)
         {
             this.TransitionTarget = transitionTarget;
-            _conditions = stateMachineModule.GetConditionInstances(conditionFlags);
+            this._conditions = conditions;
         }
-
-        public bool Check()
+        
+        public bool ConditionCheck()
         {
-            bool isSuccess = true;
-            
+            bool conditionCheck = true;
             foreach (ICondition condition in _conditions)
-                isSuccess &= condition?.Check() ?? false;
-
-            return isSuccess;
-        }
-
-        public void Dispose()
-        {
-            foreach (ICondition condition in _conditions)
-                condition.Dispose();
+                conditionCheck &= condition.Check();
+            return conditionCheck;
         }
     }
 }

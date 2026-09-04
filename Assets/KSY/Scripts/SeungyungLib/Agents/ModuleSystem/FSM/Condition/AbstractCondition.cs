@@ -46,7 +46,10 @@ namespace SeungyungLib.FSM
             DebugLogger.Assert(_movementModule != null, "[IsMovingCondition] _movementModule is null.");
         }
 
-        protected override bool OnCheck() => _movementModule?.IsMoving ?? false;
+        protected override bool OnCheck()
+        {
+            return _movementModule?.IsMoving ?? false;
+        }
     }
 
     public class IsJumpingCondition : AbstractCondition
@@ -60,7 +63,11 @@ namespace SeungyungLib.FSM
             DebugLogger.Assert(_movementModule != null, "[IsJumpingCondition] _movementModule is null.");
         }
 
-        protected override bool OnCheck() => _movementModule?.IsJumping ?? false;
+        protected override bool OnCheck()
+        {
+            DebugLogger.Log($"[IsJumpingCondition] Is Jumping : {_movementModule?.IsJumping}", Color.aquamarine);
+            return _movementModule?.IsJumping ?? false;
+        }
     }
 
     public class IsGroundedCondition : AbstractCondition
@@ -71,10 +78,13 @@ namespace SeungyungLib.FSM
         {
             _groundChecker = owner.GetModule<IGroundCheckModule>();
             
-            DebugLogger.Assert(_groundChecker != null, "[IsGroundCondition] _groundChecker is null.");
+            DebugLogger.Assert(_groundChecker != null, "[IsGroundedCondition] _groundChecker is null.");
         }
         
-        protected override bool OnCheck() => _groundChecker?.NotifyIsGround.Value ?? false;
+        protected override bool OnCheck() 
+        {
+            return _groundChecker?.NotifyIsGrounded.Value ?? false;
+        }
     }
 
     public class IsFallCondition : AbstractCondition
@@ -109,7 +119,7 @@ namespace SeungyungLib.FSM
         {
             if (_isHit)
             {
-                DebugLogger.Log("OnCheck : Hit!");
+                DebugLogger.Log("[IsHitCondition] Hit Condition is True");
                 _isHit = false;
                 return true;
             }

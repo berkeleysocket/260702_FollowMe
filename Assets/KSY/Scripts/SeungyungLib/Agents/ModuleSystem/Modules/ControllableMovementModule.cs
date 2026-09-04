@@ -23,8 +23,8 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public int Axis => _axis;
         public bool IsMoving => _axis != 0;
-        public bool IsJumping => _rb.linearVelocityY > 0.5f;
-        public bool IsFall => _rb.linearVelocityY < -0.5f;
+        public bool IsJumping => _rb.linearVelocityY > 0.25f;
+        public bool IsFall => _rb.linearVelocityY < -0.25f;
         
         private Rigidbody2D _rb;
         private IGroundCheckModule _groundChecker;
@@ -38,7 +38,6 @@ namespace SeungyungLib.ModuleSystem.Modules
             _groundChecker = owner.GetModule<IGroundCheckModule>();
             
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
-            DebugLogger.Assert(_rb != null, "[AgentMovementModule]: _rb is null.");
         }
         
         public void AfterInitialization(IModuleOwner owner)
@@ -47,14 +46,15 @@ namespace SeungyungLib.ModuleSystem.Modules
             
             if (_groundChecker != null)
             {
-                _groundChecker.NotifyIsGround.OnChanged += (bool isGround) =>
+                _groundChecker.NotifyIsGrounded.OnChanged += (bool isGround) =>
                 {
                     if (isGround)
                         _rb.linearVelocity = new Vector2(_rb.linearVelocityX, 0f);
                 };
             }
 
-            IsActive = true;
+            IsActive = true; //Test
+            DebugLogger.Assert(_rb != null, "[AgentMovementModule]: _rb is null.");
         }
         #endregion
 
@@ -98,7 +98,7 @@ namespace SeungyungLib.ModuleSystem.Modules
             
         private void Jump()
         {
-            if (IsJumpKeyPressed && _groundChecker.NotifyIsGround.Value)
+            if (IsJumpKeyPressed && _groundChecker.NotifyIsGrounded.Value)
                 _rb.linearVelocity = new Vector2(_rb.linearVelocityX, jumpForce);
         }
 

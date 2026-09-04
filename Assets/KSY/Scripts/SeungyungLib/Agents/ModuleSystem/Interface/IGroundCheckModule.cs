@@ -4,6 +4,6 @@ namespace SeungyungLib.ModuleSystem.Interface
 {
     public interface IGroundCheckModule : IModule
     {
-        NotifyValue<bool> NotifyIsGround { get; }
+        NotifyValue<bool> NotifyIsGrounded { get; }
     }
 }

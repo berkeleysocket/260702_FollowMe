@@ -25,11 +25,11 @@ namespace SeungyungLib.FSM
         }
         #endregion
 
-        public IState Create(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> conditionFactory)
+        public IState ForCreate(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> conditionFactory)
         {
             ITransition[] transitions = Transitions.Select(transition => transition.Create(owner, conditionFactory)).ToArray();
-            return OnCreate(owner, EnterAnimParam.Hash, transitions);
+            return Create(owner, EnterAnimParam.Hash, transitions);
         }
-        protected abstract IState OnCreate(IModuleOwner owner, int enterAnimHash, ITransition[] transitions);
+        protected abstract IState Create(IModuleOwner owner, int enterAnimHash, ITransition[] transitions);
     }
 }

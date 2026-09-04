@@ -54,7 +54,7 @@ namespace SeungyungLib.Agents
 
         private void SubscribeEventHandlers()
         {
-            _groundChecker.NotifyIsGround.OnChanged += OnGroundChanged;
+            _groundChecker.NotifyIsGrounded.OnChanged += OnGroundedChanged;
             _bodyModule.OnTakeDamage += OnTakeDamage;
             _movementModule.OnMoved += OnMoved;
             controlEventChannel.AddListener<MoveInputEvent>(OnMoveInputReceived);
@@ -63,7 +63,7 @@ namespace SeungyungLib.Agents
 
         private void UnsubscribeEventHandlers()
         {
-            _groundChecker.NotifyIsGround.OnChanged -= OnGroundChanged;
+            _groundChecker.NotifyIsGrounded.OnChanged -= OnGroundedChanged;
             _bodyModule.OnTakeDamage -= OnTakeDamage;
             _movementModule.OnMoved += OnMoved;
             controlEventChannel.RemoveListener<MoveInputEvent>(OnMoveInputReceived);
@@ -80,7 +80,7 @@ namespace SeungyungLib.Agents
                 
                 _renderModule.FlipX(isFlip);
                             
-                if (_groundChecker.NotifyIsGround.Value)
+                if (_groundChecker.NotifyIsGrounded.Value)
                     _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
                 else
                     _vfxModule.StopVfx(dustParticleName.Hash);
@@ -95,7 +95,7 @@ namespace SeungyungLib.Agents
             playerEventChannel.RaiseEvent(PlayerEvents.PlayerHitEvent);
         }
         
-        private void OnGroundChanged(bool isGround)
+        private void OnGroundedChanged(bool isGround)
         {
             if (isGround)
             {

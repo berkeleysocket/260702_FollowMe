@@ -24,7 +24,7 @@ namespace SeungyungLib.ModuleSystem.Modules
             DebugLogger.Assert(_animator != null, "[RenderModule]: _animator is null]");
             DebugLogger.Assert(_spriteRenderer != null, "[RenderModule]: _spriteRenderer is null]");
             
-            this.playerEvtChannel.AddListener<PlayerHitEvent>(PlayHitShake);
+            /*this.playerEvtChannel.AddListener<PlayerHitEvent>(PlayHitShake);*/
         }
         
         public void Activate() => IsActive = true;

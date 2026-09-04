@@ -1,3 +1,4 @@
+using PlasticGui.Help;
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.FSM.Enum;
@@ -27,7 +28,12 @@ namespace SeungyungLib.FSM
             if (this is IOptionalConditionSO)
                 return OnCreate(owner);
 
-            return factory.GetOrAdd(Type, owner, OnCreate);
+            ConditionOption option = IsNot ? ConditionOption.IsNot : ConditionOption.None;
+            int upperBits = (int)option << 16;
+            int lowerBits = (int)Type;
+            ConditionType key = (ConditionType)(upperBits | lowerBits);
+
+            return factory.GetOrAdd(key, owner, OnCreate);
         }
         protected abstract ICondition OnCreate(IModuleOwner owner);
     }

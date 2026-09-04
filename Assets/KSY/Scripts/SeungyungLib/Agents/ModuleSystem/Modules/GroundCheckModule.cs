@@ -14,16 +14,16 @@ namespace SeungyungLib.ModuleSystem.Modules
 
         public bool IsActive { get; private set; }
         
-        public NotifyValue<bool> NotifyIsGround { get; private set; } = new NotifyValue<bool>(false);
+        public NotifyValue<bool> NotifyIsGrounded { get; private set; } = new NotifyValue<bool>(false);
 
         private IMovementModule _movementModule;
         
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            this.NotifyIsGround =  new NotifyValue<bool>(false);
+            this.NotifyIsGrounded =  new NotifyValue<bool>(false);
 
-            DebugLogger.Assert(NotifyIsGround != null, "[GroundCheckModule]: NotifyIsGround is null.");
+            DebugLogger.Assert(NotifyIsGrounded != null, "[GroundCheckModule]: NotifyIsGround is null.");
         }
         
         public void AfterInitialization(IModuleOwner owner)
@@ -39,10 +39,10 @@ namespace SeungyungLib.ModuleSystem.Modules
         {
             if (_movementModule == null) return;
             
-            if (!NotifyIsGround.Value)
+            if (!NotifyIsGrounded.Value)
                 CheckGround();
             else if (_movementModule.IsJumping || _movementModule.IsFall)
-                NotifyIsGround.Value = false;
+                NotifyIsGrounded.Value = false;
         }
 
         private void OnDrawGizmos()
@@ -65,7 +65,7 @@ namespace SeungyungLib.ModuleSystem.Modules
                 );
             
             if (groundCollider != null)
-                NotifyIsGround.Value = true;
+                NotifyIsGrounded.Value = true;
         }
     }
 }

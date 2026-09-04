@@ -28,7 +28,7 @@ namespace SeungyungLib.FSM
             {
                 this._stateList = stateMachineSO.StateList.ToDictionary(
                     key => (StateType)key.Type,
-                    value => (IState)value.Create(owner, _conditionFactory)
+                    value => (IState)value.ForCreate(owner, _conditionFactory)
                 );
                 
                 ChangeState(stateMachineSO.StartState);
@@ -37,17 +37,13 @@ namespace SeungyungLib.FSM
             DebugLogger.Assert(stateMachineSO != null, "[StateModule]: stateMachineSO is null");
         }
         #endregion
-
+        
         #region Unity Events
         public void Update()
         {
             _currentState?.Update();            
         }
         #endregion
-
-        private void CheckCondition()
-        {
-        }
         
         public void Activate() => IsActive = true;
         public void Deactivate() => IsActive = false;
@@ -57,7 +53,7 @@ namespace SeungyungLib.FSM
             DebugLogger.Log("[StateMachineModule]: Changing state: " + stateType.ToString(), Color.yellow);
             if (_stateList.TryGetValue(stateType, out IState state) && state != null)
             {
-                _currentState.Exit();
+                _currentState?.Exit();
                 _currentState = state;
                 _currentState.Enter();
             }

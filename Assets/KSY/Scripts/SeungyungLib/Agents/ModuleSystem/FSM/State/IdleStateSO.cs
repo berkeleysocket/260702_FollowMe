@@ -8,7 +8,7 @@ namespace SeungyungLib.FSM
     [CreateAssetMenu(fileName = "Idle" + nameof(StateSO), menuName = "SeungyungLib/FSM/" + nameof(StateSO) + "/Idle", order = 0)]
     public class IdleStateSO : StateSO
     {
-        protected override IState OnCreate(IModuleOwner owner, int enterAnimHash, ITransition[] transitions)
+        protected override IState Create(IModuleOwner owner, int enterAnimHash, ITransition[] transitions)
         {
             return new IdleState(owner, enterAnimHash, transitions);
         }

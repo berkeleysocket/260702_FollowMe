@@ -97,12 +97,48 @@ namespace FollowMe.KDS
             }
 
             var photoPoints = Object.FindObjectsByType<PhotoPoint>(FindObjectsSortMode.None);
-            sb.AppendLine($"  PhotoPoint {photoPoints.Length}개");
-            foreach (var p in photoPoints)
+            if (photoPoints.Length > 0)
+            {
+                sb.AppendLine($"  ⚠ PhotoPoint {photoPoints.Length}개 (S1은 수집 튜토리얼 — S2로 이동 권장)");
+                warnings++;
+            }
+            else
+            {
+                sb.AppendLine("  ✓ PhotoPoint 0개 (S1 의도)");
+            }
+
+            int follows = 0;
+            int likes = 0;
+            var pickups = Object.FindObjectsByType<YHW.Items.ItemPickup>(FindObjectsSortMode.None);
+            foreach (var p in pickups)
             {
                 if (p == null) continue;
-                if (!VerifyPhotoPoint(p, sb))
-                    errors++;
+                string n = p.name;
+                if (n.StartsWith("Follow_") || n.Contains("heart"))
+                    follows++;
+                else if (n.StartsWith("Like_") || n.Contains("emoji"))
+                    likes++;
+            }
+
+            sb.AppendLine($"  Collectibles  Follow≈{follows} Like≈{likes} (YHW ItemPickup {pickups.Length})");
+            if (Object.FindFirstObjectByType<SocialItemScoreBridge>() == null)
+            {
+                sb.AppendLine("  ⚠ SocialItemScoreBridge 없음");
+                warnings++;
+            }
+            else
+            {
+                sb.AppendLine("  ✓ SocialItemScoreBridge");
+            }
+            if (follows == 0)
+            {
+                sb.AppendLine("  ⚠ Follow(heart) 0개 (S1 핵심)");
+                warnings++;
+            }
+            if (likes == 0)
+            {
+                sb.AppendLine("  ⚠ Like(emoji) 0개");
+                warnings++;
             }
 
             var checkpoints = Object.FindObjectsByType<Checkpoint>(FindObjectsSortMode.None);
@@ -137,15 +173,6 @@ namespace FollowMe.KDS
             sb.AppendLine(ok
                 ? $"    ✓ {trigger.name}"
                 : $"    ✗ {trigger.name} — Player/Sequence 미연결");
-            return ok;
-        }
-
-        private static bool VerifyPhotoPoint(PhotoPoint point, StringBuilder sb)
-        {
-            bool ok = point.PreviewLikeBonus > 0;
-            sb.AppendLine(ok
-                ? $"    ✓ {point.PointId} (♡{point.PreviewLikeBonus:N0})"
-                : $"    ✗ {point.PointId} — 보상 없음");
             return ok;
         }
 

@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: PhotoReward_Busking
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
   _displayName: "\uBC84\uC2A4\uD0B9 \uD3EC\uD1A0\uC874"
+  _photoSprite: {fileID: 21300000, guid: ab64c93c03317e2448869d4ca06c3702, type: 3}
   _likeBonus: 8000
   _followBonus: 300
   _holdSeconds: 0.9
   _oneShot: 1
+  _hashtags:
+  - "#\uBC84\uC2A4\uD0B9"
+  - "#\uAC70\uB9AC\uC74C"
+  - "#\uC778\uC99D\uC0F7"

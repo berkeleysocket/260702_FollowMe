@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Act1_Brick_Slope_SteepDownLeft
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 4158474251273457818, guid: 34dc79e2e7da3f64ba945b6ed09821bb, type: 3}
+  m_Sprite: {fileID: -5756072884220713679, guid: 34dc79e2e7da3f64ba945b6ed09821bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

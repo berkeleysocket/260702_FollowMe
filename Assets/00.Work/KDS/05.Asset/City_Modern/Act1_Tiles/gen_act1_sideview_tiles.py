@@ -69,31 +69,31 @@ def brick_at_surface(x, y, y0, variant=0):
     return base
 
 
-def brick_at_face(x, y, y0, x0=0, x1=T, variant=0):
-    """6x5 brick grid on vertical face."""
+def brick_at_face(x, y, y0, variant=0):
+    """8x5 brick grid on vertical face, seamless at 32px tile width."""
     row = (y - y0) // 5
     by = y0 + row * 5
-    off = 0 if row % 2 == 0 else 3
-    bx = x0 + off + ((x - x0 - off) // 7) * 7
-    lx, ly = x - bx, y - by
-    if x < x0 + 1 or x >= x1 - 1:
-        return None
-    if lx < 0 or lx >= 7 or ly >= 5:
+    ly = y - by
+    if ly < 0 or ly >= 5:
         return MORTAR
+    off = 4 if row % 2 else 0
+    rel_x = (x - off) % 32
+    lx = rel_x % 8
+    brick_idx = rel_x // 8
     if lx == 0 or ly == 0 or ly == 4:
         return MORTAR
-    base = FACE_A if ((bx // 7) + row + variant) % 2 == 0 else FACE_B
+    base = FACE_A if (brick_idx + row + variant) % 2 == 0 else FACE_B
     if lx == 1 and ly == 1:
         return BRICK_HI if row == 0 else base
-    if lx >= 5 or ly >= 3:
+    if lx >= 6 or ly >= 3:
         return FACE_D
     return base
 
 
 def draw_grass_row(img, x0, x1, y_top, seed=0):
-    pos = x0 + 2
+    pos = x0
     ti = 0
-    while pos < x1 - 2:
+    while pos < x1:
         tuft = TUFTS[(seed + ti) % len(TUFTS)]
         for dx, dy, col in tuft:
             px(img, pos + dx, y_top + dy, col)
@@ -123,9 +123,7 @@ def draw_face_block(img, x0, x1, y0=BODY_TOP, y1=T, variant=0, left_edge=False, 
             if right_edge and x == x1 - 1:
                 px(img, x, y, OUT)
                 continue
-            col = brick_at_face(x, y, y0, x0, x1, variant)
-            if col:
-                px(img, x, y, col)
+            px(img, x, y, brick_at_face(x, y, y0, variant))
     if left_edge:
         for y in range(y0, y1):
             px(img, x0, y, OUT)
@@ -155,17 +153,54 @@ def tile_ground_fill(variant=0):
 
 
 def tile_ground_left():
+    """Walk surface left cap — UL/Left/DL open, air above."""
     img = new_tile()
-    draw_cliff(img, 0, 6)
+    draw_cliff(img, 0, 6, y0=BODY_TOP, y1=T)
     draw_surface_block(img, 5, T, variant=1)
     draw_face_block(img, 5, T, variant=1, left_edge=True)
     for y in range(SURF_TOP, BODY_TOP):
         px(img, 5, y, OUT)
+    # expose left silhouette through surface height
+    for y in range(SURF_TOP - 1, BODY_TOP):
+        for x in range(0, 5):
+            if img.getpixel((x, y))[3] != 0 and x < 4:
+                px(img, x, y, CLR)
+        px(img, 4, y, OUT)
     return img
 
 
 def tile_ground_right():
     return tile_ground_left().transpose(Image.FLIP_LEFT_RIGHT)
+
+
+def tile_edge_left_mid():
+    """Stacked left wall — UL/Left/DL open, tile above & below."""
+    img = new_tile()
+    draw_cliff(img, 0, 6, y0=0, y1=T)
+    draw_face_block(img, 5, T, y0=0, y1=T, variant=2, left_edge=True)
+    return img
+
+
+def tile_edge_right_mid():
+    return tile_edge_left_mid().transpose(Image.FLIP_LEFT_RIGHT)
+
+
+def tile_edge_left_bot():
+    """Left bottom corner — UL/Left/DL open, air below."""
+    img = new_tile()
+    draw_cliff(img, 0, 6, y0=0, y1=T - 3)
+    draw_face_block(img, 5, T, y0=0, y1=T - 3, variant=4, left_edge=True)
+    for x in range(4, T):
+        px(img, x, T - 3, OUT)
+        px(img, x, T - 2, SHADOW)
+        if (x + T) % 2 == 0:
+            px(img, x, T - 1, CLIFF_B)
+    px(img, 4, T - 3, OUT)
+    return img
+
+
+def tile_edge_right_bot():
+    return tile_edge_left_bot().transpose(Image.FLIP_LEFT_RIGHT)
 
 
 def tile_vertical_fill():
@@ -216,7 +251,7 @@ def tile_slope(mode):
             elif y == sy:
                 px(img, x, y, OUT)
             else:
-                col = brick_at_face(x, y, sy + 1, 0, T, variant=x % 2)
+                col = brick_at_face(x, y, sy + 1, variant=x % 2)
                 px(img, x, y, col if col else FACE_A)
 
     return img
@@ -230,7 +265,7 @@ def tile_step_up():
     draw_surface_block(img, 16, T, y0=0, y1=8, variant=1)
     for y in range(8, T):
         for x in range(16, T):
-            col = brick_at_face(x, y, 8, 16, T, 1)
+            col = brick_at_face(x, y, 8, variant=1)
             px(img, x, y, col if col else FACE_B)
     for y in range(0, T):
         px(img, 16, y, OUT)
@@ -252,7 +287,7 @@ def tile_outer_corner():
             elif y <= CURB_Y + 1:
                 px(img, x, y, CURB if y == CURB_Y else CURB_SH)
             else:
-                col = brick_at_face(x, y, BODY_TOP, 21, T, 1)
+                col = brick_at_face(x, y, BODY_TOP, variant=1)
                 px(img, x, y, col if col else FACE_A)
     return img
 
@@ -293,9 +328,9 @@ def tile_platform(cap="center"):
         px(img, x, plat_bot, CURB)
         px(img, x, plat_bot + 1, SHADOW)
     for y in range(plat_bot + 2, plat_bot + 8):
-        for x in range(x0 + 2, x1 - 2):
-            col = brick_at_face(x, y, plat_bot + 2, x0, x1, 3)
-            if col and col != MORTAR:
+        for x in range(x0, x1):
+            col = brick_at_face(x, y, plat_bot + 2, variant=3)
+            if col != MORTAR:
                 px(img, x, y, col)
     # hanging shadow
     d = ImageDraw.Draw(img)
@@ -343,14 +378,21 @@ def build_sheet(tiles, path, cols=4):
 
 
 ground_tiles = [
+    # row0
     lambda: tile_ground_fill(0),
     lambda: tile_ground_fill(1),
     lambda: tile_ground_fill(2),
-    tile_ground_left,
-    tile_ground_right,
-    tile_vertical_fill,
-    tile_column,
+    tile_ground_left,          # 3 top-left (UL/L/DL open)
+    # row1
+    tile_ground_right,         # 4 top-right
+    tile_vertical_fill,        # 5
+    tile_column,               # 6
     lambda: tile_ground_fill(3),
+    # row2 — left/right edge mid & bot (UL/L/DL or UR/R/DR open)
+    tile_edge_left_mid,        # 8
+    tile_edge_right_mid,       # 9
+    tile_edge_left_bot,        # 10
+    tile_edge_right_bot,       # 11
 ]
 
 slope_tiles = [
@@ -371,5 +413,5 @@ slope_tiles = [
     tile_floating_slab,
 ]
 
-build_sheet(ground_tiles, f"{OUT_DIR}/Act1_Brick_Ground_32x32.png")
+build_sheet(ground_tiles, f"{OUT_DIR}/Act1_Brick_Ground_32x32.png", cols=4)
 build_sheet(slope_tiles, f"{OUT_DIR}/Act1_Brick_Slope_32x32.png", cols=4)

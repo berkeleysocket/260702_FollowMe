@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: PhotoReward_NeonBillboard
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
   _displayName: "\uB124\uC628 \uC804\uAD11\uD310 \uD3EC\uD1A0\uC874"
+  _photoSprite: {fileID: 21300000, guid: bf0ca58c5ffb90a4a8f587de03e4e7a3, type: 3}
   _likeBonus: 12000
   _followBonus: 500
   _holdSeconds: 1
   _oneShot: 1
+  _hashtags:
+  - "#\uAC15\uB0A8"
+  - "#\uB124\uC628"
+  - "#\uC624\uB298\uC758\uD56D\uD50C"

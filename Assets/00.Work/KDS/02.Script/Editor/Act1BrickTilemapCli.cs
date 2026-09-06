@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.IO;
+using Unity.Pipeline.Commands;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace FollowMe.KDS.Editor
 {
-    /// <summary>Unity CLI: unity run . -- -executeMethod FollowMe.KDS.Editor.Act1BrickTilemapCli.Setup</summary>
+    /// <summary>
+    /// Batch: unity run . -- -executeMethod FollowMe.KDS.Editor.Act1BrickTilemapCli.Setup
+    /// Live editor: unity command act1-brick-setup
+    /// </summary>
     public static class Act1BrickTilemapCli
     {
         private const string BaseDir = "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles";
@@ -17,24 +21,46 @@ namespace FollowMe.KDS.Editor
 
         public static void Setup()
         {
-            SliceSheet(GroundSheet, 4, 2, 8);
+            if (!RebuildBrickTiles())
+            {
+                EditorApplication.Exit(1);
+                return;
+            }
+
+            EditorApplication.Exit(0);
+        }
+
+        [CliCommand("act1-brick-setup", "Rebuild Act1 brick ground/slope tiles and RuleTile assets")]
+        public static int SetupFromPipeline()
+        {
+            return RebuildBrickTiles() ? 0 : 1;
+        }
+
+        private static bool RebuildBrickTiles()
+        {
+            SliceSheet(GroundSheet, 4, 3, 12);
             SliceSheet(SlopeSheet, 4, 4, 15);
 
             var ground = LoadSprites(GroundSheet);
             var slope = LoadSprites(SlopeSheet);
-            if (ground.Length < 5 || slope.Length < 15)
+            if (ground.Length < 12 || slope.Length < 15)
             {
                 Debug.LogError($"[Act1BrickTilemapCli] sprite count ground={ground.Length} slope={slope.Length}");
-                EditorApplication.Exit(1);
-                return;
+                return false;
             }
 
             EnsureDir(TileDir);
             EnsureDir(RuleDir);
 
             CreateGroundRuleTile(ground);
+            CreateTile(TileDir + "/Act1_Brick_Ground_Left.asset", ground[3]);
+            CreateTile(TileDir + "/Act1_Brick_Ground_Right.asset", ground[4]);
             CreateTile(TileDir + "/Act1_Brick_VerticalFill.asset", ground[5]);
             CreateTile(TileDir + "/Act1_Brick_Column.asset", ground[6]);
+            CreateTile(TileDir + "/Act1_Brick_Edge_Left.asset", ground[8]);
+            CreateTile(TileDir + "/Act1_Brick_Edge_Right.asset", ground[9]);
+            CreateTile(TileDir + "/Act1_Brick_Edge_LeftBot.asset", ground[10]);
+            CreateTile(TileDir + "/Act1_Brick_Edge_RightBot.asset", ground[11]);
 
             string[] slopeNames =
             {
@@ -53,7 +79,7 @@ namespace FollowMe.KDS.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("[Act1BrickTilemapCli] Setup complete.");
-            EditorApplication.Exit(0);
+            return true;
         }
 
         private static void EnsureDir(string path)
@@ -129,14 +155,39 @@ namespace FollowMe.KDS.Editor
                 AssetDatabase.CreateAsset(rule, assetPath);
             }
 
+            // Neighbor order: UL, Up, UR, Left, Right, DL, Down, DR
+            // A=Don'tCare T=This N=NotThis
             const int A = 0, T = 1, N = 2;
+            var surfaceFills = new[] { sprites[0], sprites[1], sprites[2], sprites[7] };
+
             rule.m_DefaultSprite = sprites[0];
             rule.m_DefaultColliderType = Tile.ColliderType.Sprite;
             rule.m_TilingRules = new List<RuleTile.TilingRule>
             {
-                MakeRule(sprites[3], A, A, A, N, A, A, A, A),
-                MakeRule(sprites[4], A, A, A, A, N, A, A, A),
-                MakeRuleRandom(new[] { sprites[0], sprites[1], sprites[2], sprites[7] }, A, A, A, T, T, A, A, A)
+                // Left column open (UL / Left / DL) — top / mid / bot
+                MakeRule(sprites[3], N, N, A, N, T, N, A, A),
+                MakeRule(sprites[8], N, T, A, N, T, N, T, A),
+                MakeRule(sprites[10], N, T, A, N, T, N, N, A),
+                // Right column open (UR / Right / DR)
+                MakeRule(sprites[4], A, N, N, T, N, A, A, N),
+                MakeRule(sprites[9], A, T, N, T, N, A, T, N),
+                MakeRule(sprites[11], A, T, N, T, N, A, N, N),
+                // Softer left/right caps (only cardinal left/right empty)
+                MakeRule(sprites[3], A, N, A, N, T, A, A, A),
+                MakeRule(sprites[4], A, N, A, T, N, A, A, A),
+                MakeRule(sprites[8], A, T, A, N, T, A, T, A),
+                MakeRule(sprites[9], A, T, A, T, N, A, T, A),
+                // Interior — surrounded on all four cardinals
+                MakeRule(sprites[5], A, T, A, T, T, A, T, A),
+                // Stacked body — tile above, open below
+                MakeRule(sprites[5], A, T, A, T, T, A, N, A),
+                // Bottom edge under platform
+                MakeRule(sprites[5], A, T, A, N, T, A, N, A),
+                MakeRule(sprites[5], A, T, A, T, N, A, N, A),
+                // Walk surface row — open above
+                MakeRuleRandom(surfaceFills, A, N, A, T, T, A, A, A),
+                // Horizontal fill fallback
+                MakeRuleRandom(surfaceFills, A, A, A, T, T, A, A, A)
             };
             EditorUtility.SetDirty(rule);
         }

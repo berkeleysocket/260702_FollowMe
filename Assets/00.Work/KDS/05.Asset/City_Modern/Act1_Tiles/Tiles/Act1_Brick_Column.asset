@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Act1_Brick_Column
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 6407919254669175761, guid: c41dafd43038c1649b80cabae1dffe00, type: 3}
+  m_Sprite: {fileID: 6674531653086077257, guid: c41dafd43038c1649b80cabae1dffe00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

@@ -41,6 +41,8 @@ namespace FollowMe.KDS
         public float HoldProgress { get; private set; }
         public string PointId => string.IsNullOrEmpty(_pointId) ? gameObject.name : _pointId;
         public string DisplayName => _reward != null ? _reward.DisplayName : PointId;
+        public string HashtagLine => _reward != null ? _reward.HashtagLine : string.Empty;
+        public Sprite PhotoSprite => _reward != null ? _reward.PhotoSprite : null;
         public long PreviewLikeBonus => _reward != null ? _reward.LikeBonus : _fallbackLikeBonus;
         public long PreviewFollowBonus => _reward != null ? _reward.FollowBonus : _fallbackFollowBonus;
 

@@ -43,7 +43,7 @@ namespace FollowMe.KDS
     {
         public static readonly StageMapSpec[] All =
         {
-            Spec(1,  "처음",   StageTemplate.CityStreet, 130, 1, 3, 2, 0, false, 20, 45, 45, 70, 100),
+            Spec(1,  "처음",   StageTemplate.CityStreet, 130, 1, 0, 2, 0, false, 20, 45, 45, 70, 100),
             Spec(2,  "처음",   StageTemplate.CityStreet, 140, 2, 3, 2, 0, false, 22, 50, 50, 78, 108),
             Spec(3,  "처음",   StageTemplate.CityStreet, 150, 2, 2, 2, 0, false, 24, 52, 52, 82, 112),
             Spec(4,  "달콤함", StageTemplate.CafeAlley,  140, 2, 3, 2, 0, false, 25, 50, 70, 90, 120),
@@ -100,7 +100,7 @@ namespace FollowMe.KDS
         {
             return spec.Stage switch
             {
-                1 => new[] { 58f, 85f, 92f },
+                1 => Array.Empty<float>(),
                 2 => new[] { 65f, 95f, 125f },
                 3 => new[] { 70f, 130f },
                 4 => new[] { 38f, 78f, 105f },
@@ -120,9 +120,20 @@ namespace FollowMe.KDS
             };
         }
 
+        /// <summary>하트(팔로우) 개수. S1 튜토리얼 핵심.</summary>
+        public static int GetFollowCount(int stage) => stage switch
+        {
+            1 => 14, 2 => 10, 3 => 10,
+            4 => 8, 5 => 8, 6 => 8, 7 => 8, 8 => 8,
+            9 => 6, 10 => 6, 11 => 6,
+            12 => 4, 13 => 4, 14 => 4,
+            15 => 6, 16 => 4,
+            _ => 8
+        };
+
         public static int GetLikeCount(int stage) => stage switch
         {
-            1 => 21, 2 => 26, 3 => 28,
+            1 => 12, 2 => 26, 3 => 28,
             4 => 24, 5 => 26, 6 => 28, 7 => 30, 8 => 32,
             9 => 38, 10 => 42, 11 => 40,
             12 => 14, 13 => 12, 14 => 10,
@@ -132,7 +143,7 @@ namespace FollowMe.KDS
 
         public static int GetDailyCount(int stage) => stage switch
         {
-            1 => 5, 2 => 6, 3 => 7,
+            1 => 0, 2 => 6, 3 => 7,
             4 => 5, 5 => 5, 6 => 6, 7 => 6, 8 => 7,
             9 => 6, 10 => 6, 11 => 7,
             12 => 4, 13 => 4, 14 => 5,

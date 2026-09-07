@@ -31,6 +31,7 @@ namespace SeungyungLib.ModuleSystem.Modules
 
             DebugLogger.Assert(_animator != null, "[RenderModule]: _animator is null]");
             DebugLogger.Assert(_spriteRenderer != null, "[RenderModule]: _spriteRenderer is null]");
+
         }
         
         public void Activate() => IsActive = true;
@@ -43,14 +44,14 @@ namespace SeungyungLib.ModuleSystem.Modules
             => _spriteRenderer.flipX = flip;
 
         #region AI Shake Effect Code
-        private void PlayHitShake(PlayerHitEvent evt)
+        public void PlayHitShakeEffect()
         {
             transform.DOShakePosition(0.15f, strength: 0.2f, vibrato: 20);
         }
         #endregion
 
         #region AI Invincible Effect Code
-        public void TriggerInvincibility()
+        public void PlayInvincibilityEffect()
         {
             if (IsInvincible) return;
             StartCoroutine(InvincibilityRoutine());

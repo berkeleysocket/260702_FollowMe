@@ -99,6 +99,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/AI Enemy/GhostEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/CameraShake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/Example/ExampleConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsKnockdownConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
@@ -260,10 +261,10 @@
           <line>91</line>
           <properties documentPath="C:\GitHub\260702_FollowMe\Assets\KSY\Scripts\SeungyungLib\Agents\Player.cs" containingFunctionPresentation="메서드 'OnMoved'">
             <startOffsets>
-              <option value="3653" />
+              <option value="3656" />
             </startOffsets>
             <endOffsets>
-              <option value="3654" />
+              <option value="3657" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />

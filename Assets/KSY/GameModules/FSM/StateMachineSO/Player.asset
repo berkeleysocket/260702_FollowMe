@@ -11,10 +11,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11922fbf572dba4cbab447ca8f64d30, type: 3}
   m_Name: Player
-  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateMachineSO
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateMachineSo
   <StateList>k__BackingField:
-  - {fileID: 11400000, guid: 7ecda1247f5a6da43bf2636b278e7736, type: 2}
-  - {fileID: 11400000, guid: 2416ea0fb0d547a42a53cddb2d482639, type: 2}
-  - {fileID: 11400000, guid: 82c354d3354c73a4487442272150ffb7, type: 2}
-  - {fileID: 11400000, guid: 53941e61dfb90f540818d9a1d42b7613, type: 2}
-  <StartState>k__BackingField: 0
+  - {fileID: 11400000, guid: ca994f55177dea24db67e9dc492cc60f, type: 2}
+  - {fileID: 11400000, guid: 0d5bed6cb6e46e844b1e77c1c776ee3c, type: 2}
+  - {fileID: 11400000, guid: c76fb00c068664144ba16242a9a81b7d, type: 2}
+  - {fileID: 11400000, guid: 7e85360c71a13d64b8db4a7978505b94, type: 2}
+  - {fileID: 11400000, guid: 84c1d97d54137bc4d8f151e3c2865374, type: 2}
+  - {fileID: 11400000, guid: 9563bcad920db6c46871c67a78c106c0, type: 2}
+  <StartState>k__BackingField: 2

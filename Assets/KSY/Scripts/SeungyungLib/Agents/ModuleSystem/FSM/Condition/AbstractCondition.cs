@@ -1,6 +1,7 @@
 using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
@@ -8,46 +9,44 @@ namespace SeungyungLib.FSM
 {
     public abstract class AbstractCondition : ICondition
     {
-        protected bool IsNot { get; private set; }
+        public ConditionType Type { get; private set; }
+        
+        private readonly bool _isNot;   
 
-        public AbstractCondition(IModuleOwner owner, bool isNot)
+        #region Initialization
+        protected AbstractCondition(IModuleOwner owner, ConditionType type, bool isNot)
         {
-            this.IsNot = isNot;
+            this.Type = type;
+            this._isNot = isNot;
         }
+        #endregion
 
-        public abstract bool Check();
+        public bool Check() => OnCheck() ^ _isNot;
+        protected abstract bool OnCheck();
+
+        #region IDisposable
+        public void Dispose()
+        {
+            OnDispose();
+        }
+        protected virtual void OnDispose() {}
+        #endregion
     }
 
     public class IsMovingCondition : AbstractCondition
     {
         private readonly IMovementModule _movementModule;
-        // private bool _isMoving;
         
-        public IsMovingCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        public IsMovingCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
-
-            // if (_movementModule != null)
-            // {
-            //     _movementModule.OnChangeAxis += (float axis) =>
-            //     {
-            //         if (Mathf.Abs(axis) > 0.01f)
-            //             _isMoving = !isNot;
-            //         else
-            //             _isMoving = isNot;
-            //     };
-            // }
-            // else
-            //     DebugLogger.LogError("[IsMovingCondition] _movementModule is null");
+            
             DebugLogger.Assert(_movementModule != null, "[IsMovingCondition] _movementModule is null.");
         }
 
-        // public override bool Check() => _isMoving;
-        public override bool Check()
+        protected override bool OnCheck()
         {
-            if (IsNot)
-                return !_movementModule.IsMoving;
-            return _movementModule.IsMoving;
+            return _movementModule?.IsMoving ?? false;
         }
     }
 
@@ -55,37 +54,33 @@ namespace SeungyungLib.FSM
     {
         private readonly IMovementModule _movementModule;
         
-        public IsJumpingCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        public IsJumpingCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
             
             DebugLogger.Assert(_movementModule != null, "[IsJumpingCondition] _movementModule is null.");
         }
 
-        public override bool Check()
+        protected override bool OnCheck()
         {
-            if (IsNot)
-                return !_movementModule.IsJumping;
-            return _movementModule.IsJumping;
+            return _movementModule?.IsJumping ?? false;
         }
     }
 
-    public class IsGroundCondition : AbstractCondition
+    public class IsGroundedCondition : AbstractCondition
     {
         private readonly IGroundCheckModule _groundChecker;
 
-        public IsGroundCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        public IsGroundedCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _groundChecker = owner.GetModule<IGroundCheckModule>();
             
-            DebugLogger.Assert(_groundChecker != null, "[IsGroundCondition] _groundChecker is null.");
+            DebugLogger.Assert(_groundChecker != null, "[IsGroundedCondition] _groundChecker is null.");
         }
         
-        public override bool Check()
+        protected override bool OnCheck() 
         {
-            if (IsNot)
-                return !_groundChecker.NotifyIsGround.Value;
-            return _groundChecker.NotifyIsGround.Value;
+            return _groundChecker?.NotifyIsGrounded.Value ?? false;
         }
     }
 
@@ -93,30 +88,103 @@ namespace SeungyungLib.FSM
     {
         private readonly IMovementModule _movementModule;
 
-        public IsFallCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        public IsFallCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
             
             DebugLogger.Assert(_movementModule != null, "[IsFallCondition] _movementModule is null.");
         }
         
-        public override bool Check()
+        protected override bool OnCheck() => _movementModule?.IsFall ?? false;
+    }
+    
+    public class IsHitCondition : AbstractCondition
+    {
+        private readonly IBodyModule _bodyModule;
+        
+        private bool _isHit;
+        
+        public IsHitCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
-            if (IsNot)
-                return !_movementModule.IsFall;
-            return _movementModule.IsFall;
+            this._bodyModule = owner.GetModule<IBodyModule>();
+
+            _bodyModule.OnDamaged += HandlePlayerHitEvent;
         }
+        
+        protected override bool OnCheck()
+        {
+            if (_isHit)
+            {
+                _isHit = false;
+                return true;
+            }
+            
+            return false;
+        }
+
+        private void HandlePlayerHitEvent(int damage, int currentHp) => _isHit = true;
     }
 
-    public class isTargetInRangeCondition : AbstractCondition
+    public class IsExpiredCondition : AbstractCondition
     {
-        public isTargetInRangeCondition(IModuleOwner owner, bool isNot) : base(owner, isNot)
+        private readonly float _duration;
+        
+        private float _startTime = -1f;
+        
+        public IsExpiredCondition(IModuleOwner owner, ConditionType type, 
+            bool isNot, float duration) : base(owner, type, isNot)
         {
+            this._duration = duration;
         }
 
-        public override bool Check()
+        protected override bool OnCheck()
         {
-            return true;
+            if (_startTime <= -1f)
+                _startTime = Time.time;
+
+            if (Time.time - _startTime >= _duration)
+            {
+                _startTime = -1f;
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+    
+    public class IsKnockdownCondition : AbstractCondition
+    {
+        private readonly IBodyModule _bodyModule;
+        
+        public IsKnockdownCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
+        {
+            this._bodyModule = owner.GetModule<IBodyModule>();
+        }
+
+        protected override bool OnCheck() => _bodyModule.IsKnockdown;
+    }
+
+    public class IsRecoveringCondition : AbstractCondition
+    {
+        private readonly IBodyModule _bodyModule;
+        private bool _isRecovering;
+        
+        public IsRecoveringCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
+        {
+            this._bodyModule = owner.GetModule<IBodyModule>();
+            
+            _bodyModule.OnRecovery += ()=> _isRecovering = true;
+        }
+
+        protected override bool OnCheck()
+        {
+            if (_isRecovering)
+            {
+                _isRecovering = false;
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -1,7 +1,13 @@
+using SeungyungLib.Core.FlyweightService;
+using SeungyungLib.FSM.Enum;
+
+using System;
+
 namespace SeungyungLib.FSM.Interface
 {
-    public interface ICondition
+    public interface ICondition : IDisposable, IFlyweight
     {
-        public bool Check();
+        ConditionType Type { get; }
+        bool Check();
     }
 }

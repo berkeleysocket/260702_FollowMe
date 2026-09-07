@@ -1,26 +1,30 @@
-using SeungyungLib.Core.Effects;
-using SeungyungLib.ModuleSystem.Interface;
 using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.Effects;
+using SeungyungLib.ModuleSystem.Core;
 
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace SeungyungLib.Template.Modules
+namespace SeungyungLib.ModuleSystem.Modules
 {
     public class VfxModule : MonoBehaviour, IVfxModule
     {
-        private IModuleOwner _owner;
         private Dictionary<int, IPlayableVfx> _playableDict;
-        
+
+        public bool IsActive { get; private set; }
+
         public void Initialize(IModuleOwner owner)
         {
-            this._owner = owner;
             this._playableDict = GetComponentsInChildren<IPlayableVfx>()
                 .ToDictionary(vfx => vfx.NameHash);
             foreach (var vfx in _playableDict.Values)
                 vfx.Initialize();
         }
+        
+        public void Activate() => IsActive = true;
+        public void Deactivate() => IsActive = false;
+        
 
         public void PlayVfx(int hash, Vector3 position, Quaternion rotation)
         {

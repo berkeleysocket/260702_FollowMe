@@ -9,14 +9,79 @@
   <component name="ChangeListManager">
     <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/Is 0.2 Expired.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/Is 0.2 Expired.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/Is 2 Expired.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/ConditionSO/Is 2 Expired.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/StateSO/state Hit.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/StateSO/state Hit.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/StateSO/state Knockdown.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/StateSO/state Knockdown.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/TransitionSO/from Hit to Knockdown.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/TransitionSO/from Hit to Knockdown.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/TransitionSO/from Knockdown to Idle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/FSM/TransitionSO/from Knockdown to Idle.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/StateMachine/StateModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/StateMachine/StateModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/ChaseMovementModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/ChaseMovementModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Agent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Agent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/AbstractModuleOwner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/AbstractModuleOwner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/SeungyungLib.ModuleSystem.Core.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/SeungyungLib.ModuleSystem.Core.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/AbstractCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/AbstractCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/ConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/ConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsExpiredConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsExpiredConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsFallConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsFallConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundedConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsGroundedConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsJumpingConditionSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsJumpingConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsJumpingConditionSo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsMovingConditionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsMovingConditionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/ConditionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/ConditionType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Interface/IStateMachineModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Interface/IStateMachineModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Interface/SeungyungLib.FSM.Interface.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Interface/SeungyungLib.FSM.Interface.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/SeungyungLib.FSM.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/SeungyungLib.FSM.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/AbstractState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/AbstractState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/FallStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/FallStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/HitStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/HitStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/IdleStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/IdleStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/JumpStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/JumpStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/KnockdownStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/KnockdownStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/RunStateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/RunStateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/StateSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/StateSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/StateMachine/StateMachineModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/StateMachine/StateMachineModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Transition/TransitionSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Transition/TransitionSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IAfterInitModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IAfterInitModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IBodyModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IBodyModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IControllableMovementModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IControllableMovementModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IGroundCheckModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IGroundCheckModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IModuleOwner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IModuleOwner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IMovementModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IMovementModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IRangeCheckModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IRangeCheckModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IRenderModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IRenderModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVfxModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IVfxModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/SeungyungLib.ModuleSystem.Interface.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/SeungyungLib.ModuleSystem.Interface.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/BodyModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/BodyModule.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/ControllableMovementModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/ControllableMovementModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/GroundCheckModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/GroundCheckModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RangeCheckModule.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RangeCheckModule.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RenderModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RenderModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/SeungyungLib.Template.Modules.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/SeungyungLib.Template.Modules.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/VfxModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/VfxModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,23 +98,40 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/isTargetInRange.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/ChaseState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/Example/ExampleConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsKnockdownConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsRecoveringConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/ConditionOption.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Enum/ConditionType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Interface/ITransition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/FallStateSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/JumpStateSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/State/KnockdownStateSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IColliderModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Interface/IRangeCheckModule.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/RangeCheckModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/PlayableParticleVfx.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/Effects/RecycleParticleVfx.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Core/NotifyValue/NotifyValue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managements/PoolManagement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127d981137de49d2ae957439392db92b8c800/50/149f73e5/Collision2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127d981137de49d2ae957439392db92b8c800/d9/0e7864e9/Rigidbody2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/19/aba31c39/Behaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/61/3eec0e0b/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6fd3bea869f4004b25d18a15df36a7812000/c3/d45c4e9d/VisualEffect.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13ae6aa3c458d6b636864d5bcb4ef1f289091462a1f27a5b15c27ddaff8f848/System.Timers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6,
   &quot;fromUser&quot;: false
@@ -71,7 +153,8 @@
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;KSY&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.com.jetbrains.rider.ideaInterop.settings.colors.RiderDefaultLanguageColorSettingsPage&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
+    &quot;unity.profiler.toolWindow.autoShown&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
@@ -131,6 +214,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -161,6 +255,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/Player.cs</url>
+          <line>91</line>
+          <properties documentPath="C:\GitHub\260702_FollowMe\Assets\KSY\Scripts\SeungyungLib\Agents\Player.cs" containingFunctionPresentation="메서드 'OnMoved'">
+            <startOffsets>
+              <option value="3653" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3654" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

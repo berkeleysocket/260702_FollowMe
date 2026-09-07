@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SeungyungLib.Core.EventChannelSystem
 {
-    [CreateAssetMenu(fileName = "Event Channel", menuName = "SeungyungLib/Utility/EventChannel", order = 40)]
+    [CreateAssetMenu(fileName = "Event Channel", menuName = "SeungyungLib/Core/EventChannel", order = 40)]
     public class EventChannelSO : ScriptableObject
     {
         private Dictionary<Type, Action<ChannelEvent>> _events = new();

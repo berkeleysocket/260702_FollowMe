@@ -1,7 +1,7 @@
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.Core.ParameterSO;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 using SeungyungLib.Template.EventChannels;
 
 using UnityEngine;
@@ -12,53 +12,113 @@ namespace SeungyungLib.Agents
     {
         [SerializeField] private AssetNameSO dustParticleName;
         [SerializeField] private AssetNameSO smokeParticleName;
+        [SerializeField] private EventChannelSO controlEventChannel;
         [SerializeField] private EventChannelSO playerEventChannel;
-        
-        private IGroundCheckModule _groundChecker;
-        private IVfxModule _vfxModule;
+
+        private IBodyModule _bodyModule;
         private IControllableMovementModule _movementModule;
+        private IGroundCheckModule _groundChecker;
         private IRenderModule _renderModule;
+        private IVfxModule _vfxModule;
 
         #region Initialization
         protected override void OnInitialized()
         {
             base.OnInitialized();
 
+            this._bodyModule = GetModule<IBodyModule>();
             this._groundChecker = GetModule<IGroundCheckModule>();
             this._vfxModule = GetModule<IVfxModule>();
             this._movementModule = GetModule<IControllableMovementModule>();
             this._renderModule = GetModule<IRenderModule>();
 
+            DebugLogger.Assert(controlEventChannel != null, "[AgentMovementModule]: controlEventChannel is null.");
             DebugLogger.Assert(playerEventChannel != null, "[AgentMovementModule]: playerEventChannel is null.");
+            
+            DebugLogger.Assert(_bodyModule != null, "[AgentMovementModule]: _bodyModule is null.");
             DebugLogger.Assert(_groundChecker != null, "[AgentMovementModule]: _groundChecker is null.");
             DebugLogger.Assert(_vfxModule != null, "[AgentMovementModule]: _vfxModule is null.");
+            DebugLogger.Assert(_movementModule != null, "[AgentMovementModule]: _movementModule is null.");
             DebugLogger.Assert(_renderModule != null, "[AgentMovementModule]: _renderModule is null.");
 
-            RegisterEventHandlers();
+            SubscribeEventHandlers();
         }
-        
-        private void RegisterEventHandlers()
+
+        protected override void OnDestroyed()
         {
-            _groundChecker.NotifyIsGround.OnChanged += HandleGroundCheck;
-            playerEventChannel.AddListener<MoveInputEvent>(HandleMoveInput);
-            playerEventChannel.AddListener<JumpInputEvent>(HandleJumpInput);
+            base.OnDestroyed();
+            
+            UnsubscribeEventHandlers();
+        }
+
+        private void SubscribeEventHandlers()
+        {
+            _groundChecker.NotifyIsGrounded.OnChanged += OnGroundedChanged;
+            _bodyModule.OnDamaged += OnTakeDamage;
+            _bodyModule.OnKnockdown += OnKnockdown;
+            _bodyModule.OnRecovery += OnRecovery;
+            _movementModule.OnMoved += OnMoved;
+            controlEventChannel.AddListener<MoveInputEvent>(OnMoveInputReceived);
+            controlEventChannel.AddListener<JumpInputEvent>(OnJumpInputReceived);
+        }
+
+        private void UnsubscribeEventHandlers()
+        {
+            _groundChecker.NotifyIsGrounded.OnChanged -= OnGroundedChanged;
+            _bodyModule.OnDamaged -= OnTakeDamage;
+            _bodyModule.OnKnockdown -= OnKnockdown;
+            _bodyModule.OnRecovery += OnRecovery;
+            _movementModule.OnMoved -= OnMoved;
+            controlEventChannel.RemoveListener<MoveInputEvent>(OnMoveInputReceived);
+            controlEventChannel.RemoveListener<JumpInputEvent>(OnJumpInputReceived);
         }
         #endregion
 
         #region Event Handlers
-        private void HandleGroundCheck(bool isGround)
+        private void OnKnockdown()
+        {
+            if (_movementModule.IsControlling)
+                _vfxModule.StopVfx(dustParticleName.Hash);
+        }
+
+        private void OnRecovery()
+        {
+            _renderModule.TriggerInvincibility();
+        }
+        
+        private void OnMoved(int axis)
+        {
+            if (_movementModule.IsControlling)
+            {
+                bool isFlip = axis < 0;
+                
+                _renderModule.FlipX(isFlip);
+                            
+                if (_groundChecker.NotifyIsGrounded.Value)
+                    _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
+                else
+                    _vfxModule.StopVfx(dustParticleName.Hash);
+            }
+            else
+                _vfxModule.StopVfx(dustParticleName.Hash);
+        }
+        
+        private void OnTakeDamage(int damage, int currentHealth)
+        {
+            PlayerEvents.HitEvent.Initialize(damage, currentHealth);
+            playerEventChannel.RaiseEvent(PlayerEvents.HitEvent);
+                
+            if (_movementModule.IsControlling)
+                _vfxModule.StopVfx(dustParticleName.Hash);
+        }
+        
+        private void OnGroundedChanged(bool isGround)
         {
             if (isGround)
             {
-                float axis = _movementModule.Axis;
-                    
-                _vfxModule.PlayVfx(smokeParticleName.Hash, 
-                    new Vector2(transform.position.x, transform.position.y - 0.5f), 
-                    Quaternion.identity);
-                    
-                if (axis != 0)
+                if (_movementModule.IsMoving && _movementModule.IsControlling)
                 {
-                    bool isFlip = axis < 0f;
+                    bool isFlip = _movementModule.Axis < 0f;
                     _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
                 }
                 else
@@ -67,29 +127,9 @@ namespace SeungyungLib.Agents
             else
                 _vfxModule.StopVfx(dustParticleName.Hash);
         }
-
-        private void MovementVfxCallback(float axis)
-        {
-            if (axis != 0 && _groundChecker.NotifyIsGround.Value)
-            {
-                bool isFlip = axis < 0f;
-                _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
-            }
-            else
-                _vfxModule.StopVfx(dustParticleName.Hash);
-        }
         
-        private void HandleMoveInput(MoveInputEvent evt)
-        {
-            float axis = evt.Axis;
-            bool isFlip = axis < 0f;
-            
-            _movementModule.MoveToDirection(axis);
-            _renderModule.FlipX(isFlip);
-            MovementVfxCallback(axis);
-        }
-
-        private void HandleJumpInput(JumpInputEvent evt) => _movementModule.IsJumpKeyPressed = evt.JumpKeyPressed;
+        private void OnMoveInputReceived(MoveInputEvent evt) => _movementModule.MoveToDirection(evt.Axis);
+        private void OnJumpInputReceived(JumpInputEvent evt) => _movementModule.IsJumpKeyPressed = evt.JumpKeyPressed;
         #endregion
     }
 }

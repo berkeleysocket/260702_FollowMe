@@ -1,13 +1,16 @@
 ﻿using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "IsMovingConditionSo", menuName = "SeungyungLib/FSM/ConditionSo/IsMoving", order = 0)]
-    public class IsMovingConditionSo : AbstractConditionSo
+    [CreateAssetMenu(fileName = "IsMoving" + nameof(ConditionSO), menuName = "SeungyungLib/FSM/" + nameof(ConditionSO) + "/Is Moving", order = 0)]
+    public class IsMovingConditionSO : ConditionSO
     {
-        public override ICondition Create(IModuleOwner owner)=> new IsMovingCondition(owner, IsNot);
+        protected override ICondition OnCreate(IModuleOwner owner)
+        {
+            return new IsMovingCondition(owner, Type, IsNot);
+        }
     }
 }

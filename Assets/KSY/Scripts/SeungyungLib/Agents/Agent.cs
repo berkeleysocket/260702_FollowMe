@@ -1,21 +1,24 @@
-using SeungyungLib.ModuleSystem;
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.FSM.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 namespace SeungyungLib.Agents
 {
-    public class Agent : AbstractModuleOwner
+    public abstract class Agent : AbstractModuleOwner
     {
-        private IStateModule _stateModule;
+        private IStateMachineModule _stateMachineModule;
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            _stateModule = GetModule<IStateModule>();
+            _stateMachineModule = GetModule<IStateMachineModule>();
+            
+            DebugLogger.Assert(_stateMachineModule != null, $"[{this.GetType().Name}]: StateMachineModule is null");
         }
 
         private void Update()
         {
-            _stateModule?.Update();
+            _stateMachineModule?.Update();
         }
     }
 }

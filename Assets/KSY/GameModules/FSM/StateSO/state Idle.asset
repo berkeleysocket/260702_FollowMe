@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf18360d2cd925149b5e55e90247bb7d, type: 3}
+  m_Name: state Idle
+  m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.IdleStateSO
+  <Type>k__BackingField: 2
+  <EnterAnimParam>k__BackingField: {fileID: 11400000, guid: cb1f2fee3dde0d742ba9d3b0b7f3ec36, type: 2}
+  <Transitions>k__BackingField:
+  - {fileID: 11400000, guid: 622570e6fc5191545aef078afbdb198d, type: 2}
+  - {fileID: 11400000, guid: c3af2b72369afa8459990fb094bbee2a, type: 2}
+  - {fileID: 11400000, guid: 23634616c2a0c9742ab0c5e36e673485, type: 2}
+  - {fileID: 11400000, guid: 90b6835641c7ffb4da7f487e33abcd87, type: 2}

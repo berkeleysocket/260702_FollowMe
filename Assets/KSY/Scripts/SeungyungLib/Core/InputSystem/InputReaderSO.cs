@@ -9,7 +9,7 @@ namespace SeungyungLib.Core.InputSystem
     [CreateAssetMenu(fileName = "InputReaderSO", menuName = "SeungyungLib/Core/InputSystem/InputReaderSO", order = 0)]
     public class InputReaderSO : ScriptableObject, PlayerControls.IPlayerActions
     {
-        public event Action<float> OnRunKeyPressed;
+        public event Action<int> OnRunKeyPressed;
         public event Action<bool> OnJumpKeyPressed;
 
         private PlayerControls _controls;
@@ -37,9 +37,9 @@ namespace SeungyungLib.Core.InputSystem
         public void OnRun(InputAction.CallbackContext context)
         {
             if (context.performed)
-                OnRunKeyPressed?.Invoke(context.ReadValue<float>());
+                OnRunKeyPressed?.Invoke((int)context.ReadValue<float>());
             else if (context.canceled)
-                OnRunKeyPressed?.Invoke(0f);
+                OnRunKeyPressed?.Invoke(0);
         }
 
         public void OnJump(InputAction.CallbackContext context)

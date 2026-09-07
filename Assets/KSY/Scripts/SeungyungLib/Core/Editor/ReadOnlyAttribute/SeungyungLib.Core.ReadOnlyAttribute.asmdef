@@ -1,0 +1,14 @@
+{
+    "name": "SeungyungLib.Core.ReadOnlyAttribute",
+    "rootNamespace": "SeungyungLib.Core.ReadOnlyAttribute",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,89 +1,36 @@
+using System.Linq;
+using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.Core.ParameterSO;
-using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
-
-using System;
-using System.Linq;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
 namespace SeungyungLib.FSM
 {
-    [CreateAssetMenu(fileName = "StateSO",menuName = "SeungyungLib/FSM/StateSO", order = 1)]
-    public class StateSO : ScriptableObject
+    public abstract class StateSO : ScriptableObject
     {
-        [field: SerializeField] public StateType Type { get; private set; }
-        [field: SerializeField] public AnimParamSO AnimationHash { get; private set; }
-        [field: SerializeField] public TransitionSo[] StateTransitions { get; private set; }
+        [field: Header("Default State Settings")]
+        [field: SerializeField, ReadOnly] public StateType Type { get; private set; }
+        [field: SerializeField] public AnimParamSO EnterAnimParam { get; private set; }
+        [field: SerializeField] public TransitionSO[] Transitions { get; private set; }
 
+        #region Unity Events
         private void OnValidate()
         {
-            if (Type == StateType.None)
-                DebugLogger.LogError($"[StateSO]: {this.name}'s Type is none.");
-            if (AnimationHash == null)
-                DebugLogger.LogError($"[StateSO]: {this.name}'s AnimationHash is null.");
-            if (StateTransitions == null || StateTransitions.Length == 0)
-                DebugLogger.LogError($"[StateSO]: {this.name}'s StateTransitions is null or empty.");
+            string typeName = this.GetType().Name.Replace(nameof(StateSO), "");
+            if (System.Enum.TryParse<StateType>(typeName, true, out StateType conditionType))
+                Type = conditionType;
         }
+        #endregion
 
-        public IState Create(IStateModule stateModule, IModuleOwner owner)
+        public IState ForCreate(IModuleOwner owner, IFlyweightFactory<ConditionType, ICondition> conditionFactory)
         {
-            if (stateModule == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s StateMachine is null.");
-                return null;
-            }
-            if (owner == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s Owner is null.");
-                return null;
-            }
-            if (StateTransitions == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s StateTransitions is null.");
-                return null;
-            }
-            if (AnimationHash == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s AnimationHash is null.");
-                return null;
-            }
-            
-            Type t = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(t => t.GetTypes())
-                .FirstOrDefault(t =>
-                typeof(IState).IsAssignableFrom(t)
-                  && !t.IsAbstract
-                  && !t.IsInterface
-                  && t.Name.Replace("State", "") == Type.ToString());
-            
-            if (t == null) DebugLogger.LogError($"[StateSO]: {Type.ToString() + "State"} is not found.");
-
-            IRenderModule renderModule = owner.GetModule<IRenderModule>();
-            Transition[] transitions = StateTransitions.Select(x=> x.Create(owner)).ToArray();
-
-            if (renderModule == null)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s This Owner has not RendererModule.");
-                return null;
-            }
-            if (transitions.Length == 0)
-            {
-                DebugLogger.LogError($"[StateSO]: {this.name}'s Transitions is null.");
-                return null;
-            }
-            
-            IState state = Activator.CreateInstance(
-                t, 
-                stateModule, 
-                renderModule, 
-                AnimationHash.Hash, 
-                transitions) 
-                as IState;
-            
-            return state;
+            ITransition[] transitions = Transitions.Select(transition => transition.Create(owner, conditionFactory)).ToArray();
+            return Create(owner, EnterAnimParam.Hash, transitions);
         }
+        protected abstract IState Create(IModuleOwner owner, int enterAnimHash, ITransition[] transitions);
     }
 }

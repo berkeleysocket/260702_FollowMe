@@ -14,12 +14,15 @@ namespace FollowMe.KDS
         [SerializeField] private Transform _defaultSpawn;
         [SerializeField] private PlayerRespawn _playerOverride;
         [SerializeField] private float _fallRespawnY = -8f;
+        [SerializeField] private float _fallStressPenalty = 35f;
+        [SerializeField] private float _respawnCooldown = 0.35f;
 
         [Header("Debug")]
         [SerializeField] private bool _logRespawn = true;
 
         private Vector3 _lastSpawnPosition;
         private string _lastCheckpointId;
+        private float _nextRespawnAllowedTime;
 
         public string LastCheckpointId => _lastCheckpointId;
         public Vector3 LastSpawnPosition => _lastSpawnPosition;
@@ -55,6 +58,7 @@ namespace FollowMe.KDS
         private void Update()
         {
             if (_playerOverride == null) return;
+            if (Time.unscaledTime < _nextRespawnAllowedTime) return;
             if (_playerOverride.transform.position.y < _fallRespawnY)
                 RespawnPlayer("Fall");
         }
@@ -80,6 +84,9 @@ namespace FollowMe.KDS
 
         public void RespawnPlayer(string reason = "Manual")
         {
+            if (Time.unscaledTime < _nextRespawnAllowedTime)
+                return;
+
             PlayerRespawn player = _playerOverride != null
                 ? _playerOverride
                 : PlayerRespawn.FindInScene();
@@ -90,7 +97,11 @@ namespace FollowMe.KDS
                 return;
             }
 
+            _nextRespawnAllowedTime = Time.unscaledTime + Mathf.Max(0.05f, _respawnCooldown);
             player.RespawnAt(_lastSpawnPosition);
+
+            if (reason == "Fall" || reason == "Hazard")
+                SocialScoreService.Instance?.ApplyStress(_fallStressPenalty);
 
             if (_logRespawn)
                 Debug.Log($"[CheckpointService] 리스폰 ({reason}) → {_lastCheckpointId} @ {_lastSpawnPosition}", this);

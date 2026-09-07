@@ -87,7 +87,7 @@ namespace FollowMe.KDS
             {
                 case ItemType.Heart:
                     SocialScoreService.Instance.CollectFollow(amount * _followPerHeartValue);
-                    StageRunStats.Instance?.RegisterLikePickup();
+                    StageRunStats.Instance?.RegisterFollowPickup();
                     break;
                 case ItemType.Emoji:
                     SocialScoreService.Instance.CollectLike(amount * _likePerEmojiValue);

@@ -24,7 +24,7 @@ namespace FollowMe.KDS
             if (SocialScoreService.Instance != null)
                 SocialScoreService.Instance.CollectFollow(_followValue);
 
-            StageRunStats.Instance?.RegisterLikePickup();
+            StageRunStats.Instance?.RegisterFollowPickup();
             Destroy(gameObject);
         }
     }

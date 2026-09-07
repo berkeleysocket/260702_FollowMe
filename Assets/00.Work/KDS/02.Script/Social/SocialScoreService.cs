@@ -28,6 +28,7 @@ namespace FollowMe.KDS
         [SerializeField] private float _stressReducePerLikePickup = 8f;
         [SerializeField] private float _stressReducePerFollowPickup = 8f;
         [SerializeField] private float _stressReducePerPhoto = 20f;
+        [SerializeField] private float _stressAddPerFall = 35f;
 
         public long Likes => _likes;
         public long Follows => _follows;
@@ -108,6 +109,22 @@ namespace FollowMe.KDS
             if (meter == null) return;
 
             meter.ReduceStress(amount);
+        }
+
+        /// <summary>낙사·함정 등 — 스트레스 크게 증가.</summary>
+        public void ApplyFallStress()
+        {
+            ApplyStress(_stressAddPerFall);
+        }
+
+        public void ApplyStress(float amount)
+        {
+            if (amount <= 0f) return;
+
+            var meter = ResolveStressMeter();
+            if (meter == null) return;
+
+            meter.AddStress(amount);
         }
 
         /// <summary>

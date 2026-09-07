@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e289b340427a5a943b2974a202fbf128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.BodyModule
-  <PhsicalBody>k__BackingField: {fileID: 6409991035025656958}
+  <PhysicalBody>k__BackingField: {fileID: 6409991035025656958}
   bodyCollider: {fileID: 5047014888484646162}
   bodyData: {fileID: 11400000, guid: 686a7ad20a3c0094cb378fbfcb11cadf, type: 2}
   health: 0
@@ -672,7 +672,6 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowFallMultiplier: 2
   airMultiplier: 0.7
-  _velocity: {x: 0, y: 0}
 --- !u!1001 &1355817945971450299
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ namespace FollowMe.KDS
     public enum CollectibleKind
     {
         Like,
+        Follow,
         Daily
     }
 
@@ -36,39 +37,61 @@ namespace FollowMe.KDS
         public static IReadOnlyList<CollectibleSpawn> Build(StageMapSpec spec)
         {
             int likes = StageMapDatabase.GetLikeCount(spec.Stage);
+            int follows = StageMapDatabase.GetFollowCount(spec.Stage);
             int daily = StageMapDatabase.GetDailyCount(spec.Stage);
-            var result = new List<CollectibleSpawn>(likes + daily);
+            var result = new List<CollectibleSpawn>(likes + follows + daily);
 
-            if (likes <= 0 && daily <= 0)
+            if (likes <= 0 && follows <= 0 && daily <= 0)
                 return result;
 
             float lowY = GetLowLikeY(spec);
             float highY = GetHighLikeY(spec);
+            float[] forkXs = GetForkXs(spec);
 
+            // Follow hearts — main path, easy height (S1 tutorial focus)
+            int introFollow = Mathf.Max(0, Mathf.RoundToInt(follows * 0.15f));
+            int teachFollow = Mathf.Max(0, Mathf.RoundToInt(follows * 0.45f));
+            int setpieceFollow = Mathf.Max(0, Mathf.RoundToInt(follows * 0.25f));
+            int forkFollow = follows - introFollow - teachFollow - setpieceFollow;
+
+            DistributeInRange(result, CollectibleKind.Follow, introFollow, lowY, 3f, spec.IntroEnd - 2f);
+            DistributeInRange(result, CollectibleKind.Follow, teachFollow, lowY,
+                spec.IntroEnd + 2f, spec.TeachEnd - 2f);
+            DistributeInRange(result, CollectibleKind.Follow, setpieceFollow, lowY,
+                spec.BreathEnd + 2f, spec.SetpieceEnd - 2f);
+            DistributeAlongForks(result, CollectibleKind.Follow, forkFollow, lowY + 0.3f, forkXs);
+
+            // Like emojis — some low, some on fork upper path
             int introLikes = Mathf.Max(0, Mathf.RoundToInt(likes * 0.1f));
             int teachLikes = Mathf.Max(0, Mathf.RoundToInt(likes * 0.42f));
             int setpieceLikes = Mathf.Max(0, Mathf.RoundToInt(likes * 0.19f));
             int forkLikes = likes - introLikes - teachLikes - setpieceLikes;
 
-            DistributeInRange(result, CollectibleKind.Like, introLikes, lowY, 4f, spec.IntroEnd - 2f);
-            DistributeInRange(result, CollectibleKind.Like, teachLikes, spec.Template == StageTemplate.CityStreet ? lowY : highY,
-                spec.IntroEnd + 2f, spec.TeachEnd - 2f);
-            DistributeInRange(result, CollectibleKind.Like, setpieceLikes, lowY,
-                spec.BreathEnd + 2f, spec.SetpieceEnd - 2f);
-
-            float[] forkXs = GetForkXs(spec);
-            int perFork = forkLikes / Mathf.Max(1, forkXs.Length);
-            int remainder = forkLikes - perFork * forkXs.Length;
-            for (int i = 0; i < forkXs.Length; i++)
-            {
-                int count = perFork + (i < remainder ? 1 : 0);
-                float x0 = forkXs[i] - 6f;
-                float x1 = forkXs[i] + 10f;
-                DistributeInRange(result, CollectibleKind.Like, count, highY, x0, x1);
-            }
+            DistributeInRange(result, CollectibleKind.Like, introLikes, lowY + 0.4f, 5f, spec.IntroEnd - 1f);
+            DistributeInRange(result, CollectibleKind.Like, teachLikes,
+                spec.Template == StageTemplate.CityStreet ? lowY + 0.4f : highY,
+                spec.IntroEnd + 3f, spec.TeachEnd - 2f);
+            DistributeInRange(result, CollectibleKind.Like, setpieceLikes, lowY + 0.4f,
+                spec.BreathEnd + 3f, spec.SetpieceEnd - 2f);
+            DistributeAlongForks(result, CollectibleKind.Like, forkLikes, highY, forkXs);
 
             DistributeDaily(result, daily, lowY, spec, forkXs);
             return result;
+        }
+
+        private static void DistributeAlongForks(
+            List<CollectibleSpawn> result, CollectibleKind kind, int count, float y, float[] forkXs)
+        {
+            if (count <= 0 || forkXs == null || forkXs.Length == 0)
+                return;
+
+            int perFork = count / forkXs.Length;
+            int remainder = count - perFork * forkXs.Length;
+            for (int i = 0; i < forkXs.Length; i++)
+            {
+                int n = perFork + (i < remainder ? 1 : 0);
+                DistributeInRange(result, kind, n, y, forkXs[i] - 6f, forkXs[i] + 10f);
+            }
         }
 
         private static void DistributeDaily(

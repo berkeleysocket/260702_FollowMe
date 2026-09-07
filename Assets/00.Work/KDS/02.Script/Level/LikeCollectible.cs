@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace FollowMe.KDS
 {
+    /// <summary>
+    /// 반응 이모지 — 좋아요 증가.
+    /// (스트레스 게이지 감소는 추후 연동. Stage1에서는 수치·게이지 UI만.)
+    /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class LikeCollectible : MonoBehaviour
     {
@@ -26,3 +30,4 @@ namespace FollowMe.KDS
         }
     }
 }
+

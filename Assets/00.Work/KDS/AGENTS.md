@@ -3,7 +3,7 @@
 > **소유**: 김동선(KDS) 전용.  
 > **적용 범위**: `Assets/00.Work/KDS/` 안의 씬·스크립트·SO·아트만.  
 > **금지**: `KSY/`, `YHW/`, 루트 `AGENTS.md`, 서드파티를 이 문서로 바꾸거나, 이 문서를 팀원 폴더 기준으로 수정하지 말 것.  
-> 스토리 대사·연출 전문은 `Docs/Story_FollowMe.md` (필요할 때만). 루트 `AGENTS.md`는 팀 공통 규칙만.
+> 문서: `Docs/README.md` · 스토리 `Story_FollowMe.md` · 대사 `Content.md` · 우선순위 `Production.md` · 아트 `Art.md`
 
 ---
 

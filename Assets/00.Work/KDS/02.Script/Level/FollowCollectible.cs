@@ -1,0 +1,31 @@
+using UnityEngine;
+
+namespace FollowMe.KDS
+{
+    /// <summary>
+    /// ♡ 하트 — 팔로우 증가. Stage1 핵심 수집.
+    /// </summary>
+    [RequireComponent(typeof(Collider2D))]
+    public class FollowCollectible : MonoBehaviour
+    {
+        [SerializeField] private long _followValue = 50;
+
+        private void Awake()
+        {
+            var col = GetComponent<Collider2D>();
+            col.isTrigger = true;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (!PlayerTriggerUtility.IsPlayer(other))
+                return;
+
+            if (SocialScoreService.Instance != null)
+                SocialScoreService.Instance.AddFollows(_followValue);
+
+            StageRunStats.Instance?.RegisterLikePickup();
+            Destroy(gameObject);
+        }
+    }
+}

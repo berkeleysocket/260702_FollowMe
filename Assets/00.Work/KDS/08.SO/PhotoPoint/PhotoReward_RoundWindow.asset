@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_RoundWindow
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uC6D0\uD615 \uCC3D\uBB38 \uD3EC\uD1A0"
+  _photoSprite: {fileID: 21300000, guid: c1f10d1ae1d2e404daa3a4efc4574657, type: 3}
+  _likeBonus: 7500
+  _followBonus: 290
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uC6D0\uD615\uCC3D\uBB38"
+  - "#\uD504\uB808\uC784\uC0F7"
+  - "#\uAC10\uC131"

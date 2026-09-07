@@ -1,0 +1,19 @@
+{
+    "sequenceId": "Act2_FollowerLoss",
+    "lines": [
+        {
+            "characterId": "Haru",
+            "expressionId": "Anxious",
+            "text": "팔로워가 줄었어.",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        },
+        {
+            "characterId": "Haru",
+            "expressionId": "Anxious",
+            "text": "내가 뭘 잘못했나…",
+            "autoAdvance": true,
+            "autoAdvanceSeconds": 2.5
+        }
+    ]
+}

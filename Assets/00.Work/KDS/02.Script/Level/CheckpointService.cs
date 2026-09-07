@@ -12,7 +12,7 @@ namespace FollowMe.KDS
 
         [Header("Spawn")]
         [SerializeField] private Transform _defaultSpawn;
-        [SerializeField] private PhotoProbePlayer _playerOverride;
+        [SerializeField] private PlayerRespawn _playerOverride;
         [SerializeField] private float _fallRespawnY = -8f;
 
         [Header("Debug")]
@@ -43,7 +43,7 @@ namespace FollowMe.KDS
         private void Start()
         {
             if (_playerOverride == null)
-                _playerOverride = FindFirstObjectByType<PhotoProbePlayer>();
+                _playerOverride = PlayerRespawn.FindInScene();
 
             if (_lastCheckpointId == "Default")
             {
@@ -80,13 +80,13 @@ namespace FollowMe.KDS
 
         public void RespawnPlayer(string reason = "Manual")
         {
-            PhotoProbePlayer player = _playerOverride != null
+            PlayerRespawn player = _playerOverride != null
                 ? _playerOverride
-                : FindFirstObjectByType<PhotoProbePlayer>();
+                : PlayerRespawn.FindInScene();
 
             if (player == null)
             {
-                Debug.LogWarning("[CheckpointService] PhotoProbePlayer 없음.", this);
+                Debug.LogWarning("[CheckpointService] PlayerRespawn 없음.", this);
                 return;
             }
 
@@ -106,7 +106,7 @@ namespace FollowMe.KDS
             if (_playerOverride != null)
                 return _playerOverride.transform.position;
 
-            var player = FindFirstObjectByType<PhotoProbePlayer>();
+            var player = PlayerRespawn.FindInScene();
             if (player != null)
                 return player.transform.position;
 

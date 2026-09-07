@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: PhotoReward_ForkViewpoint
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
   _displayName: "\uAC08\uB9BC\uAE38 \uBDF0\uD3EC\uC778\uD2B8"
+  _photoSprite: {fileID: 21300000, guid: 33ddad5e617b62a4c89c75de139457a5, type: 3}
   _likeBonus: 6000
   _followBonus: 250
   _holdSeconds: 0.85
   _oneShot: 1
+  _hashtags:
+  - "#\uD64D\uB300"
+  - "#\uAC08\uB9BC\uAE38"
+  - "#\uC778\uC99D\uC0F7"

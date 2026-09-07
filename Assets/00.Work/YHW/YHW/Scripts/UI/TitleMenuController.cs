@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 
@@ -7,12 +6,10 @@ namespace YHW.UI
 {
     public class TitleMenuController : MonoBehaviour
     {
-        [Header("Scene")]
-        [SerializeField] private string gameSceneName = "HWTestScene 1";
-
         [Header("Panels")]
         [SerializeField] private CanvasGroup titleGroup;
         [SerializeField] private OptionsMenuController optionsMenu;
+        [SerializeField] private StageSelectController stageSelectMenu;
 
         [Header("Buttons")]
         [SerializeField] private Button startButton;
@@ -56,9 +53,7 @@ namespace YHW.UI
         private void OnStartClicked()
         {
             SetInteractable(false);
-            DOTween.Sequence()
-                .Append(titleGroup.DOFade(0f, 0.4f))
-                .AppendCallback(() => SceneManager.LoadScene(gameSceneName));
+            stageSelectMenu.Open(() => SetInteractable(true));
         }
 
         private void OnOptionsClicked()

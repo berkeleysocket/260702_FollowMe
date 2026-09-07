@@ -8,31 +8,37 @@ using UnityEngine.SceneManagement;
 namespace FollowMe.KDS.Editor
 {
     /// <summary>
-    /// Stage1 수집 = YHW Prefabs/Items 인스턴스 배치.
+    /// Stage1 수집 = KDS Like_Imoge 프리팹 배치.
     /// Live: unity command stage1-collectibles
     /// </summary>
     public static class Stage1CollectibleCli
     {
         private const string ScenePath = "Assets/00.Work/KDS/01.Scene/Stage1 Scene.unity";
-        private const string HeartPrefab =
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_heart.prefab";
+        private const string ImogeDir = "Assets/00.Work/KDS/06.Prefab/Like_Imoge";
+        private const string HeartPrefab = ImogeDir + "/Follow_13.prefab";
 
         private static readonly string[] EmojiPrefabs =
         {
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_smile.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_love.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_cool.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_tongue.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_ghost.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_cry.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_devil.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_angry.prefab",
+            ImogeDir + "/Like_00.prefab",
+            ImogeDir + "/Like_01.prefab",
+            ImogeDir + "/Like_02.prefab",
+            ImogeDir + "/Like_03.prefab",
+            ImogeDir + "/Like_04.prefab",
+            ImogeDir + "/Like_05.prefab",
+            ImogeDir + "/Like_06.prefab",
+            ImogeDir + "/Like_07.prefab",
         };
 
-        [CliCommand("stage1-collectibles", "Rebuild Stage1 using YHW Pickup_heart / Pickup_emoji prefabs")]
+        [CliCommand("stage1-collectibles", "Rebuild Stage1 using KDS Like_Imoge like/follow prefabs")]
         public static int RebuildFromPipeline()
         {
             return Rebuild() ? 0 : 1;
+        }
+
+        [MenuItem("FollowMe/KDS/Rebuild Stage1 Collectibles (Like_Imoge)")]
+        public static void RebuildFromMenu()
+        {
+            Rebuild();
         }
 
         private static bool Rebuild()
@@ -103,7 +109,7 @@ namespace FollowMe.KDS.Editor
 
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
-            Debug.Log($"[Stage1CollectibleCli] YHW prefabs Follow={followN} Like={likeN}");
+            Debug.Log($"[Stage1CollectibleCli] Like_Imoge Follow={followN} Like={likeN}");
             return true;
         }
 

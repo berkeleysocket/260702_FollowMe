@@ -10,26 +10,26 @@ using UnityEngine.SceneManagement;
 namespace FollowMe.KDS.Editor
 {
     /// <summary>
-    /// Stage2 = 포토존 튜토리얼 + 피사체 + YHW 수집 + 클리어.
+    /// Stage2 = 포토존 튜토리얼 + 피사체 + Like_Imoge 수집 + 클리어.
     /// Live: unity command stage2-setup
     /// </summary>
     public static class Stage2SetupCli
     {
         private const string ScenePath = "Assets/00.Work/KDS/01.Scene/Stage2 Scene.unity";
         private const string TileDir = "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles";
-        private const string HeartPrefab =
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_heart.prefab";
+        private const string ImogeDir = "Assets/00.Work/KDS/06.Prefab/Like_Imoge";
+        private const string HeartPrefab = ImogeDir + "/Follow_13.prefab";
 
         private static readonly string[] EmojiPrefabs =
         {
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_smile.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_love.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_cool.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_tongue.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_ghost.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_cry.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_devil.prefab",
-            "Assets/00.Work/YHW/YHW/Prefabs/Items/Pickup_emoji_angry.prefab",
+            ImogeDir + "/Like_00.prefab",
+            ImogeDir + "/Like_01.prefab",
+            ImogeDir + "/Like_02.prefab",
+            ImogeDir + "/Like_03.prefab",
+            ImogeDir + "/Like_04.prefab",
+            ImogeDir + "/Like_05.prefab",
+            ImogeDir + "/Like_06.prefab",
+            ImogeDir + "/Like_07.prefab",
         };
 
         private static readonly string[] PhotoRewardPaths =

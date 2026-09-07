@@ -11,7 +11,7 @@ namespace SeungyungLib.ModuleSystem.Modules
     [RequireComponent(typeof(Collider2D))]
     public class BodyModule : MonoBehaviour, IBodyModule
     {
-        [field: SerializeField] public Rigidbody2D PhsicalBody { get; private set; }
+        [field: SerializeField] public Rigidbody2D PhysicalBody { get; private set; }
         [SerializeField] private ColliderModule bodyCollider;
         [SerializeField] private BodyModuleDataSO bodyData;
         [SerializeField, ReadOnly] private int health;

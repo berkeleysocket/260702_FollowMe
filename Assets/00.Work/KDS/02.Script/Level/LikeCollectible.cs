@@ -3,8 +3,7 @@ using UnityEngine;
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// 반응 이모지 — 좋아요 증가.
-    /// (스트레스 게이지 감소는 추후 연동. Stage1에서는 수치·게이지 UI만.)
+    /// 반응 이모지 — 좋아요 증가 + 스트레스 감소.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class LikeCollectible : MonoBehaviour
@@ -23,7 +22,7 @@ namespace FollowMe.KDS
                 return;
 
             if (SocialScoreService.Instance != null)
-                SocialScoreService.Instance.AddLikes(_likeValue);
+                SocialScoreService.Instance.CollectLike(_likeValue);
 
             StageRunStats.Instance?.RegisterLikePickup();
             Destroy(gameObject);

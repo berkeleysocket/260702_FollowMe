@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using YHW.Stats;
 
 namespace FollowMe.KDS
 {
@@ -23,6 +24,10 @@ namespace FollowMe.KDS
         [SerializeField] private long _likes;
         [SerializeField] private long _follows;
         [SerializeField] private bool _secondCycle;
+        [SerializeField] private StressMeter _stressMeter;
+        [SerializeField] private float _stressReducePerLikePickup = 8f;
+        [SerializeField] private float _stressReducePerFollowPickup = 8f;
+        [SerializeField] private float _stressReducePerPhoto = 20f;
 
         public long Likes => _likes;
         public long Follows => _follows;
@@ -73,11 +78,36 @@ namespace FollowMe.KDS
             ScoreChanged?.Invoke(_likes, _follows);
         }
 
+        /// <summary>좋아요 수집 1회 — 점수 + 스트레스 감소.</summary>
+        public void CollectLike(long likeAmount)
+        {
+            AddLikes(likeAmount);
+            RelieveStress(_stressReducePerLikePickup);
+        }
+
+        /// <summary>팔로우 수집 1회 — 점수 + 스트레스 감소.</summary>
+        public void CollectFollow(long followAmount)
+        {
+            AddFollows(followAmount);
+            RelieveStress(_stressReducePerFollowPickup);
+        }
+
         public void ApplyPhotoReward(string pointId, long likeBonus, long followBonus)
         {
             AddLikes(likeBonus);
             AddFollows(followBonus);
+            RelieveStress(_stressReducePerPhoto);
             PhotoTaken?.Invoke(pointId, likeBonus, followBonus);
+        }
+
+        public void RelieveStress(float amount)
+        {
+            if (amount <= 0f) return;
+
+            var meter = ResolveStressMeter();
+            if (meter == null) return;
+
+            meter.ReduceStress(amount);
         }
 
         /// <summary>
@@ -91,6 +121,15 @@ namespace FollowMe.KDS
             _likes = 0;
             ScoreChanged?.Invoke(_likes, _follows);
             CycleChanged?.Invoke(2);
+        }
+
+        private StressMeter ResolveStressMeter()
+        {
+            if (_stressMeter != null)
+                return _stressMeter;
+
+            _stressMeter = FindFirstObjectByType<StressMeter>();
+            return _stressMeter;
         }
     }
 }

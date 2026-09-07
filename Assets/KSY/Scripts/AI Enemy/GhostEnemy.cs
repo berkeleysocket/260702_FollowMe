@@ -1,34 +1,52 @@
+using System.Collections;
 using UnityEngine;
 
-namespace KSY.Enemy
+namespace SeungyungLib.Enemy
 {
     public class GhostEnemy : MonoBehaviour
     {
         [Header("Target Settings")]
-        [SerializeField] private Transform target; // 추적할 플레이어 Transform
+        [SerializeField] private Transform target;
         [SerializeField] private bool autoFindPlayerWithTag = true;
 
         [Header("Movement Settings")]
-        [SerializeField] private float moveSpeed = 3f; // 기본 추적 속도
-        [SerializeField] private float stopDistance = 0.5f; // 목표 근처 정지 거리
+        [SerializeField] private float moveSpeed = 3f;
+        [SerializeField] private float stopDistance = 0.5f;
 
         [Header("Floating / Wiggle Settings")]
-        [SerializeField] private float waveFrequency = 3f; // 흔들리는 속도 (주파수)
-        [SerializeField] private float waveAmplitude = 0.5f; // 흔들리는 크기 (진폭)
-        [SerializeField] private bool useLocalUpForWave = true; // 이동 방향의 수직 방향으로 흔들릴지 여부
+        [SerializeField] private float waveFrequency = 3f;
+        [SerializeField] private float waveAmplitude = 0.5f;
+
+        [Header("Idle Floating Settings (제자리 둥실둥실)")]
+        [SerializeField] private float idleFloatFrequency = 2f;  // 정지 시 둥실거리는 속도
+        [SerializeField] private float idleFloatAmplitude = 0.3f; // 정지 시 둥실거리는 높이(크기)
+
+        [Header("Separation Settings (뭉침 방지)")]
+        [SerializeField] private float separationRadius = 1.5f;
+        [SerializeField] private float separationWeight = 1.5f;
+        [SerializeField] private LayerMask enemyLayer;
+
+        [Header("Fade Settings")]
+        [SerializeField] private float fadeDuration = 1f;
 
         [Header("Components")]
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Rigidbody2D rb;
 
         private float _sineOffset;
+        private Coroutine _fadeCoroutine;
+        private static readonly Collider2D[] OverlapResults = new Collider2D[10];
 
         private void Awake()
         {
             if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
             if (rb == null) rb = GetComponent<Rigidbody2D>();
 
-            // 유령마다 비동기적으로 흔들리도록 무작위 오프셋 부여
+            if (rb != null)
+            {
+                rb.gravityScale = 0f;
+            }
+
             _sineOffset = Random.Range(0f, 100f);
         }
 
@@ -37,10 +55,7 @@ namespace KSY.Enemy
             if (autoFindPlayerWithTag && target == null)
             {
                 GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-                if (playerObj != null)
-                {
-                    target = playerObj.transform;
-                }
+                if (playerObj != null) target = playerObj.transform;
             }
         }
 
@@ -48,10 +63,8 @@ namespace KSY.Enemy
         {
             if (target == null) return;
 
-            // 바라보는 방향에 따른 Sprite Flip 처리
             FlipSprite();
 
-            // Rigidbody2D가 없거나 Kinematic 상태인 경우 Transform으로 이동
             if (rb == null || rb.bodyType == RigidbodyType2D.Kinematic)
             {
                 MoveTransform();
@@ -60,87 +73,159 @@ namespace KSY.Enemy
 
         private void FixedUpdate()
         {
-            // Dynamic Rigidbody2D를 사용하는 물리 기반 이동
-            if (target != null && rb != null && rb.bodyType == RigidbodyType2D.Dynamic)
+            if (rb != null && rb.bodyType == RigidbodyType2D.Dynamic)
             {
-                MoveRigidbody();
+                if (target != null)
+                {
+                    MoveRigidbody();
+                }
+                else
+                {
+                    // 타겟이 없을 때 (Stop 상태) 반발력 없이 pure Y축 둥실거림만 적용
+                    float idleSine = Mathf.Cos((Time.time + _sineOffset) * idleFloatFrequency) * idleFloatAmplitude;
+                    rb.linearVelocity = new Vector2(0f, idleSine);
+                }
             }
         }
 
-        /// <summary>
-        /// Transform 기반 이동 (위아래/수직 파동 계산 포함)
-        /// </summary>
+        #region Fade Methods & ContextMenu
+
+        [ContextMenu("Fade In (나타나기)")]
+        public void FadeIn() => StartFade(1f);
+
+        [ContextMenu("Fade Out (사라지기)")]
+        public void FadeOut() => StartFade(0f);
+
+        public void FadeIn(float duration) => StartFade(1f, duration);
+
+        public void FadeOut(float duration) => StartFade(0f, duration);
+
+        private void StartFade(float targetAlpha, float customDuration = -1f)
+        {
+            if (spriteRenderer == null) return;
+
+            if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);
+
+            float duration = customDuration > 0f ? customDuration : fadeDuration;
+            _fadeCoroutine = StartCoroutine(CoFade(targetAlpha, duration));
+        }
+
+        private IEnumerator CoFade(float targetAlpha, float duration)
+        {
+            Color initialColor = spriteRenderer.color;
+            float startAlpha = initialColor.a;
+            float timer = 0f;
+
+            while (timer < duration)
+            {
+                timer += Time.deltaTime;
+                float newAlpha = Mathf.Lerp(startAlpha, targetAlpha, timer / duration);
+                
+                spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, newAlpha);
+                yield return null;
+            }
+
+            spriteRenderer.color = new Color(initialColor.r, initialColor.g, initialColor.b, targetAlpha);
+            _fadeCoroutine = null;
+        }
+
+        #endregion
+
+        private Vector3 CalculateSeparation()
+        {
+            Vector3 separationSteer = Vector3.zero;
+            int count = Physics2D.OverlapCircleNonAlloc(transform.position, separationRadius, OverlapResults, enemyLayer);
+
+            for (int i = 0; i < count; i++)
+            {
+                Collider2D other = OverlapResults[i];
+                if (other.gameObject == gameObject) continue;
+
+                Vector3 diff = transform.position - other.transform.position;
+                float distance = diff.magnitude;
+
+                if (distance > 0)
+                {
+                    separationSteer += (diff.normalized / distance);
+                }
+            }
+
+            return separationSteer.normalized * separationWeight;
+        }
+
         private void MoveTransform()
         {
             Vector3 currentPos = transform.position;
             Vector3 targetPos = target.position;
 
-            // 플레이어 방향 단위 벡터 계산
-            Vector3 moveDirection = (targetPos - currentPos).normalized;
             float distance = Vector3.Distance(currentPos, targetPos);
 
             if (distance > stopDistance)
             {
-                // 기본 추적 위치 이동
-                Vector3 newPos = Vector3.MoveTowards(currentPos, targetPos, moveSpeed * Time.deltaTime);
+                // 이동 중에만 반발력(Separation) 계산 및 적용
+                Vector3 moveDirection = (targetPos - currentPos).normalized;
+                Vector3 separation = CalculateSeparation();
 
-                // 사인파(Sine Wave)를 이용한 파동 오프셋 계산
                 float sineValue = Mathf.Sin((Time.time + _sineOffset) * waveFrequency) * waveAmplitude;
+                Vector3 waveDirection = Vector3.Cross(moveDirection, Vector3.forward).normalized;
+                Vector3 waveOffset = waveDirection * (sineValue * Time.deltaTime);
 
-                // 이동 방향에 직교하는 수직 벡터 계산 (Local Up 또는 Global Up)
-                Vector3 waveDirection = useLocalUpForWave 
-                    ? Vector3.Cross(moveDirection, Vector3.forward).normalized 
-                    : Vector3.up;
+                Vector3 finalDirection = (moveDirection + separation).normalized;
 
-                // 최종 위치 적용
-                transform.position = newPos + (waveDirection * (sineValue * Time.deltaTime));
+                transform.position += (finalDirection * (moveSpeed * Time.deltaTime)) + waveOffset;
+            }
+            else
+            {
+                // Stop 상태: 반발력 없이 pure Y축 둥실거림만 처리
+                float idleSine = Mathf.Cos((Time.time + _sineOffset) * idleFloatFrequency) * idleFloatAmplitude;
+                transform.position += new Vector3(0f, idleSine * Time.deltaTime, 0f);
             }
         }
 
-        /// <summary>
-        /// Rigidbody2D 기반 속도(Velocity) 설정 이동
-        /// </summary>
         private void MoveRigidbody()
         {
             Vector2 currentPos = rb.position;
             Vector2 targetPos = target.position;
-            Vector2 moveDirection = (targetPos - currentPos).normalized;
 
             float distance = Vector2.Distance(currentPos, targetPos);
 
             if (distance > stopDistance)
             {
-                // 사인파 오프셋 계산
+                // 이동 중에만 반발력(Separation) 계산 및 적용
+                Vector2 moveDirection = (targetPos - currentPos).normalized;
+                Vector2 separation = CalculateSeparation();
+
                 float sineValue = Mathf.Sin((Time.time + _sineOffset) * waveFrequency) * waveAmplitude;
-                
-                // 이동 방향의 수직 벡터 (Perpendicular)
                 Vector2 perpendicularDir = new Vector2(-moveDirection.y, moveDirection.x);
 
-                // 직진 속도 + 수직 흔들림 속도 합산
-                Vector2 finalVelocity = (moveDirection * moveSpeed) + (perpendicularDir * sineValue);
-                rb.velocity = finalVelocity;
+                Vector2 finalDir = (moveDirection + separation).normalized;
+                rb.linearVelocity = (finalDir * moveSpeed) + (perpendicularDir * sineValue);
             }
             else
             {
-                rb.velocity = Vector2.zero;
+                // Stop 상태: X축 이동 0, Y축 둥실거리기만 적용
+                float idleSine = Mathf.Cos((Time.time + _sineOffset) * idleFloatFrequency) * idleFloatAmplitude;
+                rb.linearVelocity = new Vector2(0f, idleSine);
             }
         }
 
-        /// <summary>
-        /// 타겟 위치에 따라 좌우 반전
-        /// </summary>
         private void FlipSprite()
         {
             if (spriteRenderer == null) return;
 
             if (target.position.x < transform.position.x)
-            {
-                spriteRenderer.flipX = true; // 왼쪽 바라보기 (기본 이미지 방향에 따라 조정)
-            }
+                spriteRenderer.flipX = true;
             else if (target.position.x > transform.position.x)
-            {
-                spriteRenderer.flipX = false; // 오른쪽 바라보기
-            }
+                spriteRenderer.flipX = false;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, separationRadius);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, stopDistance);
         }
     }
 }

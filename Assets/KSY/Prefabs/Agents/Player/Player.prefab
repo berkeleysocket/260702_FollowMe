@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6409991035025656958}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,6 +274,7 @@ MonoBehaviour:
   <PhsicalBody>k__BackingField: {fileID: 6409991035025656958}
   bodyCollider: {fileID: 5047014888484646162}
   bodyData: {fileID: 11400000, guid: 686a7ad20a3c0094cb378fbfcb11cadf, type: 2}
+  health: 0
 --- !u!61 &6153974718504448028
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,3 +16,4 @@ MonoBehaviour:
   <EnterAnimParam>k__BackingField: {fileID: 11400000, guid: b6ced9ee67ee7664dbd502aadc5b64fb, type: 2}
   <Transitions>k__BackingField:
   - {fileID: 11400000, guid: 8cf2c95117b1dda48aa4ba62770a88af, type: 2}
+  exitTime: 0.1

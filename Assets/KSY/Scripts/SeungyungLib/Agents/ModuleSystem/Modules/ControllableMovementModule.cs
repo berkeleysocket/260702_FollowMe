@@ -1,5 +1,5 @@
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using System;
 using UnityEngine;
@@ -22,13 +22,21 @@ namespace SeungyungLib.ModuleSystem.Modules
         public event Action<int> OnMoved;
         
         public int Axis => _axis;
-        public bool IsMoving => _axis != 0;
+
+        public bool IsMoving
+        {
+            get
+            {
+                return Mathf.Abs(_velocity.x) > 0 && _axis != 0;
+            }
+        }
         public bool IsJumping => _rb.linearVelocityY > 0.25f;
         public bool IsFall => _rb.linearVelocityY < -0.25f;
         
         private Rigidbody2D _rb;
         private IGroundCheckModule _groundChecker;
-        private Vector2 _velocity;
+        public Vector2 dVelocity => _velocity;
+        public Vector2 _velocity;
         private int _axis;
         private float _currentSpeed;
 
@@ -42,7 +50,7 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public void AfterInitialization(IModuleOwner owner)
         {
-            _rb = owner.GetModule<IBodyModule>().Body;
+            _rb = owner.GetModule<IBodyModule>().PhsicalBody;
             
             if (_groundChecker != null)
             {
@@ -86,7 +94,7 @@ namespace SeungyungLib.ModuleSystem.Modules
         public void MoveToDirection(int axis)
         {
             _axis = axis;
-            
+
             if (IsActive)
                 OnMoved?.Invoke(axis);
         }

@@ -1,9 +1,9 @@
-using PlasticGui.Help;
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
@@ -20,6 +20,8 @@ namespace SeungyungLib.FSM
             string typeName = this.GetType().Name.Replace(nameof(ConditionSO), "");
             if (System.Enum.TryParse<ConditionType>(typeName, true, out ConditionType conditionType))
                 Type = conditionType;
+            else
+                DebugLogger.LogWarning($"[{GetType().Name}] '{typeName}'에 매핑되는 ConditionType enum을 찾을 수 없습니다.");
         }
         #endregion
 

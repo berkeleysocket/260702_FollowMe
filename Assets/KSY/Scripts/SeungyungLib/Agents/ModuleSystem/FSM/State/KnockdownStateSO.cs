@@ -1,5 +1,5 @@
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
@@ -8,9 +8,11 @@ namespace SeungyungLib.FSM
     [CreateAssetMenu(fileName = "Knockdown" + nameof(StateSO), menuName = "SeungyungLib/FSM/" + nameof(StateSO) + "/Knockdown", order = 0)]
     public class KnockdownStateSO : StateSO
     {
+        [SerializeField] private float exitTime;
+        
         protected override IState Create(IModuleOwner owner, int enterAnimHash, ITransition[] transitions)
         {
-            return new KnockdownState(owner, enterAnimHash, transitions);
+            return new KnockdownState(owner, enterAnimHash, transitions, exitTime);
         }
     }
 }

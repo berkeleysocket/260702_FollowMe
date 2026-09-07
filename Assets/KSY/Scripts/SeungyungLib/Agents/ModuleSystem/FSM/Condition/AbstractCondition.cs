@@ -1,9 +1,7 @@
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
-using SeungyungLib.ModuleSystem.Modules;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
@@ -65,7 +63,6 @@ namespace SeungyungLib.FSM
 
         protected override bool OnCheck()
         {
-            DebugLogger.Log($"[IsJumpingCondition] Is Jumping : {_movementModule?.IsJumping}", Color.aquamarine);
             return _movementModule?.IsJumping ?? false;
         }
     }
@@ -103,7 +100,6 @@ namespace SeungyungLib.FSM
     
     public class IsHitCondition : AbstractCondition
     {
-        private readonly EventChannelSO _playerEvtChannel;
         private readonly IBodyModule _bodyModule;
         
         private bool _isHit;
@@ -112,14 +108,13 @@ namespace SeungyungLib.FSM
         {
             this._bodyModule = owner.GetModule<IBodyModule>();
 
-            _bodyModule.OnTakeDamage += HandlePlayerHitEvent;
+            _bodyModule.OnDamaged += HandlePlayerHitEvent;
         }
         
         protected override bool OnCheck()
         {
             if (_isHit)
             {
-                DebugLogger.Log("[IsHitCondition] Hit Condition is True");
                 _isHit = false;
                 return true;
             }
@@ -154,6 +149,42 @@ namespace SeungyungLib.FSM
             }
             else
                 return false;
+        }
+    }
+    
+    public class IsKnockdownCondition : AbstractCondition
+    {
+        private readonly IBodyModule _bodyModule;
+        
+        public IsKnockdownCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
+        {
+            this._bodyModule = owner.GetModule<IBodyModule>();
+        }
+
+        protected override bool OnCheck() => _bodyModule.IsKnockdown;
+    }
+
+    public class IsRecoveringCondition : AbstractCondition
+    {
+        private readonly IBodyModule _bodyModule;
+        private bool _isRecovering;
+        
+        public IsRecoveringCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
+        {
+            this._bodyModule = owner.GetModule<IBodyModule>();
+            
+            _bodyModule.OnRecovery += ()=> _isRecovering = true;
+        }
+
+        protected override bool OnCheck()
+        {
+            if (_isRecovering)
+            {
+                _isRecovering = false;
+                return true;
+            }
+
+            return false;
         }
     }
 }

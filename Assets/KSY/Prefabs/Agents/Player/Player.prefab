@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &649743985349388486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5755906793007001535}
+  - component: {fileID: 5047014888484646162}
+  - component: {fileID: 4841290300029330797}
+  m_Layer: 6
+  m_Name: BodyCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5755906793007001535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649743985349388486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5014788200168086481}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5047014888484646162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649743985349388486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda1a9c9090566844a51fd10356ec7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.RangeCheckModule
+  whatIsCheck:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!61 &4841290300029330797
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649743985349388486}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.031800345, y: 0.001060009}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.6607958, y: 0.9639596}
+  m_EdgeRadius: 0
 --- !u!1 &1178189721137013910
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,6 +179,7 @@ Transform:
   - {fileID: 3536903999442800863}
   - {fileID: 4491922964088462500}
   - {fileID: 1599348654243857122}
+  - {fileID: 5755906793007001535}
   - {fileID: 9087164935557318614}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,8 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e289b340427a5a943b2974a202fbf128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.BodyModule
-  health: 10
-  maxHealth: 10
+  <PhsicalBody>k__BackingField: {fileID: 6409991035025656958}
+  bodyCollider: {fileID: 5047014888484646162}
+  bodyData: {fileID: 11400000, guid: 686a7ad20a3c0094cb378fbfcb11cadf, type: 2}
 --- !u!61 &6153974718504448028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -268,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b240be8e34c0b7045a72291948c81158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.StateModule
-  stateMachineSo: {fileID: 11400000, guid: be5b5512f289d4143a98b1f9134339cf, type: 2}
+  stateMachineSO: {fileID: 11400000, guid: f7a2b8cfd4a1d104191a17473d110967, type: 2}
 --- !u!1 &4188320415103499278
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3a2e439c5840f458a40551496979ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Core.Modules::SeungyungLib.Template.Modules.AgentRenderModule
+  playerEvtChannel: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
+  invincibilityDuration: 2
+  blinkInterval: 0.05
 --- !u!212 &8430787420514714213
 SpriteRenderer:
   serializedVersion: 2
@@ -565,7 +664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4e829a448a1734da7db95f9aa197a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Agents.ModuleSystem::SeungyungLib.Agents.ModuleSystem.AgentMovementModule
-  rb: {fileID: 6409991035025656958}
   maxSpeed: 8
   acceleration: 40
   deceleration: 60
@@ -573,6 +671,7 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowFallMultiplier: 2
   airMultiplier: 0.7
+  _velocity: {x: 0, y: 0}
 --- !u!1001 &1355817945971450299
 PrefabInstance:
   m_ObjectHideFlags: 0

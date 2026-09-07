@@ -1,7 +1,7 @@
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using System.Linq;
 using UnityEngine;

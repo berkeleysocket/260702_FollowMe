@@ -1,16 +1,16 @@
-using System;
-
 namespace SeungyungLib.FSM.Enum
 {
-    [Flags]
-    public enum ConditionType : int
+    public enum ConditionType
     {
-        None = 0,
+        None = -1,
         IsExpired,
         IsFall,
         IsGrounded,
         IsHit,
         IsJumping,
-        IsMoving
+        IsMoving,
+        Example,
+        IsKnockdown,
+        IsRecovering
     }
 }

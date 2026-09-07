@@ -211,11 +211,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &651269735 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 6409991035025656958, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-  m_PrefabInstance: {fileID: 7362693105487553811}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &824822043
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,10 +220,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 824822044}
-  - component: {fileID: 824822045}
   - component: {fileID: 824822046}
-  m_Layer: 0
-  m_Name: RangeCheckModule
+  m_Layer: 7
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,21 +243,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1715466582}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &824822045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824822043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fda1a9c9090566844a51fd10356ec7c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.RangeCheckModule
-  whatIsCheck:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!61 &824822046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -544,7 +523,7 @@ GameObject:
   - component: {fileID: 1715466582}
   - component: {fileID: 1715466583}
   - component: {fileID: 1715466584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,8 +543,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1803358034}
   - {fileID: 824822044}
+  - {fileID: 1803358034}
   - {fileID: 2070934834}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -621,7 +600,7 @@ GameObject:
   - component: {fileID: 1803358037}
   - component: {fileID: 1803358036}
   - component: {fileID: 1803358038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RenderModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,6 +635,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.Template.Modules::SeungyungLib.Template.Modules.RenderModule
   playerEvtChannel: {fileID: 0}
+  invincibilityDuration: 2
+  blinkInterval: 0.1
 --- !u!95 &1803358036
 Animator:
   serializedVersion: 7
@@ -793,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2070934834}
   - component: {fileID: 2070934835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StateMachineModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -836,29 +817,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1459896072887677261, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: duration
-      value: 0.5
+    - target: {fileID: 649743985349388486, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1459896072887677261, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: punchScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459896072887677261, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: punchScale.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459896072887677261, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: <Body>k__BackingField
-      value: 
-      objectReference: {fileID: 651269735}
     - target: {fileID: 2265731540030654357, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3718376901048320368, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: m_Name
-      value: StateMachineModule
       objectReference: {fileID: 0}
     - target: {fileID: 5014788200168086481, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -900,18 +865,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7282397714089793723, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: playerEvtChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
-    - target: {fileID: 7282397714089793723, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: _playerEvtChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
-    - target: {fileID: 8786389966442381843, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
-      propertyPath: stateMachineSO
-      value: 
-      objectReference: {fileID: 11400000, guid: f7a2b8cfd4a1d104191a17473d110967, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

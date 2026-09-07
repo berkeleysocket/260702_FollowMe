@@ -2,7 +2,7 @@ using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using System.Collections.Generic;
 using System.Linq;

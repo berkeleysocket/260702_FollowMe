@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: SeungyungLib.FSM::SeungyungLib.FSM.TransitionSO
   <TransitionTarget>k__BackingField: 2
   <Conditions>k__BackingField:
-  - {fileID: 11400000, guid: eef2937f1e9bead4e9fa88d5f9e75887, type: 2}
+  - {fileID: 11400000, guid: c3fb5c678df980d4cb1dbd304f40815f, type: 2}

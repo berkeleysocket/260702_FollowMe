@@ -2,7 +2,8 @@
     "name": "SeungyungLib.ModuleSystem.Core",
     "rootNamespace": "SeungyungLib.ModuleSystem.Core",
     "references": [
-        "GUID:374514a00b07edf4e9c07b244e970714"
+        "GUID:5509b7043a9761740b3a149b6f0a3bed",
+        "GUID:c796d4fd832e3364e8cb74280fb3cd0b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

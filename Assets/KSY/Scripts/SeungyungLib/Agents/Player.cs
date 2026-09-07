@@ -1,8 +1,7 @@
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.EventChannelSystem;
 using SeungyungLib.Core.ParameterSO;
-using SeungyungLib.ModuleSystem.Interface;
-using SeungyungLib.ModuleSystem.Modules;
+using SeungyungLib.ModuleSystem.Core;
 using SeungyungLib.Template.EventChannels;
 
 using UnityEngine;
@@ -55,7 +54,9 @@ namespace SeungyungLib.Agents
         private void SubscribeEventHandlers()
         {
             _groundChecker.NotifyIsGrounded.OnChanged += OnGroundedChanged;
-            _bodyModule.OnTakeDamage += OnTakeDamage;
+            _bodyModule.OnDamaged += OnTakeDamage;
+            _bodyModule.OnKnockdown += OnKnockdown;
+            _bodyModule.OnRecovery += OnRecovery;
             _movementModule.OnMoved += OnMoved;
             controlEventChannel.AddListener<MoveInputEvent>(OnMoveInputReceived);
             controlEventChannel.AddListener<JumpInputEvent>(OnJumpInputReceived);
@@ -64,17 +65,30 @@ namespace SeungyungLib.Agents
         private void UnsubscribeEventHandlers()
         {
             _groundChecker.NotifyIsGrounded.OnChanged -= OnGroundedChanged;
-            _bodyModule.OnTakeDamage -= OnTakeDamage;
-            _movementModule.OnMoved += OnMoved;
+            _bodyModule.OnDamaged -= OnTakeDamage;
+            _bodyModule.OnKnockdown -= OnKnockdown;
+            _bodyModule.OnRecovery += OnRecovery;
+            _movementModule.OnMoved -= OnMoved;
             controlEventChannel.RemoveListener<MoveInputEvent>(OnMoveInputReceived);
             controlEventChannel.RemoveListener<JumpInputEvent>(OnJumpInputReceived);
         }
         #endregion
 
         #region Event Handlers
+        private void OnKnockdown()
+        {
+            if (_movementModule.IsControlling)
+                _vfxModule.StopVfx(dustParticleName.Hash);
+        }
+
+        private void OnRecovery()
+        {
+            _renderModule.TriggerInvincibility();
+        }
+        
         private void OnMoved(int axis)
         {
-            if (axis != 0)
+            if (_movementModule.IsControlling)
             {
                 bool isFlip = axis < 0;
                 
@@ -91,19 +105,20 @@ namespace SeungyungLib.Agents
         
         private void OnTakeDamage(int damage, int currentHealth)
         {
-            PlayerEvents.PlayerHitEvent.Initialize(damage, currentHealth);
-            playerEventChannel.RaiseEvent(PlayerEvents.PlayerHitEvent);
+            PlayerEvents.HitEvent.Initialize(damage, currentHealth);
+            playerEventChannel.RaiseEvent(PlayerEvents.HitEvent);
+                
+            if (_movementModule.IsControlling)
+                _vfxModule.StopVfx(dustParticleName.Hash);
         }
         
         private void OnGroundedChanged(bool isGround)
         {
             if (isGround)
             {
-                int axis = _movementModule.Axis;
-                    
-                if (axis != 0)
+                if (_movementModule.IsMoving && _movementModule.IsControlling)
                 {
-                    bool isFlip = axis < 0f;
+                    bool isFlip = _movementModule.Axis < 0f;
                     _vfxModule.PlayVfx(dustParticleName.Hash, isFlip);
                 }
                 else

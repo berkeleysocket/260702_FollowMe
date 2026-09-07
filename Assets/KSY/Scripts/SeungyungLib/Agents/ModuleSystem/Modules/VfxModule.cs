@@ -1,6 +1,6 @@
 using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.Effects;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using System.Collections.Generic;
 using System.Linq;

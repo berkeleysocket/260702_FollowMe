@@ -4,7 +4,7 @@ using SeungyungLib.Core.ParameterSO;
 using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 
@@ -12,6 +12,7 @@ namespace SeungyungLib.FSM
 {
     public abstract class StateSO : ScriptableObject
     {
+        [field: Header("Default State Settings")]
         [field: SerializeField, ReadOnly] public StateType Type { get; private set; }
         [field: SerializeField] public AnimParamSO EnterAnimParam { get; private set; }
         [field: SerializeField] public TransitionSO[] Transitions { get; private set; }

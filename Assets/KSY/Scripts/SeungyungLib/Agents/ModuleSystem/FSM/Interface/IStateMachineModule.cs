@@ -1,7 +1,6 @@
 using SeungyungLib.FSM.Enum;
-using SeungyungLib.ModuleSystem.Interface;
 
-namespace SeungyungLib.FSM.Interface
+namespace SeungyungLib.ModuleSystem.Core
 {
     public interface IStateMachineModule : IModule
     {

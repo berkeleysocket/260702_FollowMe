@@ -4,7 +4,7 @@ using SeungyungLib.ModuleSystem.Core;
 
 namespace SeungyungLib.Agents
 {
-    public class Agent : AbstractModuleOwner
+    public abstract class Agent : AbstractModuleOwner
     {
         private IStateMachineModule _stateMachineModule;
 

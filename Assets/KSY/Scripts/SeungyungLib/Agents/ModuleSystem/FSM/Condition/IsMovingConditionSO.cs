@@ -1,5 +1,5 @@
 ﻿using SeungyungLib.FSM.Interface;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 

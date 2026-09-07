@@ -1,6 +1,6 @@
 ﻿using SeungyungLib.Core.NotifyValue;
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.ModuleSystem.Interface;
+using SeungyungLib.ModuleSystem.Core;
 
 using UnityEngine;
 

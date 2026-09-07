@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_FireworkPeak
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uBD88\uAF43 \uD53C\uD06C \uC21C\uAC04"
+  _photoSprite: {fileID: 21300000, guid: bd685ac01c200a842b14b1f438c34e80, type: 3}
+  _likeBonus: 20000
+  _followBonus: 800
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uBD88\uAF43\uCD95\uC81C"
+  - "#\uC808\uC815"
+  - "#\uC778\uC0DD\uC0F7"

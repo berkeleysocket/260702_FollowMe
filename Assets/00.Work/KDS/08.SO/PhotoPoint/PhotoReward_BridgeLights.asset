@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_BridgeLights
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uB2E4\uB9AC \uC57C\uAC04 \uC870\uBA85"
+  _photoSprite: {fileID: 21300000, guid: ef0360d1667e3b441bdd50905ec77621, type: 3}
+  _likeBonus: 12500
+  _followBonus: 470
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uB2E4\uB9AC\uC870\uBA85"
+  - "#\uB124\uC628\uC57C\uACBD"
+  - "#\uD55C\uAC15"

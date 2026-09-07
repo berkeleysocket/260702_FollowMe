@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_BridgeView
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uD55C\uAC15 \uB2E4\uB9AC \uB09C\uAC04"
+  _photoSprite: {fileID: 21300000, guid: b3e053dd5bbbf264096bebefaae32965, type: 3}
+  _likeBonus: 14000
+  _followBonus: 550
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uD55C\uAC15\uB2E4\uB9AC"
+  - "#\uBD88\uAF43\uCD95\uC81C"
+  - "#\uC57C\uACBD"

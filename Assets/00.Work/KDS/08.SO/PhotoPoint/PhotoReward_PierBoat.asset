@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_PierBoat
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uC120\uCC29\uC7A5 \uC720\uB78C\uC120"
+  _photoSprite: {fileID: 21300000, guid: cac1c37020f3da84ba9da79c5113794c, type: 3}
+  _likeBonus: 13000
+  _followBonus: 500
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uC720\uB78C\uC120"
+  - "#\uC120\uCC29\uC7A5"
+  - "#\uAC15\uBC14\uB78C"

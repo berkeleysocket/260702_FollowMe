@@ -172,7 +172,6 @@ def sky_grad(w, h, y_max=22, top=SKY_T, bot=SKY_B):
     return img
 
 
-def draw_person(img, ox, oy, shirt, shirt_hi, hair, frame=0, pose="phone"):
     """Larger than Act1 (~14px wide torso, ~28px tall). Strong 4-frame idle."""
     bob = [0, 1, 2, 1][frame % 4]
     arm_swing = [0, 1, 2, 1][frame % 4]
@@ -386,8 +385,6 @@ def sub_latte(frame):
         oval(img, 56, 32, 6, 3, CREAM)
         oval(img, 56, 30, 4, 2, GOLD)
         px(img, 55, 29, WHITE)
-        draw_person(img, 28, 58, SHIRT_B, SHIRT_BH, HAIR_B, frame, "phone")
-        draw_person(img, 8, 58, SHIRT_A, SHIRT_AH, HAIR_A, frame + 1, "cup")
         return img
 
     def soft():
@@ -444,8 +441,6 @@ def sub_macaron(frame):
         ]
         for x, y, c in sparks[sparkle]:
             draw_spark(img, x, y, c)
-        draw_person(img, 2, 90, SHIRT_A, SHIRT_AH, HAIR_A, frame, "camera")
-        draw_person(img, 44, 90, SHIRT_B, SHIRT_BH, HAIR_B, frame + 1, "phone")
         return img
 
     def soft():
@@ -486,9 +481,6 @@ def sub_donut_wall(frame):
         for i, ch_x in enumerate((34, 42, 50, 58)):
             px(img, ch_x, 3, WHITE)
             px(img, ch_x + 1, 4, WHITE)
-        draw_person(img, 36, 62, SHIRT_B, SHIRT_BH, HAIR_B, frame, "phone")
-        draw_person(img, 8, 62, SHIRT_C, SHIRT_CH, HAIR_C, frame + 1, "idle")
-        draw_person(img, 68, 62, SHIRT_D, SHIRT_DH, HAIR_D, frame, "camera")
         return img
 
     def soft():
@@ -530,9 +522,6 @@ def sub_neon_cafe(frame):
         for y in (32, 34, 36, 38):
             hline(img, 62, 72, y, COFFEE if y % 4 == 0 else GRAY)
         # queue of 3
-        draw_person(img, 4, 62, SHIRT_A, SHIRT_AH, HAIR_A, frame, "phone")
-        draw_person(img, 22, 62, SHIRT_C, SHIRT_CH, HAIR_C, frame + 1, "idle")
-        draw_person(img, 72, 62, SHIRT_B, SHIRT_BH, HAIR_B, frame, "phone")
         return img
 
     def soft():
@@ -598,8 +587,6 @@ def sub_terrace(frame):
         shade_rect(img, 42, 42, 54, 50, WOOD_H, CREAM, WOOD_D)
         shade_rect(img, 44, 36, 48, 42, WHITE, CREAM, GRAY)
         shade_rect(img, 50, 36, 54, 42, WHITE, CREAM, GRAY)
-        draw_person(img, 30, 62, SHIRT_C, SHIRT_CH, HAIR_C, frame, "phone")
-        draw_person(img, 54, 62, SHIRT_B, SHIRT_BH, HAIR_B, frame + 1, "cup")
         return img
 
     def soft():
@@ -650,7 +637,6 @@ def sub_mirror(frame):
         # floor tiles
         for x in range(4, 60, 8):
             shade_rect(img, x, 76, x + 7, 88, CREAM if (x // 8) % 2 == 0 else CREAM_D, WHITE, WOOD_D)
-        draw_person(img, 24, 92, SHIRT_B, SHIRT_BH, HAIR_B, frame, "phone")
         return img
 
     def soft():
@@ -711,8 +697,6 @@ def sub_plant(frame):
         if frame % 2 == 0:
             px(img, 60, 66, NEON_C)
             px(img, 61, 65, WHITE)
-        draw_person(img, 4, 90, SHIRT_C, SHIRT_CH, HAIR_C, frame, "phone")
-        draw_person(img, 40, 90, SHIRT_A, SHIRT_AH, HAIR_A, frame + 1, "idle")
         return img
 
     def soft():
@@ -768,7 +752,6 @@ def sub_night(frame):
         # street lamp
         shade_rect(img, 56, 60, 60, 88, METAL_D, METAL, BLACK)
         oval(img, 58, 58, 4, 3, WARM_H if glow else GOLD)
-        draw_person(img, 22, 90, SHIRT_B, SHIRT_BH, HAIR_B, frame, "camera")
         return img
 
     def soft():
@@ -823,8 +806,6 @@ def sub_round_window(frame):
         # flower accents
         for fx, fy in ((12, 8), (52, 10), (10, 40), (54, 38)):
             oval(img, fx, fy + leaf_bob, 2, 2, PINK if (fx + frame) % 2 == 0 else NEON_Y)
-        draw_person(img, 6, 60, SHIRT_A, SHIRT_AH, HAIR_A, frame, "phone")
-        draw_person(img, 42, 60, SHIRT_B, SHIRT_BH, HAIR_B, frame + 1, "camera")
         return img
 
     def soft():
@@ -892,9 +873,6 @@ def sub_dessert_cart(frame):
         ]
         for x, y, c in sparks[frame % 4]:
             draw_spark(img, x, y, c)
-        draw_person(img, 72, 60, SHIRT_B, SHIRT_BH, HAIR_B, frame, "phone")
-        draw_person(img, 2, 60, SHIRT_C, SHIRT_CH, HAIR_C, frame + 1, "idle")
-        draw_person(img, 40, 60, SHIRT_D, SHIRT_DH, HAIR_D, frame, "cup")
         return img
 
     def soft():
@@ -945,20 +923,16 @@ OLD_SUBJECTS = [
 
 
 if __name__ == "__main__":
-    for sheet, still, w, h, fn in SUBJECTS:
+    # 인물 없는 고퀄 시트는 upgrade_act2_subjects_from_stills.py 사용.
+    # 이 스크립트는 레거시 도트(사람 없음). 스틸은 덮어쓰지 않음.
+    for sheet, _still, w, h, fn in SUBJECTS:
         tiles = [lambda f=f, func=fn: func(f) for f in range(4)]
         build_sheet(tiles, os.path.join(OUT, sheet), w, h)
-        frame = 1 if ("Neon" in sheet or "Night" in sheet) else 0
-        fn(frame).save(os.path.join(OUT, still))
-        print("still", still)
 
     for old in OLD_SUBJECTS:
         path = os.path.join(OUT, old)
         if os.path.exists(path):
             os.remove(path)
             print("removed obsolete", old)
-            meta = path + ".meta"
-            # leave .meta for Unity to clean; don't manually edit/delete per AGENTS.md
-            _ = meta
 
     print(f"done subjects={len(SUBJECTS)}")

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83492c269af9794387e987b2a748ff4, type: 3}
+  m_Name: PhotoReward_PhoneCrowd
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PhotoPointRewardSO
+  _displayName: "\uD3F0\uC73C\uB85C \uBCF4\uB294 \uC778\uD30C"
+  _photoSprite: {fileID: 21300000, guid: 5bceaae825155be409ea849c9f85e02e, type: 3}
+  _likeBonus: 12000
+  _followBonus: 480
+  _holdSeconds: 0.9
+  _oneShot: 1
+  _hashtags:
+  - "#\uD3F0\uC18D\uCD95\uC81C"
+  - "#\uC778\uD30C"
+  - "#\uD314\uB85C\uC6B0\uBBF8"

@@ -142,4 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YHW.Items.ItemPickup
   item: {fileID: 11400000, guid: a7d331607d161d649b9e04e01f4e5c2d, type: 2}
-  pickupEffectPrefab: {fileID: 0}
+  pickupEffectPrefab: {fileID: 432010665077703499, guid: 6b08b4d2eb745814997880234e9df91a, type: 3}

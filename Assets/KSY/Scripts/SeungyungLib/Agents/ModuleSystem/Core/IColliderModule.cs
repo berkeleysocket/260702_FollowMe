@@ -7,6 +7,8 @@ namespace SeungyungLib.ModuleSystem.Core
 {
     public interface IColliderModule
     {
+        int ContactCount { get; }
+        
         void RegisterAction(ColliderModuleOption moduleOption, Action<GameObject> action);
     }
 }

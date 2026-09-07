@@ -23,15 +23,9 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public int Axis => _axis;
 
-        public bool IsMoving
-        {
-            get
-            {
-                return Mathf.Abs(_velocity.x) > 0 && _axis != 0;
-            }
-        }
-        public bool IsJumping => _rb.linearVelocityY > 0.25f;
-        public bool IsFall => _rb.linearVelocityY < -0.25f;
+        public bool IsMoving => Mathf.Abs(_velocity.x) > 0 && _axis != 0;
+        public bool IsJumping => _rb.linearVelocityY > 0.2f;
+        public bool IsFall => _rb.linearVelocityY < -0.5f;
         
         private Rigidbody2D _rb;
         private IGroundCheckModule _groundChecker;

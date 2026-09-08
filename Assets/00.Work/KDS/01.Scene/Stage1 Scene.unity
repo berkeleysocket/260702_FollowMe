@@ -3845,6 +3845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.StageGoal
   _stageNumber: 1
+  _pauseOnClear: 1
+  _ensureVisual: 1
 --- !u!61 &1408825011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17459,7 +17461,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2003974836}
-  - component: {fileID: 2003974835}
   - component: {fileID: 2003974834}
   - component: {fileID: 2003974833}
   - component: {fileID: 2003974837}
@@ -17498,21 +17499,9 @@ MonoBehaviour:
   _defaultSpawn: {fileID: 0}
   _playerOverride: {fileID: 610457795}
   _fallRespawnY: -8
+  _fallStressPenalty: 35
+  _respawnCooldown: 0.35
   _logRespawn: 1
---- !u!114 &2003974835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003974832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b2fac0d035a234cafb1995648d12eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.MapModeService
-  _initialMode: 0
-  _logModeChanges: 1
 --- !u!4 &2003974836
 Transform:
   m_ObjectHideFlags: 0
@@ -17540,8 +17529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c326faf51a7070941b4aa6a5729980dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.StageRunStats
+  _stageNumber: 1
   _dailyCollected: 0
   _likesCollected: 0
+  _followsCollected: 0
+  _followsTotal: 0
+  _threeStarRatio: 0.8
+  _twoStarRatio: 0.7
 --- !u!1 &2031279924
 GameObject:
   m_ObjectHideFlags: 0
@@ -17752,6 +17746,7 @@ MonoBehaviour:
   _stressReducePerLikePickup: 8
   _stressReducePerFollowPickup: 8
   _stressReducePerPhoto: 20
+  _stressAddPerFall: 35
 --- !u!4 &2128432030
 Transform:
   m_ObjectHideFlags: 0

@@ -5,14 +5,15 @@ using YHW.Stats;
 
 namespace YHW.UI
 {
-/// <summary>
+    /// <summary>
     /// Never drains on its own - it only reflects whatever StressMeter
-    /// reports, with fillAmount/color animating smoothly toward it.
-    /// </summary>ry>
+    /// reports, with fill width/color animating smoothly toward it.
+    /// </summary>
     public class StressBar : MonoBehaviour
     {
         [SerializeField] private StressMeter meter;
         [SerializeField] private Image fillImage;
+        [SerializeField] private RectTransform fillMaskRect;
         [SerializeField] private Text valueText;
         [SerializeField] private RectTransform punchTarget;
         [SerializeField] private Color lowColor = new Color(0.35f, 0.85f, 0.55f);
@@ -21,11 +22,15 @@ namespace YHW.UI
         [SerializeField] private float punchDuration = 0.25f;
 
         private Tween _punchTween;
+        private float _fillMaxWidth;
 
         private void Awake()
         {
             if (punchTarget == null)
                 punchTarget = transform as RectTransform;
+
+            if (fillImage != null)
+                _fillMaxWidth = fillImage.rectTransform.sizeDelta.x;
         }
 
         private void OnEnable()
@@ -50,11 +55,15 @@ namespace YHW.UI
         {
             float ratio = maxValue > 0f ? value / maxValue : 0f;
 
-            if (fillImage != null)
+            if (fillMaskRect != null)
             {
-                fillImage.fillAmount = ratio;
-                fillImage.color = Color.Lerp(lowColor, highColor, ratio);
+                Vector2 size = fillMaskRect.sizeDelta;
+                size.x = _fillMaxWidth * ratio;
+                fillMaskRect.sizeDelta = size;
             }
+
+            if (fillImage != null)
+                fillImage.color = Color.Lerp(lowColor, highColor, ratio);
 
             if (valueText != null)
                 valueText.text = Mathf.RoundToInt(ratio * 100f) + "%";

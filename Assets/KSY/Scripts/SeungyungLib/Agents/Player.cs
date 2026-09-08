@@ -83,7 +83,7 @@ namespace SeungyungLib.Agents
 
         private void OnRecovery()
         {
-            _renderModule.TriggerInvincibility();
+            _renderModule.PlayInvincibilityEffect();
         }
         
         private void OnMoved(int axis)
@@ -110,6 +110,8 @@ namespace SeungyungLib.Agents
                 
             if (_movementModule.IsControlling)
                 _vfxModule.StopVfx(dustParticleName.Hash);
+            
+            _renderModule.PlayHitShakeEffect();
         }
         
         private void OnGroundedChanged(bool isGround)

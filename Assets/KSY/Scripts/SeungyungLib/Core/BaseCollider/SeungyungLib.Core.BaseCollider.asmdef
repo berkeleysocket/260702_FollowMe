@@ -1,6 +1,6 @@
 {
-    "name": "SeungyungLib.ModuleSystem.Enum",
-    "rootNamespace": "SeungyungLib.ModuleSystem.Enum",
+    "name": "SeungyungLib.Core.BaseCollider",
+    "rootNamespace": "SeungyungLib.Core.BaseCollider",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

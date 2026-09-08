@@ -31,8 +31,13 @@ namespace SeungyungLib.Template.EventChannels
     {
         
     }
-
+    
     public class PlayerDeadEvent : ChannelEvent
+    {
+        
+    }
+    
+    public class PlayerCollectEvent : ChannelEvent
     {
         
     }

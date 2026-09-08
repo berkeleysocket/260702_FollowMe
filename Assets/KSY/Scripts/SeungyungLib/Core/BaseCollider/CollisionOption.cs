@@ -1,9 +1,9 @@
 using System;
 
-namespace SeungyungLib.ModuleSystem.Enum
+namespace SeungyungLib.Core.BaseCollider
 {
     [Flags]
-    public enum ColliderModuleOption : byte
+    public enum CollisionOption : byte
     {
         None = 0,
         Collision,

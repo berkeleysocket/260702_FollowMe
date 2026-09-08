@@ -63,7 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SeungyungLib.Rendering.PostProcess.HorrorPostProcessSetter
   horrorVolume: {fileID: 2624267729496060587}
-  disableGameObjectOnDefault: 1
 --- !u!1 &6112097171389797836
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,9 +108,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a531d297d9ebe7847b278723e6715748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KSY.HorrorEventManager
-  horrorVolume: {fileID: 0}
-  enemyPrefab: {fileID: 0}
-  spawnRadius: 5
-  targetExposure: -1.2
-  targetSaturation: -50
-  targetVignette: 0.45
+  playerTransform: {fileID: 0}
+  ppSetter: {fileID: 7141724137490286881}
+  ghostEnemyPrefab: {fileID: 5689643567908826499, guid: df5f74e193e4a35478df556b419bfbb5, type: 3}
+  poolSize: 15
+  initialSpawnCount: 5
+  maxActiveEnemyCount: 10
+  minSpawnRadius: 5
+  maxSpawnRadius: 8
+  spawnMoveDelay: 1.5
+  minSpawnInterval: 3
+  maxSpawnInterval: 7
+  spawnCountPerInterval: 2
+  eventTransitionDuration: 2

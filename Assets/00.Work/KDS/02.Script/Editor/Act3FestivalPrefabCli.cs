@@ -39,6 +39,12 @@ namespace FollowMe.KDS.Editor
             "Act3_Tile_NightPath.png",
             "Act3_Tile_BridgeDeck.png",
             "Act3_BG_NightSky.png",
+            "Act3_BG_SkyFireworks.png",
+            "Act3_BG_CitySkyline.png",
+            "Act3_BG_RiverWater.png",
+            "Act3_BG_Promenade.png",
+            "Act3_BG_EmptyVoid.png",
+            "Act3_BG_FestivalLights.png",
         };
 
         [CliCommand("act3-festival-prefabs", "Import Act3 festival sprites and build prop/hazard prefabs")]
@@ -93,7 +99,7 @@ namespace FollowMe.KDS.Editor
                 return false;
             }
 
-            ConfigureSpriteImport(spritePath, bottomCenter: true);
+            ConfigureSpriteImport(spritePath, bottomCenter: !file.Contains("BG_"));
             Sprite sprite = LoadSprite(spritePath);
             if (sprite == null) return false;
 
@@ -206,6 +212,12 @@ namespace FollowMe.KDS.Editor
 
         private static int SortingOrderFor(string file)
         {
+            if (file.Contains("BG_Sky") || file.Contains("BG_NightSky")) return -40;
+            if (file.Contains("BG_EmptyVoid")) return -38;
+            if (file.Contains("BG_CitySkyline")) return -35;
+            if (file.Contains("BG_RiverWater")) return -30;
+            if (file.Contains("BG_Promenade")) return -25;
+            if (file.Contains("BG_FestivalLights")) return -20;
             if (file.Contains("BG_")) return -25;
             if (file.Contains("Tile_")) return -2;
             if (file.Contains("StringLanterns") || file.Contains("FestivalFlag")) return 6;

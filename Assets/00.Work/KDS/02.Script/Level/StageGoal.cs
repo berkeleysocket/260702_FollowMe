@@ -38,6 +38,16 @@ namespace FollowMe.KDS
             stats.ConfigureStage(_stageNumber);
             LastStars = stats.ClearStage();
 
+            GameProgressSave.RecordStageClear(_stageNumber, LastStars, stats.FollowRatio);
+            if (SocialScoreService.Instance != null)
+            {
+                GameProgressSave.CaptureSocial(
+                    SocialScoreService.Instance.Likes,
+                    SocialScoreService.Instance.Follows,
+                    SocialScoreService.Instance.IsSecondCycle);
+                GameProgressSave.FlushIfDirty();
+            }
+
             var hud = FindFirstObjectByType<StageClearStarsHud>();
             if (hud == null)
             {

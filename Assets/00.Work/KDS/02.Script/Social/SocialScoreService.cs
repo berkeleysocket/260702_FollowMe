@@ -57,6 +57,18 @@ namespace FollowMe.KDS
             }
 
             Instance = this;
+            GameProgressSave.ApplySocialTo(this);
+        }
+
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+                PersistSocial();
+        }
+
+        private void OnApplicationQuit()
+        {
+            PersistSocial();
         }
 
         private void OnDestroy()
@@ -70,6 +82,7 @@ namespace FollowMe.KDS
             if (amount == 0) return;
             _likes = Math.Max(0, _likes + amount);
             ScoreChanged?.Invoke(_likes, _follows);
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
         }
 
         public void AddFollows(long amount)
@@ -77,6 +90,7 @@ namespace FollowMe.KDS
             if (amount == 0) return;
             _follows = Math.Max(0, _follows + amount);
             ScoreChanged?.Invoke(_likes, _follows);
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
         }
 
         /// <summary>좋아요 수집 1회 — 점수 + 스트레스 감소.</summary>
@@ -138,6 +152,25 @@ namespace FollowMe.KDS
             _likes = 0;
             ScoreChanged?.Invoke(_likes, _follows);
             CycleChanged?.Invoke(2);
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
+            GameProgressSave.FlushIfDirty();
+        }
+
+        /// <summary>세이브에서 누적 점수 복원.</summary>
+        public void LoadFromSave(long likes, long follows, bool secondCycle)
+        {
+            _likes = Math.Max(0, likes);
+            _follows = Math.Max(0, follows);
+            _secondCycle = secondCycle;
+            ScoreChanged?.Invoke(_likes, _follows);
+            if (_secondCycle)
+                CycleChanged?.Invoke(2);
+        }
+
+        private void PersistSocial()
+        {
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
+            GameProgressSave.FlushIfDirty();
         }
 
         private StressMeter ResolveStressMeter()

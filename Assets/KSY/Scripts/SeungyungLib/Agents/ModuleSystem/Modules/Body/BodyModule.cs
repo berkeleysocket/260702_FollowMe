@@ -1,9 +1,10 @@
+using SeungyungLib.Core.BaseCollider;
 using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.ModuleSystem.Core;
-using SeungyungLib.ModuleSystem.Enum;
 
 using System;
 using System.Collections;
+using SeungyungLib.Core.CustomDebug;
 using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Modules
@@ -11,7 +12,7 @@ namespace SeungyungLib.ModuleSystem.Modules
     public class BodyModule : MonoBehaviour, IBodyModule
     {
         [field: SerializeField] public Rigidbody2D PhysicalBody { get; private set; }
-        [SerializeField] private ColliderModule bodyCollider;
+        [SerializeField] private BaseCollider bodyCollider;
         [SerializeField] private BodyModuleDataSO bodyData;
         [SerializeField, ReadOnly] private int health;
 
@@ -34,8 +35,13 @@ namespace SeungyungLib.ModuleSystem.Modules
             this._maxHealth = bodyData.MaxHealth; 
             this.health = _maxHealth;
             this._invincibilityDuration = bodyData.InvincibilityDuration;
-            bodyCollider.RegisterAction(ColliderModuleOption.Trigger | ColliderModuleOption.Enter,
-                (other) => Damage(1));
+            
+            DebugLogger.Assert(PhysicalBody != null, "[BodyModule]: PhysicalBody is null");
+            DebugLogger.Assert(bodyCollider != null, "[BodyModule]: enemyLayerCollider is null");
+            DebugLogger.Assert(bodyData != null, "[BodyModule]: bodyData is null");
+
+            Action<CollisionContext> onContacted = (context) => Damage(1);
+            bodyCollider.RegisterAction(CollisionOption.Trigger | CollisionOption.Enter, onContacted);
         }
         #endregion
         
@@ -44,7 +50,7 @@ namespace SeungyungLib.ModuleSystem.Modules
 
         public void Damage(int damage)
         {
-            if (health <= 0 || IsKnockdown || IsInvincible || IsDead) return;
+            if (IsKnockdown || IsInvincible || IsDead) return;
             
             health = Mathf.Clamp(health - damage, 0, _maxHealth);
 

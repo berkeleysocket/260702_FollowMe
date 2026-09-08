@@ -2,6 +2,7 @@
     "name": "SeungyungLib.ModuleSystem.Modules",
     "rootNamespace": "SeungyungLib.ModuleSystem.Modules",
     "references": [
+        "GUID:205fa6d0a74655c41a9bfb679d9b4173",
         "GUID:7ecad1ce68a88454d9f05e82207ab07b",
         "GUID:b6a73278d86f1e7499771d558b777537",
         "GUID:637211411bdbdfd4cb6fe6209376db1c",

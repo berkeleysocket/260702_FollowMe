@@ -100,7 +100,8 @@ namespace FollowMe.KDS
             _nextRespawnAllowedTime = Time.unscaledTime + Mathf.Max(0.05f, _respawnCooldown);
             player.RespawnAt(_lastSpawnPosition);
 
-            if (reason == "Fall" || reason == "Hazard")
+            if ((reason == "Fall" || reason == "Hazard") &&
+                StageStressPolicy.UsesStressInActiveScene())
                 SocialScoreService.Instance?.ApplyStress(_fallStressPenalty);
 
             if (_logRespawn)

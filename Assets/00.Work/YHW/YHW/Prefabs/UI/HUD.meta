@@ -1,8 +1,13 @@
 fileFormatVersion: 2
-guid: 7233b19f6068739468dccbee4b81e81e
+<<<<<<<< HEAD:Assets/00.Work/YHW/YHW/Prefabs/UI/HUD.meta
+guid: 6c48271241513a84abdcb3250d552db2
 folderAsset: yes
 DefaultImporter:
+========
+guid: 31952777c341dd942a27ed16cc105fc7
+PrefabImporter:
+>>>>>>>> 154891be30d293b84abd3e5876c010185497610e:Assets/00.Work/KDS/06.Prefab/Act3_Fireworks/Act3_Prop_BridgePillar.prefab.meta
   externalObjects: {}
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

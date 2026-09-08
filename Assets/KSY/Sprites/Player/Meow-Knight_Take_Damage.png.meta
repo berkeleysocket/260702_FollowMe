@@ -122,12 +122,12 @@ TextureImporter:
       name: Meow-Knight_Take_Damage_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 51
-        width: 14
-        height: 17
+        x: 0
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: Meow-Knight_Take_Damage_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 25
-        width: 15
+        x: 0
+        y: 26
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -166,12 +166,12 @@ TextureImporter:
       name: Meow-Knight_Take_Damage_2
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 14
-        height: 17
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -188,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fe58e22e3b9048f448b11d762f899f39
     internalID: 0
     vertices: []
     indices: 

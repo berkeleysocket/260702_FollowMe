@@ -8,9 +8,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/00.Work/YHW/YHW/Scripts/SoundManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/00.Work/YHW/YHW/Scripts/SoundManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Enemy/RenderModule.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Enemy/RenderModule.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Enemy/enemy_01 IDLE_01.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/GameModules/AnimClip/Enemy/enemy_01 IDLE_01.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Enemy/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Enemy/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene/PP Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene/PP Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene/PP Profile.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scenes/KSY_TEST EnemyScene/PP Profile.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/CameraShake.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/CameraShake.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/GhostEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/GhostEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/HorrorPostProcessController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/HorrorPostProcessController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Body/BodyModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Body/BodyModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Enemy/SPRITE_SHEET.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Enemy/SPRITE_SHEET.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Death.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Death.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Idle.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Idle.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Jump.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Jump.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Run.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Run.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Take_Damage.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Sprites/Player/Meow-Knight_Take_Damage.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +44,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/AI Enemy/GhostEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/CameraShake.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/Example/ExampleConditionSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/FSM/Condition/IsHitConditionSo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -45,10 +61,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/Managements/PoolManagement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@84bf82d10e47/Editor/Volume/VolumeComponentEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127d981137de49d2ae957439392db92b8c800/50/149f73e5/Collision2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127d981137de49d2ae957439392db92b8c800/d9/0e7864e9/Rigidbody2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/19/aba31c39/Behaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/61/3eec0e0b/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1b6535aa091d41cf8b3ca222ed9ceef0212600/82/b1771997/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d6fd3bea869f4004b25d18a15df36a7812000/c3/d45c4e9d/VisualEffect.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13ae6aa3c458d6b636864d5bcb4ef1f289091462a1f27a5b15c27ddaff8f848/System.Timers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,7 +91,6 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -82,18 +99,9 @@
     &quot;Unity 에디터에 연결.Unity 에디터에 연결.executor&quot;: &quot;Debug&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;YHW&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;KSY&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.smartKeys_rider&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;unity.profiler.toolWindow.autoShown&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+    &quot;unity.profiler.toolWindow.autoShown&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="Unity 에디터에 연결.Unity 에디터에 연결">
@@ -142,14 +150,8 @@
       <option name="presentableId" value="Default" />
       <updated>1783580187990</updated>
       <workItem from="1783580189208" duration="2000" />
-      <workItem from="1788793661494" duration="713000" />
-      <workItem from="1788828945358" duration="1949000" />
-      <workItem from="1788848216392" duration="1270000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />

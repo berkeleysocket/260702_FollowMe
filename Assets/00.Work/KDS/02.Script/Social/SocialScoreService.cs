@@ -15,7 +15,7 @@ namespace FollowMe.KDS
 
     /// <summary>
     /// KDS 맵 프로토타입용 좋아요/팔로우 점수.
-    /// 팀 공용 시스템이 생기면 이벤트로 이관할 것.
+    /// 스트레스 사용 스테이지(S3+)에서는 게이지 0%일 때만 점수가 오른다.
     /// </summary>
     public class SocialScoreService : MonoBehaviour
     {
@@ -44,9 +44,15 @@ namespace FollowMe.KDS
 
         public bool IsGoalReached => _likes >= GoalLikes;
 
+        /// <summary>S1~S2 또는 스트레스 0%일 때 true.</summary>
+        public bool CanGainScore =>
+            !StageStressPolicy.UsesStressInActiveScene() || IsStressAtZeroPercent();
+
         public event Action<long, long> ScoreChanged;
         public event Action<string, long, long> PhotoTaken;
         public event Action<int> CycleChanged;
+        /// <summary>점수 상승이 막혔을 때 (토스트용 메시지).</summary>
+        public event Action<string> ScoreGainBlocked;
 
         private void Awake()
         {
@@ -80,39 +86,54 @@ namespace FollowMe.KDS
         public void AddLikes(long amount)
         {
             if (amount == 0) return;
-            _likes = Math.Max(0, _likes + amount);
-            ScoreChanged?.Invoke(_likes, _follows);
-            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
+            if (amount > 0 && !TryAllowScoreGain())
+                return;
+
+            AddLikesUnchecked(amount);
         }
 
         public void AddFollows(long amount)
         {
             if (amount == 0) return;
-            _follows = Math.Max(0, _follows + amount);
-            ScoreChanged?.Invoke(_likes, _follows);
-            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
+            if (amount > 0 && !TryAllowScoreGain())
+                return;
+
+            AddFollowsUnchecked(amount);
         }
 
-        /// <summary>좋아요 수집 1회 — 점수 + 스트레스 감소.</summary>
-        public void CollectLike(long likeAmount)
+        /// <summary>좋아요 수집 — 스트레스는 항상 감소, 점수는 0%일 때만.</summary>
+        public bool CollectLike(long likeAmount)
         {
-            AddLikes(likeAmount);
             RelieveStress(_stressReducePerLikePickup);
+            if (!TryAllowScoreGain())
+                return false;
+
+            AddLikesUnchecked(likeAmount);
+            return true;
         }
 
-        /// <summary>팔로우 수집 1회 — 점수 + 스트레스 감소.</summary>
-        public void CollectFollow(long followAmount)
+        /// <summary>팔로우 수집 — 스트레스는 항상 감소, 점수는 0%일 때만.</summary>
+        public bool CollectFollow(long followAmount)
         {
-            AddFollows(followAmount);
             RelieveStress(_stressReducePerFollowPickup);
+            if (!TryAllowScoreGain())
+                return false;
+
+            AddFollowsUnchecked(followAmount);
+            return true;
         }
 
-        public void ApplyPhotoReward(string pointId, long likeBonus, long followBonus)
+        /// <summary>포토 보상. 스트레스 0%가 아니면 실패(소모·점수 없음).</summary>
+        public bool ApplyPhotoReward(string pointId, long likeBonus, long followBonus)
         {
-            AddLikes(likeBonus);
-            AddFollows(followBonus);
+            if (!TryAllowScoreGain())
+                return false;
+
+            AddLikesUnchecked(likeBonus);
+            AddFollowsUnchecked(followBonus);
             RelieveStress(_stressReducePerPhoto);
             PhotoTaken?.Invoke(pointId, likeBonus, followBonus);
+            return true;
         }
 
         public void RelieveStress(float amount)
@@ -167,6 +188,40 @@ namespace FollowMe.KDS
             ScoreChanged?.Invoke(_likes, _follows);
             if (_secondCycle)
                 CycleChanged?.Invoke(2);
+        }
+
+        private bool TryAllowScoreGain()
+        {
+            if (CanGainScore)
+                return true;
+
+            ScoreGainBlocked?.Invoke("스트레스가 0%일 때만 점수가 올라갑니다");
+            return false;
+        }
+
+        private bool IsStressAtZeroPercent()
+        {
+            var meter = ResolveStressMeter();
+            if (meter == null)
+                return true;
+
+            return meter.CurrentPercent <= 0 || meter.CurrentValue <= 0.01f;
+        }
+
+        private void AddLikesUnchecked(long amount)
+        {
+            if (amount == 0) return;
+            _likes = Math.Max(0, _likes + amount);
+            ScoreChanged?.Invoke(_likes, _follows);
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
+        }
+
+        private void AddFollowsUnchecked(long amount)
+        {
+            if (amount == 0) return;
+            _follows = Math.Max(0, _follows + amount);
+            ScoreChanged?.Invoke(_likes, _follows);
+            GameProgressSave.CaptureSocial(_likes, _follows, _secondCycle);
         }
 
         private void PersistSocial()

@@ -22,12 +22,13 @@ namespace FollowMe.KDS
             if (!PlayerTriggerUtility.IsPlayer(other))
                 return;
 
+            bool gained = true;
             if (SocialScoreService.Instance != null)
-                SocialScoreService.Instance.CollectLike(_likeValue);
+                gained = SocialScoreService.Instance.CollectLike(_likeValue);
 
-            StageRunStats.Instance?.RegisterLikePickup();
+            if (gained)
+                StageRunStats.Instance?.RegisterLikePickup();
             Destroy(gameObject);
         }
     }
 }
-

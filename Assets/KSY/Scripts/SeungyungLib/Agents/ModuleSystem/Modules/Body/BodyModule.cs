@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Modules
 {
-    [RequireComponent(typeof(Collider2D))]
     public class BodyModule : MonoBehaviour, IBodyModule
     {
         [field: SerializeField] public Rigidbody2D PhysicalBody { get; private set; }
@@ -32,11 +31,9 @@ namespace SeungyungLib.ModuleSystem.Modules
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            Debug.Assert(GetComponent<Collider2D>() != null, "[BodyModule]: Collider2D is null.");
             this._maxHealth = bodyData.MaxHealth; 
             this.health = _maxHealth;
             this._invincibilityDuration = bodyData.InvincibilityDuration;
-
             bodyCollider.RegisterAction(ColliderModuleOption.Trigger | ColliderModuleOption.Enter,
                 (other) => Damage(1));
         }

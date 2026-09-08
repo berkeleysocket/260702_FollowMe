@@ -27,6 +27,7 @@ namespace FollowMe.KDS
 
         private void Start()
         {
+            MapTriggerLayer.ApplyAllItemPickupsInScene();
             Bind();
         }
 
@@ -86,18 +87,21 @@ namespace FollowMe.KDS
             switch (item.ItemType)
             {
                 case ItemType.Heart:
-                    SocialScoreService.Instance.CollectFollow(amount * _followPerHeartValue);
-                    StageRunStats.Instance?.RegisterFollowPickup();
+                    if (SocialScoreService.Instance.CollectFollow(amount * _followPerHeartValue))
+                        StageRunStats.Instance?.RegisterFollowPickup();
                     break;
                 case ItemType.Emoji:
-                    SocialScoreService.Instance.CollectLike(amount * _likePerEmojiValue);
-                    StageRunStats.Instance?.RegisterLikePickup();
+                    if (SocialScoreService.Instance.CollectLike(amount * _likePerEmojiValue))
+                        StageRunStats.Instance?.RegisterLikePickup();
                     break;
             }
         }
 
         private void ApplyAngryStress(ItemData item)
         {
+            if (!StageStressPolicy.UsesStressInActiveScene())
+                return;
+
             float amount = _scaleByItemValue
                 ? Mathf.Max(1, item.Value) * _stressReducePerAngry
                 : _stressReducePerAngry;

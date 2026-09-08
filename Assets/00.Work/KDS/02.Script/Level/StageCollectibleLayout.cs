@@ -146,7 +146,7 @@ namespace FollowMe.KDS
             {
                 StageTemplate.CityStreet => spec.Stage <= 3 ? 3.4f : 3.8f,
                 StageTemplate.CafeAlley => 3.6f,
-                StageTemplate.Fireworks => 3.2f,
+                StageTemplate.Fireworks => 5.6f,
                 StageTemplate.Subway => 2.8f,
                 _ => 3.2f
             };

@@ -26,6 +26,7 @@ namespace FollowMe.KDS
 
         private string _toast;
         private float _toastUntil;
+        private float _nextBlockedToastTime;
 
         private string _photoTitle;
         private string _photoHashtags;
@@ -69,8 +70,10 @@ namespace FollowMe.KDS
 
             _score.ScoreChanged -= OnScoreChanged;
             _score.PhotoTaken -= OnPhotoTaken;
+            _score.ScoreGainBlocked -= OnScoreGainBlocked;
             _score.ScoreChanged += OnScoreChanged;
             _score.PhotoTaken += OnPhotoTaken;
+            _score.ScoreGainBlocked += OnScoreGainBlocked;
         }
 
         private void UnbindScore()
@@ -78,9 +81,19 @@ namespace FollowMe.KDS
             if (_score == null) return;
             _score.ScoreChanged -= OnScoreChanged;
             _score.PhotoTaken -= OnPhotoTaken;
+            _score.ScoreGainBlocked -= OnScoreGainBlocked;
         }
 
         private void OnScoreChanged(long likes, long follows) { }
+
+        private void OnScoreGainBlocked(string message)
+        {
+            if (string.IsNullOrEmpty(message)) return;
+            if (Time.unscaledTime < _nextBlockedToastTime) return;
+            _nextBlockedToastTime = Time.unscaledTime + 1.2f;
+            _toast = message;
+            _toastUntil = Time.unscaledTime + 2.2f;
+        }
 
         private void OnPhotoTaken(string pointId, long likes, long follows)
         {

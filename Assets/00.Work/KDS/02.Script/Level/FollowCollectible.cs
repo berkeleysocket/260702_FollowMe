@@ -12,6 +12,7 @@ namespace FollowMe.KDS
 
         private void Awake()
         {
+            MapTriggerLayer.Apply(gameObject);
             var col = GetComponent<Collider2D>();
             col.isTrigger = true;
         }
@@ -21,10 +22,12 @@ namespace FollowMe.KDS
             if (!PlayerTriggerUtility.IsPlayer(other))
                 return;
 
+            bool gained = true;
             if (SocialScoreService.Instance != null)
-                SocialScoreService.Instance.CollectFollow(_followValue);
+                gained = SocialScoreService.Instance.CollectFollow(_followValue);
 
-            StageRunStats.Instance?.RegisterFollowPickup();
+            if (gained)
+                StageRunStats.Instance?.RegisterFollowPickup();
             Destroy(gameObject);
         }
     }

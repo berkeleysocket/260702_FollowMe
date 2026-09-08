@@ -1,4 +1,5 @@
 using UnityEngine;
+using YHW.Items;
 
 namespace FollowMe.KDS
 {
@@ -15,6 +16,10 @@ namespace FollowMe.KDS
             CacheRigidbody();
             if (!gameObject.CompareTag("Player"))
                 gameObject.tag = "Player";
+
+            // YHW ItemPickup이 GetComponentInParent로 찾음 — 루트에 보장
+            if (GetComponent<PlayerItemCollector>() == null)
+                gameObject.AddComponent<PlayerItemCollector>();
         }
 
         private void CacheRigidbody()

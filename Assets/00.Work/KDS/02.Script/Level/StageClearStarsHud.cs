@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// 클리어 시 별점 결과 오버레이 (프로토타입 OnGUI).
+    /// 클리어 시 별점 결과 오버레이 + 스테이지 선택으로 돌아가기.
     /// </summary>
     public class StageClearStarsHud : MonoBehaviour
     {
@@ -36,9 +37,9 @@ namespace FollowMe.KDS
             GUI.DrawTexture(new Rect(0f, 0f, Screen.width, Screen.height), Texture2D.whiteTexture);
 
             float w = 420f;
-            float h = 220f;
+            float h = 280f;
             float x = (Screen.width - w) * 0.5f;
-            float y = (Screen.height - h) * 0.42f;
+            float y = (Screen.height - h) * 0.38f;
 
             GUI.color = new Color(0.08f, 0.09f, 0.12f, 0.92f * alpha);
             GUI.DrawTexture(new Rect(x, y, w, h), Texture2D.whiteTexture);
@@ -73,6 +74,19 @@ namespace FollowMe.KDS
                 new Rect(x, y + 140f, w, 28f),
                 $"Follow {_followsCollected} / {_followsTotal}  ({ratio * 100f:0.#}%)",
                 sub);
+
+            var btnStyle = new GUIStyle(GUI.skin.button)
+            {
+                fontSize = 18,
+                fontStyle = FontStyle.Bold
+            };
+            float bw = 260f;
+            float bh = 44f;
+            if (GUI.Button(new Rect(x + (w - bw) * 0.5f, y + 200f, bw, bh), "스테이지 선택으로", btnStyle))
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(StageSceneCatalog.StageSelectSceneName);
+            }
 
             GUI.color = prev;
         }

@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::YHW.UI.TitleMenuController
   titleGroup: {fileID: 9216994504726467780}
   optionsMenu: {fileID: 6286508155550279765}
-  stageSelectMenu: {fileID: 0}
+  stageSelectMenu: {fileID: 2266589454309388875, guid: 2cb48fb20a3f26f449ae57d2fb1ef118, type: 3}
   startButton: {fileID: 8148275084500965026}
   optionsButton: {fileID: 5642332031507500339}
   quitButton: {fileID: 6748368950269485333}

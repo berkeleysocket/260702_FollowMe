@@ -17,6 +17,8 @@ namespace FollowMe.KDS
         [SerializeField] private SpriteRenderer _visual;
         [SerializeField] private Color _activeColor = new Color(1f, 0.85f, 0.4f, 0.85f);
         [SerializeField] private Color _idleColor = new Color(1f, 1f, 1f, 0.25f);
+        [Tooltip("불꽃이 터지는 동안만 켜지는 좋아요 묶음 (씬에 미리 배치, 토글만)")]
+        [SerializeField] private GameObject[] _burstTargets;
 
         private bool _windowOpen;
         private bool _claimed;
@@ -33,6 +35,7 @@ namespace FollowMe.KDS
             if (_visual == null)
                 _visual = GetComponent<SpriteRenderer>();
             SetVisualIdle();
+            SetBurstActive(false);
             _nextPulseTime = Time.time + 1.5f;
         }
 
@@ -65,7 +68,7 @@ namespace FollowMe.KDS
             }
 
             Debug.Log($"[FireworkLikeWindow] 타이밍 성공 Like+{_likeBonus} Stress-{_stressRelief}", this);
-            CloseWindow();
+            // 버스트 좋아요를 다 주울 수 있게 윈도우는 지속 시간까지 열어 둔다 (타이머가 닫음)
         }
 
         public void OpenWindow()
@@ -75,6 +78,7 @@ namespace FollowMe.KDS
             _windowEndTime = Time.time + Mathf.Max(0.4f, _activeDuration);
             if (_visual != null)
                 _visual.color = _activeColor;
+            SetBurstActive(true);
         }
 
         public void CloseWindow()
@@ -82,6 +86,18 @@ namespace FollowMe.KDS
             _windowOpen = false;
             _nextPulseTime = Time.time + Mathf.Max(_cooldown, _pulseInterval);
             SetVisualIdle();
+            SetBurstActive(false);
+        }
+
+        private void SetBurstActive(bool active)
+        {
+            if (_burstTargets == null) return;
+            for (int i = 0; i < _burstTargets.Length; i++)
+            {
+                var go = _burstTargets[i];
+                if (go != null && go.activeSelf != active)
+                    go.SetActive(active);
+            }
         }
 
         private void SetVisualIdle()

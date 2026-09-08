@@ -59,8 +59,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5014788200168086481}
   - component: {fileID: 8846634279069019747}
-  - component: {fileID: 6409991035025656958}
+  - component: {fileID: 8110060674476947296}
   - component: {fileID: 1567136261532984634}
+  - component: {fileID: 6409991035025656958}
+  - component: {fileID: 1076234376677053199}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -106,6 +108,33 @@ MonoBehaviour:
   smokeParticleName: {fileID: 11400000, guid: 4580a082e026c6845ab76ad245feffdf, type: 2}
   controlEventChannel: {fileID: 11400000, guid: d03672077339cb944a80bf51d15f659d, type: 2}
   playerEventChannel: {fileID: 11400000, guid: cfeed5c0f07c74c429242b3dbf9ede86, type: 2}
+--- !u!114 &8110060674476947296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265731540030654357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda1a9c9090566844a51fd10356ec7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SeungyungLib.Core.BaseCollider::SeungyungLib.Core.BaseCollider.BaseCollider
+  whatIsCheck:
+    serializedVersion: 2
+    m_Bits: 2688
+--- !u!114 &1567136261532984634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265731540030654357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b584c6601bc7894408c7b3612e575f18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PlayerRespawn
 --- !u!50 &6409991035025656958
 Rigidbody2D:
   serializedVersion: 5
@@ -122,7 +151,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 8903c8c75116da04ebc33088dc34ef39, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -133,18 +162,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1567136261532984634
-MonoBehaviour:
+--- !u!61 &1076234376677053199
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2265731540030654357}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b584c6601bc7894408c7b3612e575f18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.PlayerRespawn
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0015439987, y: -0.061017245}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.65470695, y: 0.90579623}
+  m_EdgeRadius: 0
 --- !u!1 &2440263330158587453
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +218,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3370199298236359453}
   - component: {fileID: 1459896072887677261}
-  - component: {fileID: 6720050727713380556}
   - component: {fileID: 4076191163398528793}
   m_Layer: 6
   m_Name: BodyModule
@@ -192,24 +254,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.BodyModule
   <PhysicalBody>k__BackingField: {fileID: 6409991035025656958}
-  bodyCollider: {fileID: 6720050727713380556}
+  bodyCollider: {fileID: 0}
   bodyData: {fileID: 11400000, guid: 686a7ad20a3c0094cb378fbfcb11cadf, type: 2}
   health: 0
---- !u!114 &6720050727713380556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2440263330158587453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fda1a9c9090566844a51fd10356ec7c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SeungyungLib.Core.BaseCollider::SeungyungLib.Core.BaseCollider.BaseCollider
-  whatIsCheck:
-    serializedVersion: 2
-    m_Bits: 640
 --- !u!61 &4076191163398528793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -600,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4898a901abbce489bd893d9ed29cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.CollectSystem::SeungyungLib.CollectSystem.CollectModule
-  collectBaseCollider: {fileID: 6720050727713380556}
+  collectBaseCollider: {fileID: 0}
 --- !u!1 &8696000633236759490
 GameObject:
   m_ObjectHideFlags: 0

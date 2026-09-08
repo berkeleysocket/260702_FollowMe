@@ -40,7 +40,11 @@ namespace SeungyungLib.ModuleSystem.Modules
             DebugLogger.Assert(bodyCollider != null, "[BodyModule]: enemyLayerCollider is null");
             DebugLogger.Assert(bodyData != null, "[BodyModule]: bodyData is null");
 
-            Action<CollisionContext> onContacted = (context) => Damage(1);
+            Action<CollisionContext> onContacted = (context) =>
+            {
+                if (context.other != null && context.layer == 1 << 11)
+                    Damage(1);
+            };
             bodyCollider.RegisterAction(CollisionOption.Trigger | CollisionOption.Enter, onContacted);
         }
         #endregion

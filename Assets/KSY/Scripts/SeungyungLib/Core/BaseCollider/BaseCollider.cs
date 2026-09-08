@@ -76,7 +76,7 @@ namespace SeungyungLib.Core.BaseCollider
             {
                 if (!_contactObjects.Contains(otherGO))
                     _contactObjects.Add(otherGO);
-
+                
                 CollisionContext context = new CollisionContext(otherGO, targetMask);
                 InvokeEvent(CollisionOption.Trigger | CollisionOption.Enter, context);
             }

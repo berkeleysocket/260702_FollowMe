@@ -27,6 +27,7 @@ namespace FollowMe.KDS
 
         private void Start()
         {
+            MapTriggerLayer.ApplyAllItemPickupsInScene();
             Bind();
         }
 
@@ -98,6 +99,9 @@ namespace FollowMe.KDS
 
         private void ApplyAngryStress(ItemData item)
         {
+            if (!StageStressPolicy.UsesStressInActiveScene())
+                return;
+
             float amount = _scaleByItemValue
                 ? Mathf.Max(1, item.Value) * _stressReducePerAngry
                 : _stressReducePerAngry;

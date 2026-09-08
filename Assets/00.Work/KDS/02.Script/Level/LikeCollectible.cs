@@ -12,6 +12,7 @@ namespace FollowMe.KDS
 
         private void Awake()
         {
+            MapTriggerLayer.Apply(gameObject);
             var col = GetComponent<Collider2D>();
             col.isTrigger = true;
         }

@@ -51,20 +51,17 @@ namespace FollowMe.KDS
 
         private void Awake()
         {
+            MapTriggerLayer.Apply(gameObject);
+
             var col = GetComponent<Collider2D>();
             col.isTrigger = true;
 
-            _interactAction = InputSystem.actions != null
-                ? InputSystem.actions.FindAction("Player/Interact", throwIfNotFound: false)
-                : null;
-
-            if (_interactAction == null)
-            {
-                _interactAction = new InputAction("PhotoInteract", InputActionType.Button);
-                _interactAction.AddBinding("<Keyboard>/e");
-                _interactAction.AddBinding("<Keyboard>/f");
-                _interactAction.AddBinding("<Gamepad>/buttonNorth");
-            }
+            // 프로젝트 Interact 액션은 Hold interaction이 붙어 있어
+            // 포토존 자체 홀드 타이머와 겹친다 → E/F 전용 액션 사용
+            _interactAction = new InputAction("PhotoInteract", InputActionType.Button);
+            _interactAction.AddBinding("<Keyboard>/e");
+            _interactAction.AddBinding("<Keyboard>/f");
+            _interactAction.AddBinding("<Gamepad>/buttonNorth");
 
             RefreshVisuals();
         }
@@ -81,6 +78,20 @@ namespace FollowMe.KDS
                 Active = null;
             if (Nearby == this)
                 Nearby = null;
+            _interactAction?.Disable();
+        }
+
+        private void OnDestroy()
+        {
+            if (_interactAction == null) return;
+            _interactAction.Dispose();
+            _interactAction = null;
+        }
+
+        private void FixedUpdate()
+        {
+            // 레이어/트리거 누락 대비: 존 안이면 Inside로 간주
+            RefreshInsideByOverlap();
         }
 
         private void Update()
@@ -91,7 +102,11 @@ namespace FollowMe.KDS
                 return;
             }
 
-            if (_interactAction.IsPressed())
+            bool holding = _interactAction.IsPressed()
+                           || (Keyboard.current != null && Keyboard.current.eKey.isPressed)
+                           || (Keyboard.current != null && Keyboard.current.fKey.isPressed);
+
+            if (holding)
             {
                 if (Active != null && Active != this)
                     return;
@@ -112,19 +127,70 @@ namespace FollowMe.KDS
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!IsPlayer(other)) return;
-            _playerInside = true;
-            if (!_used)
-                Nearby = this;
-            RefreshVisuals();
+            SetPlayerInside(true);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
             if (!IsPlayer(other)) return;
-            _playerInside = false;
-            if (Nearby == this)
-                Nearby = null;
-            CancelHold();
+            // Overlap 폴백이 있으면 FixedUpdate가 다시 잡음
+            SetPlayerInside(false);
+        }
+
+        private void RefreshInsideByOverlap()
+        {
+            if (_used) return;
+
+            var col = GetComponent<Collider2D>();
+            if (col == null) return;
+
+            var filter = new ContactFilter2D();
+            filter.NoFilter();
+            filter.useTriggers = true;
+
+            var hits = new Collider2D[8];
+            int count = col.Overlap(filter, hits);
+            bool inside = false;
+            for (int i = 0; i < count; i++)
+            {
+                if (IsPlayer(hits[i]))
+                {
+                    inside = true;
+                    break;
+                }
+            }
+
+            // Physics2D 레이어 무시 시 Overlap도 실패할 수 있어 거리 폴백
+            if (!inside)
+            {
+                var player = PlayerRespawn.FindInScene();
+                if (player != null)
+                {
+                    Bounds b = col.bounds;
+                    b.Expand(0.35f);
+                    inside = b.Contains(player.transform.position);
+                }
+            }
+
+            if (inside != _playerInside)
+                SetPlayerInside(inside);
+        }
+
+        private void SetPlayerInside(bool inside)
+        {
+            _playerInside = inside;
+            if (inside)
+            {
+                if (!_used)
+                    Nearby = this;
+            }
+            else
+            {
+                if (Nearby == this)
+                    Nearby = null;
+                CancelHold();
+            }
+
             RefreshVisuals();
         }
 

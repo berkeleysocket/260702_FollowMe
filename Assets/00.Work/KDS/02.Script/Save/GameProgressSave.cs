@@ -182,7 +182,10 @@ namespace FollowMe.KDS
             if (stars > data.bestStars[i])
                 data.bestStars[i] = stars;
 
-            float percent = Mathf.Clamp01(followRatio01) * 100f;
+            // 팔로우 0%여도 클리어 별점(1★=33 / 2★=66 / 3★=100)은 YHW 카드에 반영
+            float followPercent = Mathf.Clamp01(followRatio01) * 100f;
+            float starPercent = stars >= 3 ? 100f : stars >= 2 ? 66f : 33f;
+            float percent = Mathf.Max(followPercent, starPercent);
             if (percent > data.bestFollowPercent[i])
                 data.bestFollowPercent[i] = percent;
 

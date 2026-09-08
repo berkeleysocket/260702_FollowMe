@@ -118,6 +118,7 @@ namespace FollowMe.KDS
         public void RelieveStress(float amount)
         {
             if (amount <= 0f) return;
+            if (!StageStressPolicy.UsesStressInActiveScene()) return;
 
             var meter = ResolveStressMeter();
             if (meter == null) return;
@@ -134,6 +135,7 @@ namespace FollowMe.KDS
         public void ApplyStress(float amount)
         {
             if (amount <= 0f) return;
+            if (!StageStressPolicy.UsesStressInActiveScene()) return;
 
             var meter = ResolveStressMeter();
             if (meter == null) return;

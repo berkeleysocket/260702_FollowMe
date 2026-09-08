@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// 맵 엔드포인트. 도달 시 별점 정산 후 스테이지를 멈춘다.
+    /// 맵 엔드포인트. 도달 시 별점 정산·저장 후 스테이지를 멈춘다.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class StageGoal : MonoBehaviour
@@ -11,6 +12,7 @@ namespace FollowMe.KDS
         [SerializeField] private int _stageNumber = 1;
         [SerializeField] private bool _pauseOnClear = true;
         [SerializeField] private bool _ensureVisual = true;
+        [SerializeField] private Vector2 _triggerSize = new Vector2(4f, 6f);
 
         private bool _cleared;
         private static Sprite _whiteSprite;
@@ -21,18 +23,47 @@ namespace FollowMe.KDS
 
         private void Awake()
         {
-            var col = GetComponent<Collider2D>();
-            col.isTrigger = true;
+            MapTriggerLayer.Apply(gameObject);
+            EnsureTriggerCollider();
             EnsureRunStats();
             if (_ensureVisual)
                 EnsureEndpointVisual();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void FixedUpdate()
+        {
+            // 물리 레이어/트리거 누락 대비: 골 근처 X 도달 시 클리어
+            if (_cleared) return;
+            var player = PlayerRespawn.FindInScene();
+            if (player == null) return;
+
+            Vector3 p = player.transform.position;
+            float halfW = _triggerSize.x * 0.6f;
+            float top = transform.position.y + _triggerSize.y;
+            float bottom = transform.position.y - 1.5f;
+            if (p.x >= transform.position.x - halfW &&
+                p.x <= transform.position.x + halfW &&
+                p.y >= bottom &&
+                p.y <= top)
+            {
+                CompleteClear();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other) => TryClear(other);
+
+        private void OnTriggerStay2D(Collider2D other) => TryClear(other);
+
+        private void TryClear(Collider2D other)
         {
             if (_cleared || !PlayerTriggerUtility.IsPlayer(other))
                 return;
+            CompleteClear();
+        }
 
+        private void CompleteClear()
+        {
+            if (_cleared) return;
             _cleared = true;
             var stats = EnsureRunStats();
             stats.ConfigureStage(_stageNumber);
@@ -61,6 +92,27 @@ namespace FollowMe.KDS
                 Time.timeScale = 0f;
 
             Debug.Log($"[StageGoal] Stage {_stageNumber} 클리어 ★{LastStars} (엔드포인트 도달)", this);
+        }
+
+        private void EnsureTriggerCollider()
+        {
+            var col = GetComponent<Collider2D>();
+            col.isTrigger = true;
+
+            // 스케일 꼬임 방지: 로컬 스케일 1 + 명시적 트리거 크기
+            transform.localScale = Vector3.one;
+            if (col is BoxCollider2D box)
+            {
+                box.size = _triggerSize;
+                box.offset = new Vector2(0f, _triggerSize.y * 0.15f);
+            }
+
+            // 트리거 안정화용 Static RB
+            var rb = GetComponent<Rigidbody2D>();
+            if (rb == null)
+                rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Static;
+            rb.simulated = true;
         }
 
         private StageRunStats EnsureRunStats()

@@ -2,6 +2,7 @@ using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.ModuleSystem.Core;
 
 using System;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 namespace SeungyungLib.ModuleSystem.Modules
@@ -17,26 +18,19 @@ namespace SeungyungLib.ModuleSystem.Modules
         [SerializeField] private float airMultiplier = 0f;
 
         public bool IsJumpKeyPressed { get; set; }
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; private set; } = true;
 
         public event Action<int> OnMoved;
         
         public int Axis => _axis;
 
-        public bool IsMoving
-        {
-            get
-            {
-                return Mathf.Abs(_velocity.x) > 0 && _axis != 0;
-            }
-        }
-        public bool IsJumping => _rb.linearVelocityY > 0.25f;
-        public bool IsFall => _rb.linearVelocityY < -0.25f;
+        public bool IsMoving => Mathf.Abs(_velocity.x) > 0 && _axis != 0;
+        public bool IsJumping => _rb.linearVelocityY > 0.2f;
+        public bool IsFall => _rb.linearVelocityY < -0.5f;
         
         private Rigidbody2D _rb;
         private IGroundCheckModule _groundChecker;
-        public Vector2 dVelocity => _velocity;
-        public Vector2 _velocity;
+        private Vector2 _velocity;
         private int _axis;
         private float _currentSpeed;
 
@@ -50,7 +44,7 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public void AfterInitialization(IModuleOwner owner)
         {
-            _rb = owner.GetModule<IBodyModule>().PhsicalBody;
+            _rb = owner.GetModule<IBodyModule>().PhysicalBody;
             
             if (_groundChecker != null)
             {
@@ -61,7 +55,6 @@ namespace SeungyungLib.ModuleSystem.Modules
                 };
             }
 
-            IsActive = true; //Test
             DebugLogger.Assert(_rb != null, "[AgentMovementModule]: _rb is null.");
         }
         #endregion
@@ -111,11 +104,14 @@ namespace SeungyungLib.ModuleSystem.Modules
         }
 
         private void ApplyGravity()
-        { 
-            if (_rb.linearVelocity.y < -0.5f)
-                _rb.linearVelocity += Vector2.up * (Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime);
-            else if (IsJumping && !IsJumpKeyPressed)
-                _rb.linearVelocity += Vector2.up * (Physics.gravity.y * (lowFallMultiplier - 1) * Time.fixedDeltaTime);
+        {
+            if (_rb != null)
+            {
+                if (_rb.linearVelocity.y < -0.5f)
+                    _rb.linearVelocity += Vector2.up * (Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime);
+                else if (IsJumping && !IsJumpKeyPressed)
+                    _rb.linearVelocity += Vector2.up * (Physics2D.gravity.y * (lowFallMultiplier - 1) * Time.fixedDeltaTime);
+            }
         }
         
         private void CalculateVelocity()

@@ -7,6 +7,7 @@ namespace SeungyungLib.Template.EventChannels
         public static PlayerHitEvent HitEvent { get; private set; } = new PlayerHitEvent();
         public static PlayerKnockdownEvent KnockdownEvent { get; private set; } = new PlayerKnockdownEvent();
         public static PlayerRecoveryEvent RecoveryEvent { get; private set; } = new PlayerRecoveryEvent();
+        public static PlayerDeadEvent DeadEvent { get; private set; } = new PlayerDeadEvent();
     }
     
     public class PlayerHitEvent : ChannelEvent
@@ -27,6 +28,11 @@ namespace SeungyungLib.Template.EventChannels
     }
 
     public class PlayerRecoveryEvent : ChannelEvent
+    {
+        
+    }
+
+    public class PlayerDeadEvent : ChannelEvent
     {
         
     }

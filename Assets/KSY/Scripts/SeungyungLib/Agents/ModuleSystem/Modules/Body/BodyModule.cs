@@ -1,4 +1,4 @@
-using SeungyungLib.Core.CustomDebug;
+using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.ModuleSystem.Core;
 using SeungyungLib.ModuleSystem.Enum;
 
@@ -11,15 +11,16 @@ namespace SeungyungLib.ModuleSystem.Modules
     [RequireComponent(typeof(Collider2D))]
     public class BodyModule : MonoBehaviour, IBodyModule
     {
-        [field: SerializeField] public Rigidbody2D PhsicalBody { get; private set; }
+        [field: SerializeField] public Rigidbody2D PhysicalBody { get; private set; }
         [SerializeField] private ColliderModule bodyCollider;
         [SerializeField] private BodyModuleDataSO bodyData;
+        [SerializeField, ReadOnly] private int health;
 
-        private int _health;
         private int _maxHealth;
         private float _invincibilityDuration;
 
         public bool IsActive { get; private set; }
+        public bool IsDead { get; private set; }
         public bool IsKnockdown { get; private set; }
         public bool IsInvincible { get; private set; }
 
@@ -33,15 +34,11 @@ namespace SeungyungLib.ModuleSystem.Modules
         {
             Debug.Assert(GetComponent<Collider2D>() != null, "[BodyModule]: Collider2D is null.");
             this._maxHealth = bodyData.MaxHealth; 
-            this._health = _maxHealth;
+            this.health = _maxHealth;
             this._invincibilityDuration = bodyData.InvincibilityDuration;
-                
-            bodyCollider.RegisterAction(ColliderModuleOption.Trigger | ColliderModuleOption.Enter, 
-                (other)=>
-                {
-                    DebugLogger.Log("Registering body collider");
-                    Damage(1);
-                });
+
+            bodyCollider.RegisterAction(ColliderModuleOption.Trigger | ColliderModuleOption.Enter,
+                (other) => Damage(1));
         }
         #endregion
         
@@ -50,10 +47,17 @@ namespace SeungyungLib.ModuleSystem.Modules
 
         public void Damage(int damage)
         {
-            if (_health <= 0 || IsKnockdown || IsInvincible) return;
+            if (health <= 0 || IsKnockdown || IsInvincible || IsDead) return;
             
-            _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
-            OnDamaged?.Invoke(damage, _health);
+            health = Mathf.Clamp(health - damage, 0, _maxHealth);
+
+            if (health <= 0)
+            {
+                OnDeath?.Invoke();
+                IsDead = true;
+            }
+            else
+                OnDamaged?.Invoke(damage, health);
         }
 
         public void Knockdown()
@@ -79,6 +83,9 @@ namespace SeungyungLib.ModuleSystem.Modules
             yield return new WaitForSeconds(_invincibilityDuration);
             
             IsInvincible = false;
+            
+            if (bodyCollider.ContactCount > 0)
+                Damage(1);
         }
     }
 }

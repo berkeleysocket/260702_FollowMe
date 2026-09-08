@@ -12,7 +12,11 @@ namespace SeungyungLib.ModuleSystem.Modules
     public class ColliderModule : MonoBehaviour, IColliderModule
     {
         [SerializeField] private LayerMask whatIsCheck;
+        
+        public int ContactCount => _contactObjects.Count;
+        
         private readonly Dictionary<ColliderModuleOption, Action<GameObject>> _actions = new Dictionary<ColliderModuleOption, Action<GameObject>>();
+        private readonly List<GameObject> _contactObjects = new List<GameObject>();
 
         public void RegisterAction(ColliderModuleOption moduleOption, Action<GameObject> action)
         {
@@ -33,7 +37,10 @@ namespace SeungyungLib.ModuleSystem.Modules
         private void OnCollisionEnter2D(Collision2D other)
         {
             if (IsTargetLayer(other.gameObject.layer))
+            {
+                _contactObjects.Add(other.gameObject);
                 InvokeEvent(ColliderModuleOption.Collision | ColliderModuleOption.Enter, other.gameObject);
+            }
         }
 
         private void OnCollisionStay2D(Collision2D other)
@@ -45,14 +52,19 @@ namespace SeungyungLib.ModuleSystem.Modules
         private void OnCollisionExit2D(Collision2D other)
         {
             if (IsTargetLayer(other.gameObject.layer))
+            {
+                _contactObjects.Remove(other.gameObject);
                 InvokeEvent(ColliderModuleOption.Collision | ColliderModuleOption.Exit, other.gameObject);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            DebugLogger.Log(other.gameObject.name);
             if (IsTargetLayer(other.gameObject.layer))
+            {
+                _contactObjects.Add(other.gameObject);   
                 InvokeEvent(ColliderModuleOption.Trigger | ColliderModuleOption.Enter, other.gameObject);
+            }
         }
         
         private void OnTriggerStay2D(Collider2D other)
@@ -64,7 +76,10 @@ namespace SeungyungLib.ModuleSystem.Modules
         private void OnTriggerExit2D(Collider2D other)
         {
             if (IsTargetLayer(other.gameObject.layer))
+            {
+                _contactObjects.Remove(other.gameObject);
                 InvokeEvent(ColliderModuleOption.Trigger | ColliderModuleOption.Exit, other.gameObject);
+            }
         }
     }
 }

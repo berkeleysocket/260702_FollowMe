@@ -384,10 +384,39 @@ namespace FollowMe.KDS.Editor
             var anim = go.AddComponent<PhotoSubjectAnimator>();
             AssignAnimatorFrames(anim, frames, subjectIndex == 1 ? 3.5f : 5f);
 
-            // refresh camera visuals if missing
-            if (photoRoot.Find("Available") == null && camFrames != null && camFrames.Length > 0)
+            // refresh camera visuals if missing or sprite stripped
+            if (camFrames != null && camFrames.Length > 0)
             {
-                CreateCameraVisual(photoRoot, "Available", camFrames, Color.white, 2.35f);
+                EnsureCameraVisual(photoRoot, "Available", camFrames, Color.white, 2.35f);
+                EnsureCameraVisual(
+                    photoRoot, "Used", camFrames, new Color(0.55f, 0.55f, 0.6f, 0.55f), 2.35f);
+            }
+        }
+
+        private static void EnsureCameraVisual(
+            Transform photoRoot, string name, Sprite[] frames, Color tint, float localY)
+        {
+            var existing = photoRoot.Find(name);
+            if (existing == null)
+            {
+                CreateCameraVisual(photoRoot, name, frames, tint, localY);
+                return;
+            }
+
+            var sr = existing.GetComponent<SpriteRenderer>();
+            if (sr == null)
+                sr = existing.gameObject.AddComponent<SpriteRenderer>();
+            sr.sprite = frames[0];
+            sr.color = tint;
+            sr.sortingOrder = 8;
+            existing.localPosition = new Vector3(0f, localY, 0f);
+
+            if (frames.Length > 1)
+            {
+                var anim = existing.GetComponent<PhotoSubjectAnimator>();
+                if (anim == null)
+                    anim = existing.gameObject.AddComponent<PhotoSubjectAnimator>();
+                AssignAnimatorFrames(anim, frames, 3f);
             }
         }
 

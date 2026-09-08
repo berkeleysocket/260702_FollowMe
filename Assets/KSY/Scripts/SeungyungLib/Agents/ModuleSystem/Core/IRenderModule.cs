@@ -7,6 +7,7 @@
         void FlipX(bool flip);
         
         //대충 쓴 코드
-        void TriggerInvincibility();
+        void PlayInvincibilityEffect();
+        void PlayHitShakeEffect();
     }
 }

@@ -362,6 +362,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8680277243752793096, guid: 905c513819148154fb421a26e37685f1, type: 3}
   m_PrefabInstance: {fileID: 97376958}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &113383011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2596685637157709293, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: meter
+      value: 
+      objectReference: {fileID: 2128432032}
+    - target: {fileID: 3111654161114620849, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_Name
+      value: StressBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3316273811999598915, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 47ca58324e7b3df44acd19305a5dddd1, type: 3}
 --- !u!1001 &126243409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2111,6 +2212,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2265731540030654357, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265731540030654357, guid: 0decd243a9315ed448a2bf3b94cb378d, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -3740,6 +3845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.StageGoal
   _stageNumber: 1
+  _pauseOnClear: 1
+  _ensureVisual: 1
 --- !u!61 &1408825011
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17354,7 +17461,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2003974836}
-  - component: {fileID: 2003974835}
   - component: {fileID: 2003974834}
   - component: {fileID: 2003974833}
   - component: {fileID: 2003974837}
@@ -17393,21 +17499,9 @@ MonoBehaviour:
   _defaultSpawn: {fileID: 0}
   _playerOverride: {fileID: 610457795}
   _fallRespawnY: -8
+  _fallStressPenalty: 35
+  _respawnCooldown: 0.35
   _logRespawn: 1
---- !u!114 &2003974835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003974832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b2fac0d035a234cafb1995648d12eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.MapModeService
-  _initialMode: 0
-  _logModeChanges: 1
 --- !u!4 &2003974836
 Transform:
   m_ObjectHideFlags: 0
@@ -17435,8 +17529,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c326faf51a7070941b4aa6a5729980dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.StageRunStats
+  _stageNumber: 1
   _dailyCollected: 0
   _likesCollected: 0
+  _followsCollected: 0
+  _followsTotal: 0
+  _threeStarRatio: 0.8
+  _twoStarRatio: 0.7
 --- !u!1 &2031279924
 GameObject:
   m_ObjectHideFlags: 0
@@ -17602,6 +17701,8 @@ GameObject:
   - component: {fileID: 2128432029}
   - component: {fileID: 2128432028}
   - component: {fileID: 2128432031}
+  - component: {fileID: 2128432032}
+  - component: {fileID: 2128432033}
   m_Layer: 0
   m_Name: SocialSystems
   m_TagString: Untagged
@@ -17641,6 +17742,11 @@ MonoBehaviour:
   _likes: 0
   _follows: 0
   _secondCycle: 0
+  _stressMeter: {fileID: 2128432032}
+  _stressReducePerLikePickup: 8
+  _stressReducePerFollowPickup: 8
+  _stressReducePerPhoto: 20
+  _stressAddPerFall: 35
 --- !u!4 &2128432030
 Transform:
   m_ObjectHideFlags: 0
@@ -17671,6 +17777,37 @@ MonoBehaviour:
   _followPerHeartValue: 50
   _likePerEmojiValue: 100
   _scaleByItemValue: 1
+  _stressReducePerAngry: 8
+  _stressMeter: {fileID: 0}
+--- !u!114 &2128432032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128432027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f937684f687cf9c4a97378a0098cebff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YHW.Stats.StressMeter
+  maxValue: 100
+  animateDuration: 0.4
+  animateEase: 6
+--- !u!114 &2128432033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128432027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab18e3eb889155740afd75809f2ad026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowMe.KDS.StressMeterBootstrap
+  _meter: {fileID: 2128432032}
+  _startFull: 1
 --- !u!1001 &2132198352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17745,3 +17882,4 @@ SceneRoots:
   - {fileID: 610457792}
   - {fileID: 714720626}
   - {fileID: 1750272009}
+  - {fileID: 113383011}

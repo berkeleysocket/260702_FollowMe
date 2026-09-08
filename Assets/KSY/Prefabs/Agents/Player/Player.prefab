@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 6409991035025656958}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,9 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e289b340427a5a943b2974a202fbf128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SeungyungLib.ModuleSystem.Modules::SeungyungLib.ModuleSystem.Modules.BodyModule
-  <PhsicalBody>k__BackingField: {fileID: 6409991035025656958}
+  <PhysicalBody>k__BackingField: {fileID: 6409991035025656958}
   bodyCollider: {fileID: 5047014888484646162}
   bodyData: {fileID: 11400000, guid: 686a7ad20a3c0094cb378fbfcb11cadf, type: 2}
+  health: 0
 --- !u!61 &6153974718504448028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -454,8 +455,8 @@ GameObject:
   - component: {fileID: 7683236655330976081}
   - component: {fileID: 7282397714089793723}
   - component: {fileID: 8430787420514714213}
-  - component: {fileID: 5177706956561892555}
   - component: {fileID: 8677880501628146581}
+  - component: {fileID: 5177706956561892555}
   m_Layer: 6
   m_Name: RenderModule
   m_TagString: Untagged
@@ -552,28 +553,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &5177706956561892555
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6219373214172027552}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffbceed009a032743b6f0a962cce3834, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &8677880501628146581
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -620,6 +599,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6298655, y: 0.9418612}
   m_EdgeRadius: 0
+--- !u!95 &5177706956561892555
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219373214172027552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffbceed009a032743b6f0a962cce3834, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8696000633236759490
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +672,6 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowFallMultiplier: 2
   airMultiplier: 0.7
-  _velocity: {x: 0, y: 0}
 --- !u!1001 &1355817945971450299
 PrefabInstance:
   m_ObjectHideFlags: 0

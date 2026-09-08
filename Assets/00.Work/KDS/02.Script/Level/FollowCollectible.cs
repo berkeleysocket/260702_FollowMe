@@ -3,7 +3,7 @@ using UnityEngine;
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// ♡ 하트 — 팔로우 증가. Stage1 핵심 수집.
+    /// ♡ 하트 — 팔로우 증가 + 스트레스 감소. Stage1 핵심 수집.
     /// </summary>
     [RequireComponent(typeof(Collider2D))]
     public class FollowCollectible : MonoBehaviour
@@ -22,9 +22,9 @@ namespace FollowMe.KDS
                 return;
 
             if (SocialScoreService.Instance != null)
-                SocialScoreService.Instance.AddFollows(_followValue);
+                SocialScoreService.Instance.CollectFollow(_followValue);
 
-            StageRunStats.Instance?.RegisterLikePickup();
+            StageRunStats.Instance?.RegisterFollowPickup();
             Destroy(gameObject);
         }
     }

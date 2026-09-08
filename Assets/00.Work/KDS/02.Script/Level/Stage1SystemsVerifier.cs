@@ -26,15 +26,11 @@ namespace FollowMe.KDS
 
             sb.AppendLine("[Stage1SystemsVerifier] 연동 검증");
 
-            if (MapModeService.Instance == null)
-            {
-                sb.AppendLine("  ✗ MapModeService 없음");
-                errors++;
-            }
+            // 맵 모드 존/서비스는 현재 미사용(추후 추격 도입 시 재연결)
+            if (MapModeService.Instance != null)
+                sb.AppendLine($"  · MapModeService (모드={MapModeService.GetDisplayName(MapModeService.Instance.CurrentMode)})");
             else
-            {
-                sb.AppendLine($"  ✓ MapModeService (모드={MapModeService.GetDisplayName(MapModeService.Instance.CurrentMode)})");
-            }
+                sb.AppendLine("  · MapModeService 없음 (의도적 미사용)");
 
             if (CheckpointService.Instance == null)
             {

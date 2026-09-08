@@ -12,7 +12,8 @@ namespace SeungyungLib.ModuleSystem.Core
         event Action OnRecovery;
         event Action OnDeath;
         
-        public Rigidbody2D PhsicalBody { get; }
+        public Rigidbody2D PhysicalBody { get; }
+        bool IsDead { get; }
         bool IsKnockdown { get; }
         bool IsInvincible { get; }
 

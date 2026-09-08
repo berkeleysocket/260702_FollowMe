@@ -131,12 +131,12 @@ TextureImporter:
       name: Meow-Knight_Death_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 129
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 0
+        y: 130
+        width: 24
+        height: 16
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: Meow-Knight_Death_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 103
-        width: 15
+        x: 0
+        y: 104
+        width: 24
         height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: Meow-Knight_Death_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 77
-        width: 18
+        x: 0
+        y: 78
+        width: 24
         height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -198,8 +198,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
-        width: 25
+        y: 52
+        width: 24
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -219,9 +219,9 @@ TextureImporter:
       name: Meow-Knight_Death_4
       rect:
         serializedVersion: 2
-        x: 1
-        y: 25
-        width: 23
+        x: 0
+        y: 26
+        width: 24
         height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -241,10 +241,10 @@ TextureImporter:
       name: Meow-Knight_Death_5
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 23
-        height: 17
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

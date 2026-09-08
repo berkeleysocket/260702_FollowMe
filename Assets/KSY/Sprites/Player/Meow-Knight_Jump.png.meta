@@ -150,11 +150,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 349
-        width: 15
-        height: 17
+        y: 350
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -171,12 +171,12 @@ TextureImporter:
       name: Meow-Knight_Jump_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 323
-        width: 14
-        height: 18
+        x: 0
+        y: 324
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -194,11 +194,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 297
-        width: 15
+        y: 298
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: Meow-Knight_Jump_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 269
-        width: 14
-        height: 20
+        x: 0
+        y: 270
+        width: 16
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,12 +237,12 @@ TextureImporter:
       name: Meow-Knight_Jump_4
       rect:
         serializedVersion: 2
-        x: 1
-        y: 225
-        width: 14
-        height: 21
+        x: 0
+        y: 226
+        width: 16
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,12 +259,12 @@ TextureImporter:
       name: Meow-Knight_Jump_5
       rect:
         serializedVersion: 2
-        x: 1
-        y: 185
-        width: 14
+        x: 0
+        y: 186
+        width: 16
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: Meow-Knight_Jump_6
       rect:
         serializedVersion: 2
-        x: 1
-        y: 144
-        width: 14
-        height: 18
+        x: 0
+        y: 145
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,12 +303,12 @@ TextureImporter:
       name: Meow-Knight_Jump_7
       rect:
         serializedVersion: 2
-        x: 1
-        y: 103
-        width: 14
-        height: 18
+        x: 0
+        y: 104
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,12 +325,12 @@ TextureImporter:
       name: Meow-Knight_Jump_8
       rect:
         serializedVersion: 2
-        x: 1
-        y: 77
-        width: 14
-        height: 18
+        x: 0
+        y: 78
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -347,12 +347,12 @@ TextureImporter:
       name: Meow-Knight_Jump_9
       rect:
         serializedVersion: 2
-        x: 1
-        y: 51
-        width: 14
-        height: 17
+        x: 0
+        y: 52
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -370,11 +370,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 25
-        width: 15
+        y: 26
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -393,10 +393,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
+        width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -413,7 +413,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dd2a393a70471794c88d106a7c0435c6
     internalID: 0
     vertices: []
     indices: 

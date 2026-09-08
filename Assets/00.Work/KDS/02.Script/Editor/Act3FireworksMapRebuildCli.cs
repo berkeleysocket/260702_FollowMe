@@ -1,15 +1,21 @@
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using System.IO;
 using Unity.Pipeline.Commands;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using YHW.Stats;
+using YHW.UI;
 
 namespace FollowMe.KDS.Editor
 {
     /// <summary>
-    /// Act3(S9~S11) 불꽃축제 맵 — 지면 + 플랫폼만 재생성 (구조물/수집/포토 제외).
+    /// Act3(S9~S11) 불꽃축제 맵 — 지면 + 플랫폼 + 골 + 시스템 (구조물/수집/포토는 act3-decorate).
+    /// 기획(Stage_All_LevelDesign.md Act3) 모듈:
+    ///   Intro 강변 평지 → Teach 불꽃 발사대(윈도우) → Pressure 경고·추격(S11 공허 갭)
+    ///   → Breath 회복·갈림1 → Setpiece 다리 데크 직선 → Goal 갈림2·클리어
     /// Live: unity command act3-terrain
     /// </summary>
     public static class Act3FireworksMapRebuildCli
@@ -17,19 +23,21 @@ namespace FollowMe.KDS.Editor
         private const string SceneDir = "Assets/00.Work/KDS/01.Scene";
         private const string RuleTilePath =
             "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles/RuleTiles/Act1_Brick_Ground_RuleTile.asset";
-        private const string PlatLeftPath =
-            "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles/Tiles/Act1_Brick_Platform_Left.asset";
         private const string PlatCenterPath =
             "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles/Tiles/Act1_Brick_Platform_Center.asset";
-        private const string PlatRightPath =
-            "Assets/00.Work/KDS/05.Asset/City_Modern/Act1_Tiles/Tiles/Act1_Brick_Platform_Right.asset";
         private const string BridgeDeckSprite =
             "Assets/00.Work/KDS/05.Asset/City_Modern/Act3_Fireworks/Act3_Tile_BridgeDeck.png";
         private const string NightPathSprite =
             "Assets/00.Work/KDS/05.Asset/City_Modern/Act3_Fireworks/Act3_Tile_NightPath.png";
+        private const string StressBarPrefab = "Assets/00.Work/KDS/06.Prefab/StressBarCanvas.prefab";
         private const int GroundLayer = 10;
 
-        [CliCommand("act3-terrain", "Rebuild Act3 S9-S11 ground + platforms only")]
+        private static readonly Color NightGroundTint = new Color(0.62f, 0.66f, 0.86f, 1f);
+        private static readonly Color DarkGroundTint = new Color(0.42f, 0.44f, 0.58f, 1f);
+        private static readonly Color FestivalPlat = new Color(0.96f, 0.92f, 1f, 1f);
+        private static readonly Color DarkPlat = new Color(0.62f, 0.62f, 0.78f, 1f);
+
+        [CliCommand("act3-terrain", "Rebuild Act3 S9-S11 ground + platforms + goal (concept: launch pads / void / bridge deck)")]
         public static int RebuildFromPipeline() => RebuildAll() ? 0 : 1;
 
         [MenuItem("FollowMe/KDS/Rebuild Fireworks Stages Terrain (S9-S11 Ground+Platforms)")]
@@ -38,25 +46,25 @@ namespace FollowMe.KDS.Editor
         public static bool RebuildAll()
         {
             var rule = AssetDatabase.LoadAssetAtPath<TileBase>(RuleTilePath);
-            var left = AssetDatabase.LoadAssetAtPath<TileBase>(PlatLeftPath);
-            var center = AssetDatabase.LoadAssetAtPath<TileBase>(PlatCenterPath);
-            var right = AssetDatabase.LoadAssetAtPath<TileBase>(PlatRightPath);
             if (rule == null)
             {
                 Debug.LogError("[Act3FireworksMapRebuildCli] missing ground RuleTile");
                 return false;
             }
 
-            Sprite platSprite = LoadSprite(BridgeDeckSprite) ?? LoadSprite(NightPathSprite);
-            if (platSprite == null && center is Tile cTile)
-                platSprite = cTile.sprite;
-            if (platSprite == null && left is Tile lTile)
-                platSprite = lTile.sprite;
+            // 데크 = Act3 BridgeDeck(다리 상판) / 일반 발판 = Act1 브릭 플랫폼(Act2와 동일 결) → 없으면 NightPath
+            Sprite deckSprite = LoadSprite(BridgeDeckSprite);
+            Sprite pathSprite = null;
+            var center = AssetDatabase.LoadAssetAtPath<TileBase>(PlatCenterPath);
+            if (center is Tile cTile && cTile.sprite != null) pathSprite = cTile.sprite;
+            if (pathSprite == null) pathSprite = LoadSprite(NightPathSprite);
+            if (deckSprite == null) deckSprite = pathSprite;
+            if (pathSprite == null) pathSprite = deckSprite;
 
             var sb = new System.Text.StringBuilder();
             for (int stage = 9; stage <= 11; stage++)
             {
-                if (!RebuildStage(stage, rule, platSprite, sb))
+                if (!RebuildStage(stage, rule, deckSprite, pathSprite, sb))
                     return false;
             }
 
@@ -64,7 +72,8 @@ namespace FollowMe.KDS.Editor
             return true;
         }
 
-        private static bool RebuildStage(int stage, TileBase rule, Sprite platSprite, System.Text.StringBuilder results)
+        private static bool RebuildStage(
+            int stage, TileBase rule, Sprite deckSprite, Sprite pathSprite, System.Text.StringBuilder results)
         {
             string scenePath = $"{SceneDir}/Stage{stage} Scene.unity";
             if (!File.Exists(Path.GetFullPath(scenePath)))
@@ -100,27 +109,29 @@ namespace FollowMe.KDS.Editor
                 grid = new GameObject("Grid", typeof(Grid));
 
             DiscardDecorAndLegacy(level.transform, stage);
+            EnsureSystems(stage);
 
-            var ground = EnsureTilemap(grid.transform, "Tilemap_Ground", 0);
-            var platMap = grid.transform.Find("Tilemap_Platform");
-            if (platMap != null)
+            // 레거시 공원 타일맵(Grid/Tilemap 등) 제거 — 갭 아래로 옛 지면이 비치는 것 방지
+            for (int i = grid.transform.childCount - 1; i >= 0; i--)
             {
-                var tm = platMap.GetComponent<Tilemap>();
-                if (tm != null) tm.ClearAllTiles();
+                var c = grid.transform.GetChild(i);
+                if (c.name != "Tilemap_Ground")
+                    Object.DestroyImmediate(c.gameObject);
             }
 
-            RebuildGround(ground, rule, spec);
-            // S11 후반 공허: 지면 일부 구간을 끊고 플랫폼 루트만 남김
-            if (stage == 11)
-                CarveVoidGaps(ground, spec);
+            var ground = EnsureTilemap(grid.transform, "Tilemap_Ground", 0);
+            ground.color = stage == 11 ? DarkGroundTint : NightGroundTint;
 
-            int plats = RebuildPlatforms(level.transform, platSprite, spec);
-            PlaceInvisibleGoal(level.transform, spec);
+            RebuildGround(ground, rule, spec);
+            int plats = RebuildPlatforms(level.transform, deckSprite, pathSprite, spec);
+            float groundTop = ground.layoutGrid.CellToWorld(new Vector3Int(0, 1, 0)).y; // 최상단 셀(y=0) 윗면
+            RebuildGoal(level.transform, spec, groundTop);
             PlacePlayerStart();
 
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
-            results.AppendLine($"S{stage}: LengthX={spec.LengthX:0} platforms={plats} goalX={spec.LengthX - 4f:0}");
+            results.AppendLine(
+                $"S{stage}: LengthX={spec.LengthX:0} platforms={plats} gaps={Act3FireworksLayout.GetPressureGaps(spec).Count} goalX={spec.LengthX - 4f:0}");
             return true;
         }
 
@@ -130,11 +141,10 @@ namespace FollowMe.KDS.Editor
             {
                 "Platforms", "Collectibles", "ThemeProps", "Goals", "Forks",
                 "Checkpoints", "Hazards", "PhotoPoints", "Background", "Zones",
-                "Monsters", "Triggers"
+                "Monsters", "Triggers", "FireworkWindows"
             };
             foreach (var name in wipe)
             {
-                // 직계 + 깊은 자식 모두 제거 (레거시 Zones 잔존 방지)
                 Transform child;
                 while ((child = FindDeep(level, name)) != null)
                     Object.DestroyImmediate(child.gameObject);
@@ -156,16 +166,12 @@ namespace FollowMe.KDS.Editor
                 }
             }
 
-            // Level 아래 남은 체크포인트/존 마커 정리
-            if (level != null)
+            var stale = new List<GameObject>();
+            CollectStale(level, stale);
+            foreach (var go in stale)
             {
-                var stale = new System.Collections.Generic.List<GameObject>();
-                CollectStale(level, stale);
-                foreach (var go in stale)
-                {
-                    if (go != null)
-                        Object.DestroyImmediate(go);
-                }
+                if (go != null)
+                    Object.DestroyImmediate(go);
             }
 
             var ground = GameObject.Find("Grid/Tilemap_Ground");
@@ -182,7 +188,7 @@ namespace FollowMe.KDS.Editor
             }
         }
 
-        private static void CollectStale(Transform root, System.Collections.Generic.List<GameObject> into)
+        private static void CollectStale(Transform root, List<GameObject> into)
         {
             for (int i = 0; i < root.childCount; i++)
             {
@@ -212,9 +218,9 @@ namespace FollowMe.KDS.Editor
             return null;
         }
 
+        /// <summary>Act2와 동일 구성: Static RB + TilemapCollider + Composite(Outlines).</summary>
         private static Tilemap EnsureTilemap(Transform grid, string name, int sortingOrder)
         {
-            // S9~S11은 예전 공원 맵이라 Grid/타일맵이 없거나 깨져 있을 수 있음 → 통째로 재생성
             var existing = grid.Find(name);
             if (existing != null)
                 Object.DestroyImmediate(existing.gameObject);
@@ -226,8 +232,12 @@ namespace FollowMe.KDS.Editor
             var renderer = go.AddComponent<TilemapRenderer>();
             renderer.sortingOrder = sortingOrder;
 
-            // Composite/Rigidbody 없이 TilemapCollider만 (Act3 지형 생성용)
-            go.AddComponent<TilemapCollider2D>();
+            var rb = go.AddComponent<Rigidbody2D>();
+            rb.bodyType = RigidbodyType2D.Static;
+            var tmc = go.AddComponent<TilemapCollider2D>();
+            var cc = go.AddComponent<CompositeCollider2D>();
+            cc.geometryType = CompositeCollider2D.GeometryType.Outlines;
+            tmc.compositeOperation = Collider2D.CompositeOperation.Merge;
 
             var map = go.GetComponent<Tilemap>();
             map.ClearAllTiles();
@@ -240,162 +250,121 @@ namespace FollowMe.KDS.Editor
             int x1 = Mathf.CeilToInt(spec.LengthX) + 12;
             for (int x = x0; x <= x1; x++)
             {
+                if (!Act3FireworksLayout.HasGround(spec, x))
+                    continue;
                 for (int y = -5; y <= 0; y++)
                     ground.SetTile(new Vector3Int(x, y, 0), rule);
             }
         }
 
-        /// <summary>S11 공허: Setpiece 중후반에 지면 구멍 — 플랫폼으로만 전진.</summary>
-        private static void CarveVoidGaps(Tilemap ground, StageMapSpec spec)
+        private static int RebuildPlatforms(Transform level, Sprite deckSprite, Sprite pathSprite, StageMapSpec spec)
         {
-            int[][] gaps =
-            {
-                new[] { Mathf.RoundToInt(spec.BreathEnd + 8f), Mathf.RoundToInt(spec.BreathEnd + 18f) },
-                new[] { Mathf.RoundToInt(spec.SetpieceEnd - 40f), Mathf.RoundToInt(spec.SetpieceEnd - 28f) },
-                new[] { Mathf.RoundToInt(spec.SetpieceEnd - 18f), Mathf.RoundToInt(spec.SetpieceEnd - 8f) },
-            };
-
-            foreach (var g in gaps)
-            {
-                for (int x = g[0]; x <= g[1]; x++)
-                {
-                    for (int y = -5; y <= 0; y++)
-                        ground.SetTile(new Vector3Int(x, y, 0), null);
-                }
-            }
-        }
-
-        private static int RebuildPlatforms(Transform level, Sprite platSprite, StageMapSpec spec)
-        {
-            var old = level.Find("Platforms");
-            if (old != null)
-                Object.DestroyImmediate(old.gameObject);
-
             var root = new GameObject("Platforms");
             root.transform.SetParent(level, false);
-
             int count = 0;
-            var rng = new System.Random(3000 + spec.Stage * 41);
 
-            // 1) 러닝 리듬 플랫폼 — Teach~Setpiece
-            float x = spec.IntroEnd + 6f;
-            int step = 0;
-            while (x < spec.SetpieceEnd - 10f)
+            // 1) Teach — 불꽃 발사대: 낮은 발판 → 높은 발판 → 윈도우(장식 단계에서 배치)
+            var teachXs = Act3FireworksLayout.GetTeachWindowXs(spec);
+            for (int i = 0; i < teachXs.Length; i++)
             {
-                float w = 3.5f + (step % 4) * 0.7f;
-                // 불꽃 테마: 높낮이 리듬이 더 큼
-                float[] heights = { 4.2f, 5.2f, 6.2f, 7.4f, 5.8f, 4.8f, 8.0f };
-                float y = heights[step % heights.Length];
-                if (x > spec.PressureEnd)
-                    y += 0.6f + (step % 3) * 0.35f;
-
-                AddPlatform(root.transform, platSprite, x + w * 0.5f, y, w, 0.42f, $"RunPlat_{count:00}");
-                count++;
-                step++;
-                // Act3: Act2보다 약간 촘촘
-                x += 8.5f + (step % 3);
+                float wx = teachXs[i];
+                AddPlatform(root.transform, pathSprite, wx - 4f, Act3FireworksLayout.LaunchLowY, 3f, 0.42f,
+                    FestivalPlat, $"Launch_Low_{i:00}");
+                AddPlatform(root.transform, deckSprite, wx, Act3FireworksLayout.LaunchHighY, 4.5f, 1.0f,
+                    FestivalPlat, $"Launch_High_{i:00}");
+                count += 2;
             }
 
-            // 2) 갈림 상단 루트
-            var forks = StageCollectibleLayout.GetForkXs(spec);
+            // 2) Pressure — 잿불 위 점프 발판 + (S10/S11) 갭 징검다리
+            bool dark = spec.Stage == 11;
+            foreach (var hx in Act3FireworksLayout.GetPressureHopXs(spec))
+            {
+                AddPlatform(root.transform, pathSprite, hx, 3.6f, 3.2f, 0.4f,
+                    dark ? DarkPlat : FestivalPlat, $"Hop_{count:00}");
+                count++;
+            }
+
+            int stoneN = 0;
+            foreach (var s in Act3FireworksLayout.GetGapStones(spec))
+            {
+                AddPlatform(root.transform, pathSprite, s.x, s.y, s.z, 0.4f,
+                    dark ? DarkPlat : FestivalPlat, $"Stone_{stoneN:00}");
+                stoneN++;
+                count++;
+            }
+
+            // 3) 갈림 상단 루트 (Breath = Fork1, Goal = Fork2)
+            var forks = Act3FireworksLayout.GetForkXs(spec);
             for (int i = 0; i < forks.Length; i++)
             {
                 float fx = forks[i];
-                AddPlatform(root.transform, platSprite, fx, 5.6f, 14f, 0.48f, $"ForkPlatA_{i + 1}");
-                AddPlatform(root.transform, platSprite, fx + 7f, 7.0f, 8f, 0.42f, $"ForkPlatB_{i + 1}");
-                AddPlatform(root.transform, platSprite, fx - 4f, 4.4f, 5f, 0.4f, $"ForkPlatC_{i + 1}");
+                var c = Act3FireworksLayout.IsDark(spec, fx) ? DarkPlat : FestivalPlat;
+                AddPlatform(root.transform, pathSprite, fx - 5f, 3.6f, 4f, 0.4f, c, $"ForkPlatC_{i + 1}");
+                AddPlatform(root.transform, deckSprite, fx + 1f, 5.6f, 12f, 1.0f, c, $"ForkPlatA_{i + 1}");
+                AddPlatform(root.transform, deckSprite, fx + 9f, 7.0f, 7f, 1.0f, c, $"ForkPlatB_{i + 1}");
                 count += 3;
             }
 
-            // 3) 점프 체인 — Pressure~Breath (타이밍 연습용 짧은 발판)
-            float chainX = spec.TeachEnd + 4f;
-            int chain = 0;
-            int chainMax = 10 + (spec.Stage - 9) * 4;
-            while (chainX < spec.BreathEnd - 2f && chain < chainMax)
+            // 4) Setpiece — 한강 다리 데크 직선 (S11은 짧은 세그먼트·긴 간격 = 끊긴 강변)
+            Act3FireworksLayout.GetDeckRhythm(spec, out float seg, out float gap);
+            float deckStart = Act3FireworksLayout.DeckStart(spec);
+            float deckEnd = Act3FireworksLayout.DeckEnd(spec);
+            AddPlatform(root.transform, pathSprite, deckStart - 5f, 3.6f, 4f, 0.4f,
+                dark ? DarkPlat : FestivalPlat, "Deck_Ramp");
+            count++;
+            float dx = deckStart;
+            int di = 0;
+            while (dx + seg <= deckEnd + 0.01f)
             {
-                float y = 4.2f + (chain % 4) * 1.0f;
-                AddPlatform(root.transform, platSprite, chainX, y, 2.8f, 0.38f, $"ChainPlat_{chain:00}");
+                AddPlatform(root.transform, deckSprite, dx + seg * 0.5f, Act3FireworksLayout.DeckY, seg, 1.0f,
+                    dark ? DarkPlat : FestivalPlat, $"Deck_{di:00}");
                 count++;
-                chain++;
-                chainX += 6.8f;
+                di++;
+                dx += seg + gap;
             }
 
-            // 4) 세트피스 직선 위 하이 플랫폼 (불꽃 윈도우용 자리)
-            float setX = spec.BreathEnd + 10f;
-            int setN = 0;
-            while (setX < spec.SetpieceEnd - 12f)
-            {
-                AddPlatform(root.transform, platSprite, setX, 7.2f, 5.5f, 0.4f, $"SetHigh_{setN:00}");
-                AddPlatform(root.transform, platSprite, setX + 8f, 5.6f, 4f, 0.4f, $"SetMid_{setN:00}");
-                count += 2;
-                setN++;
-                setX += 16f;
-            }
-
-            // 5) Goal 직전
-            AddPlatform(root.transform, platSprite, spec.LengthX - 22f, 4.4f, 7f, 0.42f, "GoalPlat_A");
-            AddPlatform(root.transform, platSprite, spec.LengthX - 14f, 5.8f, 6f, 0.42f, "GoalPlat_B");
-            AddPlatform(root.transform, platSprite, spec.LengthX - 8f, 4.2f, 4f, 0.4f, "GoalPlat_C");
-            count += 3;
-
-            // 6) S11 공허 구멍 위 징검다리
-            if (spec.Stage == 11)
-            {
-                float[] voidXs =
-                {
-                    spec.BreathEnd + 10f, spec.BreathEnd + 14f, spec.BreathEnd + 18f,
-                    spec.SetpieceEnd - 36f, spec.SetpieceEnd - 32f, spec.SetpieceEnd - 28f,
-                    spec.SetpieceEnd - 14f, spec.SetpieceEnd - 10f
-                };
-                for (int i = 0; i < voidXs.Length; i++)
-                {
-                    float y = 4.0f + (i % 3) * 1.1f;
-                    AddPlatform(root.transform, platSprite, voidXs[i], y, 3.0f, 0.4f, $"VoidPlat_{i:00}");
-                    count++;
-                }
-            }
-
-            // 7) 스테이지별 추가 밀도
-            int extras = 10 + (spec.Stage - 9) * 5;
-            for (int i = 0; i < extras; i++)
-            {
-                float px = rng.Next(Mathf.RoundToInt(spec.IntroEnd + 10f), Mathf.RoundToInt(spec.LengthX - 24f));
-                float py = 3.8f + rng.Next(0, 6) * 0.85f;
-                float pw = 2.8f + rng.Next(0, 5) * 0.6f;
-                AddPlatform(root.transform, platSprite, px, py, pw, 0.38f, $"ExtraPlat_{i:00}");
-                count++;
-            }
+            // 5) Goal 직전 마무리 발판
+            var gc = dark ? DarkPlat : FestivalPlat;
+            AddPlatform(root.transform, pathSprite, spec.LengthX - 11f, 3.6f, 4f, 0.42f, gc, "GoalPlat_A");
+            count++;
 
             return count;
         }
 
         private static void AddPlatform(
-            Transform parent, Sprite sprite, float x, float y, float width, float height, string name)
+            Transform parent, Sprite sprite, float x, float y, float width, float height, Color color, string name)
         {
             var go = new GameObject(name);
             go.transform.SetParent(parent, false);
             go.transform.position = new Vector3(x, y, 0f);
             go.layer = GroundLayer;
 
-            var sr = go.AddComponent<SpriteRenderer>();
+            // 비주얼은 자식으로 — 스프라이트 피벗(BottomCenter 등)과 무관하게 콜라이더 박스에 정확히 맞춘다
+            var visual = new GameObject("Visual");
+            visual.transform.SetParent(go.transform, false);
+            float pivotNormY = sprite != null && sprite.rect.height > 0f ? sprite.pivot.y / sprite.rect.height : 0.5f;
+            visual.transform.localPosition = new Vector3(0f, -height * 0.5f + pivotNormY * height, 0f);
+
+            var sr = visual.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
             sr.drawMode = SpriteDrawMode.Tiled;
+            sr.tileMode = SpriteTileMode.Continuous;
             sr.size = new Vector2(width, height);
-            sr.color = new Color(0.85f, 0.78f, 0.95f, 1f); // 밤 축제 톤
+            sr.color = color;
             sr.sortingOrder = 5;
 
             var box = go.AddComponent<BoxCollider2D>();
             box.size = new Vector2(width, height);
         }
 
-        private static void PlaceInvisibleGoal(Transform level, StageMapSpec spec)
+        private static void RebuildGoal(Transform level, StageMapSpec spec, float groundTop)
         {
-            // 구조물 비주얼 없이 엔드 트리거만 (길이 확인용)
             var root = new GameObject("Goals");
             root.transform.SetParent(level, false);
             var go = new GameObject("Zone_Goal");
             go.transform.SetParent(root.transform, false);
-            go.transform.position = new Vector3(spec.LengthX - 4f, 1.5f, 0f);
+            // StageGoal 엔드 폴(높이 3.2, 중심 기준) 하단이 지면 윗면 근처에 오도록
+            go.transform.position = new Vector3(spec.LengthX - 4f, groundTop + 1.5f, 0f);
             var box = go.AddComponent<BoxCollider2D>();
             box.isTrigger = true;
             box.size = new Vector2(3.5f, 5f);
@@ -403,9 +372,7 @@ namespace FollowMe.KDS.Editor
             var so = new SerializedObject(goal);
             so.FindProperty("_stageNumber").intValue = spec.Stage;
             so.FindProperty("_pauseOnClear").boolValue = true;
-            var ensure = so.FindProperty("_ensureVisual");
-            if (ensure != null)
-                ensure.boolValue = false; // 구조물 비주얼 끔
+            so.FindProperty("_ensureVisual").boolValue = true;
             so.ApplyModifiedPropertiesWithoutUndo();
         }
 
@@ -414,6 +381,73 @@ namespace FollowMe.KDS.Editor
             var player = GameObject.Find("Player");
             if (player != null)
                 player.transform.position = new Vector3(-2f, 1f, 0f);
+        }
+
+        /// <summary>Act2와 동일 시스템 + MapModeService(경고→추격→회복 존용).</summary>
+        private static void EnsureSystems(int stage)
+        {
+            var systems = GameObject.Find("SocialSystems");
+            if (systems == null)
+                systems = new GameObject("SocialSystems");
+
+            if (systems.GetComponent<SocialScoreService>() == null)
+                systems.AddComponent<SocialScoreService>();
+            if (systems.GetComponent<SocialScoreHud>() == null)
+                systems.AddComponent<SocialScoreHud>();
+            if (systems.GetComponent<SocialItemScoreBridge>() == null)
+                systems.AddComponent<SocialItemScoreBridge>();
+
+            var meter = systems.GetComponent<StressMeter>();
+            if (meter == null)
+                meter = systems.AddComponent<StressMeter>();
+
+            var boot = systems.GetComponent<StressMeterBootstrap>();
+            if (boot == null)
+                boot = systems.AddComponent<StressMeterBootstrap>();
+
+            var bootSo = new SerializedObject(boot);
+            bootSo.FindProperty("_meter").objectReferenceValue = meter;
+            bootSo.FindProperty("_startFull").boolValue = true;
+            bootSo.ApplyModifiedPropertiesWithoutUndo();
+
+            var scoreSo = new SerializedObject(systems.GetComponent<SocialScoreService>());
+            var meterProp = scoreSo.FindProperty("_stressMeter");
+            if (meterProp != null)
+            {
+                meterProp.objectReferenceValue = meter;
+                scoreSo.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            var bar = Object.FindFirstObjectByType<StressBar>();
+            if (bar == null)
+            {
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(StressBarPrefab);
+                if (prefab != null)
+                {
+                    var canvas = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+                    canvas.name = "StressBarCanvas";
+                    bar = canvas.GetComponentInChildren<StressBar>(true);
+                }
+            }
+
+            if (bar != null)
+            {
+                var so = new SerializedObject(bar);
+                so.FindProperty("meter").objectReferenceValue = meter;
+                so.ApplyModifiedPropertiesWithoutUndo();
+            }
+
+            var levelSystems = GameObject.Find("LevelSystems");
+            if (levelSystems == null)
+                levelSystems = new GameObject("LevelSystems");
+            if (levelSystems.GetComponent<CheckpointService>() == null)
+                levelSystems.AddComponent<CheckpointService>();
+            if (levelSystems.GetComponent<StageRunStats>() == null)
+                levelSystems.AddComponent<StageRunStats>();
+            if (levelSystems.GetComponent<MapModeService>() == null)
+                levelSystems.AddComponent<MapModeService>();
+
+            levelSystems.GetComponent<StageRunStats>().ConfigureStage(stage);
         }
 
         private static Sprite LoadSprite(string path)
@@ -431,3 +465,4 @@ namespace FollowMe.KDS.Editor
     }
 }
 #endif
+

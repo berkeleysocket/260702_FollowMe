@@ -11,18 +11,40 @@ namespace FollowMe.KDS
         [SerializeField] private MapMode[] _activeInModes = { MapMode.Chase };
         [SerializeField] private GameObject[] _targets;
 
+        private MapModeService _subscribedTo;
+
         private void OnEnable()
         {
-            if (MapModeService.Instance != null)
-                MapModeService.Instance.ModeChanged += OnModeChanged;
-
+            TrySubscribe();
             Refresh(MapModeService.Instance != null ? MapModeService.Instance.CurrentMode : MapMode.Stable);
+        }
+
+        private void Start()
+        {
+            // 씬 로드 시 MapModeService.Awake보다 먼저 OnEnable될 수 있어 Start에서 재시도
+            if (TrySubscribe())
+                Refresh(MapModeService.Instance.CurrentMode);
         }
 
         private void OnDisable()
         {
-            if (MapModeService.Instance != null)
-                MapModeService.Instance.ModeChanged -= OnModeChanged;
+            if (_subscribedTo != null)
+                _subscribedTo.ModeChanged -= OnModeChanged;
+            _subscribedTo = null;
+        }
+
+        private bool TrySubscribe()
+        {
+            var svc = MapModeService.Instance;
+            if (svc == null || _subscribedTo == svc)
+                return false;
+
+            if (_subscribedTo != null)
+                _subscribedTo.ModeChanged -= OnModeChanged;
+
+            svc.ModeChanged += OnModeChanged;
+            _subscribedTo = svc;
+            return true;
         }
 
         private void OnModeChanged(MapMode prev, MapMode next) => Refresh(next);

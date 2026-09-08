@@ -4,12 +4,22 @@ namespace FollowMe.KDS
 {
     /// <summary>
     /// 임시 삼각형 장애물. 플레이어가 닿으면 아이템 섭취로 스트레스가 감소하는 것과
-    /// 같은 양만큼 스트레스가 오른다. 비주얼은 절차적 삼각형 메시 — 추후 아트로 교체 예정.
+    /// 같은 양만큼 스트레스가 오른다. 비주얼은 절차적으로 생성한 삼각형 스프라이트 —
+    /// 추후 아트로 교체 예정. Width/Height는 transform 스케일로 적용된다.
     /// </summary>
-    [RequireComponent(typeof(PolygonCollider2D))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(PolygonCollider2D))]
     public class StressTriangleHazard : MonoBehaviour
     {
-        [SerializeField] private float _stressPenalty = 8f; // 아이템 픽업 시 감소량(SocialScoreService 기본값)과 동일
+        private static readonly Vector2[] UnitTrianglePoints =
+        {
+            new Vector2(-0.5f, -0.5f),
+            new Vector2(0.5f, -0.5f),
+            new Vector2(0f, 0.5f),
+        };
+
+        private static Sprite _sharedSprite;
+
+        [SerializeField] private float _stressPenalty = 4f; // 아이템 픽업 시 감소량(SocialScoreService 기본값)과 동일
         [SerializeField] private float _hitCooldown = 0.6f;
         [SerializeField] private float _width = 1f;
         [SerializeField] private float _height = 1f;
@@ -18,21 +28,20 @@ namespace FollowMe.KDS
 
         private float _nextHitAllowedTime;
 
-        private void Reset()
-        {
-            BuildVisual();
-            BuildCollider();
-        }
-
         private void Awake()
         {
             MapTriggerLayer.Apply(gameObject);
 
-            if (GetComponent<MeshFilter>() == null)
-                BuildVisual();
+            var spriteRenderer = GetComponent<SpriteRenderer>();
+            if (spriteRenderer.sprite == null)
+                spriteRenderer.sprite = GetOrCreateTriangleSprite();
+            spriteRenderer.color = _color;
 
-            BuildCollider();
-            GetComponent<PolygonCollider2D>().isTrigger = true;
+            transform.localScale = new Vector3(Mathf.Max(0.01f, _width), Mathf.Max(0.01f, _height), 1f);
+
+            var col = GetComponent<PolygonCollider2D>();
+            col.points = UnitTrianglePoints;
+            col.isTrigger = true;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -51,41 +60,58 @@ namespace FollowMe.KDS
                 Debug.Log($"[StressTriangleHazard] 피격 → 스트레스 +{_stressPenalty}", this);
         }
 
-        private Vector2[] TrianglePoints()
+        private static Sprite GetOrCreateTriangleSprite()
         {
-            float halfW = _width * 0.5f;
-            float halfH = _height * 0.5f;
-            return new[]
+            if (_sharedSprite != null)
+                return _sharedSprite;
+
+            const int size = 64;
+            Vector2 a = new Vector2(size * 0.5f, size - 1);
+            Vector2 b = new Vector2(0f, 0f);
+            Vector2 c = new Vector2(size - 1, 0f);
+
+            var pixels = new Color32[size * size];
+            for (int y = 0; y < size; y++)
             {
-                new Vector2(-halfW, -halfH),
-                new Vector2(halfW, -halfH),
-                new Vector2(0f, halfH),
+                for (int x = 0; x < size; x++)
+                {
+                    bool inside = PointInTriangle(new Vector2(x, y), a, b, c);
+                    pixels[y * size + x] = inside ? new Color32(255, 255, 255, 255) : new Color32(0, 0, 0, 0);
+                }
+            }
+
+            var texture = new Texture2D(size, size, TextureFormat.RGBA32, false)
+            {
+                filterMode = FilterMode.Bilinear,
+                wrapMode = TextureWrapMode.Clamp,
             };
+            texture.SetPixels32(pixels);
+            texture.Apply();
+
+            _sharedSprite = Sprite.Create(
+                texture,
+                new Rect(0, 0, size, size),
+                new Vector2(0.5f, 0.5f),
+                size);
+
+            return _sharedSprite;
         }
 
-        private void BuildCollider()
+        private static bool PointInTriangle(Vector2 p, Vector2 a, Vector2 b, Vector2 c)
         {
-            var col = GetComponent<PolygonCollider2D>();
-            col.points = TrianglePoints();
+            float d1 = Sign(p, a, b);
+            float d2 = Sign(p, b, c);
+            float d3 = Sign(p, c, a);
+
+            bool hasNeg = d1 < 0 || d2 < 0 || d3 < 0;
+            bool hasPos = d1 > 0 || d2 > 0 || d3 > 0;
+
+            return !(hasNeg && hasPos);
         }
 
-        private void BuildVisual()
+        private static float Sign(Vector2 p1, Vector2 p2, Vector2 p3)
         {
-            var points = TrianglePoints();
-
-            var mesh = new Mesh { name = "StressTriangleHazard" };
-            mesh.vertices = new Vector3[] { points[0], points[1], points[2] };
-            // 양방향 삼각형 두 장을 겹쳐 와인딩 방향과 무관하게 항상 보이도록 한다.
-            mesh.triangles = new[] { 0, 1, 2, 0, 2, 1 };
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
-
-            var filter = gameObject.AddComponent<MeshFilter>();
-            filter.sharedMesh = mesh;
-
-            var meshRenderer = gameObject.AddComponent<MeshRenderer>();
-            Shader shader = Shader.Find("Universal Render Pipeline/Unlit") ?? Shader.Find("Sprites/Default");
-            meshRenderer.sharedMaterial = new Material(shader) { color = _color };
+            return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
         }
     }
 }

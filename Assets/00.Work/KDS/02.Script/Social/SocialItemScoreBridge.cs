@@ -15,7 +15,7 @@ namespace FollowMe.KDS
         [SerializeField] private long _followPerHeartValue = 50;
         [SerializeField] private long _likePerEmojiValue = 100;
         [SerializeField] private bool _scaleByItemValue = true;
-        [SerializeField] private float _stressReducePerAngry = 8f;
+        [SerializeField] private float _stressReducePerAngry = 4f;
         [SerializeField] private StressMeter _stressMeter;
 
         private PlayerItemCollector _collector;

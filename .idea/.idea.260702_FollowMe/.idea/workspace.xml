@@ -10,33 +10,7 @@
     <configurations />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.260702_FollowMe/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/KDS/01.Scene/Stage2 Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Work/KDS/01.Scene/Stage2 Scene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/KDS/Art.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/KDS/README.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/KDS/Stage2_LevelDesign.md.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/YHW/YHW/Gameassets/16x16-Emoji-Pack_v1.1/16x16_emoji_asset_pack_v1.1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/00.Work/YHW/YHW/Gameassets/16x16-Emoji-Pack_v1.1/16x16_emoji_asset_pack_v1.1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/00.Work/YHW/YHW/Prefabs/UI/HUD.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Agents/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Prefabs/Manager/HorrorEvent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Prefabs/Manager/HorrorEvent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/HorrorPostProcessSetter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/AI Scripts/HorrorPostProcessSetter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/IColliderModule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Core/IColliderModule.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Enum.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Enum/ColliderModuleOption.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Enum/ColliderModuleOption.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Enum/SeungyungLib.ModuleSystem.Enum.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Enum/SeungyungLib.ModuleSystem.Enum.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Body/BodyModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Body/BodyModule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Collider.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Collider/ColliderModule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/Collider/ColliderModule.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/SeungyungLib.ModuleSystem.Modules.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Agents/ModuleSystem/Modules/SeungyungLib.ModuleSystem.Modules.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KSY/Scripts/SeungyungLib/Template/EventChannels/PlayerEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Physics2DSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="825152a2-ae1e-4626-b98f-028309710beb" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

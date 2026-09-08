@@ -87,12 +87,12 @@ namespace FollowMe.KDS
             switch (item.ItemType)
             {
                 case ItemType.Heart:
-                    SocialScoreService.Instance.CollectFollow(amount * _followPerHeartValue);
-                    StageRunStats.Instance?.RegisterFollowPickup();
+                    if (SocialScoreService.Instance.CollectFollow(amount * _followPerHeartValue))
+                        StageRunStats.Instance?.RegisterFollowPickup();
                     break;
                 case ItemType.Emoji:
-                    SocialScoreService.Instance.CollectLike(amount * _likePerEmojiValue);
-                    StageRunStats.Instance?.RegisterLikePickup();
+                    if (SocialScoreService.Instance.CollectLike(amount * _likePerEmojiValue))
+                        StageRunStats.Instance?.RegisterLikePickup();
                     break;
             }
         }

@@ -211,7 +211,12 @@ namespace FollowMe.KDS
                 return false;
             }
 
-            SocialScoreService.Instance.ApplyPhotoReward(id, likes, follows);
+            if (!SocialScoreService.Instance.ApplyPhotoReward(id, likes, follows))
+            {
+                CancelHold();
+                Debug.Log($"[PhotoPoint] {id} 촬영 실패 — 스트레스가 0%가 아님", this);
+                return false;
+            }
 
             if (oneShot)
                 _used = true;

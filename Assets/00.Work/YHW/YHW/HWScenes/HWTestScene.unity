@@ -1520,6 +1520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StressBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6249178319717048886, guid: f27cc8bcf19c09346a1835e861705cef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7811003029593353098, guid: f27cc8bcf19c09346a1835e861705cef, type: 3}
       propertyPath: meter
       value: 

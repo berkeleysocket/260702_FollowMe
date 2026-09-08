@@ -1,11 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/00.Work/YHW/YHW/Prefabs/UI/HUD/StressBarCanvas.prefab.meta
-guid: f27cc8bcf19c09346a1835e861705cef
-========
 guid: 0b47662a89fa02941b044a2761952f8d
->>>>>>>> 154891be30d293b84abd3e5876c010185497610e:Assets/00.Work/KDS/06.Prefab/Act3_Fireworks/Act3_BG_NightSky.prefab.meta
 PrefabImporter:
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

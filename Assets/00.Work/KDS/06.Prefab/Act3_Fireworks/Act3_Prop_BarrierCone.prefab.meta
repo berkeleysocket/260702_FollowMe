@@ -1,11 +1,7 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/00.Work/YHW/YHW/Prefabs/UI/Title/TitleCanvas.prefab.meta
-guid: c6bf5072bebd66d4b90916310baa8335
-========
 guid: 8021745ad9a1a944a87940cd199c68ad
->>>>>>>> 154891be30d293b84abd3e5876c010185497610e:Assets/00.Work/KDS/06.Prefab/Act3_Fireworks/Act3_Prop_BarrierCone.prefab.meta
 PrefabImporter:
   externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:

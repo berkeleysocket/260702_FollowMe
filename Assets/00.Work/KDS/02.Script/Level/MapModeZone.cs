@@ -16,6 +16,8 @@ namespace FollowMe.KDS
 
         private void Awake()
         {
+            // Player(Layer6)와 충돌하도록 Pickup 레이어로
+            MapTriggerLayer.Apply(gameObject);
             var col = GetComponent<Collider2D>();
             col.isTrigger = true;
         }

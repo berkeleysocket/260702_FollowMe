@@ -1,5 +1,7 @@
 using SeungyungLib.Core.BaseCollider;
+#if UNITY_EDITOR
 using SeungyungLib.Core.CustomDebug;
+#endif
 using SeungyungLib.ModuleSystem.Core;
 
 using System;
@@ -16,7 +18,6 @@ namespace SeungyungLib.CollectSystem
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            DebugLogger.Assert(collectBaseCollider != null, "[ColliderModule]: collider is null");
         }
         
         public void AfterInitialization(IModuleOwner owner)

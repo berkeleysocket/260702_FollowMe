@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using SeungyungLib.Core.CustomDebug;
+#endif
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
@@ -34,7 +36,6 @@ namespace SeungyungLib.FSM
                 ChangeState(stateMachineSO.StartState);
             }
             
-            DebugLogger.Assert(stateMachineSO != null, "[StateModule]: stateMachineSO is null");
         }
         #endregion
         

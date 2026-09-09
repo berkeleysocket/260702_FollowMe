@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace SeungyungLib.Core.ReadOnlyAttribute
 {
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
@@ -25,3 +26,4 @@ namespace SeungyungLib.Core.ReadOnlyAttribute
         }
     }
 }
+#endif

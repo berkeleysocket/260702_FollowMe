@@ -1,5 +1,4 @@
-﻿using SeungyungLib.Core.CustomDebug;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SeungyungLib.Core.Effects
 {
@@ -13,8 +12,6 @@ namespace SeungyungLib.Core.Effects
             base.Initialize();
             
             this._particle = GetComponent<ParticleSystem>();
-            
-            DebugLogger.Assert(_particle != null, "[PlayableParticleVfx]: ParticleSystem is null");
         }
         #endregion
 

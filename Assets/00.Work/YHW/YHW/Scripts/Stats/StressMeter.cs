@@ -16,6 +16,7 @@ namespace YHW.Stats
         [SerializeField] private float animateDuration = 0.4f;
         [SerializeField] private Ease animateEase = Ease.OutQuad;
         [SerializeField] private float autoRisePercentPerSecond = 1f;
+        [SerializeField] private float startPercent = 50f;
 
         public StressEventChannel Thresholds { get; } = new StressEventChannel();
 
@@ -37,8 +38,8 @@ namespace YHW.Stats
 
         private void Awake()
         {
-            _currentValue = 0f;
-            _displayValue = 0f;
+            _currentValue = Mathf.Clamp(maxValue * startPercent * 0.01f, 0f, maxValue);
+            _displayValue = _currentValue;
             _lastPercent = PercentOf(_currentValue);
         }
 

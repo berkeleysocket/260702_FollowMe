@@ -3,9 +3,9 @@ using UnityEngine;
 namespace FollowMe.KDS
 {
     /// <summary>
-    /// 임시 삼각형 장애물. 플레이어가 닿으면 아이템 섭취로 스트레스가 감소하는 것과
-    /// 같은 양만큼 스트레스가 오른다. 비주얼은 절차적으로 생성한 삼각형 스프라이트 —
-    /// 추후 아트로 교체 예정. Width/Height는 transform 스케일로 적용된다.
+    /// 임시 삼각형 장애물. 플레이어가 닿으면 스트레스가 오르고 한 번 발동되면 비활성화된다.
+    /// 비주얼은 절차적으로 생성한 삼각형 스프라이트 — 추후 아트로 교체 예정.
+    /// Width/Height는 transform 스케일로 적용된다.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(PolygonCollider2D))]
     public class StressTriangleHazard : MonoBehaviour
@@ -19,14 +19,11 @@ namespace FollowMe.KDS
 
         private static Sprite _sharedSprite;
 
-        [SerializeField] private float _stressPenalty = 4f; // 아이템 픽업 시 감소량(SocialScoreService 기본값)과 동일
-        [SerializeField] private float _hitCooldown = 0.6f;
+        [SerializeField] private float _stressPenalty = 12f; // 아이템 픽업 시 감소량의 3배
         [SerializeField] private float _width = 1f;
         [SerializeField] private float _height = 1f;
         [SerializeField] private Color _color = new Color(0.85f, 0.1f, 0.1f);
         [SerializeField] private bool _logHit = true;
-
-        private float _nextHitAllowedTime;
 
         private void Awake()
         {
@@ -49,15 +46,12 @@ namespace FollowMe.KDS
             if (!PlayerTriggerUtility.IsPlayer(other))
                 return;
 
-            if (Time.unscaledTime < _nextHitAllowedTime)
-                return;
-
-            _nextHitAllowedTime = Time.unscaledTime + Mathf.Max(0.05f, _hitCooldown);
-
             SocialScoreService.Instance?.ApplyStress(_stressPenalty);
 
             if (_logHit)
                 Debug.Log($"[StressTriangleHazard] 피격 → 스트레스 +{_stressPenalty}", this);
+
+            gameObject.SetActive(false);
         }
 
         private static Sprite GetOrCreateTriangleSprite()

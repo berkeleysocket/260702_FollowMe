@@ -25,8 +25,8 @@ namespace FollowMe.KDS
         [SerializeField] private long _follows;
         [SerializeField] private bool _secondCycle;
         [SerializeField] private StressMeter _stressMeter;
-        [SerializeField] private float _stressReducePerLikePickup = 8f;
-        [SerializeField] private float _stressReducePerFollowPickup = 8f;
+        [SerializeField] private float _stressReducePerLikePickup = 4f;
+        [SerializeField] private float _stressReducePerFollowPickup = 4f;
         [SerializeField] private float _stressReducePerPhoto = 20f;
         [SerializeField] private float _stressAddPerFall = 35f;
 

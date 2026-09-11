@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8274868189867407186}
   - component: {fileID: 6190127026360216060}
   - component: {fileID: 2003484052934179181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pickup_emoji_ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,7 +128,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.4
+  m_Radius: 0.2
 --- !u!114 &2003484052934179181
 MonoBehaviour:
   m_ObjectHideFlags: 0

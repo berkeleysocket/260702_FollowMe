@@ -1,3 +1,4 @@
+using SeungyungLib.Core.CustomDebug;
 using SeungyungLib.Core.Timer;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.Md.Body.Core;
@@ -100,11 +101,12 @@ namespace  SeungyungLib.FSM
 
         protected override void OnEnter()
         {
+            DebugLogger.Log("Knockdown OnEnter");
             _movementModule.Deactivate();
             _timer.Initialize(_exitTime);
             _timer.Start();
         }
-
+        
         protected override void OnUpdate()
         {
             if (_timer.Check())

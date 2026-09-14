@@ -57,7 +57,6 @@ namespace SeungyungLib.Agents
             _groundChecker.NotifyIsGrounded.OnChanged += OnGroundedChanged;
             _bodyModule.OnDamaged += OnTakeDamage;
             _bodyModule.OnKnockdown += OnKnockdown;
-            _bodyModule.OnStandUp += OnStandUp;
             _movementModule.OnMoved += OnMoved;
             controlEventChannel.AddListener<MoveInputEvent>(OnMoveInputReceived);
             controlEventChannel.AddListener<JumpInputEvent>(OnJumpInputReceived);
@@ -68,7 +67,6 @@ namespace SeungyungLib.Agents
             _groundChecker.NotifyIsGrounded.OnChanged -= OnGroundedChanged;
             _bodyModule.OnDamaged -= OnTakeDamage;
             _bodyModule.OnKnockdown -= OnKnockdown;
-            _bodyModule.OnStandUp -= OnStandUp;
             _movementModule.OnMoved -= OnMoved;
             controlEventChannel.RemoveListener<MoveInputEvent>(OnMoveInputReceived);
             controlEventChannel.RemoveListener<JumpInputEvent>(OnJumpInputReceived);
@@ -82,11 +80,6 @@ namespace SeungyungLib.Agents
                 _vfxModule.StopVfx(dustParticleName.Hash);
         }
 
-        private void OnStandUp()
-        {
-            _renderModule.PlayInvincibilityEffect();
-        }
-        
         private void OnMoved(int axis)
         {
             if (_movementModule.IsControlling)
@@ -104,15 +97,10 @@ namespace SeungyungLib.Agents
                 _vfxModule.StopVfx(dustParticleName.Hash);
         }
         
-        private void OnTakeDamage(int damage, int currentHealth)
+        private void OnTakeDamage()
         {
-            PlayerEvents.HitEvent.Initialize(damage, currentHealth);
-            playerEventChannel.RaiseEvent(PlayerEvents.HitEvent);
-                
             if (_movementModule.IsControlling)
                 _vfxModule.StopVfx(dustParticleName.Hash);
-            
-            _renderModule.PlayHitShakeEffect();
         }
         
         private void OnGroundedChanged(bool isGround)
@@ -133,7 +121,6 @@ namespace SeungyungLib.Agents
 
         private void OnMoveInputReceived(MoveInputEvent evt)
         {
-            DebugLogger.Log("MoveInputReceived");
             _movementModule.MoveToDirection(evt.Axis);
         }
         private void OnJumpInputReceived(JumpInputEvent evt) => _movementModule.IsJumpKeyPressed = evt.JumpKeyPressed;

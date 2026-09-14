@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using SeungyungLib.Core.CustomDebug;
 #endif
+using System;
 using SeungyungLib.Core.FlyweightService;
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
@@ -32,6 +33,16 @@ namespace SeungyungLib.FSM
                     key => (StateType)key.Type,
                     value => (IState)value.ForCreate(owner, _conditionFactory)
                 );
+
+                foreach (var state in _stateList.Values)
+                {
+                    DebugLogger.Log(state.GetType().Name, Color.brown);
+                }
+                
+                foreach (var condition in _conditionFactory.Values)
+                {
+                    DebugLogger.Log(condition.GetType().Name, Color.cyan);
+                }
                 
                 ChangeState(stateMachineSO.StartState);
             }
@@ -51,7 +62,7 @@ namespace SeungyungLib.FSM
         
         public void ChangeState(StateType stateType)
         {
-            DebugLogger.Log("[StateMachineModule]: Changing state: " + stateType.ToString(), Color.yellow);
+            // DebugLogger.Log("[StateMachineModule]: Changing state: " + stateType.ToString(), Color.yellow);
             if (_stateList.TryGetValue(stateType, out IState state) && state != null)
             {
                 _currentState?.Exit();

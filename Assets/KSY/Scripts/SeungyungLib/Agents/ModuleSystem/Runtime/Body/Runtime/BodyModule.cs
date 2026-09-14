@@ -1,11 +1,12 @@
 using SeungyungLib.Core.BaseCollider;
 using SeungyungLib.Core.CustomDebug;
-using SeungyungLib.Core.ReadOnlyAttribute;
 using SeungyungLib.Md.Body.Core;
 using SeungyungLib.ModuleSystem.Core;
 
 using System;
 using System.Collections;
+using KSY.StressSystem;
+using SeungyungLib.Core.ManagerSystem;
 using UnityEngine;
 
 namespace SeungyungLib.Md.Body.Runtime
@@ -15,28 +16,24 @@ namespace SeungyungLib.Md.Body.Runtime
         [field: SerializeField] public Rigidbody2D PhysicalBody { get; private set; }
         [SerializeField] private BaseCollider bodyCollider;
         [SerializeField] private BodyModuleDataSO bodyData;
-        [SerializeField, ReadOnly] private int _health;
-
-        private int _maxHealth;
-        private int _asd;
         
-        public int MaxHealth => _maxHealth;
-        public int CurrentHealth => _health;
+        private IRenderModule _renderModule;
+        private float _invincibilityDuration;
+
+        public bool IsHit { get; private set; }
         public bool IsActive { get; private set; }
-        public bool IsDead { get; private set; }
         public bool IsKnockdown { get; private set; }
         public bool IsInvincible { get; private set; }
 
-        public event IBodyModule.OnTakeDamageHandler OnDamaged;
-        public event Action OnDeath;
+        public event Action OnDamaged;
         public event Action OnKnockdown;
         public event Action OnStandUp;
 
         #region Initialization
         public void Initialize(IModuleOwner owner)
         {
-            this._maxHealth = bodyData.MaxHealth; 
-            this._health = _maxHealth;
+            this._renderModule = owner.GetModule<IRenderModule>();
+            this._invincibilityDuration = bodyData.InvincibilityDuration;
             
             DebugLogger.Assert(PhysicalBody != null, "[BodyModule]: PhysicalBody is null");
             DebugLogger.Assert(bodyCollider != null, "[BodyModule]: enemyLayerCollider is null");
@@ -49,44 +46,47 @@ namespace SeungyungLib.Md.Body.Runtime
 
         public void ApplyDamage(DamageContext damageContext)
         {
+            if (IsKnockdown || IsInvincible || IsHit) return;
+
             int damage = damageContext.Value;
             
-            if (IsKnockdown || IsInvincible || IsDead) return;
-            
-            _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
-
-            if (_health <= 0)
-            {
-                OnDeath?.Invoke();
-                IsDead = true;
-            }
-            else
-                OnDamaged?.Invoke(damage, _health);
+            IsHit = true;
+            StressManagement stressManagement = GameManager.Instance.GetManagement<StressManagement>();
+            stressManagement.SetStress(damage);
         }
 
         public void Knockdown()
         {
             if (IsKnockdown) return;
+            IsHit = false;
             IsKnockdown = true;
             OnKnockdown?.Invoke();
         }
 
         public void Recovery(int recoveryValue)
         {
-            _health = Mathf.Clamp(_health + recoveryValue, 0, _maxHealth);
+            StressManagement stressManagement = GameManager.Instance.GetManagement<StressManagement>();
+            stressManagement.SetStress(-recoveryValue);
         }
 
         public void StandUp()
         {
+            DebugLogger.Log("StandUp");
             if (!IsKnockdown && IsInvincible) return;
             IsInvincible = true;
             IsKnockdown = false;
             OnStandUp?.Invoke();
+
+            StartCoroutine(IsInvincibleTimer());
         }
 
         private IEnumerator IsInvincibleTimer()
         {
-            yield return new WaitForSeconds()
+            if (!IsInvincible) yield break;
+            _renderModule.PlayInvincibilityEffect(true);
+            yield return new WaitForSeconds(_invincibilityDuration);
+            _renderModule.PlayInvincibilityEffect(false);
+            IsInvincible = false;
         }
     }
 }

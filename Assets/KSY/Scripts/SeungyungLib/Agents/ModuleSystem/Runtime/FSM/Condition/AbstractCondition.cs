@@ -97,15 +97,15 @@ namespace SeungyungLib.FSM
     
     public class IsHitCondition : AbstractCondition
     {
-        private readonly IBodyModule _bodyModule;
+        private readonly IBodyModule _body;
         
         private bool _isHit;
         
         public IsHitCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
-            this._bodyModule = owner.GetModule<IBodyModule>();
+            this._body = owner.GetModule<IBodyModule>();
 
-            _bodyModule.OnDamaged += HandlePlayerHitEvent;
+            _body.OnDamaged += HandlePlayerHitEvent;
         }
         
         protected override bool OnCheck()
@@ -119,7 +119,7 @@ namespace SeungyungLib.FSM
             return false;
         }
 
-        private void HandlePlayerHitEvent(int damage, int currentHp) => _isHit = true;
+        private void HandlePlayerHitEvent() => _isHit = true;
     }
 
     public class IsExpiredCondition : AbstractCondition

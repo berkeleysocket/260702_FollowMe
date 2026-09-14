@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Emoji_Smile
   m_EditorClassIdentifier: Assembly-CSharp::KSY.Item.ItemSO
   <DefaultSprite>k__BackingField: {fileID: -8881338439046292137, guid: 1d8242dd16f825b40a75466944b0c014, type: 3}
+  <CollectParticle>k__BackingField: {fileID: 8595399089965826772, guid: 0ed757204161d864491ed54fa8cdfcb0, type: 3}
   <Score>k__BackingField: 100
   <RecoveryValue>k__BackingField: 1

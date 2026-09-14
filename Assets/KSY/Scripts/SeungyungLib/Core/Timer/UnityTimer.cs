@@ -4,12 +4,14 @@ namespace SeungyungLib.Core.Timer
 {
     public class UnityTimer
     {
+        public float CurrentTime => Time.time - _startTime;
+        
         private float _startTime;
-        private float _time;
+        private float _checkTime;
 
         public void Initialize(float time)
         {
-            this._time = time;
+            this._checkTime = time;
         }
         
         public void Start()
@@ -19,7 +21,7 @@ namespace SeungyungLib.Core.Timer
         
         public bool Check()
         {
-            return Time.time - _startTime >= _time;
+            return Time.time - _startTime >= _checkTime;
         }
     }
 }

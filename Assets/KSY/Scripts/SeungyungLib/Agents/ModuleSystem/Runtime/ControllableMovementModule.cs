@@ -86,7 +86,6 @@ namespace SeungyungLib.ModuleSystem.Modules
         
         public void MoveToDirection(int axis)
         {
-            DebugLogger.Log("MoveToDirection");
             _axis = axis;
 
             if (IsActive)

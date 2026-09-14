@@ -6,6 +6,9 @@ namespace SeungyungLib.Core.FlyweightService
     public class FlyweightFactory<TKey, TValue> : IFlyweightFactory<TKey, TValue>
         where TValue : class, IFlyweight
     {
+        public Dictionary<TKey, TValue>.KeyCollection Keys => _dictionary.Keys;
+        public Dictionary<TKey, TValue>.ValueCollection Values => _dictionary.Values;
+        
         private readonly Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
         
         public TValue? GetOrAdd(TKey key, Func<TValue> add = null)

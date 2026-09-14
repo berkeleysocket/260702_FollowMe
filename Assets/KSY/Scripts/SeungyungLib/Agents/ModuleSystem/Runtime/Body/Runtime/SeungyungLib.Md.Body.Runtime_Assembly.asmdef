@@ -1,0 +1,20 @@
+{
+    "name": "SeungyungLib.Md.Body.Runtime_Assembly",
+    "rootNamespace": "SeungyungLib.Md.Body.Runtime",
+    "references": [
+        "GUID:205fa6d0a74655c41a9bfb679d9b4173",
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b",
+        "GUID:3c442a9a57ce19d4fa69233beca34864",
+        "GUID:f82349b260eba744da81d92e6d0dd910",
+        "GUID:600d6d09309510241bc71a454480d598"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

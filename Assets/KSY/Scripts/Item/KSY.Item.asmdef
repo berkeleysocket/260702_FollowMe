@@ -1,0 +1,19 @@
+{
+    "name": "KSY.Item",
+    "rootNamespace": "KSY.Item",
+    "references": [
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b",
+        "GUID:68a59ac30f4cd2f47a5018f1976d8037",
+        "GUID:f82349b260eba744da81d92e6d0dd910",
+        "GUID:600d6d09309510241bc71a454480d598"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

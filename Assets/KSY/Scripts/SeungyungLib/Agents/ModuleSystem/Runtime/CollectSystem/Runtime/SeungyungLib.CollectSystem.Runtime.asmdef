@@ -1,0 +1,19 @@
+{
+    "name": "SeungyungLib.CollectSystem.Runtime",
+    "rootNamespace": "SeungyungLib.CollectSystem.Runtime",
+    "references": [
+        "GUID:205fa6d0a74655c41a9bfb679d9b4173",
+        "GUID:7ecad1ce68a88454d9f05e82207ab07b",
+        "GUID:600d6d09309510241bc71a454480d598",
+        "GUID:68a59ac30f4cd2f47a5018f1976d8037"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

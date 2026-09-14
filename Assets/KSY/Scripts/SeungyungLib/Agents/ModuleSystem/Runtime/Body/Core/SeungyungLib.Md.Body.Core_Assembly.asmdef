@@ -1,0 +1,16 @@
+{
+    "name": "SeungyungLib.Md.Body.Core_Assembly",
+    "rootNamespace": "SeungyungLib.Md.Body.Core",
+    "references": [
+        "GUID:600d6d09309510241bc71a454480d598"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

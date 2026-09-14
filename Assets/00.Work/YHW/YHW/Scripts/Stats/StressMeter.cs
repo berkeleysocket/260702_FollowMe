@@ -5,8 +5,8 @@ using UnityEngine;
 namespace YHW.Stats
 {
     /// <summary>
-    /// Stress does not drain or build up on its own - it only changes when
-    /// AddStress/ReduceStress/SetStress is called by gameplay code.
+    /// Stress rises on its own at autoRisePercentPerSecond, and otherwise only
+    /// changes when AddStress/ReduceStress/SetStress is called by gameplay code.
     /// Raw changes fire threshold events immediately; the displayed value
     /// animates toward the new raw value for smooth UI/VFX.
     /// </summary>
@@ -15,6 +15,8 @@ namespace YHW.Stats
         [SerializeField] private float maxValue = 100f;
         [SerializeField] private float animateDuration = 0.4f;
         [SerializeField] private Ease animateEase = Ease.OutQuad;
+        [SerializeField] private float autoRisePercentPerSecond = 1f;
+        [SerializeField] private float startPercent = 50f;
 
         public StressEventChannel Thresholds { get; } = new StressEventChannel();
 
@@ -36,9 +38,15 @@ namespace YHW.Stats
 
         private void Awake()
         {
-            _currentValue = 0f;
-            _displayValue = 0f;
+            _currentValue = Mathf.Clamp(maxValue * startPercent * 0.01f, 0f, maxValue);
+            _displayValue = _currentValue;
             _lastPercent = PercentOf(_currentValue);
+        }
+
+        private void Update()
+        {
+            if (autoRisePercentPerSecond <= 0f) return;
+            AddStress(maxValue * autoRisePercentPerSecond * 0.01f * Time.deltaTime);
         }
 
         public void AddStress(float amount) => SetStress(_currentValue + amount);

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using UnityEngine;
 
+#if UNITY_EDITOR
 namespace SeungyungLib.Core.CustomDebug
 {
     public static class DebugLogger
@@ -38,3 +39,4 @@ namespace SeungyungLib.Core.CustomDebug
         }
     }
 }
+#endif

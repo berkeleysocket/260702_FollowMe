@@ -1,4 +1,3 @@
-using SeungyungLib.Core.CustomDebug;
 using UnityEngine;
 
 namespace SeungyungLib.Core.Effects
@@ -10,7 +9,7 @@ namespace SeungyungLib.Core.Effects
         public int NameHash => vfxSo.Name.Hash;
 
         #region Initialization
-        public virtual void Initialize() => DebugLogger.Assert(vfxSo != null, $"[{this}]: VfxSo is null");
+        public virtual void Initialize() {}
         #endregion
 
         public abstract void PlayVfx(Vector3 position, Quaternion rotation);

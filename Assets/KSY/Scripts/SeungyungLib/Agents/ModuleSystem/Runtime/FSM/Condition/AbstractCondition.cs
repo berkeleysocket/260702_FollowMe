@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using SeungyungLib.Core.CustomDebug;
+#endif
 using SeungyungLib.FSM.Enum;
 using SeungyungLib.FSM.Interface;
 using SeungyungLib.Md.Body.Core;
@@ -41,8 +43,6 @@ namespace SeungyungLib.FSM
         public IsMovingCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
-            
-            DebugLogger.Assert(_movementModule != null, "[IsMovingCondition] _movementModule is null.");
         }
 
         protected override bool OnCheck()
@@ -58,8 +58,6 @@ namespace SeungyungLib.FSM
         public IsJumpingCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
-            
-            DebugLogger.Assert(_movementModule != null, "[IsJumpingCondition] _movementModule is null.");
         }
 
         protected override bool OnCheck()
@@ -92,8 +90,6 @@ namespace SeungyungLib.FSM
         public IsFallCondition(IModuleOwner owner, ConditionType type, bool isNot) : base(owner, type, isNot)
         {
             _movementModule = owner.GetModule<IMovementModule>();
-            
-            DebugLogger.Assert(_movementModule != null, "[IsFallCondition] _movementModule is null.");
         }
         
         protected override bool OnCheck() => _movementModule?.IsFall ?? false;
